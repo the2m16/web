@@ -191,15 +191,19 @@
 		
 		/* Фүүтэр үргэлж хамгийн доор байна */
 		footer {
-			flex-shrink: 0; /* Фүүтэр шахагдахгүй */
-			text-align: center;
-			padding: 30px;
-			font-size: 13px;
-			background: #333;
-			color: #fff;
-			width: 100%;
-		}       
+		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
+		    text-align: center;
+		    padding: 30px;
+		    font-size: 13px;
+		    background: transparent; /* Арын фон өнгөгүй болгох */
+		    color: #555; /* Текстийн өнгийг харагдахуйц бараан болгох */
+		    width: 100%;
+		    box-sizing: border-box;
+		}
 
+
+
+		
 		
         /* Мобайл тохиргоо */
         @media (max-width: 768px) {
