@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таймлайн</title>
+    <style>
+        
+        
+        /* Бүх дэлгэцийг дүүргэх тохиргоо */
+		html, body {
+			max-width: 100%;
+			overflow-x: hidden; /* Хэвтээ чиглэлд илүү гарсан хэсгийг нуух */
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+
+		/* Ерөнхий загвар */
+		body {
+			display: flex;
+			flex-direction: column; /* Элементүүдийг босоо байрлуулна */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+		}
+
+
+		/* Үндсэн агуулга байгаа хэсгийг дэлгэцийн үлдсэн зайг дүүргэхийг заана */
+		.container {
+			flex: 1 0 auto; /* Агуулга бага байсан ч фүүтэрийг доош нь түлхэнэ */
+			width: 95%; /* Дэлгэцийн 95%-ийг эзэлнэ */
+			max-width: 1000px; /* Гэхдээ 1000px-ээс хэтрэхгүй */
+			margin: 20px auto;
+			background: white;
+			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
+			box-shadow: 0 0 10px rgba(0,0,0,0.1);
+		}
+
+
+        /* Толгой хэсэг */
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+			width: 100%;
+            position: sticky;
+            top: 0;
+			left: 0;
+			right: 0;
+			box-sizing: border-box;
+            z-index: 1000;
+
+		/* Тасралтгүй харагдуулах гол тохиргоо */
+			width: 100%; 
+			box-sizing: border-box; /* Padding-аас болж өргөн нь тэлэхээс сэргийлнэ */
+			left: 0;
+        }
+
+		
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+		
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+		
+        nav ul li {
+            margin-left: 20px;
+        }
+
+		
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+		
+        /* Үндсэн агуулга */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+		
+        /* Налуу форматтай Интро текст */
+        .intro-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            text-align: justify;
+        }
+
+		
+        .highlight-blue {
+            color: #0056b3;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+		
+        /* Маркер болон Догол мөр бүхий жагсаалт */
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+        }
+
+		
+        .timeline-list li {
+            position: relative;
+            padding-left: 30px; /* Маркер болон текстийн хоорондох догол мөр */
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 0.92em;
+        }
+
+		
+        /* Квадрат маркер */
+        .timeline-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+
+		
+        .date {
+            font-weight: bold;
+        }
+
+		
+        .bold-text {
+            font-weight: bold;
+        }
+
+		
+        .link-text {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+		
+        /* Видео хэсэг */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+            background: #000;
+        }
+
+		
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: #333;
+            text-align: center;
+        }
+
+		
+		/* Фүүтэр үргэлж хамгийн доор байна */
+		footer {
+			flex-shrink: 0; /* Фүүтэр шахагдахгүй */
+			text-align: center;
+			padding: 30px;
+			font-size: 13px;
+			background: #333;
+			color: #fff;
+			width: 100%;
+		}       
+
+		
+        /* Мобайл тохиргоо */
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav ul { margin-top: 10px; }
+            .container { padding: 20px; margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">60 bln</div>
+        <nav>
+            <ul>
+                <li><a href="#">ЭХЛЭЛ</a></li>
+                <li><a href="#">90 МИН</a></li>
+                <li><a href="#">40 МИН</a></li>
+                <li><a href="#">ШШҮХ ШИНЖЭЭЧИЙН ТАЙЛБАР</a></li>
+                <li><a href="#">FBI ШИНЖЭЭЧИЙН ДҮГНЭЛТ</a></li>
+                <li><a href="#">ОН ЦАГИЙН ДАРААЛАЛ</a></li>
+                <li><a href="#">НЬЮС</a></li>
+                <li><a href="#">LIBELS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="intro-text">
+            Анх 60 тэрбумын асуудал хэрхэн эхэлсэн, өнөөдрийг хүртэл хэрхэн өрнөж байгаа талаар товч мэдээллийг он цагийн дараалалтайгаар холбогдох эх сурвалжийг линкээр холбож ойлгоход хялбар хэлбэрээр энд бичиж байна. Үйл явдлын өрнөл дуусаагүй тул Та энэ хуудсанд шинэчлэл орж байгаа эсэх, шинэ мэдээлэл нэмэгдсэн эсэхийг мэдэхийг хүсвэл анхааралтай ажиглаж байна уу. <span class="highlight-blue">Цэнхэр</span> өнгөөр тодруулсан текстүүд дээр дарж Google Drive-т хадгалсан баримтуудтай эх хувиар нь танилцах боломжтой.
+        </div>
+
+        <ul class="timeline-list">
+            <li>
+                <span class="date">2014.07</span> сарын 2-р хагаст Шинэ Монгол хаад групп ХХК-ийн Гүйцэтгэх захирал, Нийслэлийн МАН УЗ гишүүн, МАН Бага хурлын гишүүн <span class="bold-text">А.Ганбаатар Г.Доржзодов</span>ыг тус компанид Стратеги хариуцсан захирлаар ажиллуулахаар аман гэрээ байгуулав, Нийслэлийн МАН дарга <span class="bold-text">Ц.Сандуй</span>тай танилцуулав.
+            </li>
+            <li>
+                <span class="date">2014.08.01</span> <span class="bold-text">Шинэ Монгол хаад групп ХХК-ийн Захирлуудын зөвлөлийн хурлаас Гүйцэтгэх захирал А.Ганбаатар</span>ыг 9 сарын 1-ний дотор <span class="bold-text">Г.Доржзодов</span>той Контрактын гэрээ байгуулж Стратеги хариуцсан захирлын албан тушаалд томилохыг үүрэг болгосон шийдвэр 100% саналаар гаргав. Гэхдээ ажлаа авхаасаа өмнө буюу 9 сар гартал Нийслэлийн МАН-ын 2014-2016 оны бүтэц, зохион байгуулалт, стратеги, үйл ажиллагааны төлөвлөгөө, ажил үүргийн хуваарь болон 2016 оны УИХ-ын сонгуулийн МАН-ын Төв штабын бүтэц, зохион байгуулалт, ажил үүргийн хуваарь, стратеги, үйл ажиллагааны төлөвлөгөө, сонгуулийн санхүүжилтийн схем, эдгээрийг нэгтгэн үзүүлэх презентшн зэргийг боловсруулах ажилд туслаж ажиллахыг үүрэг болгов.
+            </li>
+            <li>
+                <span class="date">2014.08.28</span> 21:00-0:00 алдад Шинэ Монгол хаад групп ХХК-ийн 6 давхарт Ц.Сандуй, А.Ганбаатар нар 60 тэрбумын санхүүгийн схемийг хамтдаа санаачлан зохиов. Уулзалтын бичлэгийг сонсож, текстийг унших бол <a href="#" class="link-text">ЭНД</a> дарна уу. (40 min audio's Downloadable Mirror Link <a href="#" class="link-text">Here</a>)
+            </li>
+        </ul>
+
+
+
+      <div class="video-container">
+    <iframe 
+        src="https://www.youtube.com/embed/WKoh2K3gXY0?si=IooNqUsGg5z7p-hM" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+
+        <ul class="timeline-list">
+            <li>
+                <span class="date">2020.06.13</span> СДЗ-аас 60 тэрбумын хэрэгтэй холбоотой шийдвэрүүдийг танилцуулж, хэргийг шүүхэд шилжүүлэх тухай мэдээлэв.
+            </li>
+        </ul>
+        
+        
+        <ul class="timeline-list">
+            <li>
+                <span class="date">2020.06.13</span> СДЗ-аас 60 тэрбумын хэрэгтэй холбоотой шийдвэрүүдийг танилцуулж, хэргийг шүүхэд шилжүүлэх тухай мэдээлэв.
+            </li>
+        </ul>        
+
+
+        <ul class="timeline-list">
+            <li>
+                <span class="date">2020.06.13</span> СДЗ-аас 60 тэрбумын хэрэгтэй холбоотой шийдвэрүүдийг танилцуулж, хэргийг шүүхэд шилжүүлэх тухай мэдээлэв.
+            </li>
+        </ul>
+
+
+        <ul class="timeline-list">
+            <li>
+                <span class="date">2020.06.13</span> СДЗ-аас 60 тэрбумын хэрэгтэй холбоотой шийдвэрүүдийг танилцуулж, хэргийг шүүхэд шилжүүлэх тухай мэдээлэв.
+            </li>
+        </ul>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+    
+    <footer>
+        &copy; 2026 Dorjzodov G. All rights reserved.
+    </footer>
+
+</body>
+</html>
