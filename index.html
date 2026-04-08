@@ -42,20 +42,27 @@
         header {
             background-color: #0056b3;
             color: white;
-            padding: 10px 5%;
+            padding: 10px 20px; /* Дээд доод 10px, зүүн баруун талдаа 20px зайтай */
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+
+		/* Тасралтгүй харагдуулах гол тохиргоо */
+			width: 100%; 
+			box-sizing: border-box; /* Padding-аас болж өргөн нь тэлэхээс сэргийлнэ */
+			left: 0;
         }
 
+		
         .logo {
             font-size: 24px;
             font-weight: bold;
         }
 
+		
         nav ul {
             list-style: none;
             display: flex;
@@ -63,10 +70,12 @@
             padding: 0;
         }
 
+		
         nav ul li {
             margin-left: 20px;
         }
 
+		
         nav ul li a {
             color: white;
             text-decoration: none;
@@ -74,6 +83,7 @@
             text-transform: uppercase;
         }
 
+		
         /* Үндсэн агуулга */
         .container {
             max-width: 1000px;
@@ -83,6 +93,7 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
+		
         /* Налуу форматтай Интро текст */
         .intro-text {
             font-style: italic;
@@ -92,18 +103,21 @@
             text-align: justify;
         }
 
+		
         .highlight-blue {
             color: #0056b3;
             font-weight: bold;
             font-style: normal;
         }
 
+		
         /* Маркер болон Догол мөр бүхий жагсаалт */
         .timeline-list {
             list-style: none;
             padding: 0;
         }
 
+		
         .timeline-list li {
             position: relative;
             padding-left: 30px; /* Маркер болон текстийн хоорондох догол мөр */
@@ -112,6 +126,7 @@
             font-size: 0.92em;
         }
 
+		
         /* Квадрат маркер */
         .timeline-list li::before {
             content: "■";
@@ -122,20 +137,24 @@
             color: #333;
         }
 
+		
         .date {
             font-weight: bold;
         }
 
+		
         .bold-text {
             font-weight: bold;
         }
 
+		
         .link-text {
             color: #0056b3;
             text-decoration: none;
             font-weight: bold;
         }
 
+		
         /* Видео хэсэг */
         .video-container {
             position: relative;
@@ -146,6 +165,7 @@
             background: #000;
         }
 
+		
         .video-placeholder {
             position: absolute;
             top: 0;
@@ -160,6 +180,7 @@
             text-align: center;
         }
 
+		
 		/* Фүүтэр үргэлж хамгийн доор байна */
 		footer {
 			flex-shrink: 0; /* Фүүтэр шахагдахгүй */
@@ -171,6 +192,7 @@
 			width: 100%;
 		}       
 
+		
         /* Мобайл тохиргоо */
         @media (max-width: 768px) {
             header { flex-direction: column; }
