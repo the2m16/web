@@ -5,15 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таймлайн</title>
     <style>
-        /* Ерөнхий загвар */
-        body {
+        
+        
+        /* Бүх дэлгэцийг дүүргэх тохиргоо */
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+
+
+		/* Ерөнхий загвар */
+		body {
+			display: flex;
+			flex-direction: column; /* Элементүүдийг босоо байрлуулна */
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-        }
+		}
+
+
+		/* Үндсэн агуулга байгаа хэсгийг дэлгэцийн үлдсэн зайг дүүргэхийг заана */
+		.container {
+			flex: 1 0 auto; /* Агуулга бага байсан ч фүүтэрийг доош нь түлхэнэ */
+			max-width: 1000px;
+			margin: 20px auto;
+			background: white;
+			padding: 40px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.1);
+		}
+
 
         /* Толгой хэсэг */
         header {
@@ -137,15 +160,16 @@
             text-align: center;
         }
 
-        /* Хөл хэсэг */
-        footer {
-            text-align: center;
-            padding: 30px;
-            font-size: 13px;
-            background: #333;
-            color: #fff;
-            margin-top: 50px;
-        }
+		/* Фүүтэр үргэлж хамгийн доор байна */
+		footer {
+			flex-shrink: 0; /* Фүүтэр шахагдахгүй */
+			text-align: center;
+			padding: 30px;
+			font-size: 13px;
+			background: #333;
+			color: #fff;
+			width: 100%;
+		}       
 
         /* Мобайл тохиргоо */
         @media (max-width: 768px) {
@@ -210,7 +234,7 @@
             </li>
         </ul>
     </div>
-
+    
     <footer>
         &copy; 2026 Dorjzodov G. All rights reserved.
     </footer>
