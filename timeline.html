@@ -46,7 +46,7 @@
 		header {
 		    background-color: rgba(0, 86, 179, 0.6); /* Хөх өнгийг 60%-ийн тунгалаг болгох (RGBA) */
 		    color: white;                            /* Текстийн өнгийг цагаан болгох */
-		    padding: 4px 5%;                         /* Өндрийг багасгахын тулд дээр, доорх зайг 5px болгох */
+		    padding: 6px 5%;                         /* Өндрийг багасгахын тулд дээр, доорх зайг 5px болгох */
 		    display: flex;                           /* Лого болон цэсийг уян хатан байрлуулах */
 		    justify-content: space-between;          /* Логог зүүн, цэсийг баруун талд нь түлхэх */
 		    align-items: center;                     /* Доторх элементүүдийг босоо тэнхлэгийн дагуу голлуулах */
@@ -60,33 +60,40 @@
 		    backdrop-filter: blur(4px);              /* Ар талын агуулгыг ялимгүй бүрзийж харагдуулах (сонголтоор) */
 		}
 
-		
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
 
 		
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
+
 
 		
-        nav ul li {
-            margin-left: 20px;
-        }
+		header nav {
+		    flex: 1;                                 /* Хиидэрийн сул зайг бүрэн эзэлж тэлэх */
+		    display: flex;                           /* Доторх элементийг уян хатан байрлуулах */
+		    justify-content: center;                 /* Цэсийг (ul) хэвтээ тэнхлэгийн дагуу голлуулах */
+		}
 
-		
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 13px;
-            text-transform: uppercase;
-        }
+		nav ul {
+		    list-style: none;                        /* Жагсаалтын цэгийг арилгах */
+		    display: flex;                           /* Менюны хэсгүүдийг хэвтээ эгнээнд жагсаах */
+		    margin: 0;                               /* Гадна талын зайг тэглэх */
+		    padding: 0;                              /* Дотор талын зайг тэглэх */
+		}
 
+		nav ul li {
+		    margin: 0 10px;                          /* Цэс хоорондын зайг зүүн, баруун талд нь ижил (10px) өгөх */
+		}
+
+		nav ul li a {
+		    color: white;                            /* Текстийн өнгийг цагаан болгох */
+		    text-decoration: none;                   /* Доогуурх зураасыг арилгах */
+		    font-size: 13px;                         /* Үсгийн хэмжээг тогтоох */
+		    text-transform: uppercase;               /* Бүх үсгийг том болгох */
+		    white-space: nowrap;                     /* Текст дараагийн мөр рүү шилжихээс сэргийлэх */
+		}
+        
+        
+        
+        
+        
 		
         /* Үндсэн агуулга */
         .container {
@@ -212,7 +219,6 @@
 <body>
 
     <header>
-        <div class="logo">60 bln</div>
         <nav>
             <ul>
                 <li><a href="#">ЭХЛЭЛ</a></li>
