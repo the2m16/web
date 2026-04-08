@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2m16</title>
+    <style>
+        
+        
+        /* Бүх дэлгэцийг дүүргэх тохиргоо */
+		html, body {
+			max-width: 100%;
+			overflow-x: hidden; /* Хэвтээ чиглэлд илүү гарсан хэсгийг нуух */
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+
+		/* Ерөнхий загвар */
+		body {
+			display: flex;
+			flex-direction: column; /* Элементүүдийг босоо байрлуулна */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+		}
+
+
+		/* Үндсэн агуулга байгаа хэсгийг дэлгэцийн үлдсэн зайг дүүргэхийг заана */
+		.container {
+			flex: 1 0 auto; /* Агуулга бага байсан ч фүүтэрийг доош нь түлхэнэ */
+			width: 95%; /* Дэлгэцийн 95%-ийг эзэлнэ */
+			max-width: 1000px; /* Гэхдээ 1000px-ээс хэтрэхгүй */
+			margin: 20px auto;
+			background: white;
+			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
+			box-shadow: 0 0 10px rgba(0,0,0,0.1);
+		}
+
+
+        /* Толгой хэсэг */
+		header {
+		    background-color: rgba(0, 86, 179, 0.6); /* Хөх өнгийг 60%-ийн тунгалаг болгох (RGBA) */
+		    color: white;                            /* Текстийн өнгийг цагаан болгох */
+		    padding: 6px 5%;                         /* Өндрийг багасгахын тулд дээр, доорх зайг 5px болгох */
+		    display: flex;                           /* Лого болон цэсийг уян хатан байрлуулах */
+		    justify-content: space-between;          /* Логог зүүн, цэсийг баруун талд нь түлхэх */
+		    align-items: center;                     /* Доторх элементүүдийг босоо тэнхлэгийн дагуу голлуулах */
+		    width: 100%;                             /* Хиидэрийн өргөнийг дэлгэц дүүрэн болгох */
+		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд дээд талд наалттай үлдээх */
+		    top: 0;                                  /* Дээд ирмэгээс 0 зайд байрлахыг заах */
+		    left: 0;                                 /* Зүүн ирмэгээс 0 зайд байрлахыг заах */
+		    right: 0;                                /* Баруун ирмэгээс 0 зайд байрлахыг заах */
+		    box-sizing: border-box;                  /* Padding-аас болж өргөн нь дэлгэцээс илүү гарахаас сэргийлэх */
+		    z-index: 1000;                           /* Бусад агуулгын дээр харагдах эрэмбийг тогтоох */
+		    backdrop-filter: blur(4px);              /* Ар талын агуулгыг ялимгүй бүрзийж харагдуулах (сонголтоор) */
+		}
+
+		
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+
+
+
+		
+		header nav {
+		    flex: 1;                                 /* Хиидэрийн сул зайг бүрэн эзэлж тэлэх */
+		    display: flex;                           /* Доторх элементийг уян хатан байрлуулах */
+		    justify-content: center;                 /* Цэсийг (ul) хэвтээ тэнхлэгийн дагуу голлуулах */
+		}
+
+		nav ul {
+		    list-style: none;                        /* Жагсаалтын цэгийг арилгах */
+		    display: flex;                           /* Менюны хэсгүүдийг хэвтээ эгнээнд жагсаах */
+		    margin: 0;                               /* Гадна талын зайг тэглэх */
+		    padding: 0;                              /* Дотор талын зайг тэглэх */
+		}
+
+		nav ul li {
+		    margin: 0 10px;                          /* Цэс хоорондын зайг зүүн, баруун талд нь ижил (10px) өгөх */
+		}
+
+		nav ul li a {
+		    color: white;                            /* Текстийн өнгийг цагаан болгох */
+		    text-decoration: none;                   /* Доогуурх зураасыг арилгах */
+		    font-size: 13px;                         /* Үсгийн хэмжээг тогтоох */
+		    text-transform: uppercase;               /* Бүх үсгийг том болгох */
+		    white-space: nowrap;                     /* Текст дараагийн мөр рүү шилжихээс сэргийлэх */
+		}
+        
+        
+        
+        
+        
+		
+        /* Үндсэн агуулга */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+		
+        /* Налуу форматтай Интро текст */
+        .intro-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            text-align: justify;
+        }
+
+		
+        .highlight-blue {
+            color: #0056b3;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+		
+        /* Маркер болон Догол мөр бүхий жагсаалт */
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+        }
+
+		
+        .timeline-list li {
+            position: relative;
+            padding-left: 30px; /* Маркер болон текстийн хоорондох догол мөр */
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 0.92em;
+        }
+
+		
+        /* Квадрат маркер */
+        .timeline-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+
+		
+        .date {
+            font-weight: bold;
+        }
+
+		
+        .bold-text {
+            font-weight: bold;
+        }
+
+		
+        .link-text {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+		
+        /* Видео хэсэг */
+        .video-container {
+            position: relative;
+            padding-bottom: 15.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+            background: #000;
+        }
+
+		
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: #333;
+            text-align: center;
+        }
+
+		
+		/* Фүүтэр үргэлж хамгийн доор байна */
+		footer {
+		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
+		    text-align: center;
+		    padding: 30px;
+		    font-size: 13px;
+		    background: transparent; /* Арын фон өнгөгүй болгох */
+		    color: #555; /* Текстийн өнгийг харагдахуйц бараан болгох */
+		    width: 100%;
+		    box-sizing: border-box;
+		}
+
+
+
+		
+		
+        /* Мобайл тохиргоо */
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav ul { margin-top: 10px; }
+            .container { padding: 20px; margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">ЭХЛЭЛ</a></li>
+                <li><a href="#">90 МИН</a></li>
+                <li><a href="#">40 МИН</a></li>
+                <li><a href="#">ШШҮХ ШИНЖЭЭЧИЙН ТАЙЛБАР</a></li>
+                <li><a href="#">FBI ШИНЖЭЭЧИЙН ДҮГНЭЛТ</a></li>
+                <li><a href="#">ОН ЦАГИЙН ДАРААЛАЛ</a></li>
+                <li><a href="#">НЬЮС</a></li>
+                <li><a href="#">LIBELS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div>
+            2014 ОНЫ 9 САРЫН 8-НЫ ӨДРИЙН 12:00-13:30 ЦАГИЙН ХООРОНД ШИНЭ МОНГОЛ ХААД ГРУПП ХХК-ИЙН 4 ДАВХАРТ БОЛСОН М.ЭНХБОЛД, Ц.САНДУЙ, А.ГАНБААТАР НАРЫН УУЛЗАЛТЫН АУДИО БИЧЛЭГ, ФОТО, ТЕКСТ, ПОВЕРПОЙНТ, ЭКСЕЛЬ ФАЙЛЫН ХАМТ
+        </div>
+
+		
+
+
+      <div class="video-container">
+    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A329512512&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+<ul>
+
+</ul>
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+    
+    <footer>
+        &copy; 2026 Dorjzodov G. All rights reserved.
+    </footer>
+
+</body>
+</html>
