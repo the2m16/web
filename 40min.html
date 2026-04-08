@@ -96,7 +96,26 @@
 		}
         
         
-        
+
+
+
+
+		/* SoundCloud тоглуулагчийн сав (container) */
+		.audio-player-wrapper {
+		    width: 100%;           /* Өргөн нь дэлгэцээ дүүргэнэ */
+		    margin: 20px 0;        /* Дээд, доод талдаа зай авна */
+		    height: auto;          /* Өндөр нь агуулгаараа тохируулагдана */
+		}
+
+		/* iframe-ийг өөрөө өөрийгөө тааруулдаг болгох */
+		.audio-player-wrapper iframe {
+		    width: 100%;           /* Өргөн 100% */
+		    height: 166px;         /* SoundCloud-ийн стандарт өндөр (эсвэл 450px) */
+		    display: block;        /* Доор нь илүү зай гаргахгүй */
+		}
+
+
+		
         
         
 		
@@ -243,16 +262,20 @@
             2014 ОНЫ 9 САРЫН 8-НЫ ӨДРИЙН 12:00-13:30 ЦАГИЙН ХООРОНД ШИНЭ МОНГОЛ ХААД ГРУПП ХХК-ИЙН 4 ДАВХАРТ БОЛСОН М.ЭНХБОЛД, Ц.САНДУЙ, А.ГАНБААТАР НАРЫН УУЛЗАЛТЫН АУДИО БИЧЛЭГ, ФОТО, ТЕКСТ, ПОВЕРПОЙНТ, ЭКСЕЛЬ ФАЙЛЫН ХАМТ
         </div>
 
-		
 
 
-      <div class="video-container">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A335472161&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
+
+
+		<div class="audio-player-wrapper">
+    <iframe 
+        scrolling="no" 
+        frameborder="no" 
+        allow="autoplay" 
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A335472161&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
     </iframe>
 </div>
+
+
 
 
 <ul>
