@@ -43,26 +43,22 @@
 
 
         /* Толгой хэсэг */
-        header {
-            background-color: #0056b3;
-            color: white;
-            padding: 10px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-			width: 100%;
-            position: sticky;
-            top: 0;
-			left: 0;
-			right: 0;
-			box-sizing: border-box;
-            z-index: 1000;
-
-		/* Тасралтгүй харагдуулах гол тохиргоо */
-			width: 100%; 
-			box-sizing: border-box; /* Padding-аас болж өргөн нь тэлэхээс сэргийлнэ */
-			left: 0;
-        }
+		header {
+		    background-color: rgba(0, 86, 179, 0.8); /* Хөх өнгийг 80%-ийн тунгалаг болгох (RGBA) */
+		    color: white;                            /* Текстийн өнгийг цагаан болгох */
+		    padding: 5px 5%;                         /* Өндрийг багасгахын тулд дээр, доорх зайг 5px болгох */
+		    display: flex;                           /* Лого болон цэсийг уян хатан байрлуулах */
+		    justify-content: space-between;          /* Логог зүүн, цэсийг баруун талд нь түлхэх */
+		    align-items: center;                     /* Доторх элементүүдийг босоо тэнхлэгийн дагуу голлуулах */
+		    width: 100%;                             /* Хиидэрийн өргөнийг дэлгэц дүүрэн болгох */
+		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд дээд талд наалттай үлдээх */
+		    top: 0;                                  /* Дээд ирмэгээс 0 зайд байрлахыг заах */
+		    left: 0;                                 /* Зүүн ирмэгээс 0 зайд байрлахыг заах */
+		    right: 0;                                /* Баруун ирмэгээс 0 зайд байрлахыг заах */
+		    box-sizing: border-box;                  /* Padding-аас болж өргөн нь дэлгэцээс илүү гарахаас сэргийлэх */
+		    z-index: 1000;                           /* Бусад агуулгын дээр харагдах эрэмбийг тогтоох */
+		    backdrop-filter: blur(5px);              /* Ар талын агуулгыг ялимгүй бүрзийж харагдуулах (сонголтоор) */
+		}
 
 		
         .logo {
