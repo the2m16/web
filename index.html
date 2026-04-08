@@ -9,8 +9,11 @@
         
         /* Бүх дэлгэцийг дүүргэх тохиргоо */
 		html, body {
+			max-width: 100%;
+			overflow-x: hidden; /* Хэвтээ чиглэлд илүү гарсан хэсгийг нуух */
 			height: 100%;
 			margin: 0;
+			padding: 0;
 		}
 
 
@@ -30,10 +33,11 @@
 		/* Үндсэн агуулга байгаа хэсгийг дэлгэцийн үлдсэн зайг дүүргэхийг заана */
 		.container {
 			flex: 1 0 auto; /* Агуулга бага байсан ч фүүтэрийг доош нь түлхэнэ */
-			max-width: 1000px;
+			width: 95%; /* Дэлгэцийн 95%-ийг эзэлнэ */
+			max-width: 1000px; /* Гэхдээ 1000px-ээс хэтрэхгүй */
 			margin: 20px auto;
 			background: white;
-			padding: 40px;
+			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
 			box-shadow: 0 0 10px rgba(0,0,0,0.1);
 		}
 
@@ -46,8 +50,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+			width: 100%;
             position: sticky;
             top: 0;
+			left: 0;
+			right: 0;
+			box-sizing: border-box;
             z-index: 1000;
 
 		/* Тасралтгүй харагдуулах гол тохиргоо */
