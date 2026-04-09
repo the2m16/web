@@ -58,8 +58,9 @@
             font-family: 'Exo 2', Arial, Helvetica, sans-serif;
 			font-weight: normal;
 			letter-spacing: -.01em;
-			font-size: clamp(2.5rem, 8vw, 5rem);
+			font-size: clamp(2.5rem, 8vw, 8rem); /* 2.5rem - Хамгийн бага хэмжээ (утас дээр) 8vw - Дэлгэцийн өргөний 8% (дагаж томорно) 5rem - Хамгийн их хэмжээ (том компьютер дээр) */
             margin: 0;
+			text-align: center;
             color: #4da6ff; /* Зураг дээрх цэнхэр өнгө */
         }
 
@@ -184,47 +185,56 @@
 
 
 
-    <div class="main-wrapper">
-        <div class="content-area">
-            <div class="justify-text">
-                <p>Олон түмний нэрлэж заншсанаар 60 тэрбумын гэх гэмт хэргийн гэрчийн хувьд олон нийтэд үнэн бодит мэдээллийг хүргэх зайлшгүй шаардлага гарсан тул...</p>
-                <p>Монгол Улсын иргэн, "60 тэрбум" гэх тодотголтой Үндсэн Хуулийн 3.2-ыг зөрчсөн гэмт хэргийн гэрч, хохирогч, шүгэл үлээгч Ганболдын Доржзодов.</p>
-                <p>2017 оны 6 сарын 12</p>
-            </div>
-            <img src="https://the2m16.github.io/web/images/dorjzodov.png" alt="Доржзодов">
-            
-            <h3>Холбоо барих:</h3>
-            <p>Email: dorjzodov@gmail.com<br>Twitter: @dorjzodov</p>
+<div class="main-wrapper">
+    <div class="content-area">
+        <div class="justify-text">
+            <p>Олон түмний нэрлэж заншсанаар 60 тэрбумын гэх гэмт хэргийн гэрчийн хувьд олон нийтэд үнэн бодит мэдээллийг хүргэх зайлшгүй шаардлага гарсан тул...</p>
+            <p>Монгол Улсын иргэн, "60 тэрбум" гэх тодотголтой Үндсэн Хуулийн 3.2-ыг зөрчсөн гэмт хэргийн гэрч, хохирогч, шүгэл үлээгч Ганболдын Доржзодов.</p>
+            <p>2017 оны 6 сарын 12</p>
+        </div>
+        
+        <img src="https://the2m16.github.io/web/images/dorjzodov.png" alt="Доржзодов" style="max-width: 100%; height: auto; margin: 20px 0;">
+        
+        <h3>Холбоо барих:</h3>
+        <p>Email: <a href="mailto:dorjzodov@gmail.com">dorjzodov@gmail.com</a><br>
+           Twitter: <a href="https://twitter.com/dorjzodov" target="_blank">@dorjzodov</a>
+        </p>
+    </div>
+
+    <div class="sidebar">
+        <div class="audio-section" style="margin-bottom: 25px;">
+            <h4>2014.09.08-ны өдөр, 12:00-13:30</h4>
+            <p>90 минут яриаг сонсох:</p>
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/327776101&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+            </iframe>
         </div>
 
-        <div class="sidebar">
-            <div class="audio-section">
-                <h4>2014.09.08-ны өдөр, 12:00-13:30</h4>
-                <p>90 минут яриаг сонсох:</p>
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/327776101&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-            </div>
-
-            <div class="audio-section">
-                <h4>2014.08.28-ны өдөр, 23:00-23:40</h4>
-                <p>40 минут яриаг сонсох:</p>
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/327776101&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-            </div>
-            
-            
-            <div class="twitter-container" style="margin-top: 20px;">
-				<a class="twitter-timeline" 
-				data-height="800" 
-				data-theme="light" 
-				href="https://twitter.com/dorjzodov?ref_src=twsrc%5Etfw">
-				Tweets by dorjzodov
-				</a> 
-				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-			</div>
-            
-            
-            
+        <div class="audio-section" style="margin-bottom: 25px;">
+            <h4>2014.08.28-ны өдөр, 23:00-23:40</h4>
+            <p>40 минут яриаг сонсох:</p>
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/327776101&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+            </iframe>
+        </div>
+        
+        <div class="twitter-container" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+            <a class="twitter-timeline" 
+               data-height="800" 
+               data-theme="light" 
+               href="https://twitter.com/dorjzodov?ref_src=twsrc%5Etfw">
+               Tweets by dorjzodov
+            </a> 
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </div>
+</div>
+
+
+
+
+
+
 
 
 
