@@ -53,22 +53,26 @@
 
 
 
-        .hero h1 {
-            font-family: Arial, Helvetica, sans-serif;
-			font-weight: normal;
-			letter-spacing: -.01em;
-			font-size: clamp(2.5rem, 8vw, 8rem); /* 2.5rem - Хамгийн бага хэмжээ (утас дээр) 8vw - Дэлгэцийн өргөний 8% (дагаж томорно) 5rem - Хамгийн их хэмжээ (том компьютер дээр) */
-            margin: 0;
-			text-align: center;
-            color: #4da6ff; /* Зураг дээрх цэнхэр өнгө */
-        }
+		.hero h1 {
+    		font-family: Arial, Helvetica, sans-serif; /* Үсгийн хэлбэрийг (фонт) тохируулна */
+    		font-weight: normal;                       /* Үсгийг бүдүүн биш, энгийн хэмжээтэй болгоно */
+    		letter-spacing: -.01em;                    /* Үсэг хоорондын зайг бага зэрэг шахаж өгнө */
+    		font-size: clamp(2.5rem, 8vw, 8rem);       /* Дэлгэцийн өргөнөөс хамаарч үсгийн хэмжээг автоматаар тохируулна */
+    		line-height: 1.1;                          /* Мөр хоорондын зайг тохируулна (Гарчигт 1.1-1.2 тохиромжтой) */
+    		margin: 0;                                 /* Гарчигны гадна талын зайг (дээд, доод) устгана */
+    		text-align: center;                        /* Текстийг голлуулж байршуулна */
+    		color: #4da6ff;                            /* Текстийн өнгийг цэнхэр болгоно */
+		}
 
-        .hero p {
-            font-size: 1.2rem;
-			font-family: Arial, Helvetica, sans-serif;
-			font-weight: 300;
-        }
+		.hero p {
+    		font-size: 1.2rem;                         /* Параграф буюу жижиг текстийн хэмжээг тохируулна */
+    		font-family: Arial, Helvetica, sans-serif; /* Параграфын үсгийн хэлбэрийг тохируулна */
+    		font-weight: 300;                          /* Үсгийг нарийн, хөнгөн харагдуулна */
+    		line-height: 1.6;                          /* Текст уншихад амар болгож мөр хоорондын зайг нэмнэ */
+    		margin-top: 20px;                          /* Гарчиг болон текст хооронд зай гаргаж өгнө */
+		}
 
+		
         /* 2. НААЛДДАГ МЕНЮ (Sticky Navigation) */
         nav {
             position: sticky;
