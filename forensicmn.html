@@ -340,9 +340,44 @@
 </p>
 
 
+
+
+
+<hr>
+		
+
 <div style="display: flex; flex-direction: column; gap: 10px;">
-  <img src="https://the2m16.github.io/web/images/4113,4225,4374.png" style="max-width: 1200px; display: block;">
+  <img 
+    src="https://the2m16.github.io/web/images/4113,4225,4374.png" 
+    style="max-width: 1200px; display: block; cursor: zoom-in;" 
+    onclick="openModal(this.src)"
+  >
 </div>
+
+<div id="imageModal" onclick="this.style.display='none'" style="
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.9); 
+    cursor: zoom-out;
+    align-items: center;
+    justify-content: center;
+">
+  <img id="modalImg" style="max-width: 95%; max-height: 95%; object-fit: contain;">
+</div>
+
+<script>
+function openModal(src) {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImg');
+  modal.style.display = "flex";
+  modalImg.src = src;
+}
+</script>
 
 
 
