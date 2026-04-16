@@ -74,15 +74,18 @@
 
 		
         /* 2. НААЛДДАГ МЕНЮ (Sticky Navigation) */
-        nav {
-            position: sticky;
-            top: 0;
-            height: 40px; /* Энэ өндөр дээрх calc доторхтой ижил байх ёстой */
-			background: #002d4d; /* Хар хөх өнгө */
-            display: flex;
-			align-items: center; /* Текстээ босоо чиглэлд голлуулах */
-            z-index: 1000;
-        }
+		nav {
+			position: sticky;
+			top: 0;
+			min-height: 40px;			/* height-ийг min-height болгож өөрчлөв */
+			flex-wrap: wrap;			/* Доторх элементүүд олон мөр болохыг зөвшөөрөх */
+			background: #002d4d;
+			display: flex;
+			align-items: center;
+			z-index: 1000;
+			padding: 5px 0;				/* Дээш доош бага зэрэг зай авбал хоёр мөр болоход илүү үзэмжтэй харагдана */
+		}
+
 
         .nav-container {
             max-width: 1200px;
