@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>TEST PAGE</title>
+<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			background-color: #f4f4f4;
+		}
+
+
+/* <!--                               -----                                  --> */
+        /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
+        .navbar { 
+            background-color: #333; /* Баарны арын хар саарал өнгө */
+            position: relative; /* Суурь байршил */
+            min-height: 48px; /* Баарны доод өндөр */
+            width: 100%; /* Дэлгэцийн өргөнөөр үргэлж сунах */
+            display: block; /* Блок хэлбэрээр байрлах */
+        }
+
+        /* Линкүүдийн загвар */
+        .navbar a {
+            color: white; 
+            padding: 14px 16px; 
+            text-decoration: none; 
+            font-size: 17px; 
+            display: block; 
+            box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
+        }
+
+        /* Лого зүүн талдаа тогтмол */
+        .navbar a.logo { 
+            background-color: #04AA6D; 
+            float: left; /* Зүүн талд наах */
+        }
+
+        /* Гамбургер икон */
+        .navbar a.icon {
+            background: #222; 
+            color: black; 
+            position: absolute; 
+            right: 0; 
+            top: 0; 
+            height: 48px; /* Өндрийг баартай ижил байлгах */
+            display: flex; 
+            align-items: center; 
+            padding: 0 16px; 
+        }
+
+
+/* <!--                               -----                                  --> */
+        /* ГАР УТАСНЫ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (News, Contact...) */
+        .navbar #myLinks { 
+    		display: none; /* Анхны байдлаар нуух */
+    		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
+    		top: 48px; /* Navbar-ын өндөртэй ижил хэмжээгээр доошлуулж News-ийг буулгах */
+    		left: 0; 
+    		width: 100%; /* Бүтэн өргөнөөр харуулах */
+    		background-color: rgba(51, 51, 51, 0.4); /* #333 өнгийг 90%-ийн харагдацтай (0.9) болгов */
+    		backdrop-filter: blur(5px); /* Цэсний арын контентыг бүрсгэж харагдуулна */
+    		z-index: 1000; /* Контентын дээр харагдуулах */
+}
+
+        .navbar a:hover {
+            background-color: #555; 
+            color: white; 
+        }
+
+
+/* <!--                               -----                                  --> */
+        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (600px-ээс дээш) */
+        @media screen and (min-width: 600px) {
+            .navbar {
+                display: flex; /* Уян хатан бүтэц ашиглах */
+                justify-content: flex-start; /* Элементүүдийг зүүнээс эхлүүлэх */
+                height: 48px; /* Өндрийг тогтмол болгох */
+            }
+            .navbar #myLinks {
+                display: flex !important; /* Линкүүдийг хөндлөн харуулах */
+                position: static; /* Absolute байршлыг цуцлах */
+                width: auto; /* Зөвхөн агуулгаараа өргөсөх */
+            }
+            .navbar a {
+                float: left; /* Нэг мөрөнд зэрэгцүүлэх */
+                height: 48px; /* Баарны өндөрт тааруулах */
+            }
+            .navbar a.icon {
+                display: none; /* Гамбургер дүрсийг нуух */
+            }
+        }
+        
+        
+/* <!--                               -----                                  --> */
+        /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+		
+		
+/* <!--                               -----                                  --> */
+        
+        /* КОНТЕНТ ТЕКСТ ФОРМАТ СТАЙЛ */
+        .content { 
+            font-style: normal;
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            text-align: justify;
+			padding: 0px;
+            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
+        }
+
+
+/* <!--                               -----                                  --> */
+        /* ВИДЕО КОНТЕЙНЕР */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+            background: #000;
+        }
+
+		
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: #333;
+            text-align: center;
+        }
+
+
+/* <!--                               -----                                  --> */
+
+		/* ФҮҮТЭР ТОХИРГОО */
+		footer {
+		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
+		    text-align: center;
+		    padding: 30px;
+		    font-size: 13px;
+		    background: transparent; /* Арын фон өнгөгүй болгох */
+		    color: #555; /* Текстийн өнгийг харагдахуйц бараан болгох */
+		    width: 100%;
+		    box-sizing: border-box;
+		}
+
+    </style>
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+<!--                               NAVIGATION START                                  -->
+<div class="navbar">
+  <a href="#home" class="logo">Logo</a>
+  
+  <div id="myLinks">
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    &#9776;
+  </a>
+</div>
+<!--                               NAVIGATION END                                  -->
+
+
+
+
+
+
+<!--                               CONTAINER START                                  -->
+<div class="container">
+	<div class="content">
+            <i>Энэ хуудас нь 60 тэрбумын асуудлаар хэн, хэзээ, юу хэлэв,
+			эрх бүхий байгууллага, <strong>албан тушаалтнууд</strong> ямар тогтоол, шийдвэр, үйлдэл гаргав,
+			энэ хэрэг хэрхэн эхэлсэн, хэрхэн өрнөсөн, <b>хаа хүрсэн талаар</b> холбогдох дэлгэрэнгүй мэдээллийг
+			хэвлэл мэдээлэл, цахим орчин, сошл платформ зэрэг бүхий л нээлттэй эх сурвалжуудаас
+			эмхэтгэн цэгцэлж, хэн бүхэнд ойлгомжтой болгон тайлбарласан хуудас юм. Мэдээллийг он цагийн дараалалаар,
+			шинэ мэдээлэл нь хуучныхаа дээр байхаар байршуулав.</i>
+	</div>
+    <hr>
+    <b> - Bold text</b><br>
+    <strong> - Important text</strong><br>
+    <i> - Italic text</i><br>
+    <em> - Emphasized text</em><br>
+    <mark> - Marked text</mark><br>
+    <small> - Smaller text</small><br>
+    <del> - Deleted text</del><br>
+    <ins> - Inserted text</ins><br>
+    <sub> - Subscript text</sub><br>
+    <sup> - Superscript text</sup><br>
+    <span style="color: #ff0000; text-transform: uppercase; font-weight: bold; font-style: italic; color: red; text-decoration: underline;">hello world. жижиг текстүүдийг хувиргах</span>
+    <hr>
+<!--                               -----                                  -->
+
+	<div class="content">
+			<h1>Контент гарчиг Н1</h1>
+            <h2>Контент гарчиг Н2</h2>
+            <h3>Контент гарчиг Н3</h3>
+            <h4>Контент гарчиг Н4</h4>
+			<p>Дэлгэц өргөн болоход арын хар фон дэлгэцийн турш үргэлжилж, контент доошоо зөв байрлана.</p>
+	</div>
+<!--                               -----                                  -->
+
+
+<!--PDF WINDOW-->
+<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; -webkit-overflow-scrolling: touch; border: 1px solid #ccc;">
+    <iframe 
+        src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/4374.pdf&embedded=true" 
+        style="width: 100%; height: 100%; border: none;"
+        allow="autoplay">
+    </iframe>
+</div>
+
+
+<!--VIDEO WINDOW-->
+<div class="video-container">
+    <iframe 
+        src="https://www.youtube.com/embed/WKoh2K3gXY0?si=IooNqUsGg5z7p-hM" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+<!--IMAGE WINDOW-->
+<div style="display: flex; flex-direction: column; gap: 10px;">
+  <img 
+    src="https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG"
+    style="max-width: 1200px; display: block; cursor: zoom-in; border: 0.5px solid #cccccc"
+    onclick="openModal(this.src)"
+  >
+</div>
+
+<div id="imageModal" onclick="this.style.display='none'" style="
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.9); 
+    cursor: zoom-out;
+    align-items: center;
+    justify-content: center;">
+  <img id="modalImg" style="max-width: 95%; max-height: 95%; object-fit: contain;">
+</div>
+
+
+
+</div>
+<!--                               CONTAINER END                                  -->
+
+
+
+
+
+
+<!--                               FOOTER START                                  -->
+<footer>
+        &copy; 2017-2026 Dorjzodov G. All rights reserved.
+</footer>
+<!--                               FOOTER END                                  -->
+
+
+
+
+
+
+<!--                               SCRIPT START                                  -->
+<script>
+	<!-- МЕНЮ СКРИПТ -->
+		function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+	
+	<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
+		function openModal(src) {
+		const modal = document.getElementById('imageModal');
+		const modalImg = document.getElementById('modalImg');
+		modal.style.display = "flex";
+		modalImg.src = src;
+	}
+	
+	
+</script>
+<!--                               SCRIPT END                                  -->
+
+
+
+
+
+
+</body>
+</html>
