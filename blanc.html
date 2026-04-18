@@ -13,11 +13,16 @@
 /* <!--                               -----                                  --> */
         /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
         .navbar { 
-            background-color: #333; /* Баарны арын хар саарал өнгө */
+            background-color: rgba(0, 86, 179, 0.6); /* Баарны арын Хөх өнгийг 60%-ийн тунгалаг болгох (RGBA) */
+    		backdrop-filter: blur(2px); /* Баарны ард контентыг бүрсгэж харагдуулна */
             position: relative; /* Суурь байршил */
-            min-height: 48px; /* Баарны доод өндөр */
+            min-height: 38px; /* Баарны доод өндөр */
             width: 100%; /* Дэлгэцийн өргөнөөр үргэлж сунах */
-            display: block; /* Блок хэлбэрээр байрлах */
+            display: flex; /* Блок хэлбэрээр байрлах */
+		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд дээд талд наалттай үлдээх */
+		    top: 0;                                  /* Хуудсыг доош гүйлгэхэд дээд ирмэгээс 0 зайд байрлахыг заах */
+		    left: 0;                                 /* Хуудсыг доош гүйлгэхэд зүүн ирмэгээс 0 зайд байрлахыг заах */
+		    right: 0;                                /* Хуудсыг доош гүйлгэхэд баруун ирмэгээс 0 зайд байрлахыг заах */
         }
 
         /* Линкүүдийн загвар */
@@ -25,25 +30,29 @@
             color: white; 
             padding: 14px 16px; 
             text-decoration: none; 
-            font-size: 17px; 
-            display: block; 
-            box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
+            font-size: 13px; 
+			display: flex; /* Блок биш flex болгох */
+			align-items: center; /* Босоо тэнхлэгийн дагуу голлуулах */
+			height: 38px; /* Баарны өндөртэй ижил байлгах */
+			box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
         }
 
         /* Лого зүүн талдаа тогтмол */
         .navbar a.logo { 
-            background-color: #04AA6D; 
+            background-color: #ff3385; /* Лого арын өнгө */
             float: left; /* Зүүн талд наах */
+			height: 38px; /* логоны дөрвөлжингийн өндөр */
+			display: flex; /* Текстийг голлуулахын тулд flex нэмэх */
+			align-items: center; /* Босоо тэнхлэгийн дагуу голлуулах */
         }
 
         /* Гамбургер икон */
         .navbar a.icon {
-            background: #222; 
-            color: black; 
+            color: white; /* hamburger-ийн 3 зураасны өнгө */
             position: absolute; 
             right: 0; 
             top: 0; 
-            height: 48px; /* Өндрийг баартай ижил байлгах */
+            height: 38px; /* гамбургерийн дөрвөлжингийн өндөр */
             display: flex; 
             align-items: center; 
             padding: 0 16px; 
@@ -51,15 +60,15 @@
 
 
 /* <!--                               -----                                  --> */
-        /* ГАР УТАСНЫ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (News, Contact...) */
+        /* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед) */
         .navbar #myLinks { 
     		display: none; /* Анхны байдлаар нуух */
     		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
-    		top: 48px; /* Navbar-ын өндөртэй ижил хэмжээгээр доошлуулж News-ийг буулгах */
+    		top: 38px; /* Navbar-ын өндөртэй ижил хэмжээгээр гамбургерийн эхний мөрийг буулгах */
     		left: 0; 
     		width: 100%; /* Бүтэн өргөнөөр харуулах */
-    		background-color: rgba(51, 51, 51, 0.4); /* #333 өнгийг 90%-ийн харагдацтай (0.9) болгов */
-    		backdrop-filter: blur(5px); /* Цэсний арын контентыг бүрсгэж харагдуулна */
+    		background-color: rgba(0, 86, 179, 0.4); /* гамбургерийн арын өнгийг 60%-ийн харагдацтай (0.6) болгов */
+    		backdrop-filter: blur(4px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
     		z-index: 1000; /* Контентын дээр харагдуулах */
 }
 
@@ -70,12 +79,12 @@
 
 
 /* <!--                               -----                                  --> */
-        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (600px-ээс дээш) */
-        @media screen and (min-width: 600px) {
+        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй үед) */
+        @media screen and (min-width: 1000px) {
             .navbar {
                 display: flex; /* Уян хатан бүтэц ашиглах */
                 justify-content: flex-start; /* Элементүүдийг зүүнээс эхлүүлэх */
-                height: 48px; /* Өндрийг тогтмол болгох */
+                height: 38px; /* Өндрийг тогтмол болгох */
             }
             .navbar #myLinks {
                 display: flex !important; /* Линкүүдийг хөндлөн харуулах */
@@ -84,7 +93,7 @@
             }
             .navbar a {
                 float: left; /* Нэг мөрөнд зэрэгцүүлэх */
-                height: 48px; /* Баарны өндөрт тааруулах */
+                height: 38px; /* Баарны өндөрт тааруулах */
             }
             .navbar a.icon {
                 display: none; /* Гамбургер дүрсийг нуух */
@@ -176,7 +185,7 @@
 
 <!--                               NAVIGATION START                                  -->
 <div class="navbar">
-  <a href="#home" class="logo">Logo</a>
+  <a href="https://the2m16.github.io/web/index.html" class="logo">Logo</a>
   
   <div id="myLinks">
                 <a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a>
