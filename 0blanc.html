@@ -59,7 +59,7 @@
     		display: none; /* Анхны байдлаар нуух */
     		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
     		top: 38px; /* Navbar-ын өндөртэй ижил хэмжээгээр гамбургерийн эхний мөрийг буулгах */
-    		right: 0; 
+    		right: 0; /* Гамбургер менюний байршил left: 0 or right: 0 */
     		width: 30%; /* Гамбургер менюний өргөн */
     		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
     		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
@@ -99,9 +99,9 @@
         /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
         .container {
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 20px auto; /* контейнерийн ирмэгээс гадагш авах зай */
             background: white;
-            padding: 30px;
+            padding: 30px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */
 			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
@@ -113,10 +113,12 @@
         .content { 
             font-style: normal;
             color: #555;
-            margin-bottom: 30px;
+            margin-top: 0px; /* параграфийн дээр авах зай */
+            margin-bottom: 30px; /* параграфийн доор авах зай */
             font-size: 0.95em;
             text-align: justify;
 			padding: 0px;
+            line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
             clear: both; /* Меню-тэй давхцахаас сэргийлэх */
         }
 
@@ -128,7 +130,7 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            margin: 30px 0;
+            margin-bottom: 30px;
             background: #000;
         }
 
@@ -213,22 +215,22 @@
 			шинэ мэдээлэл нь хуучныхаа дээр байхаар байршуулав.</i>
 	</div>
     <hr>
-    <b> - Bold text</b><br>
-    <strong> - Important text</strong><br>
-    <i> - Italic text</i><br>
-    <em> - Emphasized text</em><br>
-    <mark> - Marked text</mark><br>
-    <small> - Smaller text</small><br>
-    <del> - Deleted text</del><br>
-    <ins> - Inserted text</ins><br>
-    <sub> - Subscript text</sub><br>
-    <sup> - Superscript text</sup><br>
-    <span style="color: #ff0000; text-transform: uppercase; font-weight: bold; font-style: italic; color: red; text-decoration: underline;">hello world. жижиг текстүүдийг хувиргах</span>
+<b> - Bold text</b><br>
+<strong> - Important text</strong><br>
+<i> - Italic text</i><br>
+<em> - Emphasized text</em><br>
+<mark> - Marked text</mark><br>
+<small> - Smaller text</small><br>
+- Main row<sub>Subscript text</sub><br>
+<del> - Deleted text</del><br>
+- Main row<sup>Superscript text</sup><br>
+<ins> - Inserted text</ins><br>
+<span style="color: #ff0000; text-transform: uppercase; font-weight: bold; font-style: italic; color: red; text-decoration: underline;">hello world. жижиг текстүүдийг хувиргах</span>
     <hr>
 <!--                               -----                                  -->
 
 	<div class="content">
-			<h1>Контент гарчиг Н1</h1>
+			<h1 style="color:white; font-family:arial; font-size:100%; text-transform: uppercase; text-align:left; background-color: #888; padding:5px; margin:0px; margin-bottom:50px;">Контент гарчиг Н1</h1>
             <h2>Контент гарчиг Н2</h2>
             <h3>Контент гарчиг Н3</h3>
             <h4>Контент гарчиг Н4</h4>
@@ -238,7 +240,7 @@
 
 
 <!--PDF WINDOW-->
-<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; -webkit-overflow-scrolling: touch; border: 1px solid #ccc;">
+<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; -webkit-overflow-scrolling: touch; border: 1px solid #ccc; margin-bottom:30px;">
     <iframe 
         src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/4374.pdf&embedded=true" 
         style="width: 100%; height: 100%; border: none;"
@@ -260,7 +262,7 @@
 
 
 <!--IMAGE WINDOW-->
-<div style="display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; flex-direction: column; margin-bottom:30px;">
   <img 
     src="https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG"
     style="max-width: 1200px; display: block; cursor: zoom-in; border: 0.5px solid #cccccc"
