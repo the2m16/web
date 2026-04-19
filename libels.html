@@ -1,194 +1,145 @@
 <!DOCTYPE html>
-<html lang="mn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2m16 - TEST PAGE</title>
-    
-	
-	
-	
-	
-	
-	<style>
-        /* ДЭЛГЭЦ ДҮҮРГЭХ ТОХИРГОО */
-		html, body {
-			max-width: 100%;
-			overflow-x: hidden; /* Хэвтээ чиглэлд илүү гарсан хэсгийг нуух */
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		}
-
-
-		/* ЕРӨНХИЙ ЗАГВАР */
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>2m16 - Test Page</title>
+<style>
 		body {
-			display: flex;
-			flex-direction: column; /* Элементүүдийг босоо байрлуулна */
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			background-color: #f4f4f4;
 		}
 
 
-		/* ҮНДСЭН АГУУЛГА БАЙГАА ХЭСГИЙГ ДЭЛГЭЦИЙН ҮНДСЭН ЗАЙГ ДҮҮРГЭХИЙГ ЗААНА */
-		.container {
-			flex: 1 0 auto; /* Агуулга бага байсан ч фүүтэрийг доош нь түлхэнэ */
-			width: 95%; /* Дэлгэцийн 95%-ийг эзэлнэ */
-			max-width: 1000px; /* Гэхдээ 1000px-ээс хэтрэхгүй */
-			margin: 20px auto;
-			background: white;
-			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
-			box-shadow: 0 0 10px rgba(0,0,0,0.1);
-		}
-
-
-        /* ТОЛГОЙ ХЭСЭГ */
-		header {
-		    background-color: rgba(0, 86, 179, 0.6); /* Хөх өнгийг 60%-ийн тунгалаг болгох (RGBA) */
-		    color: white;                            /* Текстийн өнгийг цагаан болгох */
-		    padding: 6px 5%;                         /* Өндрийг багасгахын тулд дээр, доорх зайг 5px болгох */
-		    display: flex;                           /* Лого болон цэсийг уян хатан байрлуулах */
-		    justify-content: space-between;          /* Логог зүүн, цэсийг баруун талд нь түлхэх */
-		    align-items: center;                     /* Доторх элементүүдийг босоо тэнхлэгийн дагуу голлуулах */
-		    width: 100%;                             /* Хиидэрийн өргөнийг дэлгэц дүүрэн болгох */
-		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд дээд талд наалттай үлдээх */
-		    top: 0;                                  /* Дээд ирмэгээс 0 зайд байрлахыг заах */
-		    left: 0;                                 /* Зүүн ирмэгээс 0 зайд байрлахыг заах */
-		    right: 0;                                /* Баруун ирмэгээс 0 зайд байрлахыг заах */
-		    box-sizing: border-box;                  /* Padding-аас болж өргөн нь дэлгэцээс илүү гарахаас сэргийлэх */
-		    z-index: 1000;                           /* Бусад агуулгын дээр харагдах эрэмбийг тогтоох */
-		    backdrop-filter: blur(4px);              /* Ар талын агуулгыг ялимгүй бүрзийж харагдуулах (сонголтоор) */
-		}
-
-		
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+/* <!--                               -----                                  --> */
+        /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
+        .navbar { 
+            background-color: rgba(77, 77, 77, 1); /* БААРНЫ ӨНГӨ */
+    		backdrop-filter: blur(2px); /* Баарны ард контентыг бүрсгэж харагдуулна */
+            position: relative; /* Суурь байршил */
+            min-height: 38px; /* Баарны доод өндөр */
+            width: 100%; /* Дэлгэцийн өргөнөөр үргэлж сунах */
+            display: flex; /* Блок хэлбэрээр байрлах */
+		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
+		    top: 0;                                  /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
+		    left: 0;                                 /* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
+		    right: 0;                                /* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
+    		z-index: 3000; /* Навигешний лэиерийг контентуудын дээр харагдуулах */
         }
 
-		
-		header nav {
-		    flex: 1;                                 /* Хиидэрийн сул зайг бүрэн эзэлж тэлэх */
-		    display: flex;                           /* Доторх элементийг уян хатан байрлуулах */
-		    justify-content: center;                 /* Цэсийг (ul) хэвтээ тэнхлэгийн дагуу голлуулах */
+        /* Линкүүдийн загвар */
+        .navbar a {
+            background-color: transparent;
+            color: white;
+            text-transform: uppercase;
+            padding: 14px 16px; 
+            text-decoration: none; 
+            font-size: 13px; 
+			display: flex; /* Блок биш flex болгох */
+			align-items: center; /* Босоо тэнхлэгийн дагуу голлуулах */
+			height: 38px; /* Баарны өндөртэй ижил байлгах */
+			box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
+        }
+
+        /* Гамбургер икон */
+        .navbar a.icon {
+            color: white; /* hamburger-ийн 3 зураасны өнгө */
+            position: absolute; 
+            right: 0; 
+            top: 0; 
+            height: 38px; /* гамбургерийн дөрвөлжингийн өндөр */
+            display: flex; 
+            align-items: center; 
+            padding: 0 16px; 
+        }
+
+
+/* <!--                               -----                                  --> */
+        /* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед менюг гамбургер болгох) */
+        .navbar #myLinks { 
+    		display: none; /* Анхны байдлаар нуух */
+    		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
+    		top: 38px; /* Navbar-ын өндөртэй ижил хэмжээгээр гамбургерийн эхний мөрийг буулгах */
+    		right: 0; /* Гамбургер менюний байршил left: 0 or right: 0 */
+    		width: 30%; /* Гамбургер менюний өргөн */
+    		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
+    		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
+    		z-index: 3000; /* Контентын дээр харагдуулах */
 		}
 
-		
-		nav ul {
-		    list-style: none;                        /* Жагсаалтын цэгийг арилгах */
-		    display: flex;                           /* Менюны хэсгүүдийг хэвтээ эгнээнд жагсаах */
-		    margin: 0;                               /* Гадна талын зайг тэглэх */
-		    padding: 0;                              /* Дотор талын зайг тэглэх */
-		}
+        .navbar a:hover {
+            background-color: #555; 
+            color: white; 
+        }
 
-		
-		nav ul li {
-		    margin: 0 10px;                          /* Цэс хоорондын зайг зүүн, баруун талд нь ижил (10px) өгөх */
-		}
 
-		
-		nav ul li a {
-		    color: white;                            /* Текстийн өнгийг цагаан болгох */
-		    text-decoration: none;                   /* Доогуурх зураасыг арилгах */
-		    font-size: 13px;                         /* Үсгийн хэмжээг тогтоох */
-		    text-transform: uppercase;               /* Бүх үсгийг том болгох */
-		    white-space: nowrap;                     /* Текст дараагийн мөр рүү шилжихээс сэргийлэх */
-		}
+/* <!--                               -----                                  --> */
+        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй үед менюг бар болгох) */
+        @media screen and (min-width: 1000px) {
+            .navbar {
+                display: flex; /* Уян хатан бүтэц ашиглах */
+                height: 38px; /* Өндрийг тогтмол болгох */
+				justify-content: center;     /* Цэсийг                  хэвтээ                тэнхлэгийн            дагуу            голлуулах */
+            }
+            .navbar #myLinks {
+                display: flex !important; /* Линкүүдийг хөндлөн харуулах */
+                position: static; /* Absolute байршлыг цуцлах */
+                width: auto; /* Зөвхөн агуулгаараа өргөсөх */
+            }
+            .navbar a {
+                float: left; /* Нэг мөрөнд зэрэгцүүлэх */
+                height: 38px; /* Баарны өндөрт тааруулах */
+            }
+            .navbar a.icon {
+                display: none; /* Гамбургер дүрсийг нуух */
+            }
+        }
         
         
-		
-        /* ҮНДСЭН АГУУЛГА */
+/* <!--                               -----                                  --> */
+        /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
         .container {
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 20px auto; /* контейнерийн ирмэгээс гадагш авах зай */
             background: white;
-            padding: 40px;
+            padding: 20px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */
+			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-
-        /* ҮНДСЭН ТЕКСТ ФОРМАТ */
-        .body-text {
+		
+		
+/* <!--                               -----                                  --> */
+        /* КОНТЕНТ ТЕКСТ ФОРМАТ СТАЙЛ */
+        .content { 
             font-style: normal;
             color: #555;
-            margin-bottom: 30px;
+            margin-top: 0px; /* параграфийн дээр авах зай */
+            margin-bottom: 30px; /* параграфийн доор авах зай */
             font-size: 0.95em;
             text-align: justify;
+			padding: 0px;
+            line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
+            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
         }
 
-		
-        /* НАЛУУ ИНТРО ТЕКСТ ФОРМАТ */
-        .intro-text {
-            font-style: italic;
-            color: #555;
-            margin-bottom: 30px;
-            font-size: 0.95em;
-            text-align: justify;
-        }
 
-		
-        .highlight-blue {
-            color: #0056b3;
-            font-weight: bold;
-            font-style: normal;
-        }
-
-		
-        /* МАРКЕР БОЛОН ДОГОЛ МӨР БҮХИЙ ЖАГСААЛТ */
-        .timeline-list {
-            list-style: none;
-            padding: 0;
-        }
-
-		
-        .timeline-list li {
-            position: relative;
-            padding-left: 30px; /* Маркер болон текстийн хоорондох догол мөр */
-            margin-bottom: 20px;
-            text-align: justify;
-            font-size: 0.92em;
-        }
-
-		
-        /* КВАДРАТ МАРКЕР */
-        .timeline-list li::before {
-            content: "■";
-            position: absolute;
-            left: 0;
-            top: 4px;
-            font-size: 12px;
-            color: #333;
-        }
-
-		
+/* <!--                               -----                                  --> */
+		/* List date STYLE */
         .date {
-            font-weight: bold;
+        	font-weight: bold;
+		}
+        /* List line height */
+        li {
+        	margin-bottom: 20px;
         }
 
-		
-        .bold-text {
-            font-weight: bold;
-        }
-
-		
-        .link-text {
-            color: #0056b3;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-		
+/* <!--                               -----                                  --> */
         /* ВИДЕО КОНТЕЙНЕР */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            margin: 30px 0;
+            margin-bottom: 20px;
             background: #000;
         }
 
@@ -207,7 +158,8 @@
             text-align: center;
         }
 
-		
+
+/* <!--                               -----                                  --> */
 		/* ФҮҮТЭР ТОХИРГОО */
 		footer {
 		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
@@ -219,41 +171,50 @@
 		    width: 100%;
 		    box-sizing: border-box;
 		}
-
-		
-        /* МОБАЙЛ ТОХИРГОО */
-        @media (max-width: 768px) {
-            header { flex-direction: column; }
-            nav ul { margin-top: 10px; }
-            .container { padding: 20px; margin: 10px; }
-        }
     </style>
+
+
+
+
+
+
 </head>
-
-
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
-                <li><a href="https://the2m16.github.io/web/90min.html">90 МИН</a></li>
-                <li><a href="https://the2m16.github.io/web/40min.html">40 МИН</a></li>
-                <li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ ШИНЖЭЭЧ</a></li>
-                <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
-                <li><a href="https://the2m16.github.io/web/timeline.html">ТАЙМЛАЙН</a></li>
-                <li><a href="https://the2m16.github.io/web/news.html">НЬЮС</a></li>
-                <li><a href="https://the2m16.github.io/web/libels.html">LIBELS</a></li>
-            </ul>
-        </nav>
-    
-    </header>
 
 
 
-<!-- oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo -->		
-<!--дэвсгэр контейнер нээлт-->
+
+
+<!--                               NAVIGATION START                                  -->
+<div class="navbar">
+  
+  <div id="myLinks">
+                <a href="https://the2m16.github.io/web/index.html">эхлэл</a>
+                <a href="https://the2m16.github.io/web/90min.html">90 мин</a>
+                <a href="https://the2m16.github.io/web/40min.html">40 мин</a>
+                <a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
+                <a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a>
+                <a href="https://the2m16.github.io/web/timeline.html">Таймлайн</a>
+                <a href="https://the2m16.github.io/web/news.html">Ньюс</a>
+                <a href="https://the2m16.github.io/web/libels.html">Libels</a>
+  </div>
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    &#9776;
+  </a>
+</div>
+<!--                               NAVIGATION END                                  -->
+
+
+
+
+
+
+<!--                               CONTAINER START                                  -->
 <div class="container">
+<div class="content">
+
 
 
 <!--intro text-->
@@ -326,33 +287,54 @@
 
 
 
-
-
-
-
-
-<!--дэвсгэр контейнер хаалт-->
 </div>
-<!-- oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo -->	
+</div>
+<!--                               CONTAINER END                                  -->
 
 
 
-	
-<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
-<script>
-function openModal(src) {
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImg');
-  modal.style.display = "flex";
-  modalImg.src = src;
-}
-</script>
 
-	
-    
-    <footer>
+
+
+<!--                               FOOTER START                                  -->
+<footer>
         &copy; 2017-2026 Dorjzodov G. All rights reserved.
-    </footer>
+</footer>
+<!--                               FOOTER END                                  -->
+
+
+
+
+
+
+<!--                               SCRIPT START                                  -->
+<script>
+	<!-- МЕНЮ СКРИПТ -->
+		function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+	
+	<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
+		function openModal(src) {
+		const modal = document.getElementById('imageModal');
+		const modalImg = document.getElementById('modalImg');
+		modal.style.display = "flex";
+		modalImg.src = src;
+	}
+	
+	
+</script>
+<!--                               SCRIPT END                                  -->
+
+
+
+
+
 
 </body>
 </html>
