@@ -13,7 +13,7 @@
 /* <!--                               -----                                  --> */
         /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
         .navbar { 
-            background-color: rgba(0, 86, 179, 0.7); /* Баарны арын Хөх өнгийг 60%-ийн тунгалаг болгох (RGBA) */
+            background-color: rgba(77, 77, 77, 1); /* БААРНЫ ӨНГӨ */
     		backdrop-filter: blur(2px); /* Баарны ард контентыг бүрсгэж харагдуулна */
             position: relative; /* Суурь байршил */
             min-height: 38px; /* Баарны доод өндөр */
@@ -23,13 +23,14 @@
 		    top: 0;                                  /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
 		    left: 0;                                 /* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
 		    right: 0;                                /* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
-    		z-index: 3000; /* Навигешн барыг контентын дээр харагдуулах */
+    		z-index: 3000; /* Навигешний лэиерийг контентуудын дээр харагдуулах */
         }
 
         /* Линкүүдийн загвар */
         .navbar a {
+            background-color: transparent;
             color: white;
-			text-transform: uppercase;
+            text-transform: uppercase;
             padding: 14px 16px; 
             text-decoration: none; 
             font-size: 13px; 
@@ -59,14 +60,14 @@
     		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
     		top: 38px; /* Navbar-ын өндөртэй ижил хэмжээгээр гамбургерийн эхний мөрийг буулгах */
     		left: 0; 
-    		width: 100%; /* Бүтэн өргөнөөр харуулах */
-    		background-color: rgba(0, 86, 179, 0.7); /* гамбургерийн арын өнгийг 60%-ийн харагдацтай (0.6) болгов */
-    		backdrop-filter: blur(6px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
+    		width: 30%; /* Гамбургер менюний өргөн */
+    		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
+    		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
     		z-index: 3000; /* Контентын дээр харагдуулах */
 }
 
         .navbar a:hover {
-            background-color: #555; 
+            background-color: #777; 
             color: white; 
         }
 
@@ -180,7 +181,7 @@
 <div class="navbar">
   
   <div id="myLinks">
-                <a href="https://the2m16.github.io/web/index.html">Эхлэл</a>
+                <a href="https://the2m16.github.io/web/index.html">эхлэл</a>
                 <a href="https://the2m16.github.io/web/90min.html">90 мин</a>
                 <a href="https://the2m16.github.io/web/40min.html">40 мин</a>
                 <a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
