@@ -64,7 +64,7 @@
     		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
     		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
     		z-index: 3000; /* Контентын дээр харагдуулах */
-}
+		}
 
         .navbar a:hover {
             background-color: #555; 
@@ -108,7 +108,6 @@
 		
 		
 /* <!--                               -----                                  --> */
-        
         /* КОНТЕНТ ТЕКСТ ФОРМАТ СТАЙЛ */
         .content { 
             font-style: normal;
@@ -151,7 +150,6 @@
 
 
 /* <!--                               -----                                  --> */
-
 		/* ФҮҮТЭР ТОХИРГОО */
 		footer {
 		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
@@ -163,7 +161,6 @@
 		    width: 100%;
 		    box-sizing: border-box;
 		}
-
     </style>
 
 
@@ -239,7 +236,7 @@
 <!--                               -----                                  -->
 
 
-<!--PDF WINDOW-->
+<!--PDF WINDOW START-->
 <div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; -webkit-overflow-scrolling: touch; border: 1px solid #ccc; margin-bottom:30px;">
     <iframe 
         src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/4374.pdf&embedded=true" 
@@ -247,9 +244,10 @@
         allow="autoplay">
     </iframe>
 </div>
+<!--PDF WINDOW END-->
 
-
-<!--VIDEO WINDOW-->
+	
+<!--VIDEO WINDOW START-->
 <div class="video-container">
     <iframe 
         src="https://www.youtube.com/embed/WKoh2K3gXY0?si=IooNqUsGg5z7p-hM" 
@@ -259,9 +257,10 @@
         allowfullscreen>
     </iframe>
 </div>
+<!--VIDEO WINDOW END-->
 
-
-<!--IMAGE WINDOW-->
+	
+<!--IMAGE WINDOW START-->
 <div style="display: flex; flex-direction: column; margin-bottom:30px;">
   <img 
     src="https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG"
@@ -284,7 +283,7 @@
     justify-content: center;">
   <img id="modalImg" style="max-width: 95%; max-height: 95%; object-fit: contain;">
 </div>
-
+<!--IMAGE WINDOW END-->
 
 
 </div>
