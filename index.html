@@ -1,28 +1,21 @@
+
 <!DOCTYPE html>
-<html lang="mn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2m16 - Home</title>
- 
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BLANC PAGE</title>
+<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			background-color: #f4f4f4;
+		}
 
 
-	<style>
-        /* Ерөнхий тохиргоо */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-        }
 
-        /* 1. НҮҮР ЗУРАГТАЙ ЭХЛЭЛ (Hero Section) */
-        .hero {
+/* <!--                               HOMEPAGE STYLE START                                  --> */
+        .homepage {
             height: calc(100vh - 40px); /* Дэлгэц дүүрэн өндөр */
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://the2m16.github.io/web/images/index3872x2592.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://the2m16.github.io/web/images/index3872x2592.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -31,7 +24,7 @@
             color: white;
         }
 
-		.hero-text-container {
+		.homepage-container {
 			background-color: rgba(0, 0, 0, 0.3); /* Хагас тунгалаг хар фон */
 			width: 100%;                          /* Дэлгэцийн өргөнийг дүүргэх */
 			padding: 25px 0;                      /* Дээд, доод талын зай */
@@ -45,15 +38,12 @@
 			align-items: center;                  /* Хөндлөн чиглэлд голлуулах */
 		}
 
-		/* Хэрэв доторх p таг чинь max-width-тай бол үүнийг нэмээрэй */
-		.hero-text-container p {
+		.homepage-container p {
 			margin-left: auto;
 			margin-right: auto;
 		}
 
-
-
-		.hero h1 {
+		.homepage h1 {
     		font-family: Arial, Helvetica, sans-serif; /* Үсгийн хэлбэрийг (фонт) тохируулна */
     		font-weight: 100;                          /* Үсгийг бүдүүн биш, энгийн хэмжээтэй болгоно */
     		letter-spacing: -.01em;                    /* Үсэг хоорондын зайг бага зэрэг шахаж өгнө */
@@ -64,57 +54,145 @@
     		color: #4da6ff;                            /* Текстийн өнгийг цэнхэр болгоно */
 		}
 
-		.hero p {
+		.homepage p {
     		font-size: 1.2rem;                         /* Параграф буюу жижиг текстийн хэмжээг тохируулна */
     		font-family: Arial, Helvetica, sans-serif; /* Параграфын үсгийн хэлбэрийг тохируулна */
     		font-weight: 300;                          /* Үсгийг нарийн, хөнгөн харагдуулна */
     		line-height: 1.1;                          /* Текст уншихад амар болгож мөр хоорондын зайг нэмнэ */
-    		margin-top: 20px;                          /* Гарчиг болон текст хооронд зай гаргаж өгнө */
+    		margin-top: 10px;                          /* Гарчиг болон текст хооронд зай гаргаж өгнө */
 		}
-
-		
-        /* 2. НААЛДДАГ МЕНЮ (Sticky Navigation) */
-		nav {
-			position: sticky;
-			top: 0;
-			min-height: 40px;			/* height-ийг min-height болгож өөрчлөв */
-			flex-wrap: wrap;			/* Доторх элементүүд олон мөр болохыг зөвшөөрөх */
-			background: #002d4d;
-			display: flex;
-			align-items: center;
-			z-index: 1000;
-		}
+/* <!--                               HOMEPAGE STYLE END                                  --> */
 
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+
+/* <!--                               -----                                  --> */
+        /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
+        .navbar { 
+            background-color: rgba(77, 77, 77, 1); /* БААРНЫ ӨНГӨ */
+    		backdrop-filter: blur(2px); /* Баарны ард контентыг бүрсгэж харагдуулна */
+            position: relative; /* Суурь байршил */
+            min-height: 38px; /* Баарны доод өндөр */
+            width: 100%; /* Дэлгэцийн өргөнөөр үргэлж сунах */
+            display: flex; /* Блок хэлбэрээр байрлах */
+		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
+		    top: 0;                                  /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
+		    left: 0;                                 /* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
+		    right: 0;                                /* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
+    		z-index: 3000; /* Навигешний лэиерийг контентуудын дээр харагдуулах */
         }
 
-        .menu { display: flex; list-style: none; margin: 0; padding: 0; }
-        .menu li { margin-left: 20px; }
-        .menu a { color: #ccc; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; }
-        .menu a:hover { color: white; }
+        /* Линкүүдийн загвар */
+        .navbar a {
+            background-color: transparent;
+            color: white;
+            text-transform: uppercase;
+            padding: 14px 16px; 
+            text-decoration: none; 
+            font-size: 13px; 
+			display: flex; /* Блок биш flex болгох */
+			align-items: center; /* Босоо тэнхлэгийн дагуу голлуулах */
+			height: 38px; /* Баарны өндөртэй ижил байлгах */
+			box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
+        }
 
-        /* 3. ҮНДСЭН АГУУЛГА (Main Content) */
+        /* Гамбургер икон */
+        .navbar a.icon {
+            color: white; /* hamburger-ийн 3 зураасны өнгө */
+            position: absolute; 
+            right: 0; 
+            top: 0; 
+            height: 38px; /* гамбургерийн дөрвөлжингийн өндөр */
+            display: flex; 
+            align-items: center; 
+            padding: 0 16px; 
+        }
+
+
+/* <!--                               -----                                  --> */
+        /* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед менюг гамбургер болгох) */
+        .navbar #myLinks { 
+    		display: none; /* Анхны байдлаар нуух */
+    		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
+    		top: 38px; /* Navbar-ын өндөртэй ижил хэмжээгээр гамбургерийн эхний мөрийг буулгах */
+    		right: 0; /* Гамбургер менюний байршил left: 0 or right: 0 */
+    		width: 30%; /* Гамбургер менюний өргөн */
+    		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
+    		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
+    		z-index: 3000; /* Контентын дээр харагдуулах */
+		}
+
+        .navbar a:hover {
+            background-color: #555; 
+            color: white; 
+        }
+
+
+/* <!--                               -----                                  --> */
+        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй үед менюг бар болгох) */
+        @media screen and (min-width: 1000px) {
+            .navbar {
+                display: flex; /* Уян хатан бүтэц ашиглах */
+                height: 38px; /* Өндрийг тогтмол болгох */
+				justify-content: center;     /* Цэсийг                  хэвтээ                тэнхлэгийн            дагуу            голлуулах */
+            }
+            .navbar #myLinks {
+                display: flex !important; /* Линкүүдийг хөндлөн харуулах */
+                position: static; /* Absolute байршлыг цуцлах */
+                width: auto; /* Зөвхөн агуулгаараа өргөсөх */
+            }
+            .navbar a {
+                float: left; /* Нэг мөрөнд зэрэгцүүлэх */
+                height: 38px; /* Баарны өндөрт тааруулах */
+            }
+            .navbar a.icon {
+                display: none; /* Гамбургер дүрсийг нуух */
+            }
+        }
+        
+        
+/* <!--                               -----                                  --> */
+        /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto; /* контейнерийн ирмэгээс гадагш авах зай */
+            background: white;
+            padding: 15px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */
+			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+		
+		
+/* <!--                               -----                                  --> */
+        /* КОНТЕНТ ТЕКСТ ФОРМАТ СТАЙЛ */
+        .content { 
+            font-style: normal;
+            color: #555;
+            margin-top: 0px; /* параграфийн дээр авах зай */
+            margin-bottom: 15px; /* параграфийн доор авах зай */
+            font-size: 0.95em;
+            text-align: justify;
+			padding: 0px;
+            line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
+            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
+        }
+
+
+
+/* <!--                               HOMEPAGE 2 BLOCK START                                  --> */
         .main-wrapper {
-            max-width: 1200px;
-            margin: 40px auto;
+            max-width: 1000px;
+            margin: 0px auto;
             display: grid;
             grid-template-columns: 1.5fr 1fr; /* Зүүн тал том, баруун тал жижиг */
-            gap: 40px;
-            padding: 0 20px;
+            gap: 20px;
+            padding: 15x;
         }
 
         /* Текст болон зураг */
         .content-area img {
             max-width: 100%;
             height: auto;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .justify-text {
@@ -135,97 +213,118 @@
         }
 
 
-
 		.twitter-container {
 		    position: fixed; /* Дэлгэцийн нэг цэгт хадаж өгнө */
 		    bottom: 20px;    /* Доороос авах зай */
 		    right: 20px;     /* Баруун талаас авах зай */
-		    z-index: 9999;   /* Хамгийн дээд талд харагдуулах */
+		    z-index: 999;   /* Хамгийн дээд талд харагдуулах */
 		    max-width: 300px; /* Өргөнийг хязгаарлах */
 		}
 
-
-		
-
         /* Responsive тохиргоо - Утас дээр */
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
             .main-wrapper {
                 grid-template-columns: 1fr;
             }
-            .nav-container {
-                flex-direction: column;
-            }
-            .menu {
-                margin-top: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .menu li { margin: 5px 10px; }
-        }
-    </style>
+/* <!--                               HOMEPAGE 2 BLOCK END                                  --> */
+
+
+
+/* <!--                               FOOTER STYLE START                                  --> */
+		footer {
+		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
+		    text-align: center;
+		    padding: 30px;
+		    font-size: 13px;
+		    background: transparent; /* Арын фон өнгөгүй болгох */
+		    color: #555; /* Текстийн өнгийг харагдахуйц бараан болгох */
+		    width: 100%;
+		    box-sizing: border-box;
+		}
+/* <!--                               FOOTER STYLE END                                  --> */
+</style>
+
+
+
+
+
+
 </head>
 <body>
 
-<div class="hero">
-    <div class="hero-text-container">
+
+
+
+
+<!--                               HOMEPAGE START                                  -->
+<div class="homepage">
+    <div class="homepage-container">
         <h1>6о тэрбумын асуудал</h1>
         <p>МАН-ын Дарга М.Энхболд, Нийслэлийн МАН-ын хорооны дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нарт холбогдох 60 тэрбумын хэргийн түүх</p>
     </div>
 </div>
+<!--                               HOEMPAGE END                                  -->
 
 
 
 
 
+<!--                               NAVIGATION START                                  -->
+<div class="navbar">
+  
+  <div id="myLinks">
+                <a href="https://the2m16.github.io/web/index.html">эхлэл</a>
+                <a href="https://the2m16.github.io/web/90min.html">90 мин</a>
+                <a href="https://the2m16.github.io/web/40min.html">40 мин</a>
+                <a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
+                <a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a>
+                <a href="https://the2m16.github.io/web/timeline.html">Таймлайн</a>
+                <a href="https://the2m16.github.io/web/news.html">Ньюс</a>
+                <a href="https://the2m16.github.io/web/libels.html">Libels</a>
+  </div>
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    &#9776;
+  </a>
+</div>
+<!--                               NAVIGATION END                                  -->
 
 
 
-    <nav>
-        <div class="nav-container">
-            <ul class="menu">
-                <li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
-                <li><a href="https://the2m16.github.io/web/90min.html">90 МИН</a></li>
-                <li><a href="https://the2m16.github.io/web/40min.html">40 МИН</a></li>
-                <li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ ШИНЖЭЭЧ</a></li>
-                <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
-                <li><a href="https://the2m16.github.io/web/timeline.html">ТАЙМЛАЙН</a></li>
-                <li><a href="https://the2m16.github.io/web/news.html">НЬЮС</a></li>
-                <li><a href="https://the2m16.github.io/web/libels.html">LIBELS</a></li>
-            </ul>
-        </div>
-    </nav>
+
+
+<!--                               CONTAINER START                                  -->
+<div class="container">
 
 
 
 
 
-
-
-
+<!--                               HOMEPAGE 2 BLOCK START                                  -->
+<!--                               HOMEPAGE LEFT BLOCK START                                  -->
 <div class="main-wrapper">
     <div class="content-area">
         <div class="justify-text">
-            <p style="text-indent: 40px;">Олон түмний нэрлэж заншсанаар 60 тэрбумын гэх Төрийн эрхийг хууль бус аргаар авах, авахаар завдах,
+            <p>Олон түмний нэрлэж заншсанаар 60 тэрбумын гэх Төрийн эрхийг хууль бус аргаар авах, авахаар завдах,
 				төрийн албыг мөнгөөр үнэлэх, сонгуулийн санхүүжилтыг хууль бус аргаар босгох гэмт хэргийн гэрчийн хувьд олон нийтэд үнэн бодит мэдээллийг
 				хүргэх зайлшгүй шаардлага байх тул иргэн Танд өөрийн биеэр уг асуудалтай холбоотой үнэн бодит мэдээ, мэдээлэл, баримт, нотолгоог шууд
 				хүргэх зорилгоор энэхүү сайтыг ажиллуулж байна. Худал, хуурмаг мэдээ, мэдээлэл, нэвтрүүлэг, гүжир, гүтгэлэг, элдэв цуу яриа газар авахаас
-				сэрэмжлүүлж байгааг минь хүлээн авна уу. Мөн иргэн Та энэхүү асуудлыг улстөржилгүйгээр зөв өнцгөөс хүлээн авна гэдэгт гүнээ итгэж байна.</p>
-            <p style="text-indent: 40px;">Энэхүү сайтад байршуулж буй мэдээ, мэдээлэл нь Сонгуулийн тухай хуулийн зүйл, заалт бүрийг бүдүүлгээр зөрчсөн,
-				бусдыг гүтгэн доромжилсон, худал мэдээ, мэдээлэл түгээсэн ямарваа нэгэн элемент огт агуулаагүй, огт агуулахгүй болно.</p>
-			<p style="text-indent: 40px;">Монгол Улсын иргэн, "60 тэрбумын хэрэг" гэх тодотголтой Үндсэн Хуулийн 3.2-ыг зөрчсөн гэмт хэргийн гэрч, хохирогч, шүгэл үлээгч Г.Доржзодов</p>
+				сэрэмжлүүлж байгааг минь хүлээн авна уу. Мөн иргэн Та энэхүү асуудлыг улстөржилгүйгээр зөв өнцгөөс хүлээн авна гэдэгт гүнээ итгэж байна.<br><br>
+            Энэхүү сайтад байршуулж буй мэдээ, мэдээлэл нь Сонгуулийн тухай хуулийн зүйл, заалт бүрийг бүдүүлгээр зөрчсөн,
+				бусдыг гүтгэн доромжилсон, худал мэдээ, мэдээлэл түгээсэн ямарваа нэгэн элемент огт агуулаагүй, огт агуулахгүй болно.<br><br>
+			Монгол Улсын иргэн, "60 тэрбумын хэрэг" гэх тодотголтой Үндсэн Хуулийн 3.2-ыг зөрчсөн гэмт хэргийн гэрч, хохирогч, шүгэл үлээгч Г.Доржзодов</p>
         </div>
 		
         	<img src="https://the2m16.github.io/web/images/dorjzodov.png" alt="Доржзодов" style="max-width: 100%; height: auto; margin: 20px 0;">
         	<p>2017 оны 6 сарын 12</p>
     </div>
+<!--                               HOMEPAGE LEFT BLOCK END                                  -->
 
 
 
 
 
-
-
-	
+<!--                               HOMEPAGE RIGHT BLOCK START                                  -->
     <div class="sidebar">
         <div class="audio-section" style="margin-bottom: 5px;">
             <h4>2014.09.08-ны өдөр, 12:00-13:30</h4>
@@ -246,22 +345,61 @@
         </div>
     </div>
 </div>
+<!--                               HOMEPAGE RIGHT BLOCK END                                  -->
+<!--                               HOMEPAGE 2 BLOCK END                                  -->
+
+
+
+
+
+</div>
+<!--                               CONTAINER END                                  -->
 
 
 
 
 
 
-
-
-
-
-<div style="text-align: center; max-width: 1200px; margin: 0 auto;">
-    <footer>
+<!--                               FOOTER START                                  -->
+<footer>
         &copy; 2017-2026 Dorjzodov G. All rights reserved.
-    </footer>
-	</div>
+</footer>
+<!--                               FOOTER END                                  -->
+
+
+
+
+
+
+<!--                               SCRIPT START                                  -->
+<script>
+	<!-- МЕНЮ СКРИПТ -->
+		function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+	
+	<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
+		function openModal(src) {
+		const modal = document.getElementById('imageModal');
+		const modalImg = document.getElementById('modalImg');
+		modal.style.display = "flex";
+		modalImg.src = src;
+	}
+	
+    
+	
+</script>
+<!--                               SCRIPT END                                  -->
+
+
+
+
+
 
 </body>
 </html>
-
