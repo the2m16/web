@@ -1733,23 +1733,41 @@
 <!--                               SCRIPT START                                  -->
 <script>
 	<!-- МЕНЮ СКРИПТ -->
-		function myFunction() {
-        var x = document.getElementById("myLinks");
-        if (x.style.display === "block") {
+// 1. Товчлуур дээр дарахад нээх/хаах функц
+function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+
+// 2. Гадна талд дарахад хаах (Гар утас + PC)
+window.addEventListener('mousedown', function(event) {
+    var x = document.getElementById("myLinks");
+    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
+
+    // Хэрэв меню нээлттэй байвал
+    if (x.style.display === "block") {
+        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
+        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
             x.style.display = "none";
-        } else {
-            x.style.display = "block";
         }
     }
+});
 
-		window.onclick = function(event) {
-        var x = document.getElementById("myLinks");
-        var menuIcon = document.querySelector(".icon"); // Энд гамбургер товчлуурынхаа зөв ангийг (class) бичээрэй
+// Гар утасны touch үйлдлийг дэмжих
+window.addEventListener('touchstart', function(event) {
+    var x = document.getElementById("myLinks");
+    var menuIcon = document.querySelector(".icon");
 
-        if (x.style.display === "block" && !x.contains(event.target) && !menuIcon.contains(event.target)) {
+    if (x.style.display === "block") {
+        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
             x.style.display = "none";
         }
     }
+});
 	
 	<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
 		function openModal(src) {
