@@ -205,14 +205,20 @@ h3 {
 /* <!--                                -----                                 --> */
                              /* ПОДКАСТ СТАЙЛ START */
         .podcast-container {
-            width: 100%;
-            max-width: 500px;
+            display: flex;
+    		flex-direction: column;
+            width: 95%; /* Жижиг дэлгэц дээр өргөнөөрөө сунана */;
+            max-width: 560px;
+            margin: 20px auto;
             background: #0b0e13;
-            border-radius: 40px;
-            padding: 30px;
+            padding: 20px;
+			border-radius: 20px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
             text-align: center;
+            box-sizing: border-box; /* Padding-ийг нийт өргөнд багтаана */
         }
+        
+       
 
         /* 1. КОВЕР ЗУРАГ */
         .cover-art {
