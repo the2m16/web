@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>2m16 - Test Page</title>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BLANC PAGE</title>
 <style>
 		body {
 			font-family: Arial, sans-serif;
@@ -73,7 +73,7 @@
 
 
 /* <!--                               -----                                  --> */
-        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй болоход менюг бар болгох) */
+        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй үед менюг бар болгох) */
         @media screen and (min-width: 1000px) {
             .navbar {
                 display: flex; /* Уян хатан бүтэц ашиглах */
@@ -151,7 +151,7 @@ h3 {
             line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
             clear: both; /* Меню-тэй давхцахаас сэргийлэх */
         }
-	
+
 
 /* <!--                               -----                                  --> */
         /* ВИДЕО КОНТЕЙНЕР */
@@ -234,43 +234,51 @@ h3 {
 
 <!--                               CONTAINER START                                  -->
 <div class="container">
-<div class="content">
+	<div class="content">
+            <i>Энэ хуудас нь 60 тэрбумын асуудлаар хэн, хэзээ, юу хэлэв,
+			эрх бүхий байгууллага, <strong>албан тушаалтнууд</strong> ямар тогтоол, шийдвэр, үйлдэл гаргав,
+			энэ хэрэг хэрхэн эхэлсэн, хэрхэн өрнөсөн, <b>хаа хүрсэн талаар</b> холбогдох дэлгэрэнгүй мэдээллийг
+			хэвлэл мэдээлэл, цахим орчин, сошл платформ зэрэг бүхий л нээлттэй эх сурвалжуудаас
+			эмхэтгэн цэгцэлж, хэн бүхэнд ойлгомжтой болгон тайлбарласан хуудас юм. Мэдээллийг он цагийн дараалалаар,
+			шинэ мэдээлэл нь хуучныхаа дээр байхаар байршуулав.</i>
+	</div>
+    <hr>
+<b> - Bold text</b><br>
+<strong> - Important text</strong><br>
+<i> - Italic text</i><br>
+<em> - Emphasized text</em><br>
+<mark> - Marked text</mark><br>
+<small> - Smaller text</small><br>
+- Main row<sub>Subscript text</sub><br>
+<del> - Deleted text</del><br>
+- Main row<sup>Superscript text</sup><br>
+<ins> - Inserted text</ins><br>
+<span style="color: #ff0000; text-transform: uppercase; font-weight: bold; font-style: italic; color: red; text-decoration: underline;">hello world. жижиг текстүүдийг хувиргах</span>
+    <hr>
+<!--                               -----                                  -->
+
+	<div class="content">
+			<h1 style="color:white; font-family:arial; font-size:100%; text-transform: uppercase; text-align:left; background-color: #888; padding:5px; margin:0px; margin-bottom:50px;">Контент гарчиг Н1</h1>
+            <h2>Контент гарчиг Н2</h2>
+            <h3>Контент гарчиг Н3</h3>
+            <h4>Контент гарчиг Н4</h4>
+			<p>Дэлгэц өргөн болоход арын хар фон дэлгэцийн турш үргэлжилж, контент доошоо зөв байрлана.</p>
+	</div>
+<!--                               -----                                  -->
 
 
-
-<!--intro text-->
-<div class="intro-text">
-Анх 60 тэрбумын асуудал хэрхэн эхэлсэн, өнөөдрийг хүртэл хэрхэн өрнөж байгаа талаар товч мэдээллийг он цагийн дараалалтайгаар холбогдох эх сурвалжийг линкээр холбож ойлгоход хялбар хэлбэрээр энд бичиж байна. Үйл явдлын өрнөл дуусаагүй тул Та энэ хуудсанд шинэчлэл орж байгаа эсэх, шинэ мэдээлэл нэмэгдсэн эсэхийг мэдэхийг хүсвэл анхааралтай ажиглаж байна уу. <span class="highlight-blue">Цэнхэр</span> өнгөөр тодруулсан текстүүд дээр дарж Google Drive-т хадгалсан баримтуудтай эх хувиар нь танилцах боломжтой.
-</div>
-
-
-<!--text format-->
-<span style="font-weight:bold; font-style:italic; color:red; text-transform:uppercase; text-decoration:underline;">test: hello world</span><br>
-
-<b>2014.07</b> сарын 2-р хагаст <strong>Шинэ Монгол хаад групп ХХК</strong>-ийн Гүйцэтгэх захирал,<br>
-<i>Нийслэлийн МАН УЗ гишүүн</i>, МАН Бага хурлын гишүүн <em>А.Ганбаатар</em> Г.Доржзодовыг тус компанид<br>
-<u>Стратеги хариуцсан захирлаар</u> ажиллуулахаар аман гэрээ байгуулав, Нийслэлийн МАН дарга Ц.Сандуйтай танилцуулав.
-
-		  
-<!--list-->
-	<ul class="timeline-list">
-<li>
-<span class="date">2014.07</span> сарын 2-р хагаст Шинэ Монгол хаад групп ХХК-ийн Гүйцэтгэх захирал, Нийслэлийн МАН УЗ гишүүн, МАН Бага хурлын гишүүн <span class="bold-text">А.Ганбаатар Г.Доржзодов</span>ыг тус компанид Стратеги хариуцсан захирлаар ажиллуулахаар аман гэрээ байгуулав, Нийслэлийн МАН дарга <span class="bold-text">Ц.Сандуй</span>тай танилцуулав.
-</li>
-    </ul>
-
-
-<!--pdf window-->
-<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; -webkit-overflow-scrolling: touch; border: 1px solid #ccc;">
+<!--PDF WINDOW START-->
+<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; -webkit-overflow-scrolling: touch; border: 1px solid #ccc; margin-bottom:20px;">
     <iframe 
         src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/4374.pdf&embedded=true" 
         style="width: 100%; height: 100%; border: none;"
         allow="autoplay">
     </iframe>
 </div>
+<!--PDF WINDOW END-->
 
-
-<!--video window-->
+	
+<!--VIDEO WINDOW START-->
 <div class="video-container">
     <iframe 
         src="https://www.youtube.com/embed/WKoh2K3gXY0?si=IooNqUsGg5z7p-hM" 
@@ -280,10 +288,11 @@ h3 {
         allowfullscreen>
     </iframe>
 </div>
+<!--VIDEO WINDOW END-->
 
-
-<!--image-->
-<div style="display: flex; flex-direction: column; gap: 10px;">
+	
+<!--IMAGE WINDOW START-->
+<div style="display: flex; flex-direction: column; margin-bottom:20px;">
   <img 
     src="https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG"
     style="max-width: 1200px; display: block; cursor: zoom-in; border: 0.5px solid #cccccc"
@@ -305,10 +314,9 @@ h3 {
     justify-content: center;">
   <img id="modalImg" style="max-width: 95%; max-height: 95%; object-fit: contain;">
 </div>
+<!--IMAGE WINDOW END-->
 
 
-
-</div>
 </div>
 <!--                               CONTAINER END                                  -->
 
@@ -319,7 +327,7 @@ h3 {
 
 <!--                               FOOTER START                                  -->
 <footer>
-        &copy; 2017-2026 Dorjzodov G. All rights reserved.
+        &copy; 2017-2026 Dorjzodov G. All Rights Reserved.
 </footer>
 <!--                               FOOTER END                                  -->
 
@@ -331,41 +339,14 @@ h3 {
 <!--                               SCRIPT START                                  -->
 <script>
 	<!-- МЕНЮ СКРИПТ -->
-// 1. Товчлуур дээр дарахад нээх/хаах функц
-function myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
-}
-
-// 2. Гадна талд дарахад хаах (Гар утас + PC)
-window.addEventListener('mousedown', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
-
-    // Хэрэв меню нээлттэй байвал
-    if (x.style.display === "block") {
-        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+		function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
             x.style.display = "none";
+        } else {
+            x.style.display = "block";
         }
     }
-});
-
-// Гар утасны touch үйлдлийг дэмжих
-window.addEventListener('touchstart', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon");
-
-    if (x.style.display === "block") {
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
-});
 	
 	<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
 		function openModal(src) {
