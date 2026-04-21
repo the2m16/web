@@ -99,16 +99,49 @@
         /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
         .container {
             display: flex;             /* Flexbox горимыг идэвхжүүлнэ */
-            max-width: 1000px;
-            margin: 20px auto; /* контейнерийн ирмэгээс гадагш авах зай */
+    		width: 90%; /* Гар утсан дээр дэлгэцний ирмэгээс бага зэрэг зайтай харагдуулна */
+            max-width: 560px;
+            margin: 0px auto; /* контейнерийн ирмэгээс гадагш авах зай */
             background: #010e23;
             padding: 20px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */
 			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
             box-shadow: 0 0 0px rgba(0,0,0,0.1);
             justify-content: center;   /* Хөндлөн тэнхлэгийн дагуу голлуулна */
+			flex-direction: column; /* Доторх элементүүдийг дээрээс нь доош цувуулна */
         }
+
 		
-		
+/* <!--                               -----                                  --> */
+h3 {
+            font-style: normal;
+            font-weight: bold;
+            color: #555;
+            margin-top: 30px; /* параграфийн дээр авах зай */
+            margin-bottom: 10px; /* параграфийн доор авах зай */
+            font-size: 1.2em;
+            text-align: left;
+			padding: 0px;
+            line-height: 1.2; /* Мөр хооронд зай. Default нь line-height: 1.2 */
+            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
+}
+
+.body-text {
+            font-style: normal;
+            color: #555;
+            margin-top: 0px; /* параграфийн дээр авах зай */
+            margin-bottom: 10px; /* параграфийн доор авах зай */
+            font-size: 0.95em;
+            text-align: justify;
+			padding: 0px;
+            line-height: 1.5; /* Мөр хооронд зай. Default нь line-height: 1.2 */
+            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
+}
+        /* List line height */
+        li {
+        	margin-bottom: 20px;
+        }
+	
+	
 /* <!--                               -----                                  --> */
         /* КОНТЕНТ ТЕКСТ ФОРМАТ СТАЙЛ */
         .content { 
@@ -121,17 +154,6 @@
 			padding: 0px;
             line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
             clear: both; /* Меню-тэй давхцахаас сэргийлэх */
-        }
-
-
-/* <!--                               -----                                  --> */
-		/* List date STYLE */
-        .date {
-        	font-weight: bold;
-		}
-        /* List line height */
-        li {
-        	margin-bottom: 20px;
         }
 
 /* <!--                               -----                                  --> */
