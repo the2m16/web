@@ -13,7 +13,7 @@
 
 /* <!--                               HOMEPAGE STYLE START                                  --> */
         .homepage {
-            height: calc(100vh - 38px); /* Дэлгэц дүүрэн өндөр */
+            height: calc(100vh - 38px); /* Background зурагны дэлгэц дүүрэн өндөр, уг өндрөөс меню баарны дээд ирмэг дэлгэцний доод ирмэгээс зүүгдэх зай */
             background: url('https://the2m16.github.io/web/images/background.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -42,53 +42,54 @@
 			margin-right: 50px;
 		}
 
-.homepage {
-    --base-font-size: clamp(2.5rem, 8vw, 8rem); /* Үндсэн хэмжээг (h1) хувьсагчид хадгалж, дэлгэцэнд тааруулна */
-}
+		.homepage {
+		    --base-font-size: clamp(2.5rem, 8vw, 8rem); /* Нүүрний (h1) фонтын хэмжээг хувьсагчид хадгалж, дэлгэцэнд тааруулна */
+		}
 
-.homepage h1 {
-    font-family: Arial, Helvetica, sans-serif;  /* Үсгийн хэлбэрийг тохируулна */
-    font-weight: 100;                          /* Үсгийг хамгийн нарийн (Thin) болгоно */
-    letter-spacing: -.01em;                    /* Үсэг хоорондын зайг бага зэрэг шахаж өгнө */
-    font-size: var(--base-font-size);          /* Дээр зарласан хувьсагчаа шууд ашиглана */
-    line-height: 1.1;                          /* Мөр хоорондын зайг 1.1 дахин авна */
-    margin: 0;                                 /* Гарчигны гадна талын зайг устгана */
-    text-align: center;                        /* Текстийг голлуулна */
-    color: #4da6ff;                            /* Текстийн өнгийг цэнхэр болгоно */
-}
+		.homepage h1 {
+		    font-family: Arial, Helvetica, sans-serif; /* Нүүрний (h1) фонтын хэмжээг тохируулна */
+		    font-weight: 100;                          /* Нүүрний (h1) фонтын хэмжээг хамгийн нарийн (Thin) болгоно */
+		    letter-spacing: -.01em;                    /* Нүүрний (h1) фонтын үсэг хоорондын зайг бага зэрэг шахаж өгнө */
+		    font-size: var(--base-font-size);          /* Нүүрний (h1) фонтын хэмжээндээ дээр зарласан хувьсагчаа 1:1 хэмжээгээр шууд ашиглана */
+		    line-height: 1.1;                          /* Нүүрний (h1) фонтын мөр хоорондын зайг фонтны өндрөөс 1.1 дахин их болгоно */
+		    margin: 0;                                 /* Нүүрний (h1) гарчигны гадна талын зайг устгана */
+		    text-align: center;                        /* Нүүрний (h1) текстийг голлуулна */
+		    color: #4da6ff;                            /* Нүүрний (h1) текстийн өнгө */
+		}
 
-.homepage p {
-    font-family: Arial, Helvetica, sans-serif; /* Параграфын үсгийн хэлбэрийг h1-тэй ижил болгоно */
-    font-weight: 100;                          /* Параграфын үсгийг бас нарийн болгоно */
-    font-size: clamp(0.7rem, calc(var(--base-font-size) * 0.15), 1.8rem); /* clamp(МИН, ХАМААРАЛ, МАКС) 1.0rem (Мин хязгаар), calc(...) - H1-ийн 15%-тай тэнцүү дагаж томрох, 1.8rem (Макс хязгаар) */
-    line-height: 1.2;                          /* Текст хоорондын зайг 1.1 болгоно */
-    margin-top: 0.6em;                         /* тухайн фонт хэмжээтэй ижил зай дээрээ авна. Фонт томроход зай нь дагаж томорно */
-}
+		.homepage p {
+		    font-family: Arial, Helvetica, sans-serif; /* (p) буюу 2-р мөрний үсгийн хэлбэрийг h1-тэй ижил болгоно */
+		    font-weight: 100;                          /* (p) буюу 2-р мөрний үсгийг бас нарийн болгоно */
+		    font-size: clamp(0.7rem, calc(var(--base-font-size) * 0.15), 1.8rem); /* clamp(МИН, ХАМААРАЛ, МАКС) 1.0rem (Мин хязгаар), calc(...) - H1-ийн 15%-тай тэнцүү дагаж томрох, 1.8rem (Макс хязгаар) */
+		    line-height: 1.2;                          /* (p) буюу 2-р мөр хоорондын зай фонтны өндрөөс 1.1 дахин их болгоно */
+		    margin-top: 0.6em;                         /* (p) буюу 2-р мөрний тухайн фонт хэмжээтэй ижил зай дээрээ авна. Фонт томроход зай нь дагаж томорно */
+		}
 /* <!--                               HOMEPAGE STYLE END                                  --> */
 
 
 
 /* <!--                               -----                                  --> */
-        /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
+        /* NAVBAR МЕНЮ БААРНЫ ЕРӨНХИЙ СТАЙЛ */
         .navbar { 
-            background-color: rgba(77, 77, 77, 1); /* БААРНЫ ӨНГӨ */
-    		backdrop-filter: blur(2px); /* Баарны ард контентыг бүрсгэж харагдуулна */
-            position: relative; /* Суурь байршил */
-            min-height: 38px; /* Баарны доод өндөр */
-            width: 100%; /* Дэлгэцийн өргөнөөр үргэлж сунах */
-            display: flex; /* Блок хэлбэрээр байрлах */
-		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
-		    top: 0;                                  /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
-		    left: 0;                                 /* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
-		    right: 0;                                /* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
-    		z-index: 3000; /* Навигешний лэиерийг контентуудын дээр харагдуулах */
+            background-color: rgba(77, 77, 77, 1); /* МЕНЮ БААРНЫ ӨНГӨ */
+    		backdrop-filter: blur(2px);				/* Баарны ард контентыг бүрсгэж харагдуулна */
+            position: relative;						/* Суурь байршил */
+            min-height: 38px;						/* Баарны доод өндөр */
+            width: 100%;							/* Дэлгэцийн өргөнөөр үргэлж сунах */
+            display: flex;							/* Блок хэлбэрээр байрлах */
+		    position: sticky;                       /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
+		    top: 0;                                 /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
+		    left: 0;                                /* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
+		    right: 0;                               /* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
+    		z-index: 3000;							/* Навигешний лэиерийг контентуудын дээр харагдуулах */
         }
 
         /* Линкүүдийн загвар */
         .navbar a {
-            background-color: transparent;
-            color: white;
-            text-transform: uppercase;
+            background-color: transparent;	/* МЕНЮ ДӨРВӨЛЖИН ТОВЧНЫ АРЫН ӨНГӨНИЙ ТУНГАЛАГ */
+            opacity: 1;						/* МЕНЮ ТЕКСТИЙН 0.5 - 50%, 0.1 - 10% гм-ээр тунгалаг болгох */
+            color: white;					/* МЕНЮ ДӨРВӨЛЖИН ТОВЧНЫ АРЫН ӨНГӨ */
+            text-transform: uppercase;		/* МЕНЮ ДӨРВӨЛЖИН ТОВЧНЫ ТЕКСТ */
             padding: 14px 16px; 
             text-decoration: none; 
             font-size: 13px; 
@@ -98,9 +99,9 @@
 			box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
         }
 
-        /* Гамбургер икон */
+        /* Hamburger menu icon */
         .navbar a.icon {
-            color: white; /* hamburger-ийн 3 зураасны өнгө */
+            color: white; /* Hamburger-ийн 3 зураасны өнгө */
             position: absolute; 
             right: 0; 
             top: 0; 
@@ -121,6 +122,8 @@
     		width: 220px; /* Гамбургер менюний өргөн */
     		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
     		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
+            bottom: 100%;																			/* Hamburger menu deeshee neegdeh code */
+            top: auto;																				/* Hamburger menu deeshee neegdeh code */
     		z-index: 3000; /* Контентын дээр харагдуулах */
 		}
 
@@ -142,6 +145,7 @@
                 display: flex !important; /* Линкүүдийг хөндлөн харуулах */
                 position: static; /* Absolute байршлыг цуцлах */
                 width: auto; /* Зөвхөн агуулгаараа өргөсөх */
+                opacity: 1;
             }
             .navbar a {
                 float: left; /* Нэг мөрөнд зэрэгцүүлэх */
@@ -182,9 +186,11 @@
 /* <!--                               -----                                  --> */
 
         h4 {
-			margin-bottom: 0px;
+			margin-bottom: 0px; /* Soundcloud box */
 			margin-top: 0px;
             color: #555;
+            font-size: 0.95em;
+            line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
 		}
 
 
@@ -219,9 +225,12 @@
         }
 
         .audio-section {
-            background: white;
+            background: white; /* soundcloud, twitter box */
             padding: 0px; /* 2014.09.08-ны дээр авах зай ХХХ */
             border-radius: 4px;
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
         }
 
 
