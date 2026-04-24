@@ -1,212 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
-    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BLANC PAGE</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2m16 - News</title>
+
 <style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			background-color: #f4f4f4;
-		}
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+/* COMMON SETTINGS */
+	body {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		margin: 0;
+		background-color: #f4f4f4; }
+	.news-box {
+		background: white;		/* box-ийн дотор өнгө */
+		padding: 25px;			/* box-ийн ирмэгээс дотогш зай */
+		border-radius: 6px;		/* box-ийн өнцөг */
+        text-align: justify;
+		box-shadow: 0 2px 10px rgba(0,0,0,0.1);	/* box-ийн сүүдэр */
+		margin-bottom: 20px; }	/* box хоорондын завсрын зай */
+	.container {
+		max-width: 1000px;
+		margin: 0 auto; /* контейнерийн ирмэгээс гадагш авах зай */
+		padding: 10px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */ }
 
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* NAVBAR SETTINGS */
+	.navbar { 
+		background-color: rgba(77, 77, 77, 0.7);	/* БААРНЫ ӨНГӨ */
+		backdrop-filter: blur(4px);		/* Баарны ард контентыг бүрсгэж харагдуулна */
+		position: relative;	/* Суурь байршил */
+		min-height: 38px;	/* Баарны доод өндөр */
+		width: 100%;		/* Дэлгэцийн өргөнөөр үргэлж сунах */
+		display: flex;		/* Блок хэлбэрээр байрлах */
+		position: sticky;	/* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
+		top: 0;				/* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
+		left: 0;			/* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
+		right: 0;			/* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
+		z-index: 3000;		/* Навигешний лэиерийг контентуудын дээр харагдуулах */ }
 
-/* <!--                               -----                                  --> */
-        /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
-        .navbar { 
-            background-color: rgba(77, 77, 77, 1); /* БААРНЫ ӨНГӨ */
-    		backdrop-filter: blur(2px); /* Баарны ард контентыг бүрсгэж харагдуулна */
-            position: relative; /* Суурь байршил */
-            min-height: 38px; /* Баарны доод өндөр */
-            width: 100%; /* Дэлгэцийн өргөнөөр үргэлж сунах */
-            display: flex; /* Блок хэлбэрээр байрлах */
-		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
-		    top: 0;                                  /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
-		    left: 0;                                 /* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
-		    right: 0;                                /* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
-    		z-index: 3000; /* Навигешний лэиерийг контентуудын дээр харагдуулах */
+	/* MENU LINK */
+	.navbar a {
+		background: transparent;
+		color: white;
+		text-transform: uppercase;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 13px;
+		display: flex;			/* Блок биш flex болгох */
+		align-items: center;	/* Босоо тэнхлэгийн дагуу голлуулах */
+		height: 38px;			/* Баарны өндөртэй ижил байлгах */
+		box-sizing: border-box;	/* Padding-г хэмжээнд багтаах */ }
+
+	/* HAMBURGER ICON */
+	.navbar a.icon {
+		color: white;	/* hamburger-ийн 3 зураасны өнгө */
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 38px;	/* гамбургерийн дөрвөлжингийн өндөр */
+		display: flex;
+		align-items: center;
+		padding: 0 16px; }
+
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед менюг гамбургер болгох) */
+	.navbar #myLinks { 
+		display: none;		/* ГАМБЕРГЕР МЕНЮГ анхны байдлаар нуух */
+		position: absolute;	/* ГАМБЕРГЕР МЕНЮГ Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
+		top: 38px;			/* ГАМБЕРГЕР МЕНЮНИЙ МӨРИЙГ Navbar-ын өндөртэй ижил хэмжээгээр буулгах */
+		right: 0;			/* ГАМБЕРГЕР МЕНЮНИЙ байршил left: 0 or right: 0 */
+		width: 220px;		/* ГАМБЕРГЕР МЕНЮНИЙ өргөн */
+		background-color: rgba(77, 77, 77, 0.7);	/* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
+		backdrop-filter: blur(2px);					/* ГАМБЕРГЕР МЕНЮНИЙ арын контентыг бүрсийлгэж харагдуулна */
+		z-index: 3000;		/* Контентын дээр харагдуулах */ }
+
+	.navbar a:hover {
+		background-color: #555; 
+		color: white; }
+
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй болоход менюг бар болгох) */
+	@media screen and (min-width: 1000px) {
+	.navbar {
+		display: flex;				/* Уян хатан бүтэц ашиглах */
+		height: 38px;				/* Өндрийг тогтмол болгох */
+		background-color: rgba(77, 77, 77, 0.7);
+		justify-content: center;	/* Цэсийг                  хэвтээ                тэнхлэгийн            дагуу            голлуулах */ }
+	.navbar #myLinks {
+		display: flex !important;	/* Линкүүдийг хөндлөн харуулах */
+		position: static;			/* Absolute байршлыг цуцлах */
+		background-color: rgba(77, 77, 77, 0.7);
+		width: auto;				/* Зөвхөн агуулгаараа өргөсөх */ }
+	.navbar a {
+		float: left;				/* Нэг мөрөнд зэрэгцүүлэх */
+		background-color: rgba(77, 77, 77, 0.7);
+		height: 38px;				/* Баарны өндөрт тааруулах */ }
+	.navbar a.icon {
+		display: none;				/* Гамбургер дүрсийг нуух */ }
         }
 
-        /* Линкүүдийн загвар */
-        .navbar a {
-            background-color: transparent;
-            color: white;
-            text-transform: uppercase;
-            padding: 14px 16px; 
-            text-decoration: none; 
-            font-size: 13px; 
-			display: flex; /* Блок биш flex болгох */
-			align-items: center; /* Босоо тэнхлэгийн дагуу голлуулах */
-			height: 38px; /* Баарны өндөртэй ижил байлгах */
-			box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* TEXT FORMAT */
+	h2 {
+		text-transform: uppercase;
+        color: #0073e6;
+		font-size: 1.4em;
+		margin-top: 0;
+        margin-bottom: 5px;
+		text-align: left;
+		padding: 0px;
+		line-height: 1.2;
+		clear: both;				/* Меню-тэй давхцахаас сэргийлэх */ }
+	.content { 
+		font-style: normal;
+		color: #555;
+		margin-top: 0px; /* параграфийн дээр авах зай */
+		margin-bottom: 0px; /* параграфийн доор авах зай */
+		font-size: 0.95em;
+		padding: 0px;
+		line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
+		clear: both; /* Меню-тэй давхцахаас сэргийлэх */ }
+	a.source-link {
+		color: #0066cc;
+		text-decoration: none;
+		font-weight: bold; }
+	li {
+		margin-bottom: 20px; }
+
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* PHOTO ALBUM GRID SETTINGS */
+	.dynamic-album {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr));
+		gap: 10px;
+		margin-top: 0px; }
+	.album-item {
+		position: relative;
+		cursor: pointer;
+		overflow: hidden;
+		border-radius: 4px;
+		aspect-ratio: 4 / 3;
+		background-color: #eee; }
+	.album-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.3s;
+		border: 1px solid #555;
+        box-sizing: border-box;
+        border-radius: 4px;
+        }
+	.album-item:hover img { transform: scale(1.1); }
+
+	/* 4 ДЭХ ЗУРАГ ДЭЭРХ СААРАЛ +N МАСК */
+	.overlay {
+		position: absolute;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0, 0, 0, 0.65);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-size: 32px;
+		font-weight: normal;
+		pointer-events: none;		/* Зураг дээр дарахад саад болохгүй */
         }
 
-        /* Гамбургер икон */
-        .navbar a.icon {
-            color: white; /* hamburger-ийн 3 зураасны өнгө */
-            position: absolute; 
-            right: 0; 
-            top: 0; 
-            height: 38px; /* гамбургерийн дөрвөлжингийн өндөр */
-            display: flex; 
-            align-items: center; 
-            padding: 0 16px; 
-        }
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* LIGHTBOX SETTINGS (ЗУРГИЙГ ТОМРУУЛЖ ХАРАХ ЦОНХ) */
+	#lightbox {
+		display: none;
+		position: fixed;
+		z-index: 10000;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0, 0, 0, 0.95);
+		justify-content: center;
+		align-items: center;
+		user-select: none; }
+	#lightbox img {
+		max-width: 90%;
+		max-height: 85%;
+		object-fit: contain;
+		box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+	.nav-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		color: white;
+		font-size: 60px;
+		cursor: pointer;
+		padding: 0px;
+		transition: 0.2s; }
+	.nav-btn:hover { color: #ccc; }
+	.prev { left: 20px; }
+	.next { right: 20px; }
+	.close-btn { 
+		position: absolute; 
+		top: 20px; 
+		right: 30px; 
+		color: white; 
+		font-size: 40px; 
+		cursor: pointer; }
 
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* VIDEO CONTAINER SETTINGS */
+	.video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+        margin-top: 20px;
+		margin-bottom: 0px;
+		background: #000; }
+	.video-placeholder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		background: #333;
+		text-align: center; }
 
-/* <!--                               -----                                  --> */
-        /* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед менюг гамбургер болгох) */
-        .navbar #myLinks { 
-    		display: none; /* Анхны байдлаар нуух */
-    		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
-    		top: 38px; /* Navbar-ын өндөртэй ижил хэмжээгээр гамбургерийн эхний мөрийг буулгах */
-    		right: 0; /* Гамбургер менюний байршил left: 0 or right: 0 */
-    		width: 220px; /* Гамбургер менюний өргөн */
-    		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
-    		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
-    		z-index: 3000; /* Контентын дээр харагдуулах */
-		}
-
-        .navbar a:hover {
-            background-color: #555; 
-            color: white; 
-        }
-
-
-/* <!--                               -----                                  --> */
-        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй үед менюг бар болгох) */
-        @media screen and (min-width: 1000px) {
-            .navbar {
-                display: flex; /* Уян хатан бүтэц ашиглах */
-                height: 38px; /* Өндрийг тогтмол болгох */
-				justify-content: center;     /* Цэсийг                  хэвтээ                тэнхлэгийн            дагуу            голлуулах */
-            }
-            .navbar #myLinks {
-                display: flex !important; /* Линкүүдийг хөндлөн харуулах */
-                position: static; /* Absolute байршлыг цуцлах */
-                width: auto; /* Зөвхөн агуулгаараа өргөсөх */
-            }
-            .navbar a {
-                float: left; /* Нэг мөрөнд зэрэгцүүлэх */
-                height: 38px; /* Баарны өндөрт тааруулах */
-            }
-            .navbar a.icon {
-                display: none; /* Гамбургер дүрсийг нуух */
-            }
-        }
-        
-        
-/* <!--                               -----                                  --> */
-        /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
-        .container {
-            max-width: 1000px;
-            margin: 20px auto; /* контейнерийн ирмэгээс гадагш авах зай */
-            background: white;
-            padding: 20px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */
-			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-		
-		
-/* <!--                               -----                                  --> */
-h2 {
-            font-style: normal;
-            font-weight: bold;
-            color: #0073e6;
-            margin-top: 0px; /* параграфийн дээр авах зай */
-            margin-bottom: 10px; /* параграфийн доор авах зай */
-            font-size: 1.4em;
-            text-align: left;
-			padding: 0px;
-            line-height: 1.2; /* Мөр хооронд зай. Default нь line-height: 1.2 */
-            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
-}
-
-.body-text {
-            font-style: normal;
-            color: #555;
-            margin-top: 0px; /* параграфийн дээр авах зай */
-            margin-bottom: 10px; /* параграфийн доор авах зай */
-            font-size: 1em;
-            text-align: justify;
-			padding: 0px;
-            line-height: 1.5; /* Мөр хооронд зай. Default нь line-height: 1.2 */
-            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
-}
-        /* List line height */
-        li {
-        	margin-bottom: 20px;
-        }
-	
-	
-/* <!--                               -----                                  --> */
-        /* КОНТЕНТ ТЕКСТ ФОРМАТ СТАЙЛ */
-        .content { 
-            font-style: normal;
-            color: #555;
-            margin-top: 0px; /* параграфийн дээр авах зай */
-            margin-bottom: 30px; /* параграфийн доор авах зай */
-            font-size: 0.95em;
-            text-align: justify;
-			padding: 0px;
-            line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
-            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
-        }
-
-
-/* <!--                               -----                                  --> */
-        /* ВИДЕО КОНТЕЙНЕР */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 20px;
-            background: #000;
-        }
-
-		
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            background: #333;
-            text-align: center;
-        }
-
-
-/* <!--                               -----                                  --> */
-		/* ФҮҮТЭР ТОХИРГОО */
-		footer {
-		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
-		    text-align: center;
-		    padding: 30px;
-		    font-size: 13px;
-		    background: transparent; /* Арын фон өнгөгүй болгох */
-		    color: #555; /* Текстийн өнгийг харагдахуйц бараан болгох */
-		    width: 100%;
-		    box-sizing: border-box;
-		}
-    </style>
-
-
-
-
-
-
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* FOOTER SETTINGS */
+	footer {
+		flex-shrink: 0;				/* Фүүтэр шахагдахгүй */
+		text-align: center;
+		padding: 30px;
+		font-size: 13px;
+		background: transparent;	/* Арын фон өнгөгүй болгох */
+		color: #555;				/* Текстийн өнгийг харагдахуйц бараан болгох */
+		width: 100%;
+		box-sizing: border-box; }
+</style>
 </head>
 <body>
-
-
-
-
-
-
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
 <!--                               NAVIGATION START                                  -->
 <div class="navbar">
   
@@ -226,124 +266,283 @@ h2 {
   </a>
 </div>
 <!--                               NAVIGATION END                                  -->
-
-
-
-
-
-
-<!--                               CONTAINER START                                  -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
 <div class="container">
-	<div class="content">
-		<div class="body-text">
-            <i>Энэ хуудас нь 60 тэрбумын асуудлаар хэн, хэзээ, юу хэлэв,
-			эрх бүхий байгууллага, <strong>албан тушаалтнууд</strong> ямар тогтоол, шийдвэр, үйлдэл гаргав,
-			энэ хэрэг хэрхэн эхэлсэн, хэрхэн өрнөсөн, <b>хаа хүрсэн талаар</b> холбогдох дэлгэрэнгүй мэдээллийг
-			хэвлэл мэдээлэл, цахим орчин, сошл платформ зэрэг бүхий л нээлттэй эх сурвалжуудаас
-			эмхэтгэн цэгцэлж, хэн бүхэнд ойлгомжтой болгон тайлбарласан хуудас юм. Мэдээллийг он цагийн дараалалаар,
-			шинэ мэдээлэл нь хуучныхаа дээр байхаар байршуулав.</i>
-		</div>
-    <hr>
-<!--                               -----                                  -->
 
 
-<!--PDF WINDOW START-->
-<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #ccc; margin-bottom:20px;">
+
+<!-- NEWS BOX START -->
+    <div class="news-box">
+        <h2>Олон зурагтай мэдээ</h2>
+        <span style="text-transform: uppercase; font-weight: bold;">МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж...</span><b>60 тэрбумын бичлэг нь эвлүүлэг бус бодит яриа байсныг хүлээн зөвшөөрөв.</b>
+        <a href="https://ikon.mn/n/130s" class="source-link" target="_blank">ikon.mn</a><br>
+        За, таны хүссэнээр мэдээ бүрт скрипт бичих шаардлагагүй, зөвхөн ганц удаа суулгаад л цаашид олон мэдээнд зэрэг ашиглах боломжтой "Ухаалаг Албом"-ын бүрэн кодыг бэлдлээ. Мэдээ бүрт хэдэн зураг яаж ч нэмж болно. ФБ альбом шиг л ажиллана. Та энэ кодыг бүхлээр нь хуулж аваад .html файл болгон хадгалахад шууд ажиллана.
+
+        
+        <div class="dynamic-album" data-images="
+            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
+            https://the2m16.github.io/web/images/2017.05.31.jpg,
+            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+            https://the2m16.github.io/web/images/2017.06.09.1802UBM.png,
+            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+            https://the2m16.github.io/web/images/2017.05.31.jpg,
+            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
+        "></div>
+    </div>
+<!-- NEWS BOX END -->
+
+
+
+
+
+<!-- NEWS BOX START -->
+<div class="news-box">
+	<h2>2016.06.22 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН №4113 ДҮГНЭЛТ</h2>
+	Сошлд 6 сарын 17-ны өдөр анх дэлгэсэн 2 мин 16 сек үргэлжлэх аудио эх бичлэгийг СБД-ийн Цагдаагийн 1-р хэлтсээс ШШҮХ-нд шинжлүүлэхэд
+		<span style="color: #ff0000; text-transform: uppercase; font-weight: bold;">"БИЧЛЭГ ДЭХ ДУУ ХООЛОЙ Ц.САНДУЙГИЙН ДУУ ХООЛОЙТОЙ ТОХИРЧ БАЙНА"</span> гэж дүгнэлт гарав.
+		Шинжээчийн дүгнэлтийг PDF форматаар үзэх:
+
+<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #ccc; margin-top: 0px;">
     <iframe 
         src="https://the2m16.github.io/web/files/4113.pdf#navpanes=0&toolbar=0&view=FitH" 
         style="width: 100%; height: 100%; border: none;"
         loading="lazy">
     </iframe>
 </div>
-<!--PDF WINDOW END-->
+</div>
+<!-- NEWS BOX END -->
 
-	
-<!--VIDEO WINDOW START-->
+
+
+
+
+<!-- NEWS BOX START -->
+<div class="news-box">
+    <h2>2017.08.18 МАН-ЫН ЕНБД Д.АМАРБАЯСГАЛАН: Ц.САНДУЙ НЬ МАН-ЫН УДИРДАХ ЗӨВЛӨЛИЙН ХУРАЛ ДЭЭР ЭНЭ БИЧЛЭГ БОДИТОЙ БОЛСОН ЯВДАЛ ГЭДГИЙГ ХҮЛЭЭН ЗӨВШӨӨРСӨН</h2>		
+
+	<b>Д.АМАРБАЯСГАЛАН:</b> Ер нь бол энэ 60 тэрбумын гэх зүйлийг би саяханыг хүртэл эвлүүлэг гэж бодож явсан. Яагаад гэхлээр 2016 оны үед бичлэг гарч ирээд цацагдах үед
+	энэнд холбогдсон этгээдүүд энэ бол эвлүүлэг гэж албан ёсоор хэлж байсан. Мөн СБД-ийн цагдаагаас энэ бичлэг бол эвлүүлэг байна гэсэн
+	албан тоотыг манай намд ирүүлсэн байдаг. Энийг үндэслээд би бол энэ 60 тэрбумын бичлнг бол эвлүүлэг юм гэсэн итгэл үнэмшилтэй явж ирсэн.
+	<span style="text-transform: uppercase; font-weight: bold;">Харамсалтай нь саяхан болсон намын Удирдах зөвлөлийн хурал дээр
+	энэнд холбогдсон Ц.Сандуй энэ бичлэг нь бодитой болсон юм гэдгийг өөрөө хүлээн зөвшөөрсөн.</span> Эвлүүлэг гэж олон нийтэд хандаж 2-3 удаа
+	мэдэгдэл хийж байсандаа би харамсаж байгаа. Би буруу зүйлд итгэж явж байсан байна гэж өнөөдөр бодож байна.
+
 <div class="video-container">
     <iframe 
-        src="https://www.youtube.com/embed/WKoh2K3gXY0?si=IooNqUsGg5z7p-hM" 
+        src="https://www.youtube.com/embed/W0KUTkL88uw?si=nOJFPYshQDMkakeR&amp;start=78" 
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
     </iframe>
 </div>
-<!--VIDEO WINDOW END-->
-
-	
-<!--IMAGE WINDOW START-->
-<div style="display: flex; flex-direction: column; margin-bottom:20px;">
-  <img 
-    src="https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG"
-    style="max-width: 1200px; display: block; cursor: zoom-in; border: 0.5px solid #cccccc"
-    onclick="openModal(this.src)"
-  >
 </div>
-
-<div id="imageModal" onclick="this.style.display='none'" style="
-    display: none; 
-    position: fixed; 
-    z-index: 9999; 
-    left: 0; 
-    top: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.9); 
-    cursor: zoom-out;
-    align-items: center;
-    justify-content: center;">
-  <img id="modalImg" style="max-width: 95%; max-height: 95%; object-fit: contain;">
-</div>
-<!--IMAGE WINDOW END-->
-
-
-</div>
-<!--                               CONTAINER END                                  -->
+<!-- NEWS BOX END -->
 
 
 
 
 
 
-<!--                               FOOTER START                                  -->
+<!-- NEWS BOX START -->
+    <div class="news-box">
+        <h2>Ганц зурагтай мэдээ</h2>
+        Энд өөр мэдээний текст байж болно. Скрипт бичих шаардлагагүй, зөвхөн доорх кодыг хуулна.
+        
+        <div class="dynamic-album" data-images="
+            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
+        "></div>
+    </div>
+<!-- NEWS BOX END -->
+
+
+
+
+
+
+<!-- NEWS BOX START -->
+	<div class="news-box">
+        <h2>Дараагийн мэдээний гарчиг 7 зурагтай</h2>
+        <span style="text-transform: uppercase; font-weight: bold;">МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж...</span><b>60 тэрбумын бичлэг нь эвлүүлэг бус бодит яриа байсныг хүлээн зөвшөөрөв.</b>
+        <a href="https://ikon.mn/n/130s" class="source-link" target="_blank">ikon.mn</a><br>
+        За, таны хүссэнээр мэдээ бүрт скрипт бичих шаардлагагүй, зөвхөн ганц удаа суулгаад л цаашид олон мэдээнд зэрэг ашиглах боломжтой "Ухаалаг Албом"-ын бүрэн кодыг бэлдлээ. Мэдээ бүрт хэдэн зураг яаж ч нэмж болно. ФБ альбом шиг л ажиллана. Та энэ кодыг бүхлээр нь хуулж аваад .html файл болгон хадгалахад шууд ажиллана.
+
+        
+        <div class="dynamic-album" data-images="
+            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
+            https://the2m16.github.io/web/images/2017.05.31.jpg,
+            https://the2m16.github.io/web/images/2017.06.09.1802UBM.png,
+            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+            https://the2m16.github.io/web/images/2017.05.31.jpg,
+            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
+        "></div>
+    </div>
+<!-- NEWS BOX END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- LIGHT BOX START -->
+	<div id="lightbox" onclick="closeLightbox()">
+		<span class="close-btn">&times;</span>
+		<span class="nav-btn prev" onclick="event.stopPropagation(); changeImage(-1)">&#10094;</span>
+		<img id="lightboxImg" src="" onclick="event.stopPropagation()">
+		<span class="nav-btn next" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
+	</div>    
+<!-- LIGHT BOX END -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- FOOTER START -->
 <footer>
         &copy; 2017-2026 Dorjzodov G. All Rights Reserved.
 </footer>
-<!--                               FOOTER END                                  -->
+<!-- FOOTER END -->
 
 
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- SCRIPT START -->
+    <script>
+        let currentAlbumImages = [];
+        let currentIndex = 0;
+
+        // 1. Бүх албомуудыг автоматаар үүсгэх
+        function initAlbums() {
+            const albums = document.querySelectorAll('.dynamic-album');
+            
+            albums.forEach((albumContainer) => {
+                // data-images доторх текстийг авч жагсаалт болгох
+                const rawData = albumContainer.getAttribute('data-images');
+                const images = rawData.split(',').map(s => s.trim()).filter(s => s !== "");
+                const showCount = 4;
+
+                images.forEach((url, i) => {
+                    if (i < showCount) {
+                        const item = document.createElement('div');
+                        item.className = 'album-item';
+                        item.onclick = () => openLightbox(i, images);
+                        
+                        const img = document.createElement('img');
+                        img.src = url;
+                        item.appendChild(img);
+
+                        // 4 дэх зураг дээр + тоог харуулах
+                        if (i === 3 && images.length > 4) {
+                            const overlay = document.createElement('div');
+                            overlay.className = 'overlay';
+                            overlay.innerText = '+' + (images.length - 3);
+                            item.appendChild(overlay);
+                        }
+                        albumContainer.appendChild(item);
+                    }
+                });
+            });
+        }
+
+        // 2. Lightbox нээх
+        function openLightbox(index, images) {
+            currentAlbumImages = images;
+            currentIndex = index;
+            updateLightboxImage();
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 3. Lightbox хаах
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // 4. Зураг солих
+        function changeImage(step) {
+            currentIndex += step;
+            if (currentIndex >= currentAlbumImages.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = currentAlbumImages.length - 1;
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            document.getElementById('lightboxImg').src = currentAlbumImages[currentIndex];
+        }
+
+        // Гараас удирдах (Arrow keys & Esc)
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === "ArrowLeft") changeImage(-1);
+                if (e.key === "ArrowRight") changeImage(1);
+                if (e.key === "Escape") closeLightbox();
+            }
+        });
+
+        // Эхлүүлэх
+        initAlbums();
 
 
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- МЕНЮ СКРИПТ -->
+// 1. МЕНЮ ТОВЧЛУУР ДЭЭР ДАРАХАД НЭЭХ/ХААХ
+function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
 
+// 2. МЕНЮНИЙ БЛОКИЙН ГАДНА ДАРАХАД ХААХ (Гар утас + PC)
+window.addEventListener('mousedown', function(event) {
+    var x = document.getElementById("myLinks");
+    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
 
-<!--                               SCRIPT START                                  -->
-<script>
-	<!-- МЕНЮ СКРИПТ -->
-		function myFunction() {
-        var x = document.getElementById("myLinks");
-        if (x.style.display === "block") {
+    // Хэрэв меню нээлттэй байвал
+    if (x.style.display === "block") {
+        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
+        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
             x.style.display = "none";
-        } else {
-            x.style.display = "block";
         }
     }
-	
-	<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
-		function openModal(src) {
-		const modal = document.getElementById('imageModal');
-		const modalImg = document.getElementById('modalImg');
-		modal.style.display = "flex";
-		modalImg.src = src;
-	}
-	
-	
+});
+
+// 3. МЕНЮ ГАР УТАСНЫ TOUCH ҮЙЛДЛИЙГ ДЭМЖИХ
+window.addEventListener('touchstart', function(event) {
+    var x = document.getElementById("myLinks");
+    var menuIcon = document.querySelector(".icon");
+
+    if (x.style.display === "block") {
+        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+            x.style.display = "none";
+        }
+    }
+});
+
 </script>
-<!--                               SCRIPT END                                  -->
-
-
-
-
-
-
+<!-- SCRIPT END -->
+</div>
 </body>
 </html>
