@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2m16 - News</title>
+	<title>2m16 - Sample</title>
 
 <style>
 /* <!-- ----------------------------------------------------------------------------------------------------- --> */
@@ -16,10 +16,10 @@
 		background: white;		/* box-ийн дотор өнгө */
 		padding: 2%;			/* box-ийн ирмэгээс дотогш зай */
 		border-radius: 6px;		/* box-ийн өнцөг */
-        text-align: justify;
 		box-shadow: 0 2px 10px rgba(0,0,0,0.1);	/* box-ийн сүүдэр */
-		margin-bottom: 20px; }	/* box хоорондын завсрын зай */
-	.container {
+		margin-bottom: 0px;
+  	margin-top: 20px }	/* box хоорондын завсрын зай */
+  .container {
 		max-width: 1000px;
 		margin: 0 auto; /* контейнерийн ирмэгээс гадагш авах зай */
 		padding: 0px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */ }
@@ -98,27 +98,28 @@
 		height: 38px;				/* Баарны өндөрт тааруулах */ }
 	.navbar a.icon {
 		display: none;				/* Гамбургер дүрсийг нуух */ }
-        }
+		}
 
 /* <!-- ----------------------------------------------------------------------------------------------------- --> */
 	/* TEXT FORMAT */
 	h2 {
 		text-transform: uppercase;
-        color: #0073e6;
+		color: #0073e6;
 		font-size: 1.2em;
 		margin-top: 0;
-        margin-bottom: 5px;
+		margin-bottom: 5px;
 		text-align: left;
 		padding: 0px;
 		line-height: 1.2;
 		clear: both;				/* Меню-тэй давхцахаас сэргийлэх */ }
-	.content { 
+	.news { 
 		font-style: normal;
+		text-align: justify;
 		color: #555;
 		margin-top: 0px; /* параграфийн дээр авах зай */
 		margin-bottom: 0px; /* параграфийн доор авах зай */
 		font-size: 0.95em;
-		padding: 0px;
+		padding-bottom: 10px;                             /*xxx*/
 		line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
 		clear: both; /* Меню-тэй давхцахаас сэргийлэх */ }
 	a.source-link {
@@ -148,10 +149,9 @@
 		object-fit: cover;
 		display: block;
 		transition: transform 0.3s;
-		border: 1px solid #999;
-        box-sizing: border-box;
-        border-radius: 4px;
-        }
+		border: 1px dotted #999;
+		box-sizing: border-box;
+		border-radius: 4px; }
 	.album-item:hover img { transform: scale(1.1); }
 
 	/* 4 ДЭХ ЗУРАГ ДЭЭРХ СААРАЛ +N МАСК */
@@ -165,8 +165,7 @@
 		color: white;
 		font-size: 32px;
 		font-weight: normal;
-		pointer-events: none;		/* Зураг дээр дарахад саад болохгүй */
-        }
+		pointer-events: none; }
 
 /* <!-- ----------------------------------------------------------------------------------------------------- --> */
 	/* LIGHTBOX SETTINGS (ЗУРГИЙГ ТОМРУУЛЖ ХАРАХ ЦОНХ) */
@@ -211,7 +210,7 @@
 		padding-bottom: 56.25%;
 		height: 0;
 		overflow: hidden;
-        margin-top: 20px;
+		margin-top: 0px;
 		margin-bottom: 0px;
 		background: #000; }
 	.video-placeholder {
@@ -249,21 +248,21 @@
 <!-- ----------------------------------------------------------------------------------------------------- -->
 <!--                               NAVIGATION START                                  -->
 <div class="navbar">
-  
-  <div id="myLinks">
-                <a href="https://the2m16.github.io/web/index.html">эхлэл</a>
-                <a href="https://the2m16.github.io/web/90min.html">90 мин</a>
-                <a href="https://the2m16.github.io/web/40min.html">40 мин</a>
-                <a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
-                <a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a>
-                <a href="https://the2m16.github.io/web/timeline.html">Таймлайн</a>
-                <a href="https://the2m16.github.io/web/news.html">Ньюс</a>
-                <a href="https://the2m16.github.io/web/libels.html">Libels</a>
-  </div>
 
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    &#9776;
-  </a>
+	<div id="myLinks">
+				<a href="https://the2m16.github.io/web/index.html">эхлэл</a>
+				<a href="https://the2m16.github.io/web/90min.html">90 мин</a>
+				<a href="https://the2m16.github.io/web/40min.html">40 мин</a>
+				<a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
+				<a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a>
+				<a href="https://the2m16.github.io/web/timeline.html">Таймлайн</a>
+				<a href="https://the2m16.github.io/web/news.html">Ньюс</a>
+				<a href="https://the2m16.github.io/web/libels.html">Libels</a>
+	</div>
+
+	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	&#9776;
+	</a>
 </div>
 <!--                               NAVIGATION END                                  -->
 <!-- ----------------------------------------------------------------------------------------------------- -->
@@ -274,27 +273,27 @@
 
 
 <!-- NEWS BOX START -->
-    <div class="news-box">
-    <div class="content">
-        <h2>Олон зурагтай мэдээ</h2>
-        <span style="text-transform: uppercase; font-weight: bold;">МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж...</span><b>60 тэрбумын бичлэг нь эвлүүлэг бус бодит яриа байсныг хүлээн зөвшөөрөв.</b>
-        <a href="https://ikon.mn/n/130s" class="source-link" target="_blank">ikon.mn</a><br>
-        За, таны хүссэнээр мэдээ бүрт скрипт бичих шаардлагагүй, зөвхөн ганц удаа суулгаад л цаашид олон мэдээнд зэрэг ашиглах боломжтой "Ухаалаг Албом"-ын бүрэн кодыг бэлдлээ. Мэдээ бүрт хэдэн зураг яаж ч нэмж болно. ФБ альбом шиг л ажиллана. Та энэ кодыг бүхлээр нь хуулж аваад .html файл болгон хадгалахад шууд ажиллана.
+<div class="news-box">
+	<div class="news">
+		<h2>Олон зурагтай мэдээ</h2>
+		<span style="text-transform: uppercase; font-weight: bold;">МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж...</span><b>60 тэрбумын бичлэг нь эвлүүлэг бус бодит яриа байсныг хүлээн зөвшөөрөв.</b>
+		<a href="https://ikon.mn/n/130s" class="source-link" target="_blank">ikon.mn</a><br>
+		За, таны хүссэнээр мэдээ бүрт скрипт бичих шаардлагагүй, зөвхөн ганц удаа суулгаад л цаашид олон мэдээнд зэрэг ашиглах боломжтой "Ухаалаг Албом"-ын бүрэн кодыг бэлдлээ. Мэдээ бүрт хэдэн зураг яаж ч нэмж болно. ФБ альбом шиг л ажиллана. Та энэ кодыг бүхлээр нь хуулж аваад .html файл болгон хадгалахад шууд ажиллана.
+	</div>
 
-        
-        <div class="dynamic-album" data-images="
-            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
-            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
-            https://the2m16.github.io/web/images/2017.05.31.jpg,
-            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
-            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
-            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
-            https://the2m16.github.io/web/images/2017.06.09.1802UBM.png,
-            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
-            https://the2m16.github.io/web/images/2017.05.31.jpg,
-            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
-        "></div>
-    </div></div>
+	<div class="dynamic-album" data-images="
+		https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
+		https://the2m16.github.io/web/images/2017.05.31.jpg,
+		https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
+		https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+		https://the2m16.github.io/web/images/2017.06.09.1802UBM.png,
+		https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+		https://the2m16.github.io/web/images/2017.05.31.jpg,
+		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
+	"></div>
+</div>
 <!-- NEWS BOX END -->
 
 
@@ -303,20 +302,23 @@
 
 <!-- NEWS BOX START -->
 <div class="news-box">
-	<h2>2016.06.22 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН №4113 ДҮГНЭЛТ</h2>
-	Сошлд 6 сарын 17-ны өдөр анх дэлгэсэн 2 мин 16 сек үргэлжлэх аудио эх бичлэгийг СБД-ийн Цагдаагийн 1-р хэлтсээс ШШҮХ-нд шинжлүүлэхэд
+	<div class="news">
+		<h2>2016.06.22 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН №4113 ДҮГНЭЛТ</h2>
+		Сошлд 6 сарын 17-ны өдөр анх дэлгэсэн 2 мин 16 сек үргэлжлэх аудио эх бичлэгийг СБД-ийн Цагдаагийн 1-р хэлтсээс ШШҮХ-нд шинжлүүлэхэд
 		<span style="color: #ff0000; text-transform: uppercase; font-weight: bold;">"БИЧЛЭГ ДЭХ ДУУ ХООЛОЙ Ц.САНДУЙГИЙН ДУУ ХООЛОЙТОЙ ТОХИРЧ БАЙНА"</span> гэж дүгнэлт гарав.
 		Шинжээчийн дүгнэлтийг PDF форматаар үзэх:
+	</div>
 
-<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #ccc; margin-top: 0px;">
-    <iframe 
-        src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/4113.pdf&embedded=true" 
-        style="width: 100%; height: 100%; border: none;"
-        loading="lazy">
-    </iframe>
-</div>
+	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #ccc; margin-top: 0px;">
+		<iframe 
+			src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/4113.pdf&embedded=true" 
+			style="width: 100%; height: 100%; border: none;"
+			loading="lazy">
+		</iframe>
+	</div>
 </div>
 <!-- NEWS BOX END -->
+
 
 
 
@@ -324,24 +326,25 @@
 
 <!-- NEWS BOX START -->
 <div class="news-box">
-    <h2>2017.08.18 МАН-ЫН ЕНБД Д.АМАРБАЯСГАЛАН: Ц.САНДУЙ НЬ МАН-ЫН УДИРДАХ ЗӨВЛӨЛИЙН ХУРАЛ ДЭЭР ЭНЭ БИЧЛЭГ БОДИТОЙ БОЛСОН ЯВДАЛ ГЭДГИЙГ ХҮЛЭЭН ЗӨВШӨӨРСӨН</h2>		
+	<div class="news">
+		<h2>2017.08.18 МАН-ЫН ЕНБД Д.АМАРБАЯСГАЛАН: Ц.САНДУЙ НЬ МАН-ЫН УДИРДАХ ЗӨВЛӨЛИЙН ХУРАЛ ДЭЭР ЭНЭ БИЧЛЭГ БОДИТОЙ БОЛСОН ЯВДАЛ ГЭДГИЙГ ХҮЛЭЭН ЗӨВШӨӨРСӨН</h2>		
+		<b>Д.АМАРБАЯСГАЛАН:</b> Ер нь бол энэ 60 тэрбумын гэх зүйлийг би саяханыг хүртэл эвлүүлэг гэж бодож явсан. Яагаад гэхлээр 2016 оны үед бичлэг гарч ирээд цацагдах үед
+		энэнд холбогдсон этгээдүүд энэ бол эвлүүлэг гэж албан ёсоор хэлж байсан. Мөн СБД-ийн цагдаагаас энэ бичлэг бол эвлүүлэг байна гэсэн
+		албан тоотыг манай намд ирүүлсэн байдаг. Энийг үндэслээд би бол энэ 60 тэрбумын бичлнг бол эвлүүлэг юм гэсэн итгэл үнэмшилтэй явж ирсэн.
+		<span style="text-transform: uppercase; font-weight: bold;">Харамсалтай нь саяхан болсон намын Удирдах зөвлөлийн хурал дээр
+		энэнд холбогдсон Ц.Сандуй энэ бичлэг нь бодитой болсон юм гэдгийг өөрөө хүлээн зөвшөөрсөн.</span> Эвлүүлэг гэж олон нийтэд хандаж 2-3 удаа
+		мэдэгдэл хийж байсандаа би харамсаж байгаа. Би буруу зүйлд итгэж явж байсан байна гэж өнөөдөр бодож байна.
+	</div>
 
-	<b>Д.АМАРБАЯСГАЛАН:</b> Ер нь бол энэ 60 тэрбумын гэх зүйлийг би саяханыг хүртэл эвлүүлэг гэж бодож явсан. Яагаад гэхлээр 2016 оны үед бичлэг гарч ирээд цацагдах үед
-	энэнд холбогдсон этгээдүүд энэ бол эвлүүлэг гэж албан ёсоор хэлж байсан. Мөн СБД-ийн цагдаагаас энэ бичлэг бол эвлүүлэг байна гэсэн
-	албан тоотыг манай намд ирүүлсэн байдаг. Энийг үндэслээд би бол энэ 60 тэрбумын бичлнг бол эвлүүлэг юм гэсэн итгэл үнэмшилтэй явж ирсэн.
-	<span style="text-transform: uppercase; font-weight: bold;">Харамсалтай нь саяхан болсон намын Удирдах зөвлөлийн хурал дээр
-	энэнд холбогдсон Ц.Сандуй энэ бичлэг нь бодитой болсон юм гэдгийг өөрөө хүлээн зөвшөөрсөн.</span> Эвлүүлэг гэж олон нийтэд хандаж 2-3 удаа
-	мэдэгдэл хийж байсандаа би харамсаж байгаа. Би буруу зүйлд итгэж явж байсан байна гэж өнөөдөр бодож байна.
-
-<div class="video-container">
-    <iframe 
-        src="https://www.youtube.com/embed/W0KUTkL88uw?si=nOJFPYshQDMkakeR&amp;start=78" 
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
-</div>
+	<div class="video-container">
+		<iframe 
+			src="https://www.youtube.com/embed/W0KUTkL88uw?si=nOJFPYshQDMkakeR&amp;start=78" 
+			style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+			frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+			allowfullscreen>
+		</iframe>
+	</div>
 </div>
 <!-- NEWS BOX END -->
 
@@ -351,14 +354,16 @@
 
 
 <!-- NEWS BOX START -->
-    <div class="news-box">
-        <h2>Ганц зурагтай мэдээ</h2>
-        Энд өөр мэдээний текст байж болно. Скрипт бичих шаардлагагүй, зөвхөн доорх кодыг хуулна.
-        
-        <div class="dynamic-album" data-images="
-            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
-        "></div>
-    </div>
+<div class="news-box">
+	<div class="news">
+		<h2>Ганц зурагтай мэдээ</h2>
+		Энд өөр мэдээний текст байж болно. Скрипт бичих шаардлагагүй, зөвхөн доорх кодыг хуулна.
+	</div>
+
+	<div class="dynamic-album" data-images="
+		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
+	"></div>
+</div>
 <!-- NEWS BOX END -->
 
 
@@ -367,23 +372,24 @@
 
 
 <!-- NEWS BOX START -->
-	<div class="news-box">
-        <h2>Дараагийн мэдээний гарчиг 7 зурагтай</h2>
-        <span style="text-transform: uppercase; font-weight: bold;">МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж...</span><b>60 тэрбумын бичлэг нь эвлүүлэг бус бодит яриа байсныг хүлээн зөвшөөрөв.</b>
-        <a href="https://ikon.mn/n/130s" class="source-link" target="_blank">ikon.mn</a><br>
-        За, таны хүссэнээр мэдээ бүрт скрипт бичих шаардлагагүй, зөвхөн ганц удаа суулгаад л цаашид олон мэдээнд зэрэг ашиглах боломжтой "Ухаалаг Албом"-ын бүрэн кодыг бэлдлээ. Мэдээ бүрт хэдэн зураг яаж ч нэмж болно. ФБ альбом шиг л ажиллана. Та энэ кодыг бүхлээр нь хуулж аваад .html файл болгон хадгалахад шууд ажиллана.
+<div class="news-box">
+	<div class="news">
+		<h2>Дараагийн мэдээний гарчиг 7 зурагтай</h2>
+		<span style="text-transform: uppercase; font-weight: bold;">МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж...</span><b>60 тэрбумын бичлэг нь эвлүүлэг бус бодит яриа байсныг хүлээн зөвшөөрөв.</b>
+		<a href="https://ikon.mn/n/130s" class="source-link" target="_blank">ikon.mn</a><br>
+		За, таны хүссэнээр мэдээ бүрт скрипт бичих шаардлагагүй, зөвхөн ганц удаа суулгаад л цаашид олон мэдээнд зэрэг ашиглах боломжтой "Ухаалаг Албом"-ын бүрэн кодыг бэлдлээ. Мэдээ бүрт хэдэн зураг яаж ч нэмж болно. ФБ альбом шиг л ажиллана. Та энэ кодыг бүхлээр нь хуулж аваад .html файл болгон хадгалахад шууд ажиллана.
+	</div>
 
-        
-        <div class="dynamic-album" data-images="
-            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
-            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
-            https://the2m16.github.io/web/images/2017.05.31.jpg,
-            https://the2m16.github.io/web/images/2017.06.09.1802UBM.png,
-            https://the2m16.github.io/web/images/2017.08.17manUZ.png,
-            https://the2m16.github.io/web/images/2017.05.31.jpg,
-            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
-        "></div>
-    </div>
+	<div class="dynamic-album" data-images="
+		https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG,
+		https://the2m16.github.io/web/images/2017.05.31.jpg,
+		https://the2m16.github.io/web/images/2017.06.09.1802UBM.png,
+		https://the2m16.github.io/web/images/2017.08.17manUZ.png,
+		https://the2m16.github.io/web/images/2017.05.31.jpg,
+		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.JPG
+	"></div>
+	</div>
 <!-- NEWS BOX END -->
 
 
@@ -420,127 +426,125 @@
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
 <!-- FOOTER START -->
-<footer>
-        &copy; 2017-2026 Dorjzodov G. All Rights Reserved.
-</footer>
+<footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
 <!-- FOOTER END -->
 
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
 <!-- SCRIPT START -->
-    <script>
-        let currentAlbumImages = [];
-        let currentIndex = 0;
+	<script>
+		let currentAlbumImages = [];
+		let currentIndex = 0;
 
-        // 1. Бүх албомуудыг автоматаар үүсгэх
-        function initAlbums() {
-            const albums = document.querySelectorAll('.dynamic-album');
-            
-            albums.forEach((albumContainer) => {
-                // data-images доторх текстийг авч жагсаалт болгох
-                const rawData = albumContainer.getAttribute('data-images');
-                const images = rawData.split(',').map(s => s.trim()).filter(s => s !== "");
-                const showCount = 4;
+		// 1. Бүх албомуудыг автоматаар үүсгэх
+		function initAlbums() {
+			const albums = document.querySelectorAll('.dynamic-album');
 
-                images.forEach((url, i) => {
-                    if (i < showCount) {
-                        const item = document.createElement('div');
-                        item.className = 'album-item';
-                        item.onclick = () => openLightbox(i, images);
-                        
-                        const img = document.createElement('img');
-                        img.src = url;
-                        item.appendChild(img);
+			albums.forEach((albumContainer) => {
+				// data-images доторх текстийг авч жагсаалт болгох
+				const rawData = albumContainer.getAttribute('data-images');
+				const images = rawData.split(',').map(s => s.trim()).filter(s => s !== "");
+				const showCount = 4;
 
-                        // 4 дэх зураг дээр + тоог харуулах
-                        if (i === 3 && images.length > 4) {
-                            const overlay = document.createElement('div');
-                            overlay.className = 'overlay';
-                            overlay.innerText = '+' + (images.length - 3);
-                            item.appendChild(overlay);
-                        }
-                        albumContainer.appendChild(item);
-                    }
-                });
-            });
-        }
+				images.forEach((url, i) => {
+					if (i < showCount) {
+						const item = document.createElement('div');
+						item.className = 'album-item';
+						item.onclick = () => openLightbox(i, images);
 
-        // 2. Lightbox нээх
-        function openLightbox(index, images) {
-            currentAlbumImages = images;
-            currentIndex = index;
-            updateLightboxImage();
-            document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+						const img = document.createElement('img');
+						img.src = url;
+						item.appendChild(img);
 
-        // 3. Lightbox хаах
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // 4. Зураг солих
-        function changeImage(step) {
-            currentIndex += step;
-            if (currentIndex >= currentAlbumImages.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = currentAlbumImages.length - 1;
-            updateLightboxImage();
-        }
+						// 4 дэх зураг дээр + тоог харуулах
+						if (i === 3 && images.length > 4) {
+							const overlay = document.createElement('div');
+							overlay.className = 'overlay';
+							overlay.innerText = '+' + (images.length - 3);
+							item.appendChild(overlay);
+						}
+						albumContainer.appendChild(item);
+					}
+				});
+			});
+		}
 
-        function updateLightboxImage() {
-            document.getElementById('lightboxImg').src = currentAlbumImages[currentIndex];
-        }
+		// 2. Lightbox нээх
+		function openLightbox(index, images) {
+			currentAlbumImages = images;
+			currentIndex = index;
+			updateLightboxImage();
+			document.getElementById('lightbox').style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+		}
 
-        // Гараас удирдах (Arrow keys & Esc)
-        document.addEventListener('keydown', (e) => {
-            if (document.getElementById('lightbox').style.display === 'flex') {
-                if (e.key === "ArrowLeft") changeImage(-1);
-                if (e.key === "ArrowRight") changeImage(1);
-                if (e.key === "Escape") closeLightbox();
-            }
-        });
+		// 3. Lightbox хаах
+		function closeLightbox() {
+			document.getElementById('lightbox').style.display = 'none';
+			document.body.style.overflow = 'auto';
+		}
 
-        // Эхлүүлэх
-        initAlbums();
+		// 4. Зураг солих
+		function changeImage(step) {
+			currentIndex += step;
+			if (currentIndex >= currentAlbumImages.length) currentIndex = 0;
+			if (currentIndex < 0) currentIndex = currentAlbumImages.length - 1;
+			updateLightboxImage();
+		}
+
+		function updateLightboxImage() {
+			document.getElementById('lightboxImg').src = currentAlbumImages[currentIndex];
+		}
+
+		// Гараас удирдах (Arrow keys & Esc)
+		document.addEventListener('keydown', (e) => {
+			if (document.getElementById('lightbox').style.display === 'flex') {
+				if (e.key === "ArrowLeft") changeImage(-1);
+				if (e.key === "ArrowRight") changeImage(1);
+				if (e.key === "Escape") closeLightbox();
+			}
+		});
+
+		// Эхлүүлэх
+		initAlbums();
 
 
 <!-- ----------------------------------------------------------------------------------------------------- -->
 <!-- МЕНЮ СКРИПТ -->
 // 1. МЕНЮ ТОВЧЛУУР ДЭЭР ДАРАХАД НЭЭХ/ХААХ
 function myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
+	var x = document.getElementById("myLinks");
+	if (x.style.display === "block") {
+		x.style.display = "none";
+	} else {
+		x.style.display = "block";
+	}
 }
 
 // 2. МЕНЮНИЙ БЛОКИЙН ГАДНА ДАРАХАД ХААХ (Гар утас + PC)
 window.addEventListener('mousedown', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
+	var x = document.getElementById("myLinks");
+	var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
 
-    // Хэрэв меню нээлттэй байвал
-    if (x.style.display === "block") {
-        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
+	// Хэрэв меню нээлттэй байвал
+	if (x.style.display === "block") {
+		// Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
+		if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+			x.style.display = "none";
+		}
+	}
 });
 
 // 3. МЕНЮ ГАР УТАСНЫ TOUCH ҮЙЛДЛИЙГ ДЭМЖИХ
 window.addEventListener('touchstart', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon");
+	var x = document.getElementById("myLinks");
+	var menuIcon = document.querySelector(".icon");
 
-    if (x.style.display === "block") {
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
+	if (x.style.display === "block") {
+		if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+			x.style.display = "none";
+		}
+	}
 });
 
 </script>
