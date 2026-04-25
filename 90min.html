@@ -1,204 +1,243 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
-    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>2m16 - 90 min</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2m16 - 0blanc</title>
+
 <style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			background-color: #f4f4f4;
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+/* COMMON SETTINGS */
+	body {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		margin: 0;
+		background-color: #f4f4f4; }
+	.news-box {
+		background: white;		/* box-ийн дотор өнгө */
+		padding: 2%;			/* box-ийн ирмэгээс дотогш зай */
+		border-radius: 6px;		/* box-ийн өнцөг */
+		box-shadow: 0 2px 10px rgba(0,0,0,0.1);	/* box-ийн сүүдэр */
+		margin-bottom: 0px;
+  	margin-top: 20px }	/* box хоорондын завсрын зай */
+  .container {
+		max-width: 1000px;
+		margin: 0 auto; /* контейнерийн ирмэгээс гадагш авах зай */
+		padding: 0px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */ }
+
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* NAVBAR SETTINGS */
+	.navbar { 
+		background-color: rgba(77, 77, 77, 0.7);	/* БААРНЫ ӨНГӨ */
+		backdrop-filter: blur(4px);		/* Баарны ард контентыг бүрсгэж харагдуулна */
+		position: relative;	/* Суурь байршил */
+		min-height: 38px;	/* Баарны доод өндөр */
+		width: 100%;		/* Дэлгэцийн өргөнөөр үргэлж сунах */
+		display: flex;		/* Блок хэлбэрээр байрлах */
+		position: sticky;	/* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
+		top: 0;				/* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
+		left: 0;			/* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
+		right: 0;			/* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
+		z-index: 3000;		/* Навигешний лэиерийг контентуудын дээр харагдуулах */ }
+
+	/* MENU LINK */
+	.navbar a {
+		background: transparent;
+		color: white;
+		text-transform: uppercase;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 13px;
+		display: flex;			/* Блок биш flex болгох */
+		align-items: center;	/* Босоо тэнхлэгийн дагуу голлуулах */
+		height: 38px;			/* Баарны өндөртэй ижил байлгах */
+		box-sizing: border-box;	/* Padding-г хэмжээнд багтаах */ }
+
+	/* HAMBURGER ICON */
+	.navbar a.icon {
+		color: white;	/* hamburger-ийн 3 зураасны өнгө */
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 38px;	/* гамбургерийн дөрвөлжингийн өндөр */
+		display: flex;
+		align-items: center;
+		padding: 0 16px; }
+
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед менюг гамбургер болгох) */
+	.navbar #myLinks { 
+		display: none;		/* ГАМБЕРГЕР МЕНЮГ анхны байдлаар нуух */
+		position: absolute;	/* ГАМБЕРГЕР МЕНЮГ Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
+		top: 38px;			/* ГАМБЕРГЕР МЕНЮНИЙ МӨРИЙГ Navbar-ын өндөртэй ижил хэмжээгээр буулгах */
+		right: 0;			/* ГАМБЕРГЕР МЕНЮНИЙ байршил left: 0 or right: 0 */
+		width: 220px;		/* ГАМБЕРГЕР МЕНЮНИЙ өргөн */
+		background-color: rgba(77, 77, 77, 0.7);	/* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
+		backdrop-filter: blur(2px);					/* ГАМБЕРГЕР МЕНЮНИЙ арын контентыг бүрсийлгэж харагдуулна */
+		z-index: 3000;		/* Контентын дээр харагдуулах */ }
+
+	.navbar a:hover {
+		background-color: #555; 
+		color: white; }
+
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй болоход менюг бар болгох) */
+	@media screen and (min-width: 1000px) {
+	.navbar {
+		display: flex;				/* Уян хатан бүтэц ашиглах */
+		height: 38px;				/* Өндрийг тогтмол болгох */
+		background-color: rgba(77, 77, 77, 0.7);
+		justify-content: center;	/* Цэсийг                  хэвтээ                тэнхлэгийн            дагуу            голлуулах */ }
+	.navbar #myLinks {
+		display: flex !important;	/* Линкүүдийг хөндлөн харуулах */
+		position: static;			/* Absolute байршлыг цуцлах */
+		background-color: rgba(77, 77, 77, 0.7);
+		width: auto;				/* Зөвхөн агуулгаараа өргөсөх */ }
+	.navbar a {
+		float: left;				/* Нэг мөрөнд зэрэгцүүлэх */
+		background-color: rgba(77, 77, 77, 0.7);
+		height: 38px;				/* Баарны өндөрт тааруулах */ }
+	.navbar a.icon {
+		display: none;				/* Гамбургер дүрсийг нуух */ }
 		}
 
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* TEXT FORMAT */
+	h2 {
+		text-transform: uppercase;
+		color: #0073e6;
+		font-size: 1.2em;
+		margin-top: 0;
+		margin-bottom: 5px;
+		text-align: left;
+		padding: 0px;
+		line-height: 1.2;
+		clear: both;				/* Меню-тэй давхцахаас сэргийлэх */ }
+	.news { 
+		font-style: normal;
+		text-align: justify;
+		color: #555;
+		margin-top: 0px; /* параграфийн дээр авах зай */
+		margin-bottom: 0px; /* параграфийн доор авах зай */
+		font-size: 0.95em;
+		padding-bottom: 10px;                             /*xxx*/
+		line-height: 1.5; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
+		clear: both; /* Меню-тэй давхцахаас сэргийлэх */ }
+	a.source-link {
+		color: #0066cc;
+		text-decoration: none;
+		font-weight: bold; }
+	li {
+		margin-bottom: 20px; }
 
-/* <!--                               -----                                  --> */
-        /* NAVBAR ЕРӨНХИЙ СТАЙЛ */
-        .navbar { 
-            background-color: rgba(77, 77, 77, 1); /* БААРНЫ ӨНГӨ */
-    		backdrop-filter: blur(2px); /* Баарны ард контентыг бүрсгэж харагдуулна */
-            position: relative; /* Суурь байршил */
-            min-height: 38px; /* Баарны доод өндөр */
-            width: 100%; /* Дэлгэцийн өргөнөөр үргэлж сунах */
-            display: flex; /* Блок хэлбэрээр байрлах */
-		    position: sticky;                        /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд талд наалттай үлдээх */
-		    top: 0;                                  /* Хуудсыг доош гүйлгэхэд навигешн барыг дээд ирмэгээс 0 зайд байрлахыг заах */
-		    left: 0;                                 /* Хуудсыг доош гүйлгэхэд навигешн барыг зүүн ирмэгээс 0 зайд байрлахыг заах */
-		    right: 0;                                /* Хуудсыг доош гүйлгэхэд навигешн барыг баруун ирмэгээс 0 зайд байрлахыг заах */
-    		z-index: 3000; /* Навигешний лэиерийг контентуудын дээр харагдуулах */
-        }
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* PHOTO ALBUM GRID SETTINGS */
+	.dynamic-album {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr));
+		gap: 5px;
+		margin-top: 0px; }
+	.album-item {
+		position: relative;
+		cursor: pointer;
+		overflow: hidden;
+		border-radius: 4px;
+		aspect-ratio: 4 / 3;
+		background-color: #eee; }
+	.album-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.3s;
+		border: 1px dotted #999;
+		box-sizing: border-box;
+		border-radius: 4px; }
+	.album-item:hover img { transform: scale(1.1); }
 
-        /* Линкүүдийн загвар */
-        .navbar a {
-            background-color: transparent;
-            color: white;
-            text-transform: uppercase;
-            padding: 14px 16px; 
-            text-decoration: none; 
-            font-size: 13px; 
-			display: flex; /* Блок биш flex болгох */
-			align-items: center; /* Босоо тэнхлэгийн дагуу голлуулах */
-			height: 38px; /* Баарны өндөртэй ижил байлгах */
-			box-sizing: border-box; /* Padding-г хэмжээнд багтаах */
-        }
+	/* 4 ДЭХ ЗУРАГ ДЭЭРХ СААРАЛ +N МАСК */
+	.overlay {
+		position: absolute;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0, 0, 0, 0.65);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-size: 32px;
+		font-weight: normal;
+		pointer-events: none; }
 
-        /* Гамбургер икон */
-        .navbar a.icon {
-            color: white; /* hamburger-ийн 3 зураасны өнгө */
-            position: absolute; 
-            right: 0; 
-            top: 0; 
-            height: 38px; /* гамбургерийн дөрвөлжингийн өндөр */
-            display: flex; 
-            align-items: center; 
-            padding: 0 16px; 
-        }
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* LIGHTBOX SETTINGS (ЗУРГИЙГ ТОМРУУЛЖ ХАРАХ ЦОНХ) */
+	#lightbox {
+		display: none;
+		position: fixed;
+		z-index: 10000;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0, 0, 0, 0.95);
+		justify-content: center;
+		align-items: center;
+		user-select: none; }
+	#lightbox img {
+		max-width: 90%;
+		max-height: 85%;
+		object-fit: contain;
+		box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+	.nav-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		color: white;
+		font-size: 60px;
+		cursor: pointer;
+		padding: 0px;
+		transition: 0.2s; }
+	.nav-btn:hover { color: #ccc; }
+	.prev { left: 20px; }
+	.next { right: 20px; }
+	.close-btn { 
+		position: absolute; 
+		top: 20px; 
+		right: 30px; 
+		color: white; 
+		font-size: 40px; 
+		cursor: pointer; }
 
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* VIDEO CONTAINER SETTINGS */
+	.video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		background: #000; }
+	.video-placeholder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		background: #333;
+		text-align: center; }
 
-/* <!--                               -----                                  --> */
-        /* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй болоход менюг гамбургер болгох) */
-        .navbar #myLinks { 
-    		display: none; /* Анхны байдлаар нуух */
-    		position: absolute; /* Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
-    		top: 38px; /* Navbar-ын өндөртэй ижил хэмжээгээр гамбургерийн эхний мөрийг буулгах */
-    		right: 0; /* Гамбургер менюний байршил left: 0 or right: 0 */
-    		width: 220px; /* Гамбургер менюний өргөн */
-    		background-color: rgba(77, 77, 77, 0.7); /* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
-    		backdrop-filter: blur(2px); /* гамбургерийн ард контентыг бүрсгэж харагдуулна */
-    		z-index: 3000; /* Контентын дээр харагдуулах */
-		}
-
-        .navbar a:hover {
-            background-color: #555; 
-            color: white; 
-        }
-
-
-/* <!--                               -----                                  --> */
-        /* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй үед менюг бар болгох) */
-        @media screen and (min-width: 1000px) {
-            .navbar {
-                display: flex; /* Уян хатан бүтэц ашиглах */
-                height: 38px; /* Өндрийг тогтмол болгох */
-				justify-content: center;     /* Цэсийг                  хэвтээ                тэнхлэгийн            дагуу            голлуулах */
-            }
-            .navbar #myLinks {
-                display: flex !important; /* Линкүүдийг хөндлөн харуулах */
-                position: static; /* Absolute байршлыг цуцлах */
-                width: auto; /* Зөвхөн агуулгаараа өргөсөх */
-            }
-            .navbar a {
-                float: left; /* Нэг мөрөнд зэрэгцүүлэх */
-                height: 38px; /* Баарны өндөрт тааруулах */
-            }
-            .navbar a.icon {
-                display: none; /* Гамбургер дүрсийг нуух */
-            }
-        }
-        
-        
-/* <!--                               -----                                  --> */
-        /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
-        .container {
-            max-width: 1000px;
-            margin: 20px auto; /* контейнерийн ирмэгээс гадагш авах зай */
-            background: white;
-            padding: 20px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */
-			box-sizing: border-box; /* Padding-ийг өргөн дотор нь багтаана */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-		
-		
-/* <!--                               -----                                  --> */
-h2 {
-            font-style: normal;
-            font-weight: bold;
-            color: #0073e6;
-            margin-top: 0px; /* параграфийн дээр авах зай */
-            margin-bottom: 10px; /* параграфийн доор авах зай */
-            font-size: 1.4em;
-            text-align: left;
-			padding: 0px;
-            line-height: 1.2; /* Мөр хооронд зай. Default нь line-height: 1.2 */
-            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
-}
-
-.body-text {
-            font-style: normal;
-            color: #555;
-            margin-top: 0px; /* параграфийн дээр авах зай */
-            margin-bottom: 10px; /* параграфийн доор авах зай */
-            font-size: 1em;
-            text-align: justify;
-			padding: 0px;
-            line-height: 1.5; /* Мөр хооронд зай. Default нь line-height: 1.2 */
-            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
-}
-        /* List line height */
-        li {
-        	margin-bottom: 20px;
-        }
-
-
-/* <!--                               -----                                  --> */
-        /* КОНТЕНТ ТЕКСТ ФОРМАТ СТАЙЛ */
-        .content { 
-            font-style: normal;
-            color: #555;
-            margin-top: 0px; /* параграфийн дээр авах зай */
-            margin-bottom: 30px; /* параграфийн доор авах зай */
-            font-size: 0.95em;
-            text-align: justify;
-			padding: 0px;
-            line-height: 1.2; /* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
-            clear: both; /* Меню-тэй давхцахаас сэргийлэх */
-        }
-
-
-/* <!--                               -----                                  --> */
-        /* ВИДЕО КОНТЕЙНЕР */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 20px;
-            background: #000;
-        }
-
-		
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            background: #333;
-            text-align: center;
-        }
-
-
-/* <!--                               -----                                  --> */
-		/* ФҮҮТЭР ТОХИРГОО */
-		footer {
-		    flex-shrink: 0; /* Фүүтэр шахагдахгүй */
-		    text-align: center;
-		    padding: 30px;
-		    font-size: 13px;
-		    background: transparent; /* Арын фон өнгөгүй болгох */
-		    color: #555; /* Текстийн өнгийг харагдахуйц бараан болгох */
-		    width: 100%;
-		    box-sizing: border-box;
-		}
-    </style>
-
-
-
-
-
-
+/* <!-- ----------------------------------------------------------------------------------------------------- --> */
+	/* FOOTER SETTINGS */
+	footer {
+		flex-shrink: 0;				/* Фүүтэр шахагдахгүй */
+		text-align: center;
+		padding: 30px;
+		font-size: 13px;
+		background: transparent;	/* Арын фон өнгөгүй болгох */
+		color: #555;				/* Текстийн өнгийг харагдахуйц бараан болгох */
+		width: 100%;
+		box-sizing: border-box; }
+</style>
 </head>
 <body>
 
@@ -234,7 +273,8 @@ h2 {
 
 <!--                               CONTAINER START                                  -->
 <div class="container">
-<div class="content">
+<div class="news-box">
+  <div class="content">
 
 
 
@@ -260,7 +300,7 @@ h2 {
 
 
 
-<div class="body-text">
+<div class="news">
 	<i>(Огноо: 2014 оны 9 сарын 8-ны өдөр, 12:00-13:30 цаг, Байршил: Шинэ Монгол хаад групп ХХК-ийн байр, 4 давхарт, Ц.Сандуйн өрөө)<br>
 		
 	Энэ 90 минутын аудио эх бичлэгийг шинжилсэн Америкийн шүүхийн шинжилгээний Шинжээчийн дүгнэлтийг <a href="https://the2m16.github.io/web/forensicfbi.html"></i><b>ЭНДЭЭС ҮЗЭХ</b></a>
@@ -1740,72 +1780,146 @@ h2 {
 
 
 
-<!--                               FOOTER START                                  -->
-<footer>
-        &copy; 2017-2026 Dorjzodov G. All Rights Reserved.
-</footer>
-<!--                               FOOTER END                                  -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- LIGHT BOX START -->
+	<div id="lightbox" onclick="closeLightbox()">
+		<span class="close-btn">&times;</span>
+		<span class="nav-btn prev" onclick="event.stopPropagation(); changeImage(-1)">&#10094;</span>
+		<img id="lightboxImg" src="" onclick="event.stopPropagation()">
+		<span class="nav-btn next" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
+	</div>
+<!-- LIGHT BOX END -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- FOOTER START -->
+<footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
+<!-- FOOTER END -->
 
 
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- SCRIPT START -->
+	<script>
+		let currentAlbumImages = [];
+		let currentIndex = 0;
+
+		// 1. Бүх албомуудыг автоматаар үүсгэх
+		function initAlbums() {
+			const albums = document.querySelectorAll('.dynamic-album');
+
+			albums.forEach((albumContainer) => {
+				// data-images доторх текстийг авч жагсаалт болгох
+				const rawData = albumContainer.getAttribute('data-images');
+				const images = rawData.split(',').map(s => s.trim()).filter(s => s !== "");
+				const showCount = 4;
+
+				images.forEach((url, i) => {
+					if (i < showCount) {
+						const item = document.createElement('div');
+						item.className = 'album-item';
+						item.onclick = () => openLightbox(i, images);
+
+						const img = document.createElement('img');
+						img.src = url;
+						item.appendChild(img);
+
+						// 4 дэх зураг дээр + тоог харуулах
+						if (i === 3 && images.length > 4) {
+							const overlay = document.createElement('div');
+							overlay.className = 'overlay';
+							overlay.innerText = '+' + (images.length - 3);
+							item.appendChild(overlay);
+						}
+						albumContainer.appendChild(item);
+					}
+				});
+			});
+		}
+
+		// 2. Lightbox нээх
+		function openLightbox(index, images) {
+			currentAlbumImages = images;
+			currentIndex = index;
+			updateLightboxImage();
+			document.getElementById('lightbox').style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+		}
+
+		// 3. Lightbox хаах
+		function closeLightbox() {
+			document.getElementById('lightbox').style.display = 'none';
+			document.body.style.overflow = 'auto';
+		}
+
+		// 4. Зураг солих
+		function changeImage(step) {
+			currentIndex += step;
+			if (currentIndex >= currentAlbumImages.length) currentIndex = 0;
+			if (currentIndex < 0) currentIndex = currentAlbumImages.length - 1;
+			updateLightboxImage();
+		}
+
+		function updateLightboxImage() {
+			document.getElementById('lightboxImg').src = currentAlbumImages[currentIndex];
+		}
+
+		// Гараас удирдах (Arrow keys & Esc)
+		document.addEventListener('keydown', (e) => {
+			if (document.getElementById('lightbox').style.display === 'flex') {
+				if (e.key === "ArrowLeft") changeImage(-1);
+				if (e.key === "ArrowRight") changeImage(1);
+				if (e.key === "Escape") closeLightbox();
+			}
+		});
+
+		// Эхлүүлэх
+		initAlbums();
 
 
-
-
-<!--                               SCRIPT START                                  -->
-<script>
-	<!-- МЕНЮ СКРИПТ -->
-// 1. Товчлуур дээр дарахад нээх/хаах функц
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- МЕНЮ СКРИПТ -->
+// 1. МЕНЮ ТОВЧЛУУР ДЭЭР ДАРАХАД НЭЭХ/ХААХ
 function myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
+	var x = document.getElementById("myLinks");
+	if (x.style.display === "block") {
+		x.style.display = "none";
+	} else {
+		x.style.display = "block";
+	}
 }
 
-// 2. Гадна талд дарахад хаах (Гар утас + PC)
+// 2. МЕНЮНИЙ БЛОКИЙН ГАДНА ДАРАХАД ХААХ (Гар утас + PC)
 window.addEventListener('mousedown', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
+	var x = document.getElementById("myLinks");
+	var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
 
-    // Хэрэв меню нээлттэй байвал
-    if (x.style.display === "block") {
-        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
-});
-
-// Гар утасны touch үйлдлийг дэмжих
-window.addEventListener('touchstart', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon");
-
-    if (x.style.display === "block") {
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
-});
-	
-	<!-- ЗУРАГ ТОМРУУЛЖ ХАРАХ СКРИПТ -->
-		function openModal(src) {
-		const modal = document.getElementById('imageModal');
-		const modalImg = document.getElementById('modalImg');
-		modal.style.display = "flex";
-		modalImg.src = src;
+	// Хэрэв меню нээлттэй байвал
+	if (x.style.display === "block") {
+		// Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
+		if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+			x.style.display = "none";
+		}
 	}
-	
-	
+});
+
+// 3. МЕНЮ ГАР УТАСНЫ TOUCH ҮЙЛДЛИЙГ ДЭМЖИХ
+window.addEventListener('touchstart', function(event) {
+	var x = document.getElementById("myLinks");
+	var menuIcon = document.querySelector(".icon");
+
+	if (x.style.display === "block") {
+		if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+			x.style.display = "none";
+		}
+	}
+});
+
 </script>
-<!--                               SCRIPT END                                  -->
-
-
-
-
-
-
+<!-- SCRIPT END -->
+</div>
 </body>
 </html>
