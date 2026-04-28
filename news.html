@@ -185,16 +185,30 @@
 		box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 	.nav-btn {
 		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		color: #f2f2f2;
-		font-size: 60px;
+		top: 0;
+		height: 100%;       /* Дээд тал хүртэл бүтэн өндөртэй болгоно */
+		width: 20%;         /* Зургийн баруун, зүүн талаас 20%-ийг эзэлнэ */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(255, 255, 255, 0.5); /* Сумны өнгө хагас тунгалаг */
+		font-size: 40px;
+		text-decoration: none;
 		cursor: pointer;
-		padding: 0px;
-		transition: 0.2s; }
-	.nav-btn:hover { color: #ccc; }
-	.prev { left: 20px; }
-	.next { right: 20px; }
+		z-index: 20;        /* Зургийн дээр харагдана */
+		transition: background 0.3s;
+		user-select: none; }
+	.nav-btn:hover {
+		color: white;
+		background: linear-gradient(to left, rgba(0,0,0,0.5), transparent); }
+	.prev { /* Зүүн талын талбар */
+		left: 0;
+		background: linear-gradient(to right, rgba(0,0,0,0.3), transparent); }
+	.next { /* Баруун талын талбар */
+		right: 0;
+		background: linear-gradient(to left, rgba(0,0,0,0.3), transparent); /* Баруун талд */ }
+	.prev:hover {
+    background: linear-gradient(to right, rgba(0,0,0,0.5), transparent); /* Зүүн талд */ }
 	.close-btn { 
 		position: absolute; 
 		top: 20px; 
