@@ -184,15 +184,21 @@
 		max-height: 85%;
 		object-fit: contain;
 		box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-	.nav-btn {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		color: white;
-		font-size: 60px;
-		cursor: pointer;
-		padding: 0px;
-		transition: 0.2s; }
+.nav-btn {
+	position: absolute;				/* Lightbox дотор дурын байрлалд байршуулах */
+	top: 0;							/* Дээд ирмэгээс эхлэх */
+	height: 100%;					/* Зургийн хоёр талд бүтэн босоо талбар үүсгэх */
+	width: 10%;						/* Дэлгэцийн зүүн/баруун талын 20%-ийг дарах талбар болгох */
+	display: flex;					/* Доторх сумыг Flexbox-оор байршуулах */
+	align-items: center;			/* Сумыг босоо чиглэлд голлуулах */
+	justify-content: center;		/* Сумыг хэвтээ чиглэлд голлуулах */
+	color: rgba(255, 255, 255, 0.5);	/* Сумны өнгийг 50% тунгалаг цагаан болгох */
+	font-size: 40px;				/* Сумны хэмжээг тохируулах */
+	text-decoration: none;			/* Сумны доогуур зураасыг арилгах */
+	cursor: pointer;				/* Хулганаар очиход дарах боломжтойг илтгэх гар гарч ирэх */
+	z-index: 20;					/* Зургийн дээр харагдахыг баталгаажуулах */
+	transition: background 0.3s;	/* Өнгө өөрчлөгдөх үйлдэл 0.3 секундэд зөөлөн явагдах */
+	user-select: none;				/* Сум дээр олон дарахад цэнхэрлэж сонгогдохоос сэргийлэх */ }
 	.nav-btn:hover { color: #ccc; }
 	.prev { left: 20px; }
 	.next { right: 20px; }
