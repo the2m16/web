@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>2m16 - MN Forensic</title>
+	<title>2m16 - News</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="/web/images/favicon.png">
 
 <style>
@@ -13,20 +13,20 @@
 		margin: 0;
 		background-color: #f4f4f4; }
 	.news-box {
-		background: white;		/* box-ийн дотор өнгө */
-		padding: 2%;			/* box-ийн ирмэгээс дотогш зай */
-		border-radius: 6px;		/* box-ийн өнцөг */
+		background: white;				/* box-ийн дотор өнгө */
+		padding: 2%;					/* box-ийн ирмэгээс дотогш зай */
+		border-radius: 6px;				/* box-ийн өнцөг */
 		box-shadow: 0 2px 10px rgba(0,0,0,0.1);	/* box-ийн сүүдэр */
 		margin-bottom: 0px;
-		margin-top: 20px }	/* box хоорондын завсрын зай */
+		margin-top: 20px }				/* box хоорондын завсрын зай */
 	.container {
 		max-width: 1000px;
-		margin: 0 auto; /* контейнерийн ирмэгээс гадагш авах зай */
-		padding: 0px; /* контейнерийн ирмэгээс дотогш контентийн авах зай */ }
+		margin: 0 auto;					/* контейнерийн ирмэгээс гадагш авах зай */
+		padding: 0px;					/* контейнерийн ирмэгээс дотогш контентийн авах зай */ }
 
 /* NAVBAR SETTINGS					--------------------------------------------------- --> */
 	.navbar { 
-		background-color: rgba(77, 77, 77, 0.7);	/* БААРНЫ ӨНГӨ */
+		background-color: rgba(77, 77, 77, 0.7);	/* Баарны өнгө */
 		backdrop-filter: blur(4px);		/* Баарны ард контентыг бүрсгэж харагдуулна */
 		position: relative;				/* Суурь байршил */
 		min-height: 38px;				/* Баарны доод өндөр */
@@ -46,32 +46,32 @@
 		padding: 14px 16px;
 		text-decoration: none;
 		font-size: 13px;
-		display: flex;					/* Блок биш flex болгох */
-		align-items: center;			/* Босоо тэнхлэгийн дагуу голлуулах */
-		height: 38px;					/* Баарны өндөртэй ижил байлгах */
-		box-sizing: border-box;			/* Padding-г хэмжээнд багтаах */ }
+		display: flex;
+		align-items: center;
+		height: 38px;
+		box-sizing: border-box; }
 
 /* HAMBURGER ICON */
 	.navbar a.icon {
-		color: white;					/* hamburger-ийн 3 зураасны өнгө */
+		color: white;					/* Гамбургер Меню 3 зураасны өнгө */
 		position: absolute;
 		right: 0;
 		top: 0;
-		height: 38px;					/* гамбургерийн дөрвөлжингийн өндөр */
+		height: 38px;					/* Гамбургер Меню дөрвөлжингийн өндөр */
 		display: flex;
 		align-items: center;
 		padding: 0 16px; }
 
 /* SMALL SCREEN MENU STYLE */
 	.navbar #myLinks { 
-		display: none;					/* ГАМБЕРГЕР МЕНЮГ анхны байдлаар нуух */
-		position: absolute;				/* ГАМБЕРГЕР МЕНЮГ Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
-		top: 38px;						/* ГАМБЕРГЕР МЕНЮНИЙ МӨРИЙГ Navbar-ын өндөртэй ижил хэмжээгээр буулгах */
-		right: 0;						/* ГАМБЕРГЕР МЕНЮНИЙ байршил left: 0 or right: 0 */
-		width: 220px;					/* ГАМБЕРГЕР МЕНЮНИЙ өргөн */
-		background-color: rgba(77, 77, 77, 0.7);	/* ГАМБЕРГЕР МЕНЮНИЙ ӨНГӨ */
-		backdrop-filter: blur(2px);					/* ГАМБЕРГЕР МЕНЮНИЙ арын контентыг бүрсийлгэж харагдуулна */
-		z-index: 3000;					/* Контентын дээр харагдуулах */ }
+		display: none;					/* Гамбургер Менюг анхны байдлаар нуух */
+		position: absolute;				/* Гамбургер Менюг Navbar-аас хамааралгүй чөлөөтэй байрлуулах */
+		top: 38px;						/* Гамбургер Менюг Navbar-ын өндөртэй ижил хэмжээгээр буулгах */
+		right: 0;						/* Гамбургер Меню байршил left: 0 or right: 0 */
+		width: 220px;					/* Гамбургер Меню өргөн */
+		background-color: rgba(77, 77, 77, 0.7);	/* Гамбургер Меню өнгө */
+		backdrop-filter: blur(2px);					/* Гамбургер Меню арын контентыг бүрсийлгэж харагдуулна */
+		z-index: 3000; }
 	.navbar a:hover {
 		background-color: #555; 
 		color: white; }
@@ -93,7 +93,7 @@
 		background-color: rgba(77, 77, 77, 0.7);
 		height: 38px;					/* Баарны өндөрт тааруулах */ }
 	.navbar a.icon {
-		display: none;					/* Гамбургер дүрсийг нуух */ }
+		display: none;					/* Гамбургер Меню дүрсийг нуух */ }
 		}
 
 /* NEWS BOX TEXT FORMAT				--------------------------------------------------- --> */
@@ -111,11 +111,11 @@
 		font-style: normal;
 		text-align: justify;
 		color: #555;
-		margin-top: 0px;				/* параграфийн дээр авах зай */
-		margin-bottom: 0px;				/* параграфийн доор авах зай */
+		margin-top: 0px;				/* Параграфийн дээр авах зай */
+		margin-bottom: 0px;				/* Параграфийн доор авах зай */
 		font-size: 0.95em;
 		padding-bottom: 10px;
-		line-height: 1.5;				/* line-height-ийг px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
+		line-height: 1.5;				/* px-ээр бас өгч болж бна. Default нь line-height: 1.2 */
 		clear: both;					/* Меню-тэй давхцахаас сэргийлэх */ }
 	a.source-link {
 		color: #0066cc;
