@@ -1,281 +1,281 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2m16 - Podcast</title>
-    <style>
-        :root {
-            --bg-color: #121820;
-            --card-bg: #1a222c;
-            --primary-blue: #007bff;
-            --text-main: #ffffff;
-            --text-secondary: #a0aec0;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2m16 - Podcast</title>
+	<style>
+		:root {
+			--bg-color: #121820;
+			--card-bg: #1a222c;
+			--primary-blue: #007bff;
+			--text-main: #ffffff;
+			--text-secondary: #a0aec0;
+		}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
+		body {
+			background-color: var(--bg-color);
+			color: var(--text-main);
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			display: flex;
+			justify-content: center;
+			padding: 20px;
+		}
 
-        .container {
-            width: 100%;
-            max-width: 500px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+		.container {
+			width: 100%;
+			max-width: 500px;
+			background: var(--card-bg);
+			border-radius: 15px;
+			padding: 30px;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+		}
 
-        /* Үндсэн тоглуулагч хэсэг */
-        .main-player {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+		/* Үндсэн тоглуулагч хэсэг */
+		.main-player {
+			text-align: center;
+			margin-bottom: 30px;
+		}
 
-        .podcast-logo {
-            width: 180px;
-            height: 180px;
-            background: white;
-            color: black;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            padding: 10px;
-            text-align: center;
-            font-size: 20px;
-            text-transform: uppercase;
-        }
+		.podcast-logo {
+			width: 180px;
+			height: 180px;
+			background: white;
+			color: black;
+			font-weight: bold;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 20px;
+			padding: 10px;
+			text-align: center;
+			font-size: 20px;
+			text-transform: uppercase;
+		}
 
-        .episode-number {
-            color: var(--primary-blue);
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+		.episode-number {
+			color: var(--primary-blue);
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
 
-        .episode-title {
-            font-size: 14px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+		.episode-title {
+			font-size: 14px;
+			margin-bottom: 20px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
 
-        audio {
-            width: 100%;
-            margin-bottom: 20px;
-            filter: invert(100%) hue-rotate(180deg) brightness(1.5);
-        }
+		audio {
+			width: 100%;
+			margin-bottom: 20px;
+			filter: invert(100%) hue-rotate(180deg) brightness(1.5);
+		}
 
-        .description-box {
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            text-align: left;
-        }
+		.description-box {
+			background: rgba(255,255,255,0.05);
+			padding: 15px;
+			border-radius: 8px;
+			font-size: 0.95rem;
+			color: var(--text-secondary);
+			line-height: 1.5;
+			text-align: left;
+		}
 
-        /* Жагсаалт хэсэг */
-        .list-title {
-            font-size: 14px;
-            font-weight: bold;
-            margin: 25px 0 15px;
-            text-transform: uppercase;
-        }
+		/* Жагсаалт хэсэг */
+		.list-title {
+			font-size: 14px;
+			font-weight: bold;
+			margin: 25px 0 15px;
+			text-transform: uppercase;
+		}
 
-        .podcast-list {
-            max-height: 300px;
-            overflow-y: auto;
-            border-top: 1px solid #2d3748;
-        }
+		.podcast-list {
+			max-height: 300px;
+			overflow-y: auto;
+			border-top: 1px solid #2d3748;
+		}
 
-        .list-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 10px;
-            border-bottom: 1px solid #2d3748;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+		.list-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 15px 10px;
+			border-bottom: 1px solid #2d3748;
+			cursor: pointer;
+			transition: background 0.3s;
+		}
 
-        .list-item:hover {
-            background: rgba(255,255,255,0.05);
-        }
+		.list-item:hover {
+			background: rgba(255,255,255,0.05);
+		}
 
-        .list-item.active {
-            border-left: 3px solid var(--primary-blue);
-        }
+		.list-item.active {
+			border-left: 3px solid var(--primary-blue);
+		}
 
-        .list-info .ep-num {
-            color: var(--primary-blue);
-            font-size: 12px;
-            font-weight: bold;
-            display: block;
-        }
+		.list-info .ep-num {
+			color: var(--primary-blue);
+			font-size: 12px;
+			font-weight: bold;
+			display: block;
+		}
 
-        .list-info .ep-name {
-            font-size: 14px;
-        }
+		.list-info .ep-name {
+			font-size: 14px;
+		}
 
-        .play-icon {
-            color: var(--primary-blue);
-            font-size: 18px;
-        }
+		.play-icon {
+			color: var(--primary-blue);
+			font-size: 18px;
+		}
 
-        /* Гүйлгэгч (Scrollbar) засах */
-        .podcast-list::-webkit-scrollbar {
-            width: 5px;
-        }
-        .podcast-list::-webkit-scrollbar-thumb {
-            background: #4a5568;
-            border-radius: 10px;
-        }
-    </style>
+		/* Гүйлгэгч (Scrollbar) засах */
+		.podcast-list::-webkit-scrollbar {
+			width: 5px;
+		}
+		.podcast-list::-webkit-scrollbar-thumb {
+			background: #4a5568;
+			border-radius: 10px;
+		}
+	</style>
 </head>
 <body>
 
 <div class="container">
-    <div class="main-player">
-        <div class="podcast-logo"><img src="https://the2m16.github.io/web/images/podcastcover.png"></div>
-        
-        <div id="active-episode-num" class="episode-number">EPISODE #01</div>
-        <div id="active-episode-title" class="episode-title">THE SIEGE OF ORGIL TOWN AND THE ATTEMPTS OF LAW ENFORCEMENT</div>
-        
-        <audio id="audio-player" controls src="https://the2m16.github.io/web/media/episode_01.mp3"></audio>
+	<div class="main-player">
+		<div class="podcast-logo"><img src="https://the2m16.github.io/web/images/podcastcover.png"></div>
 
-        <div class="description-box" id="active-description">
-            Энэ хэсэгт тухайн дугаарын тухай товч мэдээлэл болон онцлох үйл явдлуудыг бичнэ. Сонгосон дугаараас хамаарч энэ бичвэр солигдоно.
-        </div>
-    </div>
+		<div id="active-episode-num" class="episode-number">EPISODE #01</div>
+		<div id="active-episode-title" class="episode-title">THE SIEGE OF ORGIL TOWN AND THE ATTEMPTS OF LAW ENFORCEMENT</div>
 
-    <div class="list-title">Podcast List</div>
-    
-    <div class="podcast-list" id="playlist">
-        </div>
+		<audio id="audio-player" controls src="https://the2m16.github.io/web/media/episode_01.mp3"></audio>
+
+		<div class="description-box" id="active-description">
+			Энэ хэсэгт тухайн дугаарын тухай товч мэдээлэл болон онцлох үйл явдлуудыг бичнэ. Сонгосон дугаараас хамаарч энэ бичвэр солигдоно.
+		</div>
+	</div>
+
+	<div class="list-title">Podcast List</div>
+
+	<div class="podcast-list" id="playlist">
+		</div>
 </div>
 
 <script>
-    // Подкастын өгөгдлүүд
-    const episodes = [
-        {
-            id: "01",
-            title: "THE SIEGE OF ORGIL TOWN AND THE ATTEMPTS OF LAW ENFORCEMENT",
-            audio: "https://the2m16.github.io/web/media/episode_01.mp3",
-            desc: "Хууль сахиулагчдын оролцоо болон Оргил хотод болсон бүслэлтийн талаарх дэлгэрэнгүй мэдээлэл."
-        },
-        {
-            id: "02",
-            title: "THE HIDDEN EVIDENCE AND SECRET MEETINGS",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-            desc: "Нууц уулзалтууд болон олдоогүй байсан баримтуудын мөрөөр."
-        },
-        {
-            id: "03",
-            title: "WHISTLEBLOWER'S FIRST TESTIMONY",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-            desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
-        },
-        {
-            id: "04",
-            title: "THE SHADOW GOVERNMENT REVEALED",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-            desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
-        },
-        {
-            id: "05",
-            title: "CHASE THROUGH THE CAPITAL",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-            desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
-        },
-        {
-            id: "06",
-            title: "FINAL JUSTICE: THE VERDICT",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-            desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
-        },
-        {
-            id: "07",
-            title: "WHISTLEBLOWER'S FIRST TESTIMONY",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-            desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
-        },
-        {
-            id: "08",
-            title: "THE SHADOW GOVERNMENT REVEALED",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-            desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
-        },
-        {
-            id: "09",
-            title: "CHASE THROUGH THE CAPITAL",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-            desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
-        },
-        {
-            id: "10",
-            title: "FINAL JUSTICE: THE VERDICT",
-            audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-            desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
-        }
-    ];
+	// Подкастын өгөгдлүүд
+	const episodes = [
+		{
+			id: "01",
+			title: "THE SIEGE OF ORGIL TOWN AND THE ATTEMPTS OF LAW ENFORCEMENT",
+			audio: "https://the2m16.github.io/web/media/episode_01.mp3",
+			desc: "Хууль сахиулагчдын оролцоо болон Оргил хотод болсон бүслэлтийн талаарх дэлгэрэнгүй мэдээлэл."
+		},
+		{
+			id: "02",
+			title: "THE HIDDEN EVIDENCE AND SECRET MEETINGS",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+			desc: "Нууц уулзалтууд болон олдоогүй байсан баримтуудын мөрөөр."
+		},
+		{
+			id: "03",
+			title: "WHISTLEBLOWER'S FIRST TESTIMONY",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
+		},
+		{
+			id: "04",
+			title: "THE SHADOW GOVERNMENT REVEALED",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
+		},
+		{
+			id: "05",
+			title: "CHASE THROUGH THE CAPITAL",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
+		},
+		{
+			id: "06",
+			title: "FINAL JUSTICE: THE VERDICT",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
+		},
+		{
+			id: "07",
+			title: "WHISTLEBLOWER'S FIRST TESTIMONY",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
+		},
+		{
+			id: "08",
+			title: "THE SHADOW GOVERNMENT REVEALED",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
+		},
+		{
+			id: "09",
+			title: "CHASE THROUGH THE CAPITAL",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
+		},
+		{
+			id: "10",
+			title: "FINAL JUSTICE: THE VERDICT",
+			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
+		}
+	];
 
-    const playlistContainer = document.getElementById('playlist');
-    const audioPlayer = document.getElementById('audio-player');
-    const activeEpNum = document.getElementById('active-episode-num');
-    const activeEpTitle = document.getElementById('active-episode-title');
-    const activeDesc = document.getElementById('active-description');
+	const playlistContainer = document.getElementById('playlist');
+	const audioPlayer = document.getElementById('audio-player');
+	const activeEpNum = document.getElementById('active-episode-num');
+	const activeEpTitle = document.getElementById('active-episode-title');
+	const activeDesc = document.getElementById('active-description');
 
-    // Жагсаалтыг үүсгэж дэлгэцэнд гаргах функц
-    function renderPlaylist() {
-        playlistContainer.innerHTML = '';
-        episodes.forEach((ep, index) => {
-            const item = document.createElement('div');
-            item.className = 'list-item';
-            item.onclick = () => loadEpisode(index);
-            
-            item.innerHTML = `
-                <div class="list-info">
-                    <span class="ep-num">EPISODE #${ep.id}</span>
-                    <span class="ep-name">Title: ${ep.title.substring(0, 30)}...</span>
-                </div>
-                <div class="play-icon">▶</div>
-            `;
-            playlistContainer.appendChild(item);
-        });
-    }
+	// Жагсаалтыг үүсгэж дэлгэцэнд гаргах функц
+	function renderPlaylist() {
+		playlistContainer.innerHTML = '';
+		episodes.forEach((ep, index) => {
+			const item = document.createElement('div');
+			item.className = 'list-item';
+			item.onclick = () => loadEpisode(index);
 
-    // Дугаар сонгоход дээд талын мэдээллийг солих функц
-    function loadEpisode(index) {
-        const ep = episodes[index];
-        
-        // CSS класс солих (идэвхтэй харагдуулах)
-        const items = document.querySelectorAll('.list-item');
-        items.forEach(i => i.classList.remove('active'));
-        items[index].classList.add('active');
+			item.innerHTML = `
+				<div class="list-info">
+					<span class="ep-num">EPISODE #${ep.id}</span>
+					<span class="ep-name">Title: ${ep.title.substring(0, 30)}...</span>
+				</div>
+				<div class="play-icon">▶</div>
+			`;
+			playlistContainer.appendChild(item);
+		});
+	}
 
-        // Мэдээллийг шинэчлэх
-        activeEpNum.innerText = `EPISODE #${ep.id}`;
-        activeEpTitle.innerText = ep.title;
-        activeDesc.innerText = ep.desc;
-        audioPlayer.src = ep.audio;
-        
-        // Шууд тоглуулж эхлэх
-        audioPlayer.play();
+	// Дугаар сонгоход дээд талын мэдээллийг солих функц
+	function loadEpisode(index) {
+		const ep = episodes[index];
 
-        // Хуудасны дээд хэсэг рүү зөөлөн гүйлгэж очих
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+		// CSS класс солих (идэвхтэй харагдуулах)
+		const items = document.querySelectorAll('.list-item');
+		items.forEach(i => i.classList.remove('active'));
+		items[index].classList.add('active');
 
-    // Анхны ачаалалт
-    renderPlaylist();
+		// Мэдээллийг шинэчлэх
+		activeEpNum.innerText = `EPISODE #${ep.id}`;
+		activeEpTitle.innerText = ep.title;
+		activeDesc.innerText = ep.desc;
+		audioPlayer.src = ep.audio;
+
+		// Шууд тоглуулж эхлэх
+		audioPlayer.play();
+
+		// Хуудасны дээд хэсэг рүү зөөлөн гүйлгэж очих
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
+	// Анхны ачаалалт
+	renderPlaylist();
 </script>
 
 </body>
