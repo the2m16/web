@@ -24,9 +24,9 @@
 
 		.container {
 			width: 100%;
-			max-width: 500px;
+			max-width: 400px;
 			background: var(--card-bg);
-			border-radius: 15px;
+			border-radius: 12px;
 			padding: 30px;
 			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 		}
@@ -75,7 +75,7 @@
 		.description-box {
 			background: rgba(255,255,255,0.05);
 			padding: 15px;
-			border-radius: 8px;
+			border-radius: 4px;
 			font-size: 0.95rem;
 			color: var(--text-secondary);
 			line-height: 1.5;
@@ -91,7 +91,7 @@
 		}
 
 		.podcast-list {
-			max-height: 300px;
+			max-height: 400px;
 			overflow-y: auto;
 			border-top: 1px solid #2d3748;
 		}
@@ -127,7 +127,7 @@
 
 		.play-icon {
 			color: var(--primary-blue);
-			font-size: 18px;
+			font-size: 20px;
 		}
 
 		/* Гүйлгэгч (Scrollbar) засах */
@@ -145,21 +145,14 @@
 <div class="container">
 	<div class="main-player">
 		<div class="podcast-logo"><img src="https://the2m16.github.io/web/images/podcastcover.png"></div>
-
 		<div id="active-episode-num" class="episode-number">EPISODE #01</div>
 		<div id="active-episode-title" class="episode-title">THE SIEGE OF ORGIL TOWN AND THE ATTEMPTS OF LAW ENFORCEMENT</div>
-
 		<audio id="audio-player" controls src="https://the2m16.github.io/web/media/episode_01.mp3"></audio>
-
-		<div class="description-box" id="active-description">
-			Энэ хэсэгт тухайн дугаарын тухай товч мэдээлэл болон онцлох үйл явдлуудыг бичнэ. Сонгосон дугаараас хамаарч энэ бичвэр солигдоно.
-		</div>
+		<div class="description-box" id="active-description">Оргил хотхоны бүслэлтийн талаар</div>
 	</div>
 
 	<div class="list-title">Podcast List</div>
-
-	<div class="podcast-list" id="playlist">
-		</div>
+	<div class="podcast-list" id="playlist"></div>
 </div>
 
 <script>
@@ -169,60 +162,60 @@
 			id: "01",
 			title: "THE SIEGE OF ORGIL TOWN AND THE ATTEMPTS OF LAW ENFORCEMENT",
 			audio: "https://the2m16.github.io/web/media/episode_01.mp3",
-			desc: "Хууль сахиулагчдын оролцоо болон Оргил хотод болсон бүслэлтийн талаарх дэлгэрэнгүй мэдээлэл."
+			desc: "Оргил хотхоны бүслэлтийн талаар"
 		},
 		{
 			id: "02",
 			title: "THE HIDDEN EVIDENCE AND SECRET MEETINGS",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+			audio: "",
 			desc: "Нууц уулзалтууд болон олдоогүй байсан баримтуудын мөрөөр."
 		},
 		{
 			id: "03",
 			title: "WHISTLEBLOWER'S FIRST TESTIMONY",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+			audio: "",
 			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
 		},
 		{
 			id: "04",
 			title: "THE SHADOW GOVERNMENT REVEALED",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+			audio: "",
 			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
 		},
 		{
 			id: "05",
 			title: "CHASE THROUGH THE CAPITAL",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+			audio: "",
 			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
 		},
 		{
 			id: "06",
 			title: "FINAL JUSTICE: THE VERDICT",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+			audio: "",
 			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
 		},
 		{
 			id: "07",
 			title: "WHISTLEBLOWER'S FIRST TESTIMONY",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+			audio: "",
 			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
 		},
 		{
 			id: "08",
 			title: "THE SHADOW GOVERNMENT REVEALED",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+			audio: "",
 			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
 		},
 		{
 			id: "09",
 			title: "CHASE THROUGH THE CAPITAL",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+			audio: "",
 			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
 		},
 		{
 			id: "10",
 			title: "FINAL JUSTICE: THE VERDICT",
-			audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+			audio: "",
 			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
 		}
 	];
@@ -244,7 +237,7 @@
 			item.innerHTML = `
 				<div class="list-info">
 					<span class="ep-num">EPISODE #${ep.id}</span>
-					<span class="ep-name">Title: ${ep.title.substring(0, 30)}...</span>
+					<span class="ep-name">${ep.title.substring(0, 30)}...</span>
 				</div>
 				<div class="play-icon">▶</div>
 			`;
