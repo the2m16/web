@@ -1,148 +1,101 @@
 <!DOCTYPE html>
-<html lang="mn">
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>2m16 - Podcast</title>
-	<style>
-		:root {
-			--bg-color: #121820;
-			--card-bg: #1a222c;
-			--primary-blue: #007bff;
-			--text-main: #ffffff;
-			--text-secondary: #a0aec0;
-		}
+	<link rel="icon" type="image/png" sizes="32x32" href="/web/images/favicon.png">
+<style>
+		body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff; margin: 0; background-color: #121820; }
 
-		body {
-			background-color: var(--bg-color);
-			color: var(--text-main);
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			display: flex;
-			justify-content: center;
-			padding: 20px;
-		}
+/* <!--                               -----                                  --> */
+		/* NAVBAR ЕРӨНХИЙ СТАЙЛ */
+		.navbar {background-color: rgba(77, 77, 77, 1); backdrop-filter: blur(2px); position: relative; min-height: 38px; width: 100%; display: flex; position: sticky; top: 0; left: 0; right: 0; z-index: 3000; }
+		.navbar a { background-color: transparent; color: white; text-transform: uppercase; padding: 14px 16px; text-decoration: none; font-size: 13px; display: flex; align-items: center; height: 38px; box-sizing: border-box; }
+		.navbar a.icon { color: white; position: absolute; right: 0; top: 0; height: 38px; display: flex; align-items: center; padding: 0 16px; }
+/* <!--                               -----                                  --> */
+		/* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед менюг гамбургер болгох) */
+		.navbar #myLinks { display: none; position: absolute; top: 38px; right: 0; width: 220px; background-color: rgba(77, 77, 77, 0.7); backdrop-filter: blur(2px); z-index: 3000; }
+		.navbar a:hover { background-color: #555; color: white; }
+/* <!--                               -----                                  --> */
+		/* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй болоход менюг бар болгох) */
+		@media screen and (min-width: 1000px) {
+			.navbar { display: flex; height: 38px; justify-content: center; }
+			.navbar #myLinks { display: flex !important; position: static; width: auto; }
+			.navbar a { float: left; height: 38px; }
+			.navbar a.icon { display: none; } }
 
-		.container {
-			width: 100%;
-			max-width: 400px;
-			background: var(--card-bg);
-			border-radius: 12px;
-			padding: 30px;
-			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-		}
+/* <!--                               -----                                  --> */
+        /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
+		.container { margin-top: 20px; margin-right: auto; margin-left: auto; margin-bottom: auto; width: 100%; max-width: 400px; background: #1a222c; border-radius: 8px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-		/* Үндсэн тоглуулагч хэсэг */
-		.main-player {
-			text-align: center;
-			margin-bottom: 30px;
-		}
+/* <!--                               -----                                  --> */
+		/* ФҮҮТЭР ТОХИРГОО */
+		footer { flex-shrink: 0; text-align: center; padding: 30px; font-size: 13px; background: transparent; color: #666; width: 100%; box-sizing: border-box; }
 
-		.podcast-logo {
-			width: 180px;
-			height: 180px;
-			background: white;
-			color: black;
-			font-weight: bold;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin: 0 auto 20px;
-			padding: 10px;
-			text-align: center;
-			font-size: 20px;
-			text-transform: uppercase;
-		}
+/* <!--                                -----                                 --> */
+		/* NEW PLAYER STYLE */
+		.main-player { text-align: center; margin-bottom: 30px; }
+		.podcast-logo { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; padding: 10px; }
+		.episode-number { font-size: 1.4rem; color: #8cbaff; font-weight: bold; margin-bottom: 5px; }
+		.episode-title { font-size: 0.9rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+		audio { width: 100%; margin-bottom: 20px; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
+		.description-box { background: transparent; padding-left: 15px; border-radius: 4px; font-size: 0.95rem; color: #7087a9; line-height: 1.5; text-align: left; }
 
-		.episode-number {
-			color: var(--primary-blue);
-			font-weight: bold;
-			margin-bottom: 5px;
-		}
+		/* LIST STYLE */
+		.list-title { font-size: 14px; font-weight: bold; margin: 25px 0 15px; text-transform: uppercase; }
+		.podcast-list { max-height: 400px; overflow-y: auto; border-top: 1px solid #2d3748; }
+		.list-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid #2d3748; cursor: pointer; transition: background 0.3s; }
+		.list-item:hover { background: rgba(255,255,255,0.05); }
+		.list-item.active { border-left: 3px solid #8cbaff; }
+		.list-info .ep-num { color: #8cbaff; font-size: 12px; font-weight: bold; display: block; }
+		.list-info .ep-name { font-size: 14px; }
+		.play-icon { color: #8cbaff; font-size: 20px; }
 
-		.episode-title {
-			font-size: 14px;
-			margin-bottom: 20px;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
+		/* SCROLL BAR STYLE */
+		.podcast-list::-webkit-scrollbar { width: 5px; }
+		.podcast-list::-webkit-scrollbar-thumb { background: #4a5568; border-radius: 10px; }
+/* <!--                                -----                                 --> */
 
-		audio {
-			width: 100%;
-			margin-bottom: 20px;
-			filter: invert(100%) hue-rotate(180deg) brightness(1.5);
-		}
 
-		.description-box {
-			background: rgba(255,255,255,0.05);
-			padding: 15px;
-			border-radius: 4px;
-			font-size: 0.95rem;
-			color: var(--text-secondary);
-			line-height: 1.5;
-			text-align: left;
-		}
-
-		/* Жагсаалт хэсэг */
-		.list-title {
-			font-size: 14px;
-			font-weight: bold;
-			margin: 25px 0 15px;
-			text-transform: uppercase;
-		}
-
-		.podcast-list {
-			max-height: 400px;
-			overflow-y: auto;
-			border-top: 1px solid #2d3748;
-		}
-
-		.list-item {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 15px 10px;
-			border-bottom: 1px solid #2d3748;
-			cursor: pointer;
-			transition: background 0.3s;
-		}
-
-		.list-item:hover {
-			background: rgba(255,255,255,0.05);
-		}
-
-		.list-item.active {
-			border-left: 3px solid var(--primary-blue);
-		}
-
-		.list-info .ep-num {
-			color: var(--primary-blue);
-			font-size: 12px;
-			font-weight: bold;
-			display: block;
-		}
-
-		.list-info .ep-name {
-			font-size: 14px;
-		}
-
-		.play-icon {
-			color: var(--primary-blue);
-			font-size: 20px;
-		}
-
-		/* Гүйлгэгч (Scrollbar) засах */
-		.podcast-list::-webkit-scrollbar {
-			width: 5px;
-		}
-		.podcast-list::-webkit-scrollbar-thumb {
-			background: #4a5568;
-			border-radius: 10px;
-		}
 	</style>
+
+
+
+
+
+
 </head>
 <body>
+<!-- NAVIGATION START		--------------------------------------------------- -->
+<div class="navbar">
+  <div id="myLinks">
+	<a href="/web/index.html">эхлэл</a>
+	<a href="/web/90min.html">90 мин</a>
+	<a href="/web/40min.html">40 мин</a>
+	<a href="/web/forensicmn.html">ШШҮХ шинжээч</a>
+	<a href="/web/forensicfbi.html">FBI шинжээч</a>
+	<a href="/web/news.html">Ньюс</a>
+	<a href="/web/podcast1.html">Подкаст</a>
+	<a href="/web/0blanc.html">TestPage</a>
+  </div>
 
+	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	&#9776;
+	</a>
+</div>
+<!-- NAVIGATION END			--------------------------------------------------- -->
+<!-- CONTAINER START		--------------------------------------------------- -->
 <div class="container">
+
+
+
+
+
+
+
+
+<!--                               PLAYER START                                  -->
 	<div class="main-player">
 		<div class="podcast-logo"><img src="https://the2m16.github.io/web/images/podcastcover.png"></div>
 		<div id="active-episode-num" class="episode-number">EPISODE #01</div>
@@ -153,71 +106,122 @@
 
 	<div class="list-title">Podcast List</div>
 	<div class="podcast-list" id="playlist"></div>
-</div>
 
+<!--                               PLAYER END                                  -->
+</div>
+<!--                               CONTAINER END                                  -->
+
+
+
+
+
+
+<!--                               FOOTER START                                  -->
+<footer>
+        &copy; 2017-2026 Dorjzodov G. All rights reserved.
+</footer>
+<!--                               FOOTER END                                  -->
+
+
+
+
+
+
+<!--                               SCRIPT START                                  -->
 <script>
-	// Подкастын өгөгдлүүд
+	<!-- МЕНЮ СКРИПТ -->
+// 1. Товчлуур дээр дарахад нээх/хаах функц
+function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+
+// 2. Гадна талд дарахад хаах (Гар утас + PC)
+window.addEventListener('mousedown', function(event) {
+    var x = document.getElementById("myLinks");
+    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
+
+    // Хэрэв меню нээлттэй байвал
+    if (x.style.display === "block") {
+        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
+        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+            x.style.display = "none";
+        }
+    }
+});
+
+// Гар утасны touch үйлдлийг дэмжих
+window.addEventListener('touchstart', function(event) {
+    var x = document.getElementById("myLinks");
+    var menuIcon = document.querySelector(".icon");
+
+    if (x.style.display === "block") {
+        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
+            x.style.display = "none";
+        }
+    }
+});
+
+
+
+
+
+// Podcast list
 	const episodes = [
 		{
 			id: "01",
 			title: "THE SIEGE OF ORGIL TOWN AND THE ATTEMPTS OF LAW ENFORCEMENT",
 			audio: "https://the2m16.github.io/web/media/episode_01.mp3",
-			desc: "Оргил хотхоны бүслэлтийн талаар"
-		},
+			desc: "Оргил хотхоны бүслэлтийн талаар" },
 		{
 			id: "02",
 			title: "THE HIDDEN EVIDENCE AND SECRET MEETINGS",
 			audio: "",
-			desc: "Нууц уулзалтууд болон олдоогүй байсан баримтуудын мөрөөр."
-		},
+			desc: "Нууц уулзалтууд болон олдоогүй байсан баримтуудын мөрөөр." },
 		{
 			id: "03",
 			title: "WHISTLEBLOWER'S FIRST TESTIMONY",
 			audio: "",
-			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
-		},
+			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага." },
 		{
 			id: "04",
 			title: "THE SHADOW GOVERNMENT REVEALED",
 			audio: "",
-			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
-		},
+			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр." },
 		{
 			id: "05",
 			title: "CHASE THROUGH THE CAPITAL",
 			audio: "",
-			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
-		},
+			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч." },
 		{
 			id: "06",
 			title: "FINAL JUSTICE: THE VERDICT",
 			audio: "",
-			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
-		},
+			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?" },
 		{
 			id: "07",
 			title: "WHISTLEBLOWER'S FIRST TESTIMONY",
 			audio: "",
-			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага."
-		},
+			desc: "Шүгэл үлээгчийн анхны мэдүүлэг ба түүнийг хүлээж авсан олон нийтийн хандлага." },
 		{
 			id: "08",
 			title: "THE SHADOW GOVERNMENT REVEALED",
 			audio: "",
-			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр."
-		},
+			desc: "Сүүдрийн засгийн газрын бүтэц болон тэдний санхүүжилтийн эх үүсвэр." },
 		{
 			id: "09",
 			title: "CHASE THROUGH THE CAPITAL",
 			audio: "",
-			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч."
-		},
+			desc: "Нийслэл хотоор өрнөсөн хөөцөлдөөн ба эцсийн мөч." },
 		{
 			id: "10",
 			title: "FINAL JUSTICE: THE VERDICT",
 			audio: "",
-			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?"
-		}
+			desc: "Шүүх хурал болон эцсийн шийдвэр. Хэн ялав?" }
 	];
 
 	const playlistContainer = document.getElementById('playlist');
@@ -269,7 +273,20 @@
 
 	// Анхны ачаалалт
 	renderPlaylist();
+
+
+
+
+
+
+
 </script>
+<!--                               SCRIPT END                                  -->
+
+
+
+
+
 
 </body>
 </html>
