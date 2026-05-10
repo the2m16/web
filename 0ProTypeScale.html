@@ -30,7 +30,7 @@
             width: 100%;
             max-width: 600px;
             padding: 40px;
-            border-radius: 24px;
+            border-radius: 14px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
         }
@@ -154,6 +154,8 @@
     <div class="control-group" style="display: flex; align-items: center; gap: 15px;">
         <span class="control-label" style="margin: 0;">Base</span>
         <div class="base-picker">
+            <button class="base-btn" onclick="updateBase(12)">12px</button>
+            <button class="base-btn" onclick="updateBase(13)">13px</button>
             <button class="base-btn" onclick="updateBase(14)">14px</button>
             <button class="base-btn" onclick="updateBase(15)">15px</button>
             <button class="base-btn active" onclick="updateBase(16)">16px</button>
