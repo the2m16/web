@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the2m16 - Pro Color Studio</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/web/images/favicon.png">
+    <style>
+        :root {
+            --panel-bg: #1a1a1a;
+            --border-color: #333;
+            --text-color: #e0e0e0;
+            --accent-blue: #007aff;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: var(--panel-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            color: var(--accent-blue);
+        }
+
+        .picker-wrapper {
+            background: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        #mainPicker {
+            width: 100%;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .workspace {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #888;
+        }
+
+        .group-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .color-node {
+            background: #252525;
+            border-radius: 4px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .color-node:hover { border-color: var(--accent-blue); }
+
+        .preview {
+            height: 80px;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .code-text {
+            font-family: 'Monaco', monospace;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contrast-box {
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copy-msg {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 13px;
+            display: none;
+            z-index: 1000;
+        }
+
+        button.action-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        button.action-btn:hover { background: #333; }
+    </style>
+</head>
+<body>
+
+<div class="copy-msg" id="copyMsg">Код хуулагдлаа!</div>
+
+<aside class="sidebar">
+    <div class="logo">TypoStudio Pro / Lab</div>
+    
+    <div class="section-title">Master Color</div>
+    <div class="picker-wrapper">
+        <input type="color" id="mainPicker" value="#007aff">
+        <div id="hexDisplay" style="margin-top:10px; font-weight:bold;">#007AFF</div>
+    </div>
+
+    <div class="section-title">Contrast Analysis</div>
+    <div id="contrastCard" class="contrast-box">
+        <span style="font-size: 12px;">Уншигдах чадвар (WCAG)</span>
+        <strong id="contrastRatio">1.0</strong>
+    </div>
+
+    <button class="action-btn" onclick="exportPalette()">JSON-оор экспортлох</button>
+</aside>
+
+<main class="workspace">
+    <div class="section-title">3-Color Combination (Triadic)</div>
+    <div class="group-container" id="triadic"></div>
+
+    <div class="section-title">4-Color Combination (Tetradic)</div>
+    <div class="group-container" id="tetradic"></div>
+
+    <div class="section-title">Shades & Tints</div>
+    <div class="group-container" id="shades"></div>
+</main>
+
+<script>
+    const picker = document.getElementById('mainPicker');
+    
+    picker.addEventListener('input', updateAll);
+
+    function updateAll() {
+        const hex = picker.value.toUpperCase();
+        document.getElementById('hexDisplay').innerText = hex;
+        
+        const hsl = hexToHSL(hex);
+        
+        generateTriadic(hsl);
+        generateTetradic(hsl);
+        generateShades(hex);
+        checkContrast(hex);
+    }
+
+    // HEX-г HSL рүү хөрвүүлэх (Өнгөний комбинаци тооцоолоход хялбар)
+    function hexToHSL(hex) {
+        let r = parseInt(hex.substring(1,3), 16) / 255;
+        let g = parseInt(hex.substring(3,5), 16) / 255;
+        let b = parseInt(hex.substring(5,7), 16) / 255;
+        let max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+        if (max == min) { h = s = 0; } else {
+            let d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+        }
+        return { h: h * 360, s: s * 100, l: l * 100 };
+    }
+
+    function hslToHex(h, s, l) {
+        l /= 100;
+        const a = s * Math.min(l, 1 - l) / 100;
+        const f = n => {
+            const k = (n + h / 30) % 12;
+            const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color).toString(16).padStart(2, '0');
+        };
+        return `#${f(0)}${f(8)}${f(4)}`.toUpperCase();
+    }
+
+    function generateTriadic(hsl) {
+        const container = document.getElementById('triadic');
+        container.innerHTML = '';
+        [0, 120, 240].forEach(angle => {
+            const newHex = hslToHex((hsl.h + angle) % 360, hsl.s, hsl.l);
+            createNode(newHex, container);
+        });
+    }
+
+    function generateTetradic(hsl) {
+        const container = document.getElementById('tetradic');
+        container.innerHTML = '';
+        [0, 90, 180, 270].forEach(angle => {
+            const newHex = hslToHex((hsl.h + angle) % 360, hsl.s, hsl.l);
+            createNode(newHex, container);
+        });
+    }
+
+    function generateShades(hex) {
+        const container = document.getElementById('shades');
+        container.innerHTML = '';
+        for(let i = 2; i >= -2; i--) {
+            const shade = lightenDarkenColor(hex, i * 20);
+            createNode(shade, container);
+        }
+    }
+
+    function createNode(color, container) {
+        const div = document.createElement('div');
+        div.className = 'color-node';
+        div.onclick = () => copyText(color);
+        div.innerHTML = `
+            <div class="preview" style="background:${color}"></div>
+            <div class="code-text">
+                <span>HEX</span>
+                <span>${color}</span>
+            </div>
+        `;
+        container.appendChild(div);
+    }
+
+    function copyText(text) {
+        navigator.clipboard.writeText(text);
+        const msg = document.getElementById('copyMsg');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 1500);
+    }
+
+    function lightenDarkenColor(col, amt) {
+        let usePound = true;
+        if (col[0] == "#") { col = col.slice(1); usePound = true; }
+        let num = parseInt(col, 16);
+        let r = (num >> 16) + amt;
+        if (r > 255) r = 255; else if (r < 0) r = 0;
+        let b = ((num >> 8) & 0x00FF) + amt;
+        if (b > 255) b = 255; else if (b < 0) b = 0;
+        let g = (num & 0x0000FF) + amt;
+        if (g > 255) g = 255; else if (g < 0) g = 0;
+        return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16).padStart(6, '0').toUpperCase();
+    }
+
+    function checkContrast(hex) {
+        const box = document.getElementById('contrastCard');
+        box.style.backgroundColor = hex;
+        const r = parseInt(hex.slice(1,3), 16);
+        const g = parseInt(hex.slice(3,5), 16);
+        const b = parseInt(hex.slice(5,7), 16);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        box.style.color = brightness > 125 ? 'black' : 'white';
+        document.getElementById('contrastRatio').innerText = brightness > 125 ? 'Light Ready' : 'Dark Ready';
+    }
+
+    updateAll();
+</script>
+
+</body>
+</html>
