@@ -3,191 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typography Studio Pro Tool</title>
+    <title>Designer's Studio | Pro Interactive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Merriweather:wght@300..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:wght@300..800&family=Montserrat:wght@100..900&family=Ubuntu:wght@300..700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #2563eb; --bg: #f1f5f9; --border: #e2e8f0; }
-        body { font-family: 'Inter', sans-serif; margin: 0; display: flex; height: 100vh; background: var(--bg); overflow: hidden; }
-        
-        /* Editor Reset */
-        #editor h1, #editor h2, #editor h3, #editor h4, #editor h5, #editor h6, #editor p { margin: 0; padding: 0; outline: none; }
+        :root {
+            --primary: #6366f1;
+            --bg-app: #0f172a;
+            --sidebar-bg: rgba(30, 41, 59, 0.9);
+            --card-bg: rgba(51, 65, 85, 0.4);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
 
-        /* Sidebar */
-        .sidebar { width: 430px; background: white; border-right: 1px solid var(--border); padding: 20px; overflow-y: auto; flex-shrink: 0; box-shadow: 2px 0 10px rgba(0,0,0,0.05); }
-        .section { background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #f1f5f9; margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
-        .section-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 5px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
+        * { box-sizing: border-box; transition: all 0.15s ease; }
         
-        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .item { display: flex; flex-direction: column; gap: 4px; }
-        label { font-size: 0.7rem; font-weight: 700; color: #475569; display: flex; justify-content: space-between; }
-        .val { font-family: monospace; color: var(--accent); font-size: 0.7rem; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            display: flex; 
+            height: 100vh; 
+            background: var(--bg-app); 
+            color: var(--text-main);
+            overflow: hidden;
+        }
 
-        input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer; }
-        select, input[type="color"] { width: 100%; padding: 6px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; background: white; }
+        .sidebar { 
+            width: 440px; 
+            background: var(--sidebar-bg); 
+            backdrop-filter: blur(15px);
+            border-right: 1px solid var(--border); 
+            padding: 24px; 
+            overflow-y: auto; 
+            flex-shrink: 0;
+        }
+
+        .section { 
+            background: var(--card-bg); 
+            padding: 20px; 
+            border-radius: 16px; 
+            border: 1px solid var(--border); 
+            margin-bottom: 24px; 
+        }
+
+        .section-title { 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            color: var(--primary); 
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .control-item { display: flex; flex-direction: column; gap: 8px; }
         
-        .btn-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-        button { padding: 6px; font-size: 0.65rem; cursor: pointer; border: 1px solid var(--border); background: white; border-radius: 4px; font-weight: 600; transition: 0.2s; }
-        button.active { background: var(--accent); color: white; border-color: var(--accent); }
-        .align-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 4px; }
+        label { font-size: 0.75rem; font-weight: 600; color: var(--text-dim); display: flex; justify-content: space-between; }
+        .unit-label { color: var(--primary); font-family: monospace; font-size: 0.7rem; }
 
-        .canvas { flex-grow: 1; padding: 60px; display: flex; justify-content: center; overflow: auto; }
-        .editor-container { background: white; width: 100%; max-width: 800px; min-height: 500px; transition: 0.1s; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        select, input[type="range"], input[type="color"] {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            padding: 8px;
+            width: 100%;
+            outline: none;
+        }
+
+        input[type="range"] { height: 6px; -webkit-appearance: none; background: #334155; cursor: pointer; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; background: var(--primary); border-radius: 50%; }
+
+        .btn-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+        button { 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid var(--border); 
+            color: white; 
+            padding: 10px 5px; 
+            border-radius: 8px; 
+            font-size: 0.65rem; 
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        button.active { background: var(--primary); border-color: var(--primary); box-shadow: 0 0 10px rgba(99, 102, 241, 0.3); }
+
+        .main-view { flex-grow: 1; display: flex; flex-direction: column; background: #050505; position: relative; }
+        .toolbar { 
+            height: 60px; 
+            background: var(--sidebar-bg); 
+            display: flex; 
+            align-items: center; 
+            padding: 0 30px; 
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .canvas-container { 
+            flex-grow: 1; 
+            padding: 60px; 
+            display: flex; 
+            justify-content: center; 
+            overflow: auto;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .editor-container { 
+            background: white; 
+            color: #000;
+            min-height: 600px; 
+            width: 900px;
+            outline: none;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+        }
+
+        #hTarget, #bSlot p { margin: 0; padding: 0; }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <h2 style="margin: 0 0 20px 0; font-size: 1.3rem; color: #1e293b;">Design Studio Pro</h2>
+        <h1 style="font-size: 1.4rem; margin-bottom: 25px; font-weight: 900;">Studio <span style="color:var(--primary)">Pro</span></h1>
 
-        <!-- HEADING SECTION -->
-        <div class="section" style="border-left: 4px solid #f59e0b;">
-            <div class="section-title">Гарчиг (Heading)</div>
-            <div class="item">
-                <label>Header Level: <span class="val" id="hLvlVal">H1</span></label>
-                <input type="range" id="hLvl" min="1" max="6" value="1">
-            </div>
-            <div class="item">
-                <label>Font Family:</label>
-                <select id="hFont">
-                    <option value="'Playfair Display', serif">Playfair Display</option>
-                    <option value="'Montserrat', sans-serif">Montserrat</option>
-                    <option value="'Inter', sans-serif">Inter</option>
-                    <option value="'Roboto', sans-serif">Roboto</option>
-                    <option value="'Merriweather', serif">Merriweather</option>
-                    <option value="'Lora', serif">Lora</option>
-                    <option value="'Open Sans', sans-serif">Open Sans</option>
-                    <option value="'Ubuntu', sans-serif">Ubuntu</option>
-                </select>
-            </div>
-            <div class="item">
-                <label>Font Size (px-em-rem): <span class="val" id="hSizeVal">48px</span></label>
-                <input type="range" id="hSize" min="10" max="120" value="48">
-            </div>
-            <div class="row">
-                <div class="item">
-                    <label>Font Weight: <span class="val" id="hWeightVal">700</span></label>
-                    <input type="range" id="hWeight" min="100" max="900" step="100" value="700">
+        <div class="section">
+            <div class="section-title"><span>✦</span> Heading System</div>
+            <div class="control-row">
+                <div class="control-item">
+                    <label>Level <span class="unit-label" id="hLvlDisp">H1</span></label>
+                    <input type="range" id="hLvl" min="1" max="6" value="1">
                 </div>
-                <div class="item">
-                    <label>Letter Space: <span class="val" id="hLsVal">0px</span></label>
-                    <input type="range" id="hLs" min="-2" max="10" step="0.5" value="0">
+                <div class="control-item">
+                    <label>Font Family</label>
+                    <select id="hFont">
+                        <option value="'Playfair Display', serif">Playfair Display</option>
+                        <option value="'Montserrat', sans-serif">Montserrat</option>
+                        <option value="'Inter', sans-serif">Inter</option>
+                        <option value="'Roboto', sans-serif">Roboto</option>
+                        <option value="'Merriweather', serif">Merriweather</option>
+                        <option value="'Lora', serif">Lora</option>
+                        <option value="'Open Sans', sans-serif">Open Sans</option>
+                        <option value="'Ubuntu', sans-serif">Ubuntu</option>
+                    </select>
                 </div>
             </div>
-            <div class="row">
-                <div class="item">
-                    <label>Line Height: <span class="val" id="hLhVal">1.2</span></label>
-                    <input type="range" id="hLh" min="0.8" max="2.5" step="0.1" value="1.2">
-                </div>
-                <div class="item">
-                    <label>Margin-B: <span class="val" id="hMbVal">20px</span></label>
-                    <input type="range" id="hMb" min="0" max="100" value="20">
-                </div>
+            <div class="control-item" style="margin-bottom:16px;">
+                <label>Font Size <span class="unit-label" id="hSizeDisp">64px | 4.00rem</span></label>
+                <input type="range" id="hSize" min="12" max="150" value="64">
             </div>
-            <div class="item">
-                <label>Text Color:</label>
-                <input type="color" id="hColor" value="#0f172a">
+            <div class="control-row">
+                <div class="control-item"><label>Weight <span class="unit-label" id="hWeightDisp">800</span></label><input type="range" id="hWeight" min="100" max="900" step="100" value="800"></div>
+                <div class="control-item"><label>Spacing <span class="unit-label" id="hLsDisp">-1px</span></label><input type="range" id="hLs" min="-5" max="20" step="0.5" value="-1"></div>
             </div>
-            <div class="btn-grid">
-                <button id="hBold">Bold</button>
-                <button id="hItalic">Italic</button>
+            <div class="control-row">
+                <div class="control-item"><label>Height <span class="unit-label" id="hLhDisp">1.1</span></label><input type="range" id="hLh" min="0.8" max="2.5" step="0.1" value="1.1"></div>
+                <div class="control-item"><label>Margin <span class="unit-label" id="hMbDisp">30px</span></label><input type="range" id="hMb" min="0" max="150" value="30"></div>
+            </div>
+            <div class="control-item" style="margin-bottom:16px;"><label>Color</label><input type="color" id="hColor" value="#0f172a"></div>
+            <div class="btn-group">
+                <button id="hBold">BOLD</button>
+                <button id="hItalic">ITALIC</button>
                 <button id="hUpper">UPPER</button>
-                <button id="hSent">Sent.</button>
+                <button id="hSent">SENT.</button>
             </div>
-            <div class="align-grid">
-                <button onclick="setAlign('h', 'left')">Left</button>
-                <button onclick="setAlign('h', 'center')">Center</button>
-                <button onclick="setAlign('h', 'right')">Right</button>
-                <button onclick="setAlign('h', 'justify')">Justify</button>
+            <div class="btn-group" style="margin-top:6px;">
+                <button onclick="setAlign('h', 'left', event)" class="h-align active">LEFT</button>
+                <button onclick="setAlign('h', 'center', event)" class="h-align">CENTER</button>
+                <button onclick="setAlign('h', 'right', event)" class="h-align">RIGHT</button>
+                <button onclick="setAlign('h', 'justify', event)" class="h-align">JUST.</button>
             </div>
         </div>
 
-        <!-- BODY SECTION -->
-        <div class="section" style="border-left: 4px solid #10b981;">
-            <div class="section-title">Боди текст (Body)</div>
-            <div class="item">
-                <label>Font Family:</label>
+        <div class="section">
+            <div class="section-title"><span>✦</span> Body System</div>
+            <div class="control-item" style="margin-bottom:16px;">
+                <label>Font Family</label>
                 <select id="bFont">
                     <option value="'Inter', sans-serif">Inter</option>
                     <option value="'Roboto', sans-serif">Roboto</option>
                     <option value="'Open Sans', sans-serif">Open Sans</option>
                     <option value="'Lora', serif">Lora</option>
-                    <option value="'Merriweather', serif">Merriweather</option>
                     <option value="'Montserrat', sans-serif">Montserrat</option>
                     <option value="'Ubuntu', sans-serif">Ubuntu</option>
                     <option value="'Playfair Display', serif">Playfair Display</option>
                 </select>
             </div>
-            <div class="item">
-                <label>Font Size (px-em-rem): <span class="val" id="bSizeVal">18px</span></label>
+            <div class="control-item" style="margin-bottom:16px;">
+                <label>Font Size <span class="unit-label" id="bSizeDisp">18px | 1.13rem</span></label>
                 <input type="range" id="bSize" min="10" max="40" value="18">
             </div>
-            <div class="row">
-                <div class="item">
-                    <label>Font Weight: <span class="val" id="bWeightVal">400</span></label>
-                    <input type="range" id="bWeight" min="100" max="900" step="100" value="400">
-                </div>
-                <div class="item">
-                    <label>Line Height: <span class="val" id="bLhVal">1.6</span></label>
-                    <input type="range" id="bLh" min="1" max="3" step="0.1" value="1.6">
-                </div>
+            <div class="control-row">
+                <div class="control-item"><label>Weight <span class="unit-label" id="bWeightDisp">400</span></label><input type="range" id="bWeight" min="100" max="900" step="100" value="400"></div>
+                <div class="control-item"><label>Height <span class="unit-label" id="bLhDisp">1.7</span></label><input type="range" id="bLh" min="1" max="3" step="0.1" value="1.7"></div>
             </div>
-            <div class="row">
-                <div class="item">
-                    <label>Letter Space: <span class="val" id="bLsVal">0px</span></label>
-                    <input type="range" id="bLs" min="-1" max="5" step="0.1" value="0">
-                </div>
-                <div class="item">
-                    <label>Para-B: <span class="val" id="bMbVal">15px</span></label>
-                    <input type="range" id="bMb" min="0" max="50" value="15">
-                </div>
+            <div class="control-row">
+                <div class="control-item"><label>Spacing <span class="unit-label" id="bLsDisp">0px</span></label><input type="range" id="bLs" min="-1" max="5" step="0.1" value="0"></div>
+                <div class="control-item"><label>Para Space <span class="unit-label" id="bMbDisp">20px</span></label><input type="range" id="bMb" min="0" max="80" value="20"></div>
             </div>
-            <div class="item">
-                <label>Text Color:</label>
-                <input type="color" id="bColor" value="#334155">
-            </div>
-            <div class="btn-grid">
-                <button id="bBold">Bold</button>
-                <button id="bItalic">Italic</button>
+            <div class="control-item" style="margin-bottom:16px;"><label>Color</label><input type="color" id="bColor" value="#334155"></div>
+            <div class="btn-group">
+                <button id="bBold">BOLD</button>
+                <button id="bItalic">ITALIC</button>
                 <button id="bUpper">UPPER</button>
-                <button id="bSent">Sent.</button>
+                <button id="bSent">SENT.</button>
             </div>
-            <div class="align-grid">
-                <button onclick="setAlign('b', 'left')">Left</button>
-                <button onclick="setAlign('b', 'center')">Center</button>
-                <button onclick="setAlign('b', 'right')">Right</button>
-                <button onclick="setAlign('b', 'justify')">Justify</button>
+            <div class="btn-group" style="margin-top:6px;">
+                <button onclick="setAlign('b', 'left', event)" class="b-align active">LEFT</button>
+                <button onclick="setAlign('b', 'center', event)" class="b-align">CENTER</button>
+                <button onclick="setAlign('b', 'right', event)" class="b-align">RIGHT</button>
+                <button onclick="setAlign('b', 'justify', event)" class="b-align">JUST.</button>
             </div>
         </div>
 
-        <!-- CONTAINER SECTION -->
-        <div class="section" style="border-left: 4px solid #6366f1;">
-            <div class="section-title">Контейнер</div>
-            <div class="row">
-                <div class="item"><label>Background color:</label><input type="color" id="cBg" value="#ffffff"></div>
-                <div class="item"><label>Border color:</label><input type="color" id="cBc" value="#e2e8f0"></div>
+        <div class="section">
+            <div class="section-title"><span>✦</span> Artboard</div>
+            <div class="control-row">
+                <div class="control-item"><label>BG Color</label><input type="color" id="cBg" value="#ffffff"></div>
+                <div class="control-item"><label>Transparency <span class="unit-label" id="cAlphaDisp">100%</span></label><input type="range" id="cAlpha" min="0" max="1" step="0.01" value="1"></div>
             </div>
-            <div class="row">
-                <div class="item"><label>Border Height: <span class="val" id="cBwVal">1px</span></label><input type="range" id="cBw" min="0" max="20" value="1"></div>
-                <div class="item"><label>Corner Radius: <span class="val" id="cBrVal">0px</span></label><input type="range" id="cBr" min="0" max="50" value="0"></div>
+            <div class="control-row">
+                <div class="control-item"><label>Border Color</label><input type="color" id="cBc" value="#e2e8f0"></div>
+                <div class="control-item"><label>Border <span class="unit-label" id="cBwDisp">0px</span></label><input type="range" id="cBw" min="0" max="20" value="0"></div>
             </div>
-            <label>Padding:</label>
-            <div class="row">
-                <div class="item"><label>Top: <span class="val" id="pTVal">40px</span></label><input type="range" id="pT" min="0" max="150" value="40"></div>
-                <div class="item"><label>Bottom: <span class="val" id="pBVal">40px</span></label><input type="range" id="pB" min="0" max="150" value="40"></div>
+            <div class="control-item" style="margin-bottom:16px;"><label>Radius <span class="unit-label" id="cBrDisp">0px</span></label><input type="range" id="cBr" min="0" max="100" value="0"></div>
+            <label>Padding (T-R-B-L)</label>
+            <div class="control-row" style="margin-top:8px;">
+                <div class="control-item"><label>Top <span class="unit-label" id="pTDisp">80px</span></label><input type="range" id="pT" min="0" max="200" value="80"></div>
+                <div class="control-item"><label>Right <span class="unit-label" id="pRDisp">80px</span></label><input type="range" id="pR" min="0" max="200" value="80"></div>
             </div>
-            <div class="row">
-                <div class="item"><label>Left: <span class="val" id="pLVal">40px</span></label><input type="range" id="pL" min="0" max="150" value="40"></div>
-                <div class="item"><label>Right: <span class="val" id="pRVal">40px</span></label><input type="range" id="pR" min="0" max="150" value="40"></div>
+            <div class="control-row">
+                <div class="control-item"><label>Bottom <span class="unit-label" id="pBDisp">80px</span></label><input type="range" id="pB" min="0" max="200" value="80"></div>
+                <div class="control-item"><label>Left <span class="unit-label" id="pLDisp">80px</span></label><input type="range" id="pL" min="0" max="200" value="80"></div>
             </div>
         </div>
     </div>
 
-    <div class="canvas">
-        <div class="editor-container" id="editor" contenteditable="true">
-            <div id="hSlot"><h1 id="hTarget">Загварлаг Гарчиг</h1></div>
-            <div id="bTarget">
-                <p>Энэ хэсэгт та текстийн байрлалыг (Alignment) Left, Center, Right, Justify гэж тохируулах боломжтой боллоо. Мөн өмнөх бүх тохиргоо хэвээр байгаа.</p>
-                <p>Гарчиг болон боди текст бүрт тус тусад нь байрлалыг зааж өгөх боломжтой.</p>
+    <div class="main-view">
+        <div class="toolbar">
+            <div style="display:flex; gap:8px;">
+                <button onclick="resizeCanvas(900, this)" class="active">Desktop</button>
+                <button onclick="resizeCanvas(600, this)">Tablet</button>
+                <button onclick="resizeCanvas(375, this)">Mobile</button>
+            </div>
+            <div style="font-size:0.7rem; color:var(--text-dim); font-family:monospace;">Scale: <span id="wDisp">900</span>px</div>
+        </div>
+        <div class="canvas-container">
+            <div class="editor-container" id="editor" contenteditable="true">
+                <div id="hSlot"><h1 id="hTarget">Interactive Pro Studio</h1></div>
+                <div id="bSlot">
+                    <p>Бүх функцууд засагдлаа. Одоо Artboard-ын transparency слайдерыг ашиглан арын дэвсгэрийг тунгалаг болгож болно.</p>
+                    <p>Текстээ шууд энд дарж өөрчлөөрэй, тохиргоо зэрэг хадгалагдана.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -195,96 +266,92 @@
     <script>
         const editor = document.getElementById('editor');
         const hSlot = document.getElementById('hSlot');
-        let hCase = 'none', bCase = 'none';
-        let hAlign = 'left', bAlign = 'left';
+        let hCase = 'none', bCase = 'none', hAlign = 'left', bAlign = 'left', hStyle = 'normal', bStyle = 'normal';
 
-        function setAlign(target, value) {
-            if (target === 'h') hAlign = value;
-            else bAlign = value;
+        function hexToRgba(hex, alpha) {
+            let r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+        function resizeCanvas(width, btn) {
+            editor.style.width = width + 'px';
+            document.getElementById('wDisp').innerText = width;
+            btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function setAlign(target, value, e) {
+            if (target === 'h') {
+                hAlign = value;
+                document.querySelectorAll('.h-align').forEach(b => b.classList.remove('active'));
+            } else {
+                bAlign = value;
+                document.querySelectorAll('.b-align').forEach(b => b.classList.remove('active'));
+            }
+            e.target.classList.add('active');
             update();
         }
 
         function update() {
-            // 1. HEADING LOGIC
+            // HEADING
             const lvl = document.getElementById('hLvl').value;
-            const oldH = hSlot.querySelector('h1, h2, h3, h4, h5, h6');
-            if (oldH.tagName !== `H${lvl}`) {
+            const currentH = hSlot.querySelector('h1, h2, h3, h4, h5, h6');
+            if (currentH.tagName !== `H${lvl}`) {
                 const newH = document.createElement(`h${lvl}`);
-                newH.id = "hTarget";
-                newH.innerHTML = oldH.innerHTML;
-                hSlot.replaceChild(newH, oldH);
+                newH.id = "hTarget"; newH.innerHTML = currentH.innerHTML;
+                hSlot.replaceChild(newH, currentH);
             }
-
             const h = document.getElementById('hTarget');
-            const hs = document.getElementById('hSize').value;
-            
+            const hFs = document.getElementById('hSize').value;
             h.style.fontFamily = document.getElementById('hFont').value;
-            h.style.fontSize = hs + 'px';
+            h.style.fontSize = hFs + 'px';
             h.style.fontWeight = document.getElementById('hWeight').value;
             h.style.letterSpacing = document.getElementById('hLs').value + 'px';
             h.style.lineHeight = document.getElementById('hLh').value;
             h.style.marginBottom = document.getElementById('hMb').value + 'px';
             h.style.color = document.getElementById('hColor').value;
-            h.style.textTransform = hCase;
-            h.style.textAlign = hAlign;
+            h.style.textTransform = hCase; h.style.textAlign = hAlign; h.style.fontStyle = hStyle;
+            document.getElementById('hLvlDisp').innerText = `H${lvl}`;
+            document.getElementById('hSizeDisp').innerText = `${hFs}px | ${(hFs/16).toFixed(2)}rem`;
+            document.getElementById('hWeightDisp').innerText = document.getElementById('hWeight').value;
+            document.getElementById('hLsDisp').innerText = document.getElementById('hLs').value + 'px';
 
-            // Labels Heading
-            document.getElementById('hLvlVal').innerText = `H${lvl}`;
-            document.getElementById('hSizeVal').innerText = `${hs}px | ${(hs/16).toFixed(2)}rem | ${(hs/16).toFixed(2)}em`;
-            document.getElementById('hWeightVal').innerText = document.getElementById('hWeight').value;
-            document.getElementById('hLsVal').innerText = document.getElementById('hLs').value + 'px';
-            document.getElementById('hLhVal').innerText = document.getElementById('hLh').value;
-            document.getElementById('hMbVal').innerText = document.getElementById('hMb').value + 'px';
-
-            // 2. BODY LOGIC
-            const b = document.getElementById('bTarget');
-            const bs = document.getElementById('bSize').value;
-            
+            // BODY
+            const b = document.getElementById('bSlot');
+            const bFs = document.getElementById('bSize').value;
             b.style.fontFamily = document.getElementById('bFont').value;
-            b.style.fontSize = bs + 'px';
+            b.style.fontSize = bFs + 'px';
             b.style.fontWeight = document.getElementById('bWeight').value;
             b.style.lineHeight = document.getElementById('bLh').value;
             b.style.letterSpacing = document.getElementById('bLs').value + 'px';
             b.style.color = document.getElementById('bColor').value;
-            b.style.textTransform = bCase;
-            b.style.textAlign = bAlign;
+            b.style.textAlign = bAlign; b.style.textTransform = bCase; b.style.fontStyle = bStyle;
             b.querySelectorAll('p').forEach(p => p.style.marginBottom = document.getElementById('bMb').value + 'px');
+            document.getElementById('bSizeDisp').innerText = `${bFs}px | ${(bFs/16).toFixed(2)}rem`;
 
-            // Labels Body
-            document.getElementById('bSizeVal').innerText = `${bs}px | ${(bs/16).toFixed(2)}rem | ${(bs/16).toFixed(2)}em`;
-            document.getElementById('bWeightVal').innerText = document.getElementById('bWeight').value;
-            document.getElementById('bLhVal').innerText = document.getElementById('bLh').value;
-            document.getElementById('bLsVal').innerText = document.getElementById('bLs').value + 'px';
-            document.getElementById('bMbVal').innerText = document.getElementById('bMb').value + 'px';
-
-            // 3. CONTAINER LOGIC
-            editor.style.background = document.getElementById('cBg').value;
-            editor.style.border = `${document.getElementById('cBw').value}px solid ${document.getElementById('cBc').value}`;
+            // ARTBOARD
+            const alpha = document.getElementById('cAlpha').value;
+            editor.style.backgroundColor = hexToRgba(document.getElementById('cBg').value, alpha);
+            editor.style.borderColor = document.getElementById('cBc').value;
+            editor.style.borderWidth = document.getElementById('cBw').value + 'px';
+            editor.style.borderStyle = 'solid';
             editor.style.borderRadius = document.getElementById('cBr').value + 'px';
             editor.style.padding = `${document.getElementById('pT').value}px ${document.getElementById('pR').value}px ${document.getElementById('pB').value}px ${document.getElementById('pL').value}px`;
-
-            document.getElementById('cBwVal').innerText = document.getElementById('cBw').value + 'px';
-            document.getElementById('cBrVal').innerText = document.getElementById('cBr').value + 'px';
-            document.getElementById('pTVal').innerText = document.getElementById('pT').value + 'px';
-            document.getElementById('pBVal').innerText = document.getElementById('pB').value + 'px';
-            document.getElementById('pLVal').innerText = document.getElementById('pL').value + 'px';
-            document.getElementById('pRVal').innerText = document.getElementById('pR').value + 'px';
+            
+            document.getElementById('cAlphaDisp').innerText = Math.round(alpha * 100) + '%';
+            document.getElementById('cBwDisp').innerText = document.getElementById('cBw').value + 'px';
+            document.getElementById('cBrDisp').innerText = document.getElementById('cBr').value + 'px';
+            document.getElementById('pTDisp').innerText = document.getElementById('pT').value + 'px';
+            document.getElementById('pRDisp').innerText = document.getElementById('pR').value + 'px';
+            document.getElementById('pBDisp').innerText = document.getElementById('pB').value + 'px';
+            document.getElementById('pLDisp').innerText = document.getElementById('pL').value + 'px';
         }
 
         document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', update));
-
-        function setup(id, target, prop, val, def) {
-            document.getElementById(id).onclick = (e) => {
-                const active = e.target.classList.toggle('active');
-                const el = target === 'h' ? document.getElementById('hTarget') : document.getElementById('bTarget');
-                el.style[prop] = active ? val : def;
-            };
-        }
-        setup('hBold', 'h', 'fontWeight', 'bold', '700');
-        setup('hItalic', 'h', 'fontStyle', 'italic', 'normal');
-        setup('bBold', 'b', 'fontWeight', 'bold', '400');
-        setup('bItalic', 'b', 'fontStyle', 'italic', 'normal');
-
+        document.getElementById('hBold').onclick = (e) => { document.getElementById('hWeight').value = e.target.classList.toggle('active') ? 900 : 700; update(); };
+        document.getElementById('hItalic').onclick = (e) => { hStyle = e.target.classList.toggle('active') ? 'italic' : 'normal'; update(); };
+        document.getElementById('bBold').onclick = (e) => { document.getElementById('bWeight').value = e.target.classList.toggle('active') ? 700 : 400; update(); };
+        document.getElementById('bItalic').onclick = (e) => { bStyle = e.target.classList.toggle('active') ? 'italic' : 'normal'; update(); };
         document.getElementById('hUpper').onclick = () => { hCase = 'uppercase'; update(); };
         document.getElementById('hSent').onclick = () => { hCase = 'none'; update(); };
         document.getElementById('bUpper').onclick = () => { bCase = 'uppercase'; update(); };
