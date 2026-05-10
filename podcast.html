@@ -40,7 +40,7 @@
 		.episode-number { font-size: 1rem; color: #8cbaff; font-weight: bold; margin-bottom: 5px; }
 		.episode-title { font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
 		audio { width: 100%; margin-bottom: 20px; filter: invert(100%) hue-rotate(180deg) brightness(1); }
-		.description-box { background: transparent; padding-left: 15px; border-radius: 4px; font-size: 0.85rem; color: #7087a9; line-height: 1.5; text-align: left; }
+		.description-box { background: transparent; padding-left: 15px; border-radius: 4px; font-size: 0.85rem; color: #7087a9; line-height: 1.5; text-align: left; font-style: italic;}
 
 		/* LIST STYLE */
 		.list-title { font-size: 13px; font-weight: bold; margin: 25px 0 15px; text-transform: uppercase; }
@@ -241,8 +241,7 @@ window.addEventListener('touchstart', function(event) {
 			item.innerHTML = `
 				<div class="list-info">
 					<span class="ep-num">EPISODE #${ep.id}</span>
-					<span class="ep-name">${ep.title.substring(0, 30)}...</span>
-				</div>
+					<span class="ep-name">${ep.title.length > 38 ? ep.title.substring(0, 38) + " ..." : ep.title}</span></div>
 				<div class="play-icon">▶</div>
 			`;
 			playlistContainer.appendChild(item);
