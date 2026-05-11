@@ -2,248 +2,324 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>the2m16 - Pro Doc2HTML Studio</title>
+    <title>the2m16 - Doc2HTML Ultra</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/web/images/favicon.png">
+
+    <!-- Шаардлагатай сангуудыг CDN-ээс татах -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.5/split.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #2D3548;
-            font-family: Arial, "Calibri", sans-serif;
+        :root {
+            --bg-dark: #0f1115;
+            --panel-dark: #181a1f;
+            --border: #2c313a;
+            --accent: #61afef;
+            --text-white: #abb2bf;
+            --shared-font: Arial, "Calibri", sans-serif;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100vh;
+            background-color: var(--bg-dark);
+            font-family: var(--shared-font);
             overflow: hidden;
+            color: var(--text-white);
         }
 
-        .header {
-            background-color: #0f172a;
-            color: #fff;
-            padding: 10px 15px;
-            font-size: 14px;
-            font-weight: bold;
-            height: 20px;
-            line-height: 20px;
+        header {
+            height: 40px;
+            background: #000;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+            font-size: 13px;
         }
 
-        .container {
+        .flex-container {
             display: flex;
             height: calc(100vh - 40px);
-            padding: 10px;
+            padding: 8px;
             box-sizing: border-box;
-            gap: 10px;
         }
 
         .panel {
-            flex: 1;
+            background: var(--panel-dark);
             display: flex;
             flex-direction: column;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            min-width: 0;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            border-radius: 4px;
         }
 
-        .panel-title {
-            background-color: #eee;
-            padding: 5px 10px;
-            font-size: 16px;
-            font-weight: 300;
-            border-bottom: 1px solid #ccc;
+        .panel-header {
+            padding: 6px 12px;
+            background: #21252b;
+            font-size: 11px;
+            font-weight: bold;
+            color: #5c6370;
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            text-transform: uppercase;
         }
 
-        /* FIND & REPLACE BAR */
-        .search-bar {
-            background-color: #f9f9f9;
-            padding: 8px 10px;
-            border-top: 1px solid #ccc;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .search-bar input {
-            font-size: 12px;
-            padding: 4px 8px;
-            border: 1px solid #ccc;
+        /* 1. WORD INPUT AREA */
+        #word-input {
             flex: 1;
-            outline: none;
-        }
-
-        .search-bar input:focus {
-            border-color: #999;
-        }
-
-        /* 3 ЦОНХНЫ НЭГДСЭН СТАЙЛ */
-        .editor-shared {
-            flex: 1;
-            padding: 15px;
+            padding: 20px;
             outline: none;
             overflow-y: auto;
-            font-family: Arial, "Calibri", sans-serif !important;
-            font-size: 16px !important;
-            line-height: 1.4 !important;
+            background-color: var(--panel-dark);
+            color: #ffffff;
+            font-family: var(--shared-font);
+            font-size: 16px;
+            line-height: 1.4;
         }
 
-        #word-input { background-color: #fff; }
-
-        #html-output {
-            border: none;
-            background-color: #fff;
-            resize: none;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            color: #333;
+        /* Paste хийхэд орж ирэх гадны стилийг хүчээр дарах */
+        #word-input * {
+            background-color: transparent !important;
+            color: inherit !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
         }
 
-        #preview-window {
-            border: none;
-            background-color: #fff;
-            width: 100%;
-            height: 100%;
+        /* 2. MONACO EDITOR AREA */
+        #monaco-container { flex: 1; width: 100%; }
+
+        /* 3. PREVIEW AREA */
+        #preview-frame {
+            flex: 1; border: none; background: white;
         }
+
+        .gutter {
+            background-color: var(--bg-dark);
+            cursor: col-resize;
+        }
+
+        .search-box {
+            padding: 10px;
+            background: #21252b;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-box input {
+            background: #121417;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 5px 10px;
+            font-size: 13px;
+            flex: 1;
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .search-box input:focus { border-color: var(--accent); }
 
         button {
-            font-size: 11px;
             cursor: pointer;
-            padding: 2px 8px;
-            border: 1px solid #999;
-            background-color: #eee;
-        }
-
-        button:hover { background-color: #ddd; }
-
-        .btn-clear { color: #d00; border-color: #d00; border-radius: 4px; }
-        .btn-copy { color: #ffffff; border-radius: 4px; background: #33cc33; }
-        .btn-replace { 
+            font-size: 10px;
+            padding: 3px 12px;
+            background: #2c313a;
+            color: #abb2bf;
+            border: 1px solid var(--border);
+            border-radius: 3px;
             font-weight: bold;
-            padding: 4px 12px;
         }
+
+        button:hover { background: #3e4451; color: white; }
+        .btn-primary { background: var(--accent); color: #282c34; border: none; }
+        .btn-primary:hover { background: #52a1e3; }
     </style>
 </head>
 <body>
 
-<div class="header">PRO FORMAT STUDIO</div>
+<header>
+    <div style="font-weight: bold; letter-spacing: 1px;"><span style="color:var(--accent)">PRO</span> FORMAT STUDIO</div>
+    <div id="status" style="opacity: 0.5;">READY</div>
+</header>
 
-<div class="container">
-    <!-- 1. WORD TEXT -->
-    <div class="panel">
-        <div class="panel-title">
-            WORD TEXT
-            <button class="btn-clear" onclick="clearAll()">CLEAR</button>
-        </div>
-        <div id="word-input" class="editor-shared" contenteditable="true"></div>
+<div class="flex-container">
+    <!-- PANEL 1: SOURCE -->
+    <div id="p1" class="panel">
+        <div class="panel-header">Word Source <button onclick="clearAll()" style="color:#e06c75">Clear</button></div>
+        <div id="word-input" contenteditable="true" spellcheck="false" onpaste="handlePaste(event)"></div>
     </div>
 
-    <!-- 2. HTML CODE -->
-    <div class="panel">
-        <div class="panel-title">
-            HTML CODE
-            <button class="btn-copy" onclick="copyCode()">COPY</button>
-        </div>
-        <textarea id="html-output" class="editor-shared" readonly spellcheck="false"></textarea>
-        <!-- Зөвхөн энд Find & Replace функц үлдсэн -->
-        <div class="search-bar">
-            <input type="text" id="find-html" placeholder="Find (e.g. &nbsp; or <p>)">
-            <input type="text" id="replace-html" placeholder="Replace with...">
-            <button class="btn-replace" onclick="replaceInHtml()">REPLACE ALL</button>
+    <!-- PANEL 2: CODE -->
+    <div id="p2" class="panel">
+        <div class="panel-header">HTML Code <button onclick="copyCode()">Copy</button></div>
+        <div id="monaco-container"></div>
+        <div class="search-box">
+            <input type="text" id="f-text" placeholder="Find...">
+            <input type="text" id="r-text" placeholder="Replace with...">
+            <button class="btn-primary" onclick="doReplace()">REPLACE ALL</button>
         </div>
     </div>
 
-    <!-- 3. PREVIEW -->
-    <div class="panel">
-        <div class="panel-title">PREVIEW</div>
-        <div class="editor-shared" style="padding:0;">
-            <iframe id="preview-window"></iframe>
-        </div>
+    <!-- PANEL 3: PREVIEW -->
+    <div id="p3" class="panel">
+        <div class="panel-header">Live Preview</div>
+        <iframe id="preview-frame"></iframe>
     </div>
 </div>
 
 <script>
-    const inputArea = document.getElementById('word-input');
-    const outputArea = document.getElementById('html-output');
-    const previewWindow = document.getElementById('preview-window');
+    let editor;
 
-    inputArea.addEventListener('input', () => {
-        processContent();
+    // 1. Monaco Editor-ийг Dark Theme-тэй ачааллах
+    require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' } });
+    require(['vs/editor/editor.main'], function () {
+        editor = monaco.editor.create(document.getElementById('monaco-container'), {
+            value: '',
+            language: 'html',
+            theme: 'vs-dark',
+            automaticLayout: true,
+            fontSize: 16,
+            fontFamily: 'Arial, Calibri',
+            lineHeight: 22,
+            wordWrap: 'on',
+            minimap: { enabled: false }
+        });
+
+        // Код гараар өөрчлөгдөхөд Preview шинэчлэх
+        editor.onDidChangeModelContent(() => {
+            const val = editor.getValue();
+            updatePreview(val);
+        });
     });
 
-    function processContent() {
-        let cleanHtml = cleanWordHtml(inputArea.innerHTML);
-        let beautified = beautifyHTML(cleanHtml);
-        outputArea.value = beautified;
-        updatePreview(beautified);
+    // 2. Цонх чирч томсгох (Split.js)
+    Split(['#p1', '#p2', '#p3'], {
+        sizes: [30, 40, 30],
+        gutterSize: 6,
+        minSize: 150
+    });
+
+    // 3. Word-оос Paste хийхэд арын өнгө болон форматыг арилгах
+    function handlePaste(e) {
+        e.preventDefault();
+        const html = e.clipboardData.getData('text/html') || e.clipboardData.getData('text/plain');
+        
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+
+        // Бүх style-ийг устгаж зөвхөн бүтцийг үлдээх
+        tempDiv.querySelectorAll('*').forEach(el => {
+            el.removeAttribute('style');
+            el.removeAttribute('class');
+            el.removeAttribute('lang');
+        });
+
+        document.execCommand('insertHTML', false, tempDiv.innerHTML);
     }
 
-    function cleanWordHtml(html) {
+    // 4. Текст өөрчлөгдөх бүрт цэвэрлэж HTML рүү хөрвүүлэх
+    const inputArea = document.getElementById('word-input');
+    inputArea.addEventListener('input', () => {
+        const clean = cleanLogic(inputArea.innerHTML);
+        const beautified = beautifyLogic(clean);
+        if(editor) {
+            // Редакторт утга оноох
+            editor.setValue(beautified);
+        }
+    });
+
+    function cleanLogic(html) {
         if (!html || html === '<br>') return '';
-        // Word-ийн түгээмэл илүүдэл кодыг цэвэрлэх
-        return html
-            .replace(/<o:p>\s*<\/o:p>/g, "")
-            .replace(/\s*class="[^"]*"/gi, "")
-            .replace(/\s*style="[^"]*"/gi, "")
-            .replace(/\s*lang="[^"]*"/gi, "")
-            .replace(/<(font|span|xml|del|ins|[ovwxp]:\w+)[^>]*?>/gi, "")
-            .replace(/<\/(font|span|xml|del|ins|[ovwxp]:\w+)>/gi, "");
+        let doc = new DOMParser().parseFromString(html, 'text/html');
+        doc.body.querySelectorAll('*').forEach(el => {
+            ['style', 'class', 'lang', 'width', 'height'].forEach(attr => el.removeAttribute(attr));
+            if(el.tagName.includes('O:P')) el.remove();
+        });
+        return doc.body.innerHTML.replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
     }
 
-    function beautifyHTML(html) {
-        if (!html) return '';
-        let tab = '  '; 
+    function beautifyLogic(html) {
         let result = '';
         let indent = '';
-        html = html.replace(/>\s+</g, '><');
-        let elements = html.replace(/(<(?:[^>]+)>)/g, '$1\n').split('\n');
-
-        elements.forEach(function(el) {
-            if (!el.trim()) return;
-            if (el.match(/^<\/\w/)) indent = indent.substring(tab.length);
-            result += indent + el.trim() + '\n';
-            if (el.match(/^<\w[^>]*[^\/]>$/) && !el.match(/<(br|img|hr|input|meta|link)/)) {
-                indent += tab;
-            }
+        html.replace(/>\s+</g, '><').split(/>\s*</).forEach(el => {
+            if (el.startsWith('/')) indent = indent.substring(4);
+            result += indent + '<' + el + '>\n';
+            if (el.match(/^<?\w[^>]*[^\/]$/) && !el.match(/(br|img|hr)/)) indent += '    ';
         });
-        return result.trim();
+        return result.substring(1, result.length - 2);
     }
 
+    // 5. Preview шинэчлэх (Цагаан фон дээр 16px-ээр харуулна)
     function updatePreview(html) {
-        const doc = previewWindow.contentDocument || previewWindow.contentWindow.document;
-        doc.open();
-        doc.write(`<style>body{font-family:Arial,sans-serif;font-size:16px;line-height:1.4;margin:15px;word-wrap:break-word;}</style>${html}`);
-        doc.close();
+        const d = document.getElementById('preview-frame').contentDocument;
+        d.open();
+        d.write(`
+            <style>
+                body { 
+                    font-family: Arial, Calibri, sans-serif; 
+                    font-size: 16px; 
+                    line-height: 1.4; 
+                    padding: 20px; 
+                    color: #333; 
+                }
+            </style>
+            ${html}
+        `);
+        d.close();
     }
 
-    // FIND & REPLACE - HTML WINDOW
-    function replaceInHtml() {
-        const findVal = document.getElementById('find-html').value;
-        const replaceVal = document.getElementById('replace-html').value;
-        
-        if (!findVal) {
-            alert("Хайх утгаа оруулна уу.");
-            return;
-        }
+    // 6. Find & Replace (Monaco-д зориулсан сайжруулсан хувилбар)
+    function doReplace() {
+        const f = document.getElementById('f-text').value;
+        const r = document.getElementById('r-text').value;
 
-        const content = outputArea.value;
-        // Тэмдэгтүүдийг escape хийж RegExp үүсгэх
-        const escapedFind = findVal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const re = new RegExp(escapedFind, 'g');
+        if (!f || !editor) return;
+
+        const model = editor.getModel();
+        const fullText = model.getValue();
         
-        const newContent = content.replace(re, replaceVal);
-        
-        outputArea.value = newContent;
-        updatePreview(newContent);
+        // Хайх утгыг тусгай тэмдэгтээс хамгаалж RegExp үүсгэх
+        const escapedFind = f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(escapedFind, 'g');
+        const newText = fullText.replace(regex, r);
+
+        if (fullText !== newText) {
+            editor.executeEdits("replace-op", [{
+                range: model.getFullModelRange(),
+                text: newText,
+                forceMoveMarkers: true
+            }]);
+            updatePreview(newText);
+            showStatus("REPLACED ALL!");
+        }
     }
 
     function copyCode() {
-        if (!outputArea.value) return;
-        outputArea.select();
-        document.execCommand('copy');
+        if(!editor) return;
+        navigator.clipboard.writeText(editor.getValue());
+        showStatus("COPIED!");
     }
 
     function clearAll() {
-        inputArea.innerHTML = "";
-        outputArea.value = "";
-        updatePreview("");
-        inputArea.focus();
+        if(confirm("Clear all content?")) {
+            inputArea.innerHTML = '';
+            editor.setValue('');
+            updatePreview('');
+            showStatus("CLEARED");
+        }
+    }
+
+    function showStatus(msg) {
+        const s = document.getElementById('status');
+        s.innerText = msg;
+        s.style.color = "var(--accent)";
+        setTimeout(() => {
+            s.innerText = "READY";
+            s.style.color = "inherit";
+        }, 2000);
     }
 </script>
 
