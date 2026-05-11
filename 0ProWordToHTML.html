@@ -8,13 +8,13 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #0f172a;
+            background-color: #2D3548;
             font-family: Arial, "Calibri", sans-serif;
             overflow: hidden;
         }
 
         .header {
-            background-color: #000;
+            background-color: #0f172a;
             color: #fff;
             padding: 10px 15px;
             font-size: 14px;
@@ -51,22 +51,40 @@
             align-items: center;
         }
 
+        /* FIND & REPLACE BAR */
+        .search-bar {
+            background-color: #f9f9f9;
+            padding: 8px 10px;
+            border-top: 1px solid #ccc;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .search-bar input {
+            font-size: 12px;
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            flex: 1;
+            outline: none;
+        }
+
+        .search-bar input:focus {
+            border-color: #999;
+        }
+
         /* 3 ЦОНХНЫ НЭГДСЭН СТАЙЛ */
         .editor-shared {
             flex: 1;
             padding: 15px;
             outline: none;
             overflow-y: auto;
-            
-            /* Таны хүссэн тохиргоо: */
             font-family: Arial, "Calibri", sans-serif !important;
             font-size: 16px !important;
             line-height: 1.4 !important;
         }
 
-        #word-input {
-            background-color: #fff;
-        }
+        #word-input { background-color: #fff; }
 
         #html-output {
             border: none;
@@ -88,14 +106,23 @@
             font-size: 11px;
             cursor: pointer;
             padding: 2px 8px;
+            border: 1px solid #999;
+            background-color: #eee;
         }
 
-        .btn-clear { color: #d00; }
+        button:hover { background-color: #ddd; }
+
+        .btn-clear { color: #d00; border-color: #d00; border-radius: 4px; }
+        .btn-copy { color: #ffffff; border-radius: 4px; background: #33cc33; }
+        .btn-replace { 
+            font-weight: bold;
+            padding: 4px 12px;
+        }
     </style>
 </head>
 <body>
 
-<h1 style="font-size: 1.4rem; margin-left: 15px; color:#ffffff; font-weight: 900;">Doc2HTML Studio <span style="color:#6366f1;">Pro</span></h1>
+<div class="header">PRO FORMAT STUDIO</div>
 
 <div class="container">
     <!-- 1. WORD TEXT -->
@@ -111,9 +138,15 @@
     <div class="panel">
         <div class="panel-title">
             HTML CODE
-            <button onclick="copyCode()">COPY</button>
+            <button class="btn-copy" onclick="copyCode()">COPY</button>
         </div>
         <textarea id="html-output" class="editor-shared" readonly spellcheck="false"></textarea>
+        <!-- Зөвхөн энд Find & Replace функц үлдсэн -->
+        <div class="search-bar">
+            <input type="text" id="find-html" placeholder="Find (e.g. &nbsp; or <p>)">
+            <input type="text" id="replace-html" placeholder="Replace with...">
+            <button class="btn-replace" onclick="replaceInHtml()">REPLACE ALL</button>
+        </div>
     </div>
 
     <!-- 3. PREVIEW -->
@@ -137,13 +170,13 @@
     function processContent() {
         let cleanHtml = cleanWordHtml(inputArea.innerHTML);
         let beautified = beautifyHTML(cleanHtml);
-        
         outputArea.value = beautified;
-        updatePreview(cleanHtml);
+        updatePreview(beautified);
     }
 
     function cleanWordHtml(html) {
         if (!html || html === '<br>') return '';
+        // Word-ийн түгээмэл илүүдэл кодыг цэвэрлэх
         return html
             .replace(/<o:p>\s*<\/o:p>/g, "")
             .replace(/\s*class="[^"]*"/gi, "")
@@ -175,27 +208,35 @@
     function updatePreview(html) {
         const doc = previewWindow.contentDocument || previewWindow.contentWindow.document;
         doc.open();
-        // Preview цонхны доторх фонтыг мөн адил болгох:
-        doc.write(`
-            <style>
-                body { 
-                    font-family: Arial, sans-serif; 
-                    font-size: 16px; 
-                    line-height: 1.4; 
-                    margin: 15px; 
-                    word-wrap: break-word;
-                }
-            </style>
-            ${html}
-        `);
+        doc.write(`<style>body{font-family:Arial,sans-serif;font-size:16px;line-height:1.4;margin:15px;word-wrap:break-word;}</style>${html}`);
         doc.close();
+    }
+
+    // FIND & REPLACE - HTML WINDOW
+    function replaceInHtml() {
+        const findVal = document.getElementById('find-html').value;
+        const replaceVal = document.getElementById('replace-html').value;
+        
+        if (!findVal) {
+            alert("Хайх утгаа оруулна уу.");
+            return;
+        }
+
+        const content = outputArea.value;
+        // Тэмдэгтүүдийг escape хийж RegExp үүсгэх
+        const escapedFind = findVal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const re = new RegExp(escapedFind, 'g');
+        
+        const newContent = content.replace(re, replaceVal);
+        
+        outputArea.value = newContent;
+        updatePreview(newContent);
     }
 
     function copyCode() {
         if (!outputArea.value) return;
         outputArea.select();
         document.execCommand('copy');
-        alert('Copied!');
     }
 
     function clearAll() {
