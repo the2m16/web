@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pro Format Studio</title>
+    <title>the2m16 - Pro Doc2HTML Studio</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/web/images/favicon.png">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            font-family: Arial, "Calibri", sans-serif;
             overflow: hidden;
         }
 
@@ -36,84 +37,91 @@
             flex-direction: column;
             background-color: #fff;
             border: 1px solid #ccc;
-            min-width: 0; /* Flexbox агшилт тооцох */
+            min-width: 0;
         }
 
         .panel-title {
             background-color: #eee;
             padding: 5px 10px;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 300;
             border-bottom: 1px solid #ccc;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        #word-input {
+        /* 3 ЦОНХНЫ НЭГДСЭН СТАЙЛ */
+        .editor-shared {
             flex: 1;
-            padding: 10px;
+            padding: 15px;
             outline: none;
             overflow-y: auto;
-            font-size: 16px;
-            line-height: 1.5;
+            
+            /* Таны хүссэн тохиргоо: */
+            font-family: Arial, "Calibri", sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        #word-input {
+            background-color: #fff;
         }
 
         #html-output {
-            flex: 1;
-            padding: 10px;
             border: none;
-            outline: none;
-            font-size: 16px;
-            line-height: 1.5;
             background-color: #fff;
             resize: none;
             white-space: pre-wrap;
-            overflow-x: auto;
+            word-wrap: break-word;
+            color: #333;
         }
 
-        /* Preview Window */
         #preview-window {
-            flex: 1;
-            padding: 10px;
-            background-color: #fff;
-            overflow-y: auto;
             border: none;
-            font-size: 16px;
-            line-height: 1.5;
+            background-color: #fff;
+            width: 100%;
+            height: 100%;
         }
 
         button {
-            font-size: 10px;
+            font-size: 11px;
             cursor: pointer;
-
+            padding: 2px 8px;
         }
+
+        .btn-clear { color: #d00; }
     </style>
 </head>
 <body>
 
-<div class="header">PRO FORMAT STUDIO</div>
+<h1 style="font-size: 1.4rem; margin-left: 15px; color:#ffffff; font-weight: 900;">Doc2HTML Studio <span style="color:#6366f1;">Pro</span></h1>
 
 <div class="container">
-    <!-- 1. Зүүн цонх: Input -->
+    <!-- 1. WORD TEXT -->
     <div class="panel">
-        <div class="panel-title">WORD TEXT</div>
-        <div id="word-input" contenteditable="true"></div>
+        <div class="panel-title">
+            WORD TEXT
+            <button class="btn-clear" onclick="clearAll()">CLEAR</button>
+        </div>
+        <div id="word-input" class="editor-shared" contenteditable="true"></div>
     </div>
 
-    <!-- 2. Дунд цонх: HTML Code -->
+    <!-- 2. HTML CODE -->
     <div class="panel">
         <div class="panel-title">
             HTML CODE
             <button onclick="copyCode()">COPY</button>
         </div>
-        <textarea id="html-output" readonly spellcheck="false" wrap="soft"></textarea>
+        <textarea id="html-output" class="editor-shared" readonly spellcheck="false"></textarea>
     </div>
 
-    <!-- 3. Баруун цонх: Live Preview -->
+    <!-- 3. PREVIEW -->
     <div class="panel">
         <div class="panel-title">PREVIEW</div>
-        <iframe id="preview-window"></iframe>
+        <div class="editor-shared" style="padding:0;">
+            <iframe id="preview-window"></iframe>
+        </div>
     </div>
 </div>
 
@@ -123,19 +131,19 @@
     const previewWindow = document.getElementById('preview-window');
 
     inputArea.addEventListener('input', () => {
-        // Word кодыг цэвэрлэх
-        let cleanHtml = cleanWordHtml(inputArea.innerHTML);
-        
-        // Цэгцтэй болгох
-        let beautified = beautifyHTML(cleanHtml);
-        
-        // Код болон Preview-г шинэчлэх
-        outputArea.value = beautified;
-        updatePreview(cleanHtml);
+        processContent();
     });
 
+    function processContent() {
+        let cleanHtml = cleanWordHtml(inputArea.innerHTML);
+        let beautified = beautifyHTML(cleanHtml);
+        
+        outputArea.value = beautified;
+        updatePreview(cleanHtml);
+    }
+
     function cleanWordHtml(html) {
-        if (!html) return '';
+        if (!html || html === '<br>') return '';
         return html
             .replace(/<o:p>\s*<\/o:p>/g, "")
             .replace(/\s*class="[^"]*"/gi, "")
@@ -146,6 +154,7 @@
     }
 
     function beautifyHTML(html) {
+        if (!html) return '';
         let tab = '  '; 
         let result = '';
         let indent = '';
@@ -166,14 +175,34 @@
     function updatePreview(html) {
         const doc = previewWindow.contentDocument || previewWindow.contentWindow.document;
         doc.open();
-        doc.write(html);
+        // Preview цонхны доторх фонтыг мөн адил болгох:
+        doc.write(`
+            <style>
+                body { 
+                    font-family: Arial, sans-serif; 
+                    font-size: 16px; 
+                    line-height: 1.4; 
+                    margin: 15px; 
+                    word-wrap: break-word;
+                }
+            </style>
+            ${html}
+        `);
         doc.close();
     }
 
     function copyCode() {
+        if (!outputArea.value) return;
         outputArea.select();
         document.execCommand('copy');
         alert('Copied!');
+    }
+
+    function clearAll() {
+        inputArea.innerHTML = "";
+        outputArea.value = "";
+        updatePreview("");
+        inputArea.focus();
     }
 </script>
 
