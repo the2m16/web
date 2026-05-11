@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="mn">
 <head>
@@ -65,8 +64,8 @@
         .control-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         .control-item { display: flex; flex-direction: column; gap: 8px; }
         
-        label { font-size: 0.75rem; font-weight: 600; color: var(--text-dim); display: flex; justify-content: space-between; }
-        .unit-label { color: var(--primary); font-family: monospace; font-size: 0.7rem; }
+        label { font-size: 0.9rem; font-weight: 300; color: var(--text-dim); display: flex; justify-content: space-between; }
+        .unit-label { color: white; font-family: arial; font-size: 0.9rem; }
 
         select, input[type="range"], input[type="color"] {
             background: rgba(15, 23, 42, 0.8);
@@ -126,6 +125,15 @@
         }
 
         #hTarget, #bSlot p { margin: 0; padding: 0; }
+        
+        
+                
+        a:link, a:visited { color: white; padding: 2px 5px; text-align: center; text-decoration: none; display: inline-block; }
+        a:hover, a:active { color: #6366f1; }
+        
+        
+        
+        
     </style>
 </head>
 <body>
@@ -245,21 +253,21 @@
         </div>
         
         <div class="btn-group">
-                <button><a href="https://the2m16.github.io/web/0ProFormatStudio.html">FORMAT STUDIO PRO</a></button>
-                <button><a href="https://the2m16.github.io/web/0ProColorStudio.html">COLOR STUDIO PRO</a></button>
+                <button><a href="https://the2m16.github.io/web/0ProFormatStudio.html">PRO FORMAT STUDIO</a></button>
+                <button><a href="https://the2m16.github.io/web/0ProColorStudio.html">PRO COLOR STUDIO</a></button>
                 <button><a href="https://the2m16.github.io/web/0ProTypeScale.html">PRO TYPE SCALE</a></button>
-                <button><a href="https://the2m16.github.io/web/0ProColorStudio.html">COLOR STUDIO PRO</a></button>
+                <button><a href="https://the2m16.github.io/web/0ProWordToHTML.html">PRO HTML STUDIO</a></button>
         </div>
     </div>
 
     <div class="main-view">
         <div class="toolbar">
-            <div style="display:flex; gap:8px;">
+            <div class="btn-group" style="margin-top:6px;">
                 <button onclick="resizeCanvas(900, this)" class="active">Desktop</button>
                 <button onclick="resizeCanvas(600, this)">Tablet</button>
                 <button onclick="resizeCanvas(375, this)">Mobile</button>
             </div>
-            <div style="font-size:0.7rem; color:var(--text-dim); font-family:monospace;">Scale: <span id="wDisp">900</span>px</div>
+            <div style="font-size:0.8rem; color:var(--text-dim); font-family:arial;">Width: <span id="wDisp">900</span>px</div>
         </div>
         <div class="canvas-container">
             <div class="editor-container" id="editor" contenteditable="true">
