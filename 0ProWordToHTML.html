@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pro Format Studio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 40px);
+            padding: 10px;
+            box-sizing: border-box;
+            gap: 10px;
+        }
+
+        .panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            min-width: 0; /* Flexbox агшилт тооцох */
+        }
+
+        .panel-title {
+            background-color: #eee;
+            padding: 5px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #word-input {
+            flex: 1;
+            padding: 10px;
+            outline: none;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #html-output {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #fff;
+            resize: none;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        /* Preview Window */
+        #preview-window {
+            flex: 1;
+            padding: 10px;
+            background-color: #fff;
+            overflow-y: auto;
+            border: none;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        button {
+            font-size: 10px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">PRO FORMAT STUDIO</div>
+
+<div class="container">
+    <!-- 1. Зүүн цонх: Input -->
+    <div class="panel">
+        <div class="panel-title">WORD TEXT</div>
+        <div id="word-input" contenteditable="true"></div>
+    </div>
+
+    <!-- 2. Дунд цонх: HTML Code -->
+    <div class="panel">
+        <div class="panel-title">
+            HTML CODE
+            <button onclick="copyCode()">COPY</button>
+        </div>
+        <textarea id="html-output" readonly spellcheck="false" wrap="soft"></textarea>
+    </div>
+
+    <!-- 3. Баруун цонх: Live Preview -->
+    <div class="panel">
+        <div class="panel-title">PREVIEW</div>
+        <iframe id="preview-window"></iframe>
+    </div>
+</div>
+
+<script>
+    const inputArea = document.getElementById('word-input');
+    const outputArea = document.getElementById('html-output');
+    const previewWindow = document.getElementById('preview-window');
+
+    inputArea.addEventListener('input', () => {
+        // Word кодыг цэвэрлэх
+        let cleanHtml = cleanWordHtml(inputArea.innerHTML);
+        
+        // Цэгцтэй болгох
+        let beautified = beautifyHTML(cleanHtml);
+        
+        // Код болон Preview-г шинэчлэх
+        outputArea.value = beautified;
+        updatePreview(cleanHtml);
+    });
+
+    function cleanWordHtml(html) {
+        if (!html) return '';
+        return html
+            .replace(/<o:p>\s*<\/o:p>/g, "")
+            .replace(/\s*class="[^"]*"/gi, "")
+            .replace(/\s*style="[^"]*"/gi, "")
+            .replace(/\s*lang="[^"]*"/gi, "")
+            .replace(/<(font|span|xml|del|ins|[ovwxp]:\w+)[^>]*?>/gi, "")
+            .replace(/<\/(font|span|xml|del|ins|[ovwxp]:\w+)>/gi, "");
+    }
+
+    function beautifyHTML(html) {
+        let tab = '  '; 
+        let result = '';
+        let indent = '';
+        html = html.replace(/>\s+</g, '><');
+        let elements = html.replace(/(<(?:[^>]+)>)/g, '$1\n').split('\n');
+
+        elements.forEach(function(el) {
+            if (!el.trim()) return;
+            if (el.match(/^<\/\w/)) indent = indent.substring(tab.length);
+            result += indent + el.trim() + '\n';
+            if (el.match(/^<\w[^>]*[^\/]>$/) && !el.match(/<(br|img|hr|input|meta|link)/)) {
+                indent += tab;
+            }
+        });
+        return result.trim();
+    }
+
+    function updatePreview(html) {
+        const doc = previewWindow.contentDocument || previewWindow.contentWindow.document;
+        doc.open();
+        doc.write(html);
+        doc.close();
+    }
+
+    function copyCode() {
+        outputArea.select();
+        document.execCommand('copy');
+        alert('Copied!');
+    }
+</script>
+
+</body>
+</html>
