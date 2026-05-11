@@ -31,11 +31,11 @@
 
         .sidebar {
             width: 440px;
-            background: var(--sidebar-bg);
+            background: rgba(30, 41, 59, 0.9);
             border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            padding: 20px 15px;
+            padding: 24px;
             overflow-y: auto;
         }
 
@@ -89,7 +89,7 @@
             color: var(--text-value);
             padding: 10px;
             text-align: center;
-            font-size: 20px;
+            font-size: 30px;
             border-radius: 4px;
             outline: none;
             margin-top: 15px;
@@ -97,12 +97,12 @@
 
         .contrast-badge {
             margin-top: 10px;
-            padding: 12px;
+            padding: 46px;
             border-radius: 4px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: bold;
+            font-weight: 300;
         }
 
         .workspace {
@@ -187,6 +187,7 @@
             width: 100%;
             margin-top: 8px;
             font-size: 16px;
+            font-weight: 300;
         }
         .btn-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
         button { 
@@ -201,6 +202,12 @@
             cursor: pointer;
             text-transform: uppercase;
         }
+        
+        
+        a:link, a:visited { color: white; padding: 2px 5px; text-align: center; text-decoration: none; display: inline-block; }
+        a:hover, a:active { color: #6366f1; }
+        
+        
     </style>
 </head>
 <body>
@@ -224,11 +231,11 @@
 
     <div class="group-title">Export</div>
     <button class="btn-format">JSON EXPORT</button>
-    <div class="btn-group">
+        <div class="btn-group">
                 <button><a href="https://the2m16.github.io/web/0ProFormatStudio.html">PRO FORMAT STUDIO</a></button>
                 <button><a href="https://the2m16.github.io/web/0ProColorStudio.html">PRO COLOR STUDIO</a></button>
                 <button><a href="https://the2m16.github.io/web/0ProTypeScale.html">PRO TYPE SCALE</a></button>
-                <button><a href="https://the2m16.github.io/web/0ProColorStudio.html">PRO COLOR STUDIO</a></button>
+                <button><a href="https://the2m16.github.io/web/0ProWordToHTML.html">PRO HTML STUDIO</a></button>
         </div>
 </aside>
 
