@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="/web/images/favicon.png">
-    <title>Multi-Language HTML content Translator Pro</title>
+    <title>Multi-Language HTML Translator Pro</title>
     <style>
-        :root { --bg: #0f172a; --panel: #1e293b; --border: #334155; --text: #f1f5f9; --accent: #3b82f6; --success: #10b981; --danger: #ef4444; }
+        :root { --bg: #0f172a; --panel: #1e293b; --border: #334155; --text: #f1f5f9; --accent: #3b82f6; --success: #42A785; --danger: #ef4444; }
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); overflow: hidden; }
         .app { display: flex; height: 100vh; padding: 15px; gap: 15px; box-sizing: border-box; }
         .pane { flex: 1 1 50%; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; position: relative; min-width: 0; }
@@ -23,7 +23,7 @@
         .btn-clear:hover { background: var(--danger); }
         .btn-copy { background: var(--accent); color: white; }
         
-        .translate-btn { position: absolute; bottom: 25px; right: 25px; padding: 12px 24px; background: var(--success); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 15px rgba(0,0,0,0.3); z-index: 100; display: flex; align-items: center; gap: 8px; }
+        .translate-btn { position: absolute; bottom: 25px; right: 25px; padding: 12px 24px; background: var(--success); color: white; border: none; border-radius: 50px; font-weight: 500; cursor: pointer; box-shadow: 0 8px 15px rgba(0,0,0,0.3); z-index: 100; display: flex; align-items: center; gap: 8px; }
         .translate-btn:disabled { background: #475569; cursor: not-allowed; opacity: 0.8; }
         
         #progress { position: absolute; top: 0; left: 0; height: 3px; background: var(--success); width: 0%; transition: width 0.3s; }
@@ -51,7 +51,7 @@
         </div>
         <textarea id="in" placeholder="HTML кодоо энд оруулна уу..."></textarea>
         <button class="translate-btn" id="btn" onclick="startTranslation()">
-            <span id="btn-txt">Translate Now</span>
+            <span id="btn-txt">TRANSLATE NOW</span>
         </button>
     </div>
 
