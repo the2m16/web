@@ -34,8 +34,7 @@ footer { flex-shrink: 0; text-align: center; padding: 30px; font-size: 13px; bac
 .navbar { display: flex; height: 38px; background-color: rgba(77, 77, 77, 0.7); justify-content: center; }
 .navbar #myLinks { display: flex !important; position: static; background-color: rgba(77, 77, 77, 0.7); width: auto; }
 .navbar a { float: left; background-color: rgba(77, 77, 77, 0.7); height: 38px; }
-.navbar a.icon { display: none;		/* Гамбургер Меню дүрсийг нуух */ }
-.close-btn { bottom: auto; top: 20px; right: 30px; left: auto; transform: none; font-size: 30px; /* Албом хаах товчны байрлалыг том дэлгэц дээр өөрчлөх */ } }
+.navbar a.icon { display: none;		/* Гамбургер Меню дүрсийг нуух */ } }
 
 /* NEWS BOX TYPOGRAPHY FORMAT */
 h2 { text-transform: uppercase; color: #0073e6; font-size: 1.2em; margin-top: 0; margin-bottom: 5px; text-align: left; padding: 0px; line-height: 1.2; clear: both; }
@@ -83,7 +82,7 @@ li { margin-bottom: 20px; }
 .prev { left: 0; background: transparent;	/* Prev.Button */ }
 .next { right: 0; background: transparent;	/* Next.Button */ }
 .prev:hover { background: transparent;	/* Prev.Button shadow */ }
-.close-btn { position: absolute; bottom: 40px; right: 50%; transform: translateX(50%); color: white; font-size: 40px; cursor: pointer; }
+.close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
 
 /* VIDEO CONTAINER STYLE */
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px;
