@@ -7,12 +7,10 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; 
 footer { flex-shrink: 0; text-align: center; padding: 30px; font-size: 13px; background: transparent; color: #555; width: 100%; box-sizing: border-box; }
 
 /* NAVIGATION BAR STYLE */
-.navbar { background-color: rgba(77, 77, 77, 0.7); backdrop-filter: blur(4px); position: relative;
-	min-height: 38px; width: 100%; display: flex; position: sticky; top: 0; left: 0; right: 0; z-index: 3000; }
+.navbar { background-color: rgba(77, 77, 77, 0.7); backdrop-filter: blur(4px); position: relative; min-height: 38px; width: 100%; display: flex; position: sticky; top: 0; left: 0; right: 0; z-index: 3000; }
 
 /* MENU STYLE */
-.navbar a { background: transparent; color: white; text-transform: uppercase; padding: 14px 16px; text-decoration: none;
-	font-size: 13px; display: flex; align-items: center; height: 38px; box-sizing: border-box; }
+.navbar a { background: transparent; color: white; text-transform: uppercase; padding: 14px 16px; text-decoration: none; font-size: 13px; display: flex; align-items: center; height: 38px; box-sizing: border-box; }
 
 /* HAMBURGER BUTTON STYLE */
 .navbar a.icon { color: white; position: absolute; right: 0; top: 0; height: 38px; display: flex; align-items: center; padding: 0 16px; }
@@ -38,8 +36,7 @@ footer { flex-shrink: 0; text-align: center; padding: 30px; font-size: 13px; bac
 
 /* NEWS BOX TYPOGRAPHY FORMAT */
 h2 { text-transform: uppercase; color: #0073e6; font-size: 1.2em; margin-top: 0; margin-bottom: 5px; text-align: left; padding: 0px; line-height: 1.2; clear: both; }
-.news { font-style: normal; text-align: justify; color: #555; margin-top: 0px; margin-bottom: 0px;
-	font-size: 0.95em; padding-bottom: 10px; line-height: 1.5; clear: both; }
+.news { font-style: normal; text-align: justify; color: #555; margin-top: 0px; margin-bottom: 0px; font-size: 0.95em; padding-bottom: 10px; line-height: 1.5; clear: both; }
 a.source-link { color: #0066cc; text-decoration: none; font-weight: bold; }
 li { margin-bottom: 20px; }
 
@@ -48,8 +45,7 @@ li { margin-bottom: 20px; }
 .album-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 3; background-color: #eee; }
 .album-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; border: 1px dotted #999; box-sizing: border-box; border-radius: 4px; }
 .album-item:hover img { transform: scale(1.1); }
-.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65); display: flex;
-	align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: normal; pointer-events: none; }
+.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: normal; pointer-events: none; }
 
 /* IMAGE LIGHTBOX STYLE (ТОМ ЗУРАГ) */
 #lightbox {
@@ -65,18 +61,18 @@ li { margin-bottom: 20px; }
 #lightbox img { max-width: 90%; max-height: 85%; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 .nav-btn {
 	position: absolute;
-	center: 0;							/* Дээд ирмэгээс эхлэх */
+	center: 0;						/* Дээд ирмэгээс эхлэх */
 	height: 50%;					/* Зургийн хоёр талд бүтэн босоо талбар үүсгэх */
 	width: 10%;						/* Дэлгэцийн зүүн/баруун талын 20%-ийг дарах талбар болгох */
 	display: flex;					/* Доторх сумыг Flexbox-оор байршуулах */
 	align-items: center;			/* Сумыг босоо чиглэлд голлуулах */
 	justify-content: center;		/* Сумыг хэвтээ чиглэлд голлуулах */
 	color: rgba(255, 255, 255, 0.5);	/* Сумны өнгийг 50% тунгалаг цагаан болгох */
-	font-size: 60px;				/* Сумны хэмжээг тохируулах */
-	text-decoration: none;			/* Сумны доогуур зураасыг арилгах */
-	cursor: pointer;				/* Хулганаар очиход дарах боломжтойг илтгэх гар гарч ирэх */
-	z-index: 20;					/* Зургийн дээр харагдахыг баталгаажуулах */
-	transition: background 0.3s;	/* Өнгө өөрчлөгдөх үйлдэл 0.3 секундэд зөөлөн явагдах */
+	font-size: 60px;
+	text-decoration: none;
+	cursor: pointer;
+	z-index: 20;
+	transition: background 0.3s;
 	user-select: none;				/* Сум дээр олон дарахад цэнхэрлэж сонгогдохоос сэргийлэх */ }
 .nav-btn:hover { color: white; background: transparent; text-shadow: 0 0 5px rgba(0,0,0,0.8); }
 .prev { left: 0; background: transparent;	/* Prev.Button */ }
@@ -85,7 +81,5 @@ li { margin-bottom: 20px; }
 .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
 
 /* VIDEO CONTAINER STYLE */
-.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px;
-	background: #000; border: 1px dotted #999; box-sizing: border-box; border-radius: 4px; }
-.video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex;
-	align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px; background: #000; border: 1px dotted #999; box-sizing: border-box; border-radius: 4px; }
+.video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
