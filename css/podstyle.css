@@ -1,7 +1,12 @@
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff; margin: 0; background-color: #121820; }
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: #ffffff;
+	margin: 0;
+	background-color: #121820;
+}
 
 /* NAVIGATION BAR STYLE */
-	.navbar {background-color: rgba(77, 77, 77, 1); backdrop-filter: blur(2px); position: relative; min-height: 38px; width: 100%; display: flex; position: sticky; top: 0; left: 0; right: 0; z-index: 3000; }
+	.navbar { background-color: rgba(77, 77, 77, 1); backdrop-filter: blur(2px); position: relative; min-height: 38px; width: 100%; display: flex; position: sticky; top: 0; left: 0; right: 0; z-index: 3000; }
 	.navbar a { background-color: transparent; color: white; text-transform: uppercase; padding: 14px 16px; text-decoration: none; font-size: 13px; display: flex; align-items: center; height: 38px; box-sizing: border-box; }
 	.navbar a.icon { color: white; position: absolute; right: 0; top: 0; height: 38px; display: flex; align-items: center; padding: 0 16px; }
 
