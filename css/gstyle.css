@@ -83,7 +83,7 @@ li { margin-bottom: 20px; }
 .prev { left: 0; background: transparent;	/* Prev.Button */ }
 .next { right: 0; background: transparent;	/* Next.Button */ }
 .prev:hover { background: transparent;	/* Prev.Button shadow */ }
-.close-btn { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); color: white; font-size: 40px; cursor: pointer; }
+.close-btn { position: absolute; bottom: 40px; right: 50%; transform: translateX(50%); color: white; font-size: 40px; cursor: pointer; }
 
 /* VIDEO CONTAINER STYLE */
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px;
