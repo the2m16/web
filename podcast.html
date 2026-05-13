@@ -5,65 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>The2m16 - Podcast</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
-<style>
-		body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff; margin: 0; background-color: #121820; }
-
-/* <!--                               -----                                  --> */
-		/* NAVBAR ЕРӨНХИЙ СТАЙЛ */
-		.navbar {background-color: rgba(77, 77, 77, 1); backdrop-filter: blur(2px); position: relative; min-height: 38px; width: 100%; display: flex; position: sticky; top: 0; left: 0; right: 0; z-index: 3000; }
-		.navbar a { background-color: transparent; color: white; text-transform: uppercase; padding: 14px 16px; text-decoration: none; font-size: 13px; display: flex; align-items: center; height: 38px; box-sizing: border-box; }
-		.navbar a.icon { color: white; position: absolute; right: 0; top: 0; height: 38px; display: flex; align-items: center; padding: 0 16px; }
-/* <!--                               -----                                  --> */
-		/* ЖИЖИГ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс бага өргөнтэй үед менюг гамбургер болгох) */
-		.navbar #myLinks { display: none; position: absolute; top: 38px; right: 0; width: 220px; background-color: rgba(77, 77, 77, 0.7); backdrop-filter: blur(2px); z-index: 3000; }
-		.navbar a:hover { background-color: #555; color: white; }
-/* <!--                               -----                                  --> */
-		/* ТОМ ДЭЛГЭЦНИЙ МЕНЮ СТАЙЛ (Дэлгэц 1000px-ээс дээш өргөнтэй болоход менюг бар болгох) */
-		@media screen and (min-width: 1000px) {
-			.navbar { display: flex; height: 38px; justify-content: center; }
-			.navbar #myLinks { display: flex !important; position: static; width: auto; }
-			.navbar a { float: left; height: 38px; }
-			.navbar a.icon { display: none; } }
-
-/* <!--                               -----                                  --> */
-        /* ҮНДСЭН КОНТЕЙНЕР СТАЙЛ */
-		.container { margin-top: 20px; margin-right: auto; margin-left: auto; margin-bottom: auto; width: 80%; max-width: 400px; background: #1a222c; border-radius: 8px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-
-/* <!--                               -----                                  --> */
-		/* ФҮҮТЭР ТОХИРГОО */
-		footer { flex-shrink: 0; text-align: center; padding: 30px; font-size: 13px; background: transparent; color: #666; width: 100%; box-sizing: border-box; }
-
-/* <!--                                -----                                 --> */
-		/* NEW PLAYER STYLE */
-		.main-player { text-align: center; margin-bottom: 20px; }
-		.podcast-logo { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; padding: 0px; }
-		.episode-number { font-size: 1rem; color: #8cbaff; font-weight: bold; margin-bottom: 5px; }
-		.episode-title { height: 40px; font-size: 0.8rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-		audio { width: 100%; margin-bottom: 10px; filter: invert(100%) hue-rotate(180deg) brightness(1); }
-		.description-box { height: 55px; background: transparent; padding-left: 10px; padding-right: 10px; border-radius: 4px; font-size: 0.85rem; color: #7087a9; line-height: 1.2; text-align: justify; font-style: italic;}
-
-		/* LIST STYLE */
-		.list-title { font-size: 13px; font-weight: bold; margin: 25px 0 15px; text-transform: uppercase; }
-		.podcast-list { max-height: 400px; overflow-y: auto; border-top: 1px solid #2d3748; }
-		.list-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid #2d3748; cursor: pointer; transition: background 0.3s; }
-		.list-item:hover { background: rgba(255,255,255,0.05); }
-		.list-item.active { border-left: 3px solid #8cbaff; }
-		.list-info .ep-num { color: #8cbaff; font-size: 11px; font-weight: bold; display: block; }
-		.list-info .ep-name { font-size: 12px; }
-		.play-icon { color: #8cbaff; font-size: 15px; }
-
-		/* SCROLL BAR STYLE */
-		.podcast-list::-webkit-scrollbar { width: 5px; }
-		.podcast-list::-webkit-scrollbar-thumb { background: #4a5568; border-radius: 10px; }
-/* <!--                                -----                                 --> */
-
-
-	</style>
-
-
-
-
-
+	<link rel="stylesheet" href="https://the2m16.github.io/css/podstyle.css">
 
 </head>
 <body>
