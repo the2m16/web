@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Гар утасны харагдац тохируулах -->
-    <title>Ultimate Glassmorphism Edition</title>
+    <title>Ultimate Glassmorphism</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
     <style>
         * {
@@ -89,18 +89,37 @@
             line-height: 1.6; /* Мөр хоорондын зай */ }
         footer { flex-shrink: 0; text-align: center; margin: 0 auto; padding: 25px; font-size: 13px; background: transparent; color: #ffffff; width: 100%; box-sizing: border-box; }
 
-        /* Desktop Цэс */
+        /* Цэсийн жагсаалт */
         .nav-links {
-            display: flex; /* Хэвтээ жагсаалт */
-            list-style: none; /* Цэггүй */ }
+            display: flex;
+            list-style: none;
+            height: 100%; /* Жагсаалтын өндрийг бартай ижил болгох */
+        }
 
+        .nav-links li {
+            height: 100%; /* Лист бүрийг барын өндөртэй ижил болгох */
+        }
+
+        /* ЛИНКИЙГ БАТТОН БОЛГОЖ БАЙГАА ХЭСЭГ */
         .nav-links a {
-            padding: 0 15px; /* Зай */
-            color: white; /* Текст өнгө */
+            display: flex; /* Текстийг голлуулахад ашиглана */
+            align-items: center; /* Босоо голлуулалт */
+            justify-content: left; /* Хэвтээ голлуулалт */
+            height: 100%; /* Өндрийг 38px-ээр дүүргэх */
+            padding: 0 25px; /* Хажуу талын зайг ихэсгэж дарах талбайг томруулах */
             text-transform: uppercase; /* Менюний үсгийн байдал */
-            text-decoration: none; /* Зураасгүй */
-            font-size: 13px; /* Хэмжээ */
-            transition: 0.3s; /* Хугацаа */ }
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease; /* Хувирах анимейшн */
+            cursor: pointer; /* Хулгана очиход гарны зураг */
+        }
+
+        /* Хулгана очих үед баттон шиг тодорч харагдах */
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15); /* Цайвар дөрвөлжин талбай үүсэх */
+            color: #ffffff;
+        }
 
         /* Гамбургер товч */
         .hamburger {
@@ -117,38 +136,34 @@
 
         /* Респонсив (1000px-ээс бага) */
         @media (max-width: 1000px) {
-            .hamburger { display: flex; } /* Товчийг харуулах */
-            
+            .hamburger { display: flex; }
             .nav-links {
-                position: fixed; /* Бэхлэх байрлал */
-                top: 38px; /* Барын доор */
-                right: -250px; /* Анхны байрлал (нуугдмал) */
-                width: 200px; /* Менюний өргөн */
-                height: auto; /* Сунадаг өндөр */
-                background: rgba(0, 0, 0, 0.55); /* Бараан шилэн эффект */
-                backdrop-filter: blur(20px); /* Блюр */
-                flex-direction: column; /* Босоо өрөлт */
-                padding: 20px 0; /* Дотор зай */
-                transition: 0.4s ease; /* Зөөлөн гаргалт */
-                border-radius: 0 0 0 8px; /* Булан */
-                box-shadow: -5px 5px 15px rgba(0,0,0,0.3); /* Сүүдэр */ }
-
-            .nav-links.active { right: 0; } /* Цэсийг ил гаргах */
-
+                position: fixed;
+                top: 38px;
+                right: -250px;
+                width: 180px;
+                background: rgba(15, 23, 42, 0.4);
+                flex-direction: column;
+                height: auto; /* Мобайл дээр өндөр нь контентоороо */
+                transition: 0.4s;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { height: auto; width: 100%; }
             .nav-links a {
-                padding: 15px; /* Мөрийн зай */
-                display: block; /* Блок болгох */
-                text-align: center; /* Голлуулах */ } }
+                height: 45px; /* Мобайл дээр дарах талбайг бүр томоор 55px болгов */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- 1-р дэлгэц -->
-    <div class="hero">ULTIMATE GLASSMORPHISM EDITION</div>
+    <div class="hero">ULTIMATE GLASSMORPHISM</div>
 
     <!-- Навигацийн бар -->
     <nav class="navbar" id="navbar">
-        <div class="logo">ULTIMATE.LAB</div> <!-- Лого -->
+        <div class="logo">DEV.LAB</div> <!-- Лого -->
         
         <ul class="nav-links" id="navLinks"> <!-- Линкүүд -->
             <li><a href="https://the2m16.github.io/web/index.html">эхлэл</a></li>
