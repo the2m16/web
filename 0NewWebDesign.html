@@ -30,9 +30,9 @@
 
         /* HOME PAGE IMAGE (FIXED PARALLAX BACKGROUND) */
         .hero { height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; --base-font-size: clamp(2.5rem, 8vw, 8rem); color: white; flex-direction: column; text-align: center; }
-        .hero-container { background-color: rgba(0, 0, 0, 0.4); width: 100%; padding: 50px 0; backdrop-filter: blur(6px); }
+        .hero-container { background-color: rgba(0, 0, 0, 0.5); width: 100%; padding: 50px 0; backdrop-filter: blur(6px); }
         .hero h1 {font-family: Arial, Helvetica, sans-serif; font-size: var(--base-font-size); letter-spacing: -.01em; color: #4da6ff; margin: 0; text-shadow: 0 5px 25px rgba(0,0,0,0.5); font-weight: 100; line-height: 1.1; }
-        .hero p {font-weight: 100; font-size: clamp(0.7rem, calc(var(--base-font-size) * 0.15), 1.8rem); line-height: 1.2; margin-top: 0.6em; margin-left: 50px; margin-right: 50px; }
+        .hero p {font-weight: 100; font-size: clamp(0.7rem, calc(var(--base-font-size) * 0.15), 1.8rem); line-height: 1.2; margin-top: 0.6em; margin-left: 50px; margin-right: 50px; margin-bottom: 20px;}
 
         /* NAVIGATION BAR */
         .navbar {
@@ -142,7 +142,7 @@
 
 <body>
 	<div class="mobile-bg-fix"></div>
-    <!-- Нүүр хуудас (Fixed Background) -->
+    <!-- HOME PAGE -->
     <div class="hero">
     	<div class="hero-container">
         <h1>60 тэрбумын хэрэг</h1>
@@ -150,9 +150,9 @@
         </div>
     </div>
 
-    <!-- Навигацийн бар -->
+    <!-- NAVIGATION BAR -->
     <nav class="navbar" id="navbar">
-        <div class="logo">60CASE.DEV</div>
+        <div class="logo"><!-- logo text --></div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#">ЭХЛЭЛ</a></li>
             <li><a href="#">90МИН</a></li>
@@ -163,9 +163,7 @@
             <li><a href="#">ПОДКАСТ</a></li>
             <li><a href="#">ТЕСТпейж</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </nav>
 
     <!-- Урсах контент секшн -->
@@ -256,6 +254,7 @@
             <br>
             <p>Та одоо зөвхөн өөрийн зураг болон текстийг оруулахад хангалттай. Бүх код нэг файл дотор багтсан тул шууд ашиглах боломжтой.</p>
         </div>
+		
         <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
     </div>
     
