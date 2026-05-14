@@ -1,280 +1,311 @@
+
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Гар утасны харагдац тохируулах -->
-    <title>Ultimate Glassmorphism</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorph - Pages</title>
+    <script src="https://unpkg.com/lenis@1.1.5/dist/lenis.min.js"></script> 
+
     <style>
-        * {
-            margin: 0; /* Гадна зайг тэглэх */
-            padding: 0; /* Дотор зайг тэглэх */
-            box-sizing: border-box; /* Өргөнийг зөв тооцох */
-            font-family: 'Segoe UI', sans-serif; /* Үндсэн фонт */ }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html, body { overflow-x: hidden; width: 100%; }
 
-        html, body {
-            overflow-x: hidden; /* Хэвтээ скролл гарахыг зогсоох */
-            width: 100%; /* Бүтэн өргөн */ }
-
+        /* ХУУДАС АЧААЛАГДАХ ҮЕД ЗӨӨЛӨН ТОДРОХ (FADE-IN) */
         body {
-            /* Home хэсэгт зураг оруулах бол доорх background-image мөрийг идэвхжүүлнэ үү */
-            /* background-image: url('https://the2m16.github.io/web/images/background3872x2592.jpg'); */
-            /* background-size: cover; background-attachment: fixed; */
-            background: linear-gradient(45deg, #0000ff, #6600cc); /* (#0000ff, #6600cc),(#4158D0, #C850C0, #FFCC70); */
-            background-size: 400% 400%; /* Градиент хөдөлгөх хэмжээ */
-            animation: gradientAnim 15s ease infinite; /* Анимейшн ажиллуулах */
-            min-height: 100vh; /* Хамгийн багадаа дэлгэцийн өндөртэй ижил */ }
+			background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070');
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed; /* Скролл хийхэд зураг хөдлөхгүй */
+			background-repeat: no-repeat;
+			margin: 0; }
+        @keyframes pageFadeIn {
+            to { opacity: 1; } }
 
-        @keyframes gradientAnim {
-            0% { background-position: 0% 50%; } /* Анимейшн эхлэл */
-            50% { background-position: 100% 50%; } /* Дунд үе */
-            100% { background-position: 0% 50%; } /* Төгсгөл */ }
-
-        /* Навигацийн бар */
+        /* NAVIGATION BAR FIXED POSITION */
         .navbar {
-            width: 100%; /* Бүтэн өргөн */
-            height: 38px; /* Барын тогтмол өндөр */
-            display: flex; /* Элементүүдийг өрөх */
-            align-items: center; /* Босоо голлуулалт */
-            justify-content: space-between; /* Хоёр тал руу шахах */
-            padding: 0 20px; /* Хажуугийн зай */
-            z-index: 1000; /* Дээгүүр харагдах */
-            background: rgba(255, 255, 255, 0.1); /* Шилэн өнгө */
-            backdrop-filter: blur(2px); /* Блюр эффект */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Нарийн зураас */
-            position: fixed; /* Эхний байрлал */
-            top: 0; /* 1-р дэлгэцийн доор */ }
-
+            width: 100%;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.2); /* Шилэн бараан туяа--------------------------------- */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed; /* Тогтмол байрлал */
+            top: 0;
+            left: 0; }
         .navbar.sticky {
             position: fixed; /* Скролл хийхэд дээд талд наах */
-            top: 0; /* Байрлал */
-            transform: none; /* Өөрчлөлтийг арилгах */
-            background: rgba(0, 0, 0, 0.3); /* Бараан туяа */ }
+            top: 0;
+            transform: none;
+            background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
+        .logo { color: white; font-weight: bold; font-size: 14px; letter-spacing: 1px; }
 
-        /* Контент секшн */
-        .content-section {
-            padding-top: 38px;
-            display: flex; /* Голлуулах */
-            justify-content: center; /* Хэвтээ гол */
-            width: 100%; /* Бүтэн өргөн */ }
-
-        /* Контент Бокс (Контентноосоо хамаарч сунана) */
-        .glass-box {
-            max-width: 1000px; /* Хамгийн их өргөн 1000px */
-            width: 100%; /* Жижиг дэлгэц дээр 100% */
-            height: auto; /* Контентоосоо хамаарч сунадаг болгох */
-            margin-top: 20px;
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-botom: 20px;
-            background: rgba(255, 255, 255, 0.1); /* Тунгалаг цагаан */
-            backdrop-filter: blur(20px); /* Блюр эффект */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Хүрээ */
-            border-radius: 6px; /* Бөөрөнхий булан */
-            padding: 20px; /* Дотор зай */
-            color: white; /* Текст өнгө */
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Сүүдэр */
-            line-height: 1.6; /* Мөр хоорондын зай */ }
-        footer { flex-shrink: 0; text-align: center; margin: 0 auto; padding: 25px; font-size: 13px; background: transparent; color: #ffffff; width: 100%; box-sizing: border-box; }
-
-        /* Цэсийн жагсаалт */
-        .nav-links {
-            display: flex;
-            list-style: none;
-            height: 100%; /* Жагсаалтын өндрийг бартай ижил болгох */
-        }
-
-        .nav-links li {
-            height: 100%; /* Лист бүрийг барын өндөртэй ижил болгох */
-        }
-
-        /* ЛИНКИЙГ БАТТОН БОЛГОЖ БАЙГАА ХЭСЭГ */
+        /* MENU BUTTON */
+        .nav-links { display: flex; list-style: none; height: 100%; }
+        .nav-links li { height: 100%; }
         .nav-links a {
-            display: flex; /* Текстийг голлуулахад ашиглана */
-            align-items: center; /* Босоо голлуулалт */
-            justify-content: left; /* Хэвтээ голлуулалт */
-            height: 100%; /* Өндрийг 38px-ээр дүүргэх */
-            padding: 0 25px; /* Хажуу талын зайг ихэсгэж дарах талбайг томруулах */
-            text-transform: uppercase; /* Менюний үсгийн байдал */
-            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            font-size: 13px;
-            transition: all 0.3s ease; /* Хувирах анимейшн */
-            cursor: pointer; /* Хулгана очиход гарны зураг */
-        }
+            font-size: 14px;
+            font-weight: 400;
+            transition: 0.3s; }
+        .nav-links a:hover { 
+            background: rgba(255, 255, 255, 0.1); 
+            color: white; }
 
-        /* Хулгана очих үед баттон шиг тодорч харагдах */
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.15); /* Цайвар дөрвөлжин талбай үүсэх */
-            color: #ffffff;
-        }
+		/* CONTENT SECTION INCLUDING GLASSMORPHIC BOX */
+        .content-section {
+            position: relative;
+            z-index: 2;
+            padding-top: 58px;
+			background: rgba(15, 23, 42, 0.1); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
+			backdrop-filter: blur(10px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
+			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
+            display: flex;
+            justify-content: center;
+            flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
+            align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
+            gap: 30px;              /* Блокууд хоорондын зайг 30px болгоно */ }
+        .glass-box {
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            color: #f1f5f9;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            line-height: 1.8;
+            height: fit-content; }
+        footer { flex-shrink: 0; text-align: center; margin: 20px; font-size: 13px; background: transparent; color: #ffffff; width: 100%; box-sizing: border-box; }
 
-        /* Гамбургер товч */
-        .hamburger {
-            display: none; /* Desktop-д нуух */
-            cursor: pointer; /* Гарны зураг */
-            flex-direction: column; /* Босоо өрөлт */
-            gap: 4px; /* Зураас хоорондын зай */ }
-
-        .hamburger span {
-            width: 20px; /* Өргөн */
-            height: 2px; /* Зузаан */
-            background: white; /* Өнгө */
-            transition: 0.4s; /* Анимейшн */ }
-
-        /* Респонсив (1000px-ээс бага) */
+        /* HAMBURGER MENU (MOBILE SCREEN) */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+        .hamburger span { width: 22px; height: 2px; background: white; transition: 0.4s; }
         @media (max-width: 1000px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                position: fixed;
-                top: 38px;
-                right: -250px;
-                width: 180px;
-                background: rgba(15, 23, 42, 0.4);
-                flex-direction: column;
-                height: auto; /* Мобайл дээр өндөр нь контентоороо */
-                transition: 0.4s;
-            }
-            .nav-links.active { right: 0; }
-            .nav-links li { height: auto; width: 100%; }
-            .nav-links a {
-                height: 45px; /* Мобайл дээр дарах талбайг бүр томоор 55px болгов */
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-        }
+        .hamburger { display: flex; }
+        .nav-links {
+            display: flex;             /* Алдааг засах: Flex идэвхжүүлэх */
+            flex-direction: column;    /* Алдааг засах: Линкүүдийг босоо болгох */
+            position: fixed; 
+            top: 38px; 
+            right: -250px; 
+            width: 180px;
+            height: auto; 
+            background: rgba(15, 23, 42, 0.6); 
+            transition: 0.4s ease; 
+            border-radius: 0 0 0 6px;
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
+			z-index: 1001;             /* Бусад элементүүдийн дээр харагдах */ }
+        .nav-links.active { right: 0; }
+        .nav-links li { width: 100%; display: block; }
+        .nav-links a {
+            height: 55px; 
+            justify-content: left; 
+            width: 100%;
+            border-bottom: 1px solid rgba(255,255,255,0.05); } }
     </style>
 </head>
 <body>
 
-    <!-- Навигацийн бар -->
-    <nav class="navbar" id="navbar">
-        <div class="logo">DEV.LAB</div>
-        
-        <ul class="nav-links" id="navLinks"> <!-- Линкүүд -->
-            <li><a href="https://the2m16.github.io/web/index.html">эхлэл</a></li>
-            <li><a href="https://the2m16.github.io/web/90min.html">90 мин</a></li>
-            <li><a href="https://the2m16.github.io/web/40min.html">40 мин</a></li>
-            <li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a></li>
-            <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a></li>
-            <li><a href="https://the2m16.github.io/web/news.html">Ньюс</a></li>
-            <li><a href="https://the2m16.github.io/web/podcast.html">Подкаст</a></li>
-            <li><a href="https://the2m16.github.io/web/0blanc.html">TestPage</a></li>
+    <!-- Тогтмол байрлах навигацийн бар -->
+    <nav class="navbar">
+        <div class="logo">60CASE.2026.DEV</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#">НҮҮР</a></li>
+            <li><a href="#">МЭДЭЭ</a></li>
+            <li><a href="#">ҮЙЛЧИЛГЭЭ</a></li>
+            <li><a href="#">ТУХАЙ</a></li>
+            <li><a href="#">ХОЛБОО</a></li>
         </ul>
-
-        <div class="hamburger" id="hamburger"> <!-- Гамбургер -->
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
         </div>
     </nav>
 
-    <!-- Контент секшн -->
+    <!-- Үндсэн агуулга -->
     <div class="content-section">
-        <div class="glass-box"> <!-- Сунадаг контент бокс -->
-            <h2>Dynamic Content Box</h2><br>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
+        <div class="glass-box">
+            <h2 style="margin-bottom: 20px;">Дотор хуудасны загвар</h2>
+            <p>Энэхүү хуудас нь нүүрний том зураггүй бөгөөд навигацийн бар нь дэлгэцийн дээд хэсэгт шууд <strong>Fixed</strong> байрлалтайгаар бэхлэгдсэн.</p>
             <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
+            <p><strong>Засварууд:</strong></p>
+            <ul style="padding-left: 20px;">
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+            </ul>
         </div>
-    </div>
 
-
-    <div class="content-section">
-        <div class="glass-box"> <!-- Сунадаг контент бокс -->
-            <h2>Dynamic Content Box</h2><br>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
+        <div class="glass-box">
+            <h2 style="margin-bottom: 20px;">Дотор хуудасны загвар</h2>
+            <p>Энэхүү хуудас нь нүүрний том зураггүй бөгөөд навигацийн бар нь дэлгэцийн дээд хэсэгт шууд <strong>Fixed</strong> байрлалтайгаар бэхлэгдсэн.</p>
             <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
-            <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
-            <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
-            <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
-            <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
+            <p><strong>Засварууд:</strong></p>
+            <ul style="padding-left: 20px;">
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+				<li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+                <li>Мобайл менюний давхарлаж бөөгнөрөх алдааг <code>flex-direction: column</code> ашиглан бүрэн зассан.</li>
+                <li>Контент хэсэг нь дээд талаасаа 78px зай авсан тул менюний ард орж дарагдахгүй.</li>
+                <li>Хуудас ачаалагдах үед зөөлөн тодрох эффект хэвээр үлдсэн.</li>
+                <li>Lenis сангийн тусламжтайгаар скролл маш зөөлөн урсана.</li>
+            </ul>
         </div>
+        <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
     </div>
-
-
-    <div class="content-section">
-        <div class="glass-box"> <!-- Сунадаг контент бокс -->
-            <h2>Dynamic Content Box</h2><br>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
-            <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
-        </div>
-    </div>
-    
-    
-    <div class="content-section">
-        <div class="glass-box"> <!-- Сунадаг контент бокс -->
-            <h2>Dynamic Content Box</h2><br>
-            <p>Энэхүү бокс нь доторх контентийнхоо хэмжээнээс хамаарч автоматаар сунах ба тогтмол өндөр заагаагүй. Навигацийн барнаас 20px-ийн зайд байрлана. Мөн гамбургер цэс нээлттэй байх үед гадна талын аль нэг хэсэгт дарахад цэс автоматаар хаагдах логикийг Javascript хэсэгт оруулсан.</p>
-            <br>
-            <p>Хуудасны хамгийн доор фүүтэрт зориулсан 45px зайг (padding-bottom) үлдээсэн бөгөөд энэ нь контент бокс сунах тусам дагаж доошилно.</p>
-            <br>
-            <p><strong>Одоо та менюг нээгээд гадна нь дараад үзээрэй.</strong></p>
-        </div>
-    </div>
-
-
-
-<footer>
-        &copy; 2017-2026 Dorjzodov G. All Rights Reserved.
-</footer>
 
 
     <script>
-        const navbar = document.getElementById('navbar'); /* Барыг барьж авах */
-        const hamburger = document.getElementById('hamburger'); /* Товчийг барьж авах */
-        const navLinks = document.getElementById('navLinks'); /* Листийг барьж авах */
-
-        /* Скролл хийх үед барыг дээд талд наах логик */
-        window.addEventListener('scroll', () => {
-            if (window.scrollY >= window.innerHeight - 38) {
-                navbar.classList.add('sticky'); /* Стики класс нэмэх */
-            } else {
-                navbar.classList.remove('sticky'); /* Стики класс хасах */
-            }
+        // 1. Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
         });
 
-        /* Гамбургер товч дарахад меню нээх/хаах */
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
         hamburger.addEventListener('click', (e) => {
-            e.stopPropagation(); /* Даралтыг body-руу дамжуулахгүй байх */
-            navLinks.classList.toggle('active'); /* Класс солих */
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
         });
 
-        /* Менюний гадна хаана ч дарахад хаагдах логик */
+        // Гадна талд дарахад хаах
         document.addEventListener('click', (e) => {
-            /* Хэрэв даралт меню болон гамбургер дээр биш бол */
             if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-                navLinks.classList.remove('active'); /* Цэсийг хаах */
+                navLinks.classList.remove('active');
             }
         });
 
-        /* Линк дээр дарахад цэс хаах */
+        // Линк дарахад хаах
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active'); /* Цэсийг хаах */
+                navLinks.classList.remove('active');
             });
         });
     </script>
