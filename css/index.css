@@ -6,7 +6,7 @@ body {
 /* HOMEPAGE STYLE START				--------------------------------------------------- */
 .homepage {
 	height: calc(100vh - 38px); /* Background зурагны дэлгэц дүүрэн өндөр, уг өндрөөс меню баарны дээд ирмэг дэлгэцний доод ирмэгээс зүүгдэх зай */
-	background: url('https://the2m16.github.io/web/images/background3872x2592.jpg') no-repeat center center/cover;
+	background: url('https://the2m16.github.io/web/images/background3872x2592.webp') no-repeat center center/cover;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
