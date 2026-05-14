@@ -9,14 +9,21 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
         html, body { overflow-x: hidden; width: 100%; }
         body {
-			background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)), url('https://the2m16.github.io/web/images/background.jpg');
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed; /* Скролл хийхэд зураг хөдлөхгүй */
-			background-repeat: no-repeat;
             width: 100%;
 			margin: 0; }
-            
+		.mobile-bg-fix {
+    		position: fixed;
+    		top: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://the2m16.github.io/web/images/background3872x2592.jpg');
+    		background-size: cover;
+    		background-position: center;
+    		z-index: -1;
+    		-webkit-transform: translateZ(0);
+    		transform: translateZ(0); }
+		
         /* ХУУДАС АЧААЛАГДАХ ҮЕД ЗӨӨЛӨН ТОДРОХ (FADE-IN) */
         @keyframes pageFadeIn {
             to { opacity: 1; } }
@@ -63,12 +70,12 @@
         .content-section {
             position: relative;
             z-index: 2;
-            padding-top: 58px;
+            padding-top: 20px;
             padding-bottom: 0px;
             padding-right: 5px;
             padding-left: 5px;
-			background: rgba(15, 23, 42, 0.1); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
-			backdrop-filter: blur(10px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
+			background: linear-gradient(rgba(0,0,40,0.2), rgba(0,0,0,0.6)); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
+			backdrop-filter: blur(15px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
 			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
             display: flex;
             justify-content: center;
@@ -82,7 +89,7 @@
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 0px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0,0,0,0.2);
             backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -113,7 +120,11 @@
         	z-index: 1001;             /* Бусад элементүүдийн дээр харагдах */ }
     	.nav-links.active { right: 0; }
     	.nav-links li { width: 100%; display: block; }
-    	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); } }
+    	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+		.mobile-bg-fix {
+        /* Гар утсанд зориулсан тусгай өндөр */
+        height: 100vh; 
+        height: -webkit-fill-available; } }
     </style>
 </head>
 
@@ -122,9 +133,10 @@
 
 
 <body>
-    <!-- Тогтмол байрлах навигацийн бар -->
-    <nav class="navbar">
-        <div class="logo">60CASE.2026.DEV</div>
+	<div class="mobile-bg-fix"></div>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" id="navbar">
+        <div class="logo"><!-- logo text --></div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#">ЭХЛЭЛ</a></li>
             <li><a href="#">90МИН</a></li>
@@ -135,9 +147,7 @@
             <li><a href="#">ПОДКАСТ</a></li>
             <li><a href="#">ТЕСТпейж</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </nav>
 
     <!-- Үндсэн агуулга -->
