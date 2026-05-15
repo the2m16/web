@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glassmorph - Index</title>
-    <script src="https://unpkg.com/lenis@1.1.5/dist/lenis.min.js"></script> 
+    <script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
@@ -32,7 +32,7 @@
         .hero { height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; --base-font-size: clamp(2.5rem, 8vw, 8rem); color: white; flex-direction: column; text-align: center; }
         .hero-container { background-color: rgba(0, 0, 0, 0.5); width: 100%; padding: 50px 0; backdrop-filter: blur(6px); }
         .hero h1 {font-family: Arial, Helvetica, sans-serif; font-size: var(--base-font-size); letter-spacing: -.01em; color: #4da6ff; margin: 0; text-shadow: 0 5px 25px rgba(0,0,0,0.5); font-weight: 100; line-height: 1.1; }
-        .hero p {font-weight: 100; font-size: clamp(0.7rem, calc(var(--base-font-size) * 0.15), 1.8rem); line-height: 1.2; margin-top: 0.6em; margin-left: 50px; margin-right: 50px; margin-bottom: 20px;}
+        .hero p {font-weight: 100; font-size: clamp(0.7rem, calc(var(--base-font-size) * 0.15), 1.8rem); color: #f1f5f9; line-height: 1.2; margin-top: 0.6em; margin-left: 50px; margin-right: 50px; margin-bottom: 20px;}
 
         /* NAVIGATION BAR */
         .navbar {
@@ -55,7 +55,7 @@
             top: 0;
             transform: none;
             background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
-        .logo { color: white; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
+        .logo { color: #f1f5f9; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
 
         /* MENU BUTTON */
         .nav-links { display: flex; list-style: none; height: 100%; }
@@ -101,10 +101,13 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
-            color: #f1f5f9;
+            color: #f1f5f9; /* glass-box global text color */
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             line-height: 1.8;
             height: fit-content; }
+        p {color: #f1f5f9;}
+        h2 {color: #f1f5f9;}
+        li {color: #f1f5f9;}
         footer { flex-shrink: 0; text-align: center; margin-bottom: 20px; margin-top: 0px; font-size: 13px; background: transparent; color: rgb(255, 255, 255, 0.6); width: 100%; box-sizing: border-box; }
 
         /* HAMBURGER MENU (MOBILE SCREEN) */
