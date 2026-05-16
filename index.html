@@ -3,67 +3,231 @@
 <head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>The2m16 - Home</title>
+    <title>The2m16 - Home</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
-	<link rel="stylesheet" href="https://the2m16.github.io/web/css/index.css">
+    <script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html, body { overflow-x: hidden; width: 100%; }
+        body {
+            width: 100%;
+			margin: 0; }
+		.mobile-bg-fix {
+    		position: fixed;
+    		top: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://the2m16.github.io/web/images/background3872x2592.webp');
+    		background-size: cover;
+    		background-position: center;
+    		z-index: -1;
+    		-webkit-transform: translateZ(0);
+    		transform: translateZ(0); }
+		
+        /* ХУУДАС АЧААЛАГДАХ ҮЕД ЗӨӨЛӨН ТОДРОХ (FADE-IN) */
+        @keyframes pageFadeIn {
+            to { opacity: 1; } }
+
+        /* HOME PAGE IMAGE (FIXED PARALLAX BACKGROUND) */
+        .hero { height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; --base-font-size: clamp(2.5rem, 8vw, 8rem); color: white; flex-direction: column; text-align: center; }
+        .hero-container { background-color: rgba(0, 0, 0, 0.5); width: 100%; padding: 50px 0; backdrop-filter: blur(6px); }
+        .hero h1 {font-family: Arial, Helvetica, sans-serif; font-size: var(--base-font-size); letter-spacing: -.01em; color: #4da6ff; margin: 0; text-shadow: 0 5px 25px rgba(0,0,0,0.5); font-weight: 100; line-height: 1.1; }
+        .hero p {font-weight: 100; font-size: clamp(0.7rem, calc(var(--base-font-size) * 0.15), 1.8rem); color: #f1f5f9; line-height: 1.2; margin-top: 0.6em; margin-left: 50px; margin-right: 50px; margin-bottom: 20px;}
+
+        /* NAVIGATION BAR */
+        .navbar {
+            width: 100%;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.05); /* Нимгэн шилэн эффект------------------------------------------- */
+            backdrop-filter: blur(15px); /* Блюр */
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: absolute; /* Эхний байрлал */
+            top: 100vh; /* 1-р дэлгэцийн доор */
+            transform: translateY(-100%); /* Дээш татаж наах */ }
+        .navbar.sticky {
+            position: fixed; /* Скролл хийхэд дээд талд наах */
+            top: 0;
+            transform: none;
+            background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
+        .logo { color: #f1f5f9; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
+
+        /* MENU BUTTON */
+        .nav-links { display: flex; list-style: none; height: 100%; }
+        .nav-links li { height: 100%; }
+        .nav-links a {
+            display: flex; /* Дөрвөлжин талбай үүсгэх */
+            align-items: center; /* Текстийг босоо голлуулах */
+            padding: 0 15px; /* Хажуугийн дарах талбайг томруулах */
+            height: 100%; /* Барын өндрийг (38px) бүрэн дүүргэх */
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: 0.3s;
+            white-space: nowrap; }
+        .nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+
+        /* CONTENT SECTION INCLUDING GLASSMORPHIC BOX */
+        .content-section {
+            position: relative;
+            z-index: 2;
+            padding-top: 20px;
+            padding-bottom: 0px;
+            padding-right: 5px;
+            padding-left: 5px;
+			background: linear-gradient(rgba(0,0,40,0.2), rgba(0,0,0,0.6)); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
+			backdrop-filter: blur(15px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
+			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
+            display: flex;
+            justify-content: center;
+            flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
+            align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
+            gap: 20px;              /* Блокууд хоорондын зайг 30px болгоно */ }
+        .glass-box {
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 0.9em;
+			text-align: justify;
+            color: #f1f5f9; /* glass-box global text color */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            line-height: 1.3;
+            height: fit-content; }
+        p {color: #f1f5f9;}
+        h2 {color: #f1f5f9;}
+        li {color: #f1f5f9; }
+        a {color: #1a8cff; text-decoration: none;}
+        .list {list-style-type: square; margin-left: 3em; margin-top: 0.5em; margin-bottom: 0.5em;}
+        .q-line {margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 10px;}
+		.q-name {font-size: 13px; color: rgba(255, 255, 255, 0.8); text-align: left; margin: 0; text-transform: uppercase;}
+		.quota {font-size: 14px; color: #f1f5f9; margin: 5px 0; font-style: italic; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;}
+		.q-source {font-size: 11px; color: #999; margin: 0;}
+
+        footer { flex-shrink: 0; text-align: center; margin-bottom: 20px; margin-top: 0px; font-size: 13px; background: transparent; color: rgb(255, 255, 255, 0.6); width: 100%; box-sizing: border-box; }
+
+        /* HAMBURGER MENU (MOBILE SCREEN) */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+        .hamburger span { width: 22px; height: 2px; background: white; transition: 0.4s; }
+        @media (max-width: 1000px) {
+        .hamburger { display: flex; }
+		.nav-links {
+        	display: flex;             /* FLEX-ийг заавал идэвхжүүлэх */
+        	flex-direction: column;    /* Линкүүдийг босоо болгоно (Зурган дээрх алдааг засах гол код) */
+        	position: fixed; 
+        	top: 38px; 
+        	right: -250px; 
+        	width: 180px;
+        	height: auto; 
+        	background: rgba(15, 23, 42, 0.6); 
+        	transition: 0.4s ease;
+        	border-radius: 0 0 0 6px;
+			box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
+        	z-index: 1001;             /* Бусад элементүүдийн дээр харагдах */ }
+    	.nav-links.active { right: 0; }
+    	.nav-links li { width: 100%; display: block; }
+    	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
+
+        /* GRID CONTAINER */
+		.grid-container {
+			display: grid;
+			grid-template-columns: 1.5fr 1fr;
+            grid-auto-rows: min-content;
+			gap: 0;
+			width: 100%;
+			max-width: 1000px;
+			margin: 0px;
+            padding: 0 auto 0 auto;}
+		/* Грид доторх блокууд */
+        .right-column { display: flex; flex-direction: column; height: 100%; /* Зүүн талтайгаа өндөр нь ижил байна */}
+		.grid-item {
+        	height: auto;
+			padding: 10px;
+			margin: 0px;
+            display: flex;
+            flex-direction: column;
+			background: transparent;
+			border: 1px solid rgba(255, 255, 255, 0); /* grid border color */
+			color: #f1f5f9; /* TEXT COLOR */
+			min-height: min-content; /* Контентоосоо хамаарч сунана */ }
+        .right-sub { height: auto; margin-bottom: 2px; /* Блокуудын хоорондох зай */ }
+		.right-sub:last-child { flex-grow: 1; }   /* Зүүн талын том блок 3 мөрийг дамнах ёстой */
+		.left-main { grid-row: span 3; height: 100%; }
+        .left-main p {text-indent: 2em; text-align: justify; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
+		@media (max-width: 1000px) {.grid-container { grid-template-columns: 1fr; } .left-main { grid-row: span 1; } }
+        
+    </style>
 </head>
 
+
+
+
+
 <body>
-<!-- HOMEPAGE START			--------------------------------------------------- -->
-<div class="homepage">
-    <div class="homepage-container">
+	<div class="mobile-bg-fix"></div>
+    <!-- HOME PAGE -->
+    <div class="hero">
+    	<div class="hero-container">
         <h1>60 тэрбумын хэрэг</h1>
-        <p>МАН-ын Дарга М.Энхболд, Нийслэлийн МАН-ын хорооны дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нарт холбогдох 60 тэрбумын хэргийн тухай дэлгэрэнгүй мэдээлэл</p>
+        <p>МАН-ын Дарга М.Энхболд, Нийслэлийн МАН-ын хорооны дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нарт холбогдох 60 тэрбумын хэргийн дэлгэрэнгүй</p>
+        </div>
     </div>
-</div>
-<!-- HOEMPAGE END			--------------------------------------------------- -->
 
-<!-- NAVIGATION START		--------------------------------------------------- -->
-<div class="navbar">
-  <div id="myLinks">
-	<a href="https://the2m16.github.io/web/index.html">эхлэл</a>
-	<a href="https://the2m16.github.io/web/90min.html">90 мин</a>
-	<a href="https://the2m16.github.io/web/40min.html">40 мин</a>
-	<a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
-	<a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a>
-	<a href="https://the2m16.github.io/web/news.html">Ньюс</a>
-	<a href="https://the2m16.github.io/web/podcast.html">Подкаст</a>
-	<a href="https://the2m16.github.io/web/0blanc.html">TestPage</a>
-  </div>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" id="navbar">
+        <div class="logo"><!-- logo text --></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
+            <li><a href="https://the2m16.github.io/web/90min.html">90МИН</a></li>
+            <li><a href="https://the2m16.github.io/web/40min.html">40МИН</a></li>
+            <li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ ШИНЖЭЭЧ</a></li>
+            <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
+            <li><a href="https://the2m16.github.io/web/news.html">НЬЮС</a></li>
+            <li><a href="https://the2m16.github.io/web/podcast.html">ПОДКАСТ</a></li>
+            <li><a href="https://the2m16.github.io/web/0blanc.html">ТЕСТпейж</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
 
-	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-	&#9776;
-	</a>
-</div>
-<!-- NAVIGATION END			--------------------------------------------------- -->
-<!-- CONTAINER START		--------------------------------------------------- -->
-<div class="container">
+    <!-- Урсах контент секшн -->
+<div class="content-section">
+	<div class="glass-box">
 
-
-
-
-
-<!-- HOMEPAGE BLOCK 2 START	--------------------------------------------------- -->
-<!-- LEFT BLOCK START		--------------------------------------------------- -->
-<div class="main-wrapper">
-    <div class="content">
-    &emsp;&emsp;Монгол Ардын намын дарга, Нийслэлийн МАН дарга нар 2014 оны 9 сард уулзалдаж дуулиант 60 ТЭРБУМЫН ХЭРЭГ гэх Монгол төрийн албыг
+	<div class="grid-container">
+    <div class="grid-item left-main">
+    		<p>Монгол Ардын намын дарга, Нийслэлийн МАН дарга нар 2014 оны 9 сард уулзалдаж дуулиант 60 ТЭРБУМЫН ХЭРЭГ гэх Монгол төрийн албыг
 			мөнгөөр үнэлэх, их хэмжээний ашиг олох, хууль бус аргаар сонгуулийн кампаниа санхүүжүүлэх, сонгуулийн үр дүнд нөлөөлөх төлөвлөгөөг хэлэлцсэн нь
 			Монгол Улсын Үндсэн Хуулийн Гуравдугаар зүйлийн 3.2-т “ТӨРИЙН ЭРХ МЭДЛИЙГ ХУУЛЬ БУСААР АВАХ, АВАХААР ЗАВДАХЫГ ХОРИГЛОНО” гэсэн заалтыг
-			зөрчсөн ноцтой гэмт үйлдэл юм.<br>
-    &emsp;&emsp;Энэ уулзалтын талаар болон тэдний хэлэлцсэн төлөвлөгөөг олон нийтэд дэлгэсэн мөчөөс эхлэн хууль сахиулах байгууллагуудын зүгээс мөрдөлт,
+			зөрчсөн ноцтой гэмт үйлдэл юм.</p>
+    		<p>Энэ уулзалтын талаар болон тэдний хэлэлцсэн төлөвлөгөөг олон нийтэд дэлгэсэн мөчөөс эхлэн хууль сахиулах байгууллагуудын зүгээс мөрдөлт,
 			мөшгилт, хавчлага, дарамтад өртсөн шүгэл үлээгч би болсон явдлын талаархи үнэн бодит, объектив мэдээ, мэдээлэл, баримт нотолгоог олон нийт,
-			оюутан судлаачид, түүхчид, хэвлэл мэдээллийн хэрэгсэл, сонирхсон хэн бүхэнд нээлттэй, ил тод, хүртээмжтэй байлгах зорилгоор энэ сайтыг нээн ажиллуулав.<br>
-	&emsp;&emsp;Энэхүү сайтад байршсан аливаа мэдээ, мэдээлэл, нотлох баримтууд нь бусдыг гэмт хэрэгт гүтгэх, нэр төрд нь халдах, бодит үнэнийг
-			гуйвуулах, улстөржүүлэх санаа, зорилго огт агуулаагүй, огт агуулахгүй болно.<br>
-	&emsp;&emsp;Шүгэл үлээгч, гэрч, хохирогч Г.Доржзодов<br>
-	&emsp;&emsp;2017 оны 6 сарын 12.<br>
-			<img src="https://the2m16.github.io/web/images/dorjzodov.jpg" style="max-width: 100%; height: auto; margin: 10px 0;"><br>
-	&emsp;&emsp;Цагдаа, тагнуулын байгууллага харанхуй шөнөөр гүйцэтгэх ажиллагаа явуулж, гэрчийг баривчлах оролдлого хийсэн үйлдэл
+			оюутан судлаачид, түүхчид, хэвлэл мэдээллийн хэрэгсэл, сонирхсон хэн бүхэнд нээлттэй, ил тод, хүртээмжтэй байлгах зорилгоор энэ сайтыг нээн ажиллуулав.</p>
+			<p>Энэхүү сайтад байршсан аливаа мэдээ, мэдээлэл, нотлох баримтууд нь бусдыг гэмт хэрэгт гүтгэх, нэр төрд нь халдах, бодит үнэнийг
+			гуйвуулах, улстөржүүлэх санаа, зорилго огт агуулаагүй, огт агуулахгүй болно.</p><br>
+			<p>Шүгэл үлээгч, гэрч, хохирогч Г.Доржзодов</p>
+			<p>2017 оны 6 сарын 12.</p>
+        <img src="https://the2m16.github.io/web/images/dorjzodov.jpg" style="max-width: 100%; height: auto; margin: 10px 0;">
+        	<p>Цагдаа, тагнуулын байгууллага харанхуй шөнөөр гүйцэтгэх ажиллагаа явуулж, гэрчийг баривчлах оролдлого хийсэн үйлдэл
 			НҮБ болон Олон Улсын Хүний эрхийн байгууллагуудын хараанд өртсөн бөгөөд тус тусын тайлан, илтгэлдээ энэ талаар дурьдаж, мөн
 			МУ-ын Засгийн газарт албан бичгээр Шаардлага, Зөвлөмжийг ирүүлэхээс гадна 60 тэрбумын хэргийн гэрч, шүгэл үлээгч Г.Доржзодов надад
-			дараах Case ID дугааруудыг олгожээ:<br>
-			<ul type="square">
+			дараах Case ID дугааруудыг олгожээ:</p>
+			<ul class="list">
 				<li>UN Human Right's Spesial Rapporteurs' Urgent Appeal and Joint Allegation Letter to The Mongolian Government, No: MNG 1/2017 and MNG 2/2017, Case ID No.: MNG 1/2017, Date: 8 September, 2017;</li>
 				<li>UN Report Index No.: A/HRC/37/80, 19 January, 2018;</li>
 				<li>International Federation of Human Rights, Case ID: MNG 001/0717/OBS 082, Date: 21 July, 2017;</li>
@@ -73,495 +237,411 @@
 				<li>Amnesty International, Urgent Action, Case index No.: ASA 30/7065/2017, Date: 7 September, 2017;</li>
 				<li>OSCE, Office for Democratic Institution and Human Rights, Mongolia: Presidential Election 26 June and 7 July, 2017, Final Report, p.12, 27 October, 2017</li>
 			</ul>
-	&emsp;&emsp;<a href="https://www.uih.mn/upload/sudalgaa/files/606_5262050.pdf">Монгол Улсад шүгэл үлээгчийг хамгаалах хууль, эрхзүйн ямар ч орчин байгаагүй</a>
-			цаг үед 60 тэрбумын хэргийг нотлох баримттайгаар анх цахим орчинд (Интернетэд) шүгэлдсэн явдал нийгмийн олон салбарт иргэдийн мэдэх эрхийн төлөө тэмцэгчдэд итгэл, урам зориг өгсөн.
+			<p><a href="https://www.uih.mn/upload/sudalgaa/files/606_5262050.pdf">Монгол Улсад шүгэл үлээгчийг хамгаалах хууль, эрхзүйн ямар ч орчин байгаагүй</a>
+            цаг үед 60 тэрбумын хэргийг нотлох баримттайгаар анх цахим орчинд (Интернетэд) шүгэлдсэн явдал нийгмийн олон салбарт иргэдийн мэдэх эрхийн төлөө тэмцэгчдэд итгэл, урам зориг өгсөн.
 			60 тэрбумын хэргийг Шүүхэд шилжсэний дараа МУ-ын Засгийн газар <a href="https://legalinfo.mn/mn/detail?lawId=16207226850601">ХҮНИЙ ЭРХ ХАМГААЛАГЧИЙН ЭРХ ЗҮЙН БАЙДЛЫН ТУХАЙ</a>
 			хуулийн төслийг боловсруулж <a href="https://www.parliament.mn/nn/12908/">2020 оны 5 сарын 11-нд УИХ-д өргөн барьсан.</a>
 			Уг хуулийн төслийг 2021 оны 4 сарын 2-ны өдөр УИХ хэлэлцэн баталсан. <a href="https://lawforum.parliament.mn/project/237/">ШҮГЭЛ ҮЛЭЭГЧИЙН ЭРХЗҮЙН БАЙДЛЫН ТУХАЙ</a>
 			хуулийн төслийг 2019 оны 9 сарын 16-нд МУ-ын Засгийн газар Ажлын хэсэг байгуулан боловсруулж 2021 оны 11 сарын 10-нд УИХ-д өргөн барьсан боловч
-			өнөөг хүртэл уг хуулийн төслийг Чуулганаар хэлэлцээгүй байна.
-	</div>
-<!-- LEFT BLOCK END			--------------------------------------------------- -->
+			өнөөг хүртэл уг хуулийн төслийг Чуулганаар хэлэлцээгүй байна.</p>
+    	</div>
 
+    <div class="right-column">
+    <div class="grid-item right-sub">
+        2014.09.08-ны өдөр, 12:00-13:30 цаг<br>Ц.САНДУЙН ӨРӨӨ<br>МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нар 60 тэрбумын схемийг хэлэлцэж буй уулзалт<br>АУДИОГ СОНСОХ:<br>
+        <iframe style="margin-top: 10px" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/329512512&color=%23ff0066&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    	</div>
+		
+    <div class="grid-item right-sub">
+        2014.08.28-ны өдөр, 23:00-23:40 цаг<br>А.ГАНБААТАРЫН ӨРӨӨ<br>Нийслэлийн МАН-ын дарга Ц.Сандуй, түүний зөвлөх А.Ганбаатар нар 60 тэрбумын схемийг зохиож буй уулзалт<br>АУДИОГ СОНСОХ:<br>
+        <iframe style="margin-top: 10px" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335472161&color=%23ff0066&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    	</div>
+		
+    <div class="grid-item right-sub">
+        <div style="width: 100%; height: 800px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; background: transparent; display: flex; flex-direction: column; overflow: hidden;">
+			<div style="height: 40px; background: #ff0066; display: flex; justify-content: flex-end; align-items: center; padding: 0 0px; overflow: hidden;"><img src="https://the2m16.github.io/web/images/quotaheader.png" alt="Ишлэл" style="height: 40px; width: auto; object-fit: contain;"></div>
+            			<div data-lenis-prevent style="flex: 1; overflow-y: auto; padding: 15px; color: #333;">
 
+<div class="q-line">
+<p class="q-name">2019.10.31 Шүүхийн шинжилгээний үндэсний хүрээлэнгийн шинжээч Д.Мөнхбаатар:</p>
+<p class="quota">"АТГ-аас (УИХ-ын сонгуулийн дараа) 2016 оны 7 сарын 6-нд ирүүлсэн
+	гуравдахь удаагийн шинжилгээний нотлох баримт нь өмнөх хоёр шинжилгээний обьектоос өөр, видео бичлэгийн форматтай, хар фон дээр хүний
+	толгойны дүрс болон текст оруулж эвлүүлсэн бичлэг байсан. Өмнөх хоёр шинжилгээний (2016 оны 6 сард сонгуулиас өмнө ирүүлсэн) обьект нь
+	аудио файл бөгөөд Ц.Сандуйн дуу хоолойтой тохирч байсан (Дүгнэлт №4113), эвлүүлэг монтаж ороогүй 3 хүний (М.Энхболд, Ц.Сандуй, А.Ганбаатар нарын)
+ харилцан яриа байсан (Дүгнэлт №4225)"</p>
+ <p class="q-source">(БГД-ийн Эрүүгийн хэргийн Анхан шатны шүүхийн №2019/ШЦТ/902 Шийтгэх тогтоолоос)</p></div>
 
+ <div class="q-line">
+ <p class="q-name">2019.01.24 Л.Элдэв-Очир, УИХ-ын гишүүн:</p>
+ <p class="quota">"Манай нам 2016 онд сонгуульд ялаад 30 мянган хүн төрийн албанд шинээр авсан"</p>
+ <p class="q-source">(УИХ-ын Чуулганы хуралдаан)</p></div>
 
+ <div class="q-line">
+ <p class="q-name">2019.01.11 М.Энх-Амгалан, Монгол Улсын Ерөнхий прокурор:</p>
+ <p class="quota">"60 тэрбумын хэргийг эвлүүлэг гэж хаасан гээд л
+	ингээд янз янзын юм яриад байх юм. Үгүй ээ! Прокурорын байгууллага энэ үйл явдал, яриа хөөрөө бүгдээрээ болсон юмаа гэдгийг
+	шийдвэр гаргасан Тогтоолдоо зааж өгсөн."</p>
+ <p class="q-source">(УИХ-ын Чуулганы хуралдаан дээр өгсөн тайлбар)</p></div>
 
-<!-- SIDE BLOCK START		--------------------------------------------------- -->
-<div class="sidebar">
-    <div class="content" style="margin-bottom: 5px;">
-        <div style="padding-bottom: 5px; line-height: 1.3;">
-            2014.09.08-НЫ ӨДӨР, 12:00-13:30 ЦАГ<br>Ц.САНДУЙН ӨРӨӨНД<br>
-            МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нар <b>60 тэрбумын схемийг хэлэлцэж буй уулзалт</b>ын АУДИОГ ШУУД СОНСОХ:
-        </div>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/329512512&color=%23ff0535&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-        </iframe>
-    </div>
+ <div class="q-line">
+ <p class="q-name">2018.10.25 Л.Болд, УИХ-ын гишүүн:</p>
+ <p class="quota">"60 тэрбумын хэргийг илчилсэн Г.Доржзодов бол Монголын номер нэг Шүгэл үлээгч.
+	Дэлхийн жишээ болчихлоо шүү дээ. Ийм аймшигтай тогтолцооны эсрэг ганц хүн зогсож байна. Тэр хүнийг бид яаж хамгаалж байна. Тагнуул, цагдаа,
+	шүүх зэрэг бүх хуулийн байгууллага яаж дарамтлав."</p>
+ <p class="q-source">(УИХ-ын Чуулган дээр)</p></div>
 
-    <div class="content" style="margin-bottom: 5px;">
-        <div style="padding-bottom: 5px; line-height: 1.3;">
-            2014.08.28-НЫ ӨДӨР, 23:00-23:40 ЦАГ<br>А.ГАНБААТАРЫН ӨРӨӨНД<br>
-            Нийслэлийн МАН-ын дарга Ц.Сандуй, түүний зөвлөх А.Ганбаатар нар <b>60 тэрбумын схемийг зохиож буй уулзалт</b>ын АУДИОГ ШУУД СОНСОХ:
-        </div>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/335472161&color=%23ff0535&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-        </iframe>
-    </div>
+ <div class="q-line">
+ <p class="q-name">2018.10.17 Л.Болд, УИХ-ын гишүүн:</p>
+ <p class="quota">"УИХ-ын 26 гишүүн ээлжит бус чуулган зарлан хуралдуулах тухай
+	шаардлагыг УИХ-ын даргад хүргүүлсэн боловч шалтаг заан ээлжит бус чуулган зарлалгүй төрийн үйл ажиллагааг тасалдуулсан нь
+	Үндсэн хууль зөрчсөн хэмээн үзэж иргэний хувиар Үндсэн хуулийн цэцэд хандлаа."</p>
+ <p class="q-source">(twitter.com)</p></div>
 
+ <div class="q-line">
+ <p class="q-name">2018.10.05 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
+ <p class="quota">"Төрийн байгууллагууд эвлүүлэг гэж мэлздэг юм байна.
+	АТГ нь эвлүүлэг гэж мэлздэг юм байна. Нийтийн сонсгол хийх гэхлээр Прокурор нь Нийтийн сонсгол
+	хийж болохгүй гэж мэлздэг юм байна. Одоо нэг байгууллагыг харах үлдсэн. Энэ бол Үндсэн хуулийн цэц!
+	Энэ байгууллага дээр хүссэн ч, эс хүссэн ч энэ асуудал очих байх."</p>
+ <p class="q-source">(Төрийн ордонд сэтгүүлчдэд өгсөн мэдээллээс)</p></div>
 
+ <div class="q-line">
+ <p class="q-name">2018.10.04 Д.Эрдэнэбат, УИХ-ын гишүүн:</p>
+ <p class="quota">"Төрийн албыг үнэгүйдүүлж, улс төртэй хутгаж,
+	60 тэрбумаар арилжаалснаас үүдэн төрийн албаны мерит зарчим алдагдаж, үүний хор уршгаар мэргэшсэн, чадварлаг,
+	ёсзүйтэй хүний нөөцөөр хангагдах ёстой төр үнэгүйдэн, бодлогогүй, шийдвэргүй, хариуцлагагүй үйл ажиллагааны улмаас
+	нийгмийг цочирдуулж, бухимдуулсан асуудлууд шил даран гарсаар байна."</p>
+ <p class="q-source">(УИХ дахь Ардчилсан намын бүлгийн дүгнэлтээс)</p></div>
 
-    <div class="content">
-        <div style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 4px; background: #fff; display: flex; flex-direction: column; overflow: hidden;">
-            
-<div style="background: #f8f9fa; height: 40px; border-bottom: 1px solid #eee; overflow: hidden;">
-    <img src="/web/images/quotaheader.png" alt="Гарчигны зураг" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-</div>
-            <div style="flex: 1; overflow-y: scroll; padding: 15px;">
-                
+ <div class="q-line">
+ <p class="q-name">2018.10.01 Х.Баттулга, МУ-ын Ерөнхийлөгч:</p>
+ <p class="quota">"... асуудлууд хуримтлагдсаар, нийгэм бухимдсаар
+	байх тийм нөхцөл бат тогтжээ... Ганцхан жишээ дурдахад, хоёр жилийн өмнөөс илчлэгдэж, яригдаж эхэлсэн
+	60 тэрбумын гэх тодотголтой хэргийг эцэслэх талаар УИХ-ын Чуулганыг завсарлуулахгүйгээр хэлэлцэх хэрэгтэй
+	гэсэн саналыг би гаргаж байсан. Дараа нь Ээлжит бус чуулганаар хэлэлцэх нөхцөл байдал үүссэнийг сануулж,
+	Ээлжит бус чуулганыг зарлан хуралдуулах саналыг би бас хүргүүлсэн. УИХ-ын гишүүдийн 1/3-ээс дээших нь бас шаардсан.
+	Ерөнхийлөгчийн санал гаргасан зэрэг Ээлжит бус чуулганыг зарлан хуралдуулах Хуульд заасан хоёр үндэслэл нэгэн зэрэг
+	бий болсон тохиолдолд УИХ-ын Дарга Үндсэн хууль болон холбогдох бусад хуулиар хүлээсэн үүргээ чанд сахин биелүүлэх ёстой.
+	Гэтэл үүргээ биелүүлсэнгүй."</p>
+ <p class="q-source">(УИХ-ын 2018 оны Намрын чуулганы Нээлтэд хэлсэн үгнээс)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2019.10.31 Шүүхийн шинжилгээний үндэсний хүрээлэнгийн шинжээч Д.Мөнхбаатар:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"АТГ-аас (УИХ-ын сонгуулийн дараа) 2016 оны 7 сарын 6-нд ирүүлсэн
-					гуравдахь удаагийн шинжилгээний нотлох баримт нь өмнөх хоёр шинжилгээний обьектоос өөр, видео бичлэгийн форматтай, хар фон дээр хүний
-					толгойны дүрс болон текст оруулж эвлүүлсэн бичлэг байсан. Өмнөх хоёр шинжилгээний (2016 оны 6 сард сонгуулиас өмнө ирүүлсэн) обьект нь
-					аудио файл бөгөөд Ц.Сандуйн дуу хоолойтой тохирч байсан (Дүгнэлт №4113), эвлүүлэг монтаж ороогүй 3 хүний (М.Энхболд, Ц.Сандуй, А.Ганбаатар нарын)
-                    харилцан яриа байсан (Дүгнэлт №4225)"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(БГД-ийн Эрүүгийн хэргийн Анхан шатны шүүхийн №2019/ШЦТ/902 Шийтгэх тогтоолоос)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2018.09.19 Ц.Нямдорж, УИХ-ын гишүүн, ХЗДХ-ийн Сайд:</p>
+ <p class="quota">"...Тэр ярьсан хүмүүс нь ёс суртахууны хариуцлага хүлээх ёстой.
+	Энийг бол эвлүүлэг гэж болохгүй... Ямар ч байсан Сандуй нь (ажлаа) өгчихсөн шүү дээ. Намайг тэр үгийг
+	(2017.08.17-нд ТВ5 телевизэд өгсөн ярилцлагаа хэлж буй) хэлсэний дараа. Хүлээсэн байгаа биз?! Эрүүл хүний санаанд оромгүй юм ярьцгаасан.
+	Нэр усыг нь жигштэл, зэвүүцэл төрүүлмээр. Ийм юм хэлчихсэн л юм бол уучлаарай гэж хэлэх ухаан төрөх л ёстой шүү дээ."</p>
+ <p class="q-source">(ТВ5 Тодруулга ярилцлага)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2019.01.24 Л.Элдэв-Очир, УИХ-ын гишүүн:</b></p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Манай нам 2016 онд сонгуульд ялаад 30 мянган хүн төрийн албанд шинээр авсан"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(УИХ-ын Чуулганы хуралдаан)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2018.09.17 Л.Болд, УИХ-ын гишүүн:</p>
+ <p class="quota">"Хуулийн байгууллага өнгөрсөн хугацаанд 60 тэрбумын асуудлыг
+	зориуд царцааж, булзайруулсан байдлаар ажиллаж ирлээ... УИХ-ын 26 гишүүн 60 тэрбумын асуудлаар ээлжит бус чуулган
+	зарлан хуралдуулах шаардлагатай гэж үзэн, гарын үсгээ зурсан. Ерөнхийлөгч Х.Баттулга ээлжит бус чуулганыг 60 тэрбумын
+	асуудлаар зарлан хуралдуулахыг шаардсан албан бичгийг УИХ-ын дарга М.Энхболдод хүргүүлсэн. Энэ хоёр хүсэлтийг
+	УИХ-ын дарга М.Энхболд хүлээж авсангүй. Ингэснээр Үндсэн хуулийн хоёр зөрчил яг бодитойгоор үүсчихлээ..."</p>
+ <p class="q-source">(medee.mn сайтад өгсөн ярилцлагаас)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2019.01.11 М.Энх-Амгалан, Монгол Улсын Ерөнхий прокурор:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"60 тэрбумын хэргийг эвлүүлэг гэж хаасан гээд л
-						ингээд янз янзын юм яриад байх юм. Үгүй ээ! Прокурорын байгууллага энэ үйл явдал, яриа хөөрөө бүгдээрээ болсон юмаа гэдгийг
-						шийдвэр гаргасан Тогтоолдоо зааж өгсөн."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(УИХ-ын Чуулганы хуралдаан дээр өгсөн тайлбар)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2018.09.10 Н.Алтанхуяг, УИХ-ын гишүүн асан:</p>
+ <p class="quota">"ШШҮХ 2016 оны сонгуулиас өмнө 60 тэрбумын бичлэгийг хоёр удаа шинжлээд
+	үнэн мөнөөр нь тогтоосон байдаг. Бичлэгт гарч байгаа дуу хоолой нь Ц.Сандуйгийн дуу хоолойтой тохирч байна. Бичлэгт монтаж, эвлүүлэг ороогүй
+	байна гэсэн дүгнэлт гарсан. Гэтэл сонгуульд МАН 65 суудал авсаны дараа ШШҮХ эвлүүлэг гэсэн дүгнэлт гаргасан. Миеэгомбын Энхболд
+	гэдэг хүнтэй холбоотой асуудал энэ хүнийг УИХ-ын Дарга байхад шийдэгдэхгүй байх. Яагаад гэвэл, АТГ-ын Энхжаргал даргыг энэ хүн тавьсан.
+	АТГ-ын Дарга яалаа гэж тавьсан хүнийхээ ийм юманд оролцсон гэдгийг тогтоох вэ дээ! Тогтоох сонирхол ч байхгүй."</p>
+ <p class="q-source">(Шударга ёс №4. нэвтрүүлгийн хэсгээс)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.10.25 Л.Болд, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"60 тэрбумын хэргийг илчилсэн Г.Доржзодов бол Монголын номер нэг Шүгэл үлээгч.
-						Дэлхийн жишээ болчихлоо шүү дээ. Ийм аймшигтай тогтолцооны эсрэг ганц хүн зогсож байна. Тэр хүнийг бид яаж хамгаалж байна. Тагнуул, цагдаа,
-						шүүх зэрэг бүх хуулийн байгууллага яаж дарамтлав."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(УИХ-ын Чуулган дээр)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2018.08.06 Д.Амарбаясгалан, МАН-ын ЕНБД, НИТХ-ын төлөөлөгч:</p>
+ <p class="quota">"...Ганц 60 тэрбумын хэрэг гэлгүй ёсзүйгүй нөхдөд бүгдэд нь хариуцлага тооцно..."</p>
+ <p class="q-source">(Тусгаар тогтнолын ордонд хийсэн Хэвлэлийн хурлаас)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.10.17 Л.Болд, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"УИХ-ын 26 гишүүн ээлжит бус чуулган зарлан хуралдуулах тухай
-						шаардлагыг УИХ-ын даргад хүргүүлсэн боловч шалтаг заан ээлжит бус чуулган зарлалгүй төрийн үйл ажиллагааг тасалдуулсан нь
-						Үндсэн хууль зөрчсөн хэмээн үзэж иргэний хувиар Үндсэн хуулийн цэцэд хандлаа."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(twitter.com)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2018.08.03 МАН-ын Хяналтын ерөнхий хороо:</p>
+ <p class="quota">"Нийслэлийн МАН-ын хорооны дарга асан Ц.Сандуй энэ (60 тэрбумын) талаар ярьсан нь үнэн,
+	бичлэг алдагдсан гэж хэвлэл мэдээллийн хэрэгслээр мэдээлсэн, мөн Нийслэлийн МАН-ын хорооны тэргүүлэгч, намын хорооны даргын санхүүгийн
+	асуудал хариуцсан зөвлөх А.Ганбаатар дээрх яриа болсон талаар хариу тайлбар өгсөн зэргээс үзэхэд 60 тэрбумын гэх яриа болсон гэдэг нь батлагдаж
+	байна. МАН-ын гишүүн М.Энхболд дээрх 60 тэрбумын гэх асуудалд намынхаа нэр хүндийг холбогдуулсандаа туйлын харамсаж байна гэж МАН-ын ХЕХ-нд
+	бичгээр илэрхийлсэн байна. Дээрх нэр бүхий 3 гишүүний тайлбар, хүсэлт зэргийг авч үзэхэд МАН-ын гишүүн Ц.Сандуй, А.Ганбаатар, М.Энхболд нар
+	ёс зүйн алдаа гаргаж МАН-ын Ёс зүйн дүрмийн 2.4, 2.5, 2.7, 2.8 дахь заалтыг зөрчсөн байна. МАН-ын УЗ-ийн гишүүн М.Энхболд ёс зүйн алдаагаа ухамсарлаж байгааг
+	тэмдэглэв. ... ТОГТООХ НЬ: (1) МАН-ын Дүрмийн 4-р зүйлийн 4.2.5, 4.2.6, 4.2.8, 4.2.9 дэх заалтыг зөрчиж, ёсзүйн алдаа гаргасан 
+	МАН-ын гишүүн М.Энхболдын асуудлыг МАН-ын Удирдах зөвлөлийн хуралдаанаар хэлэлцүүлж, хариуцлага тооцон, цаашид МАН-ын гишүүдийн зүгээс
+	энэ асуудлыг дэврээж хандахгүй байхыг намын бүх шатны байгууллагад чиглэл болгохыг МАН-ын ЕНБД Д.Амарбаясгаланд даалгасугай.
+	(2) МАН-ын гишүүн Ц.Сандуй МАН-ын Дүрмийн 4-р зүйлийн 4.2.5, 4.2.8, 4.2.9 дэх заалтыг
+	зөрчиж ёсзүйн алдаа гаргасан байх тул 4.4, 4.5 дахь заалтад заасан хариуцлагыг тооцож ажиллахыг МАН-ын ЕНБД Д.Амарбаясгаланд даалгасугай.
+	(3) МАН гишүүн А.Ганбаатар МАН Дүрмийн 4-р зүйлийн 4.2.5, 4.2.9 дэх заалтыг зөрчиж алдаа гаргасан байх тул
+	4-р зүйлийн 4.4, 4.5, 6-р зүйлийн 6.6 дахь хариуцлагыг тооцохоор Нийслэлийн МАН-ын хорооны Тэргүүлэгчдийн хуралдаанд чиглэл болгосугай."</p>
+ <p class="q-source">(МАН-ын ХЕХ-ны 2018 оны 8 сарын 3-ны өдрийн №13 тоот Тогтоолоос)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2018.08.02 М.Энхболд, УИХ-ын дарга:</p>
+ <p class="quota">"...намынхаа нэр хүндийг 60тэрбумын асуудалд холбогдуулсандаа туйлын харамсаж байна."</p>
+ <p class="q-source">(МАН-ын Хяналтын Ерөнхий хороонд бичгээр өгсөн Тайлбараас)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2018.08.01 Улсын ерөнхий прокурорын газар:</p>
+ <p class="quota">НПГ-ын Ерөнхий прокурор Д.Баярмагнай ТЕГ-аас 2018 оны 7 сарын 27-ны өдөр
+	ирүүлсэн №08/704 дугаартай "... шалгах тодорхой үндэслэл бүхий мэдээ, мэдээлэл авагдсан" гэх албан бичгийн дагуу НПГ-ын 2017 оны 9 сарын 4-ний
+	өдрийн №25 дугаартай тогтоолоор хяналтын прокурор Д.Ширэндэвийн хааж шийдвэрлэсэн эрүүгийн 170200016 дугаартай хэргийг дахин хянаад
+	2018 оны 8 сарын 1-ний өдрийн №62 дугаартай тогтоолоор уг хэрэгт нэмэлт хэрэг бүртгэлтийн ажиллагаа явуулахаар сэргээжээ.</p>
+ <p class="q-source">(2018.08.01-ны НПГ-ын №62 Тогтоолоос)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2018.07.31 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
+ <p class="quota">"Эвлүүлэг гэж дүгнэлт гаргахын тулд шаардлагатай бүх хууль тогтоомжийг
+	ашигласан байгаа юм. Энэ дүгнэлт дээр "...дууг дүрсжүүлсэн учраас эвлүүлэг..." гэжээ. Монголд Миеэгомбын Энхболд гэдэг
+	улстөрч мэлзэж болох байх л даа... Хамгийн хортой нь, төр нь дагаж мэлзэж байгаа юм. АТГ нь томилсон хүнээ дагаад
+	мэлзэж байгаа байхгүй юу. Дууг аваад дүрсжүүлсэн учраас энэ бол эвлүүлэг юмаа гэдэг дүгнэлтийг АТГ гаргаад сууж байгаа байхгүй юу..."</p>
+ <p class="q-source">(Мэлзээ төр нэвтрүүлгээс)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.10.05 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Төрийн байгууллагууд эвлүүлэг гэж мэлздэг юм байна.
-						АТГ нь эвлүүлэг гэж мэлздэг юм байна. Нийтийн сонсгол хийх гэхлээр Прокурор нь Нийтийн сонсгол
-						хийж болохгүй гэж мэлздэг юм байна. Одоо нэг байгууллагыг харах үлдсэн. Энэ бол Үндсэн хуулийн цэц!
-						Энэ байгууллага дээр хүссэн ч, эс хүссэн ч энэ асуудал очих байх."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Төрийн ордонд сэтгүүлчдэд өгсөн мэдээллээс)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2018.06.28 У.Хүрэлсүх, Ерөнхий сайд, МАН-ын дарга:</p>
+ <p class="quota">"Намын эв нэгдлийг бодоод нэг жил
+	дуугүй явлаа. Одоо цаашид “60 тэрбум"-ыг өмөөрч чадахгүй. Энхболд оо, чи ёс зүйн хариуцлага хүлээгээд
+	ажлаа өг. Наад бичлэг чинь үнэн. Өнөөдөр шударга ёсыг тогтооход хамгийн их саад болж байгаа газар АТГ өөрөө
+	болоод байна. Буруутныг хаацайлж байгаа АТГ-ын даргыг ч өөрчилнө."</p>
+ <p class="q-source">(УИХ дахь МАН-ын Бүлгийн хурал)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.10.04 Д.Эрдэнэбат, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Төрийн албыг үнэгүйдүүлж, улс төртэй хутгаж,
-						60 тэрбумаар арилжаалснаас үүдэн төрийн албаны мерит зарчим алдагдаж, үүний хор уршгаар мэргэшсэн, чадварлаг,
-						ёсзүйтэй хүний нөөцөөр хангагдах ёстой төр үнэгүйдэн, бодлогогүй, шийдвэргүй, хариуцлагагүй үйл ажиллагааны улмаас
-						нийгмийг цочирдуулж, бухимдуулсан асуудлууд шил даран гарсаар байна."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(УИХ дахь Ардчилсан намын бүлгийн дүгнэлтээс)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2018.06.20 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
+ <p class="quota">"УИХ-ын Дарга М.Энхболд та ёсзүйн хариуцлага
+	хүлээж огцрох ёстой... 60 тэрбумтай холбоотой асуудлыг цаасан дээрх байдлаар бус бичлэг дээрх нэр бүхий гурван хүн
+	буюу УИХ-ын дарга М.Энхболд, гэрч Доржзодов, бусад гэрчүүд, хууль хяналтын байгууллага, бичлэг
+	эх хувиараа байна гэж нотолсон шинжээч, хэвлэл мэдээллийнхэн олон нийтийн өмнө нээлттэй сонсгол хийхийг
+	УИХ-ын гишүүдэд уриалж байна."</p>
+ <p class="q-source">(Төрийн ордонд хийсэн Хэвлэлийн бага хурлаас)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.10.01 Х.Баттулга, МУ-ын Ерөнхийлөгч:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"... асуудлууд хуримтлагдсаар, нийгэм бухимдсаар
-						байх тийм нөхцөл бат тогтжээ... Ганцхан жишээ дурдахад, хоёр жилийн өмнөөс илчлэгдэж, яригдаж эхэлсэн
-						60 тэрбумын гэх тодотголтой хэргийг эцэслэх талаар УИХ-ын Чуулганыг завсарлуулахгүйгээр хэлэлцэх хэрэгтэй
-						гэсэн саналыг би гаргаж байсан. Дараа нь Ээлжит бус чуулганаар хэлэлцэх нөхцөл байдал үүссэнийг сануулж,
-						Ээлжит бус чуулганыг зарлан хуралдуулах саналыг би бас хүргүүлсэн. УИХ-ын гишүүдийн 1/3-ээс дээших нь бас шаардсан.
-						Ерөнхийлөгчийн санал гаргасан зэрэг Ээлжит бус чуулганыг зарлан хуралдуулах Хуульд заасан хоёр үндэслэл нэгэн зэрэг
-						бий болсон тохиолдолд УИХ-ын Дарга Үндсэн хууль болон холбогдох бусад хуулиар хүлээсэн үүргээ чанд сахин биелүүлэх ёстой.
-						Гэтэл үүргээ биелүүлсэнгүй."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(УИХ-ын 2018 оны Намрын чуулганы Нээлтэд хэлсэн үгнээс)</p>
-                </div>
+ <div class="q-line">
+ <p class="q-name">2017.11.02 Д.Баярмагнай, Нийслэлийн Ерөнхий прокурор:</p>
+ <p class="quota">"Хэрэгт авагдсан бусад нотлох баримтаар 2014 онд
+	Шинэ Монгол хаад групп ХХК-ын байранд Ц.Сандуй, А.Ганбаатар нар нь МАН-ын 2016 оны УИХ-ын болон аймаг,
+	нийслэлийн ИТХ-ын сонгуульд оролцох, бодлого, стратеги, төлөвлөгөө, санхүүжилт хэрхэн босгох талаарх яриа хэлцэл
+	хийсэн нь нотлогдож тогтоогдсон. Одоо энэ аудио бичлэгийг үнэн худал гэх асуудал хамаагүй. Би дээр хэлсэн шүү дээ.
+	Прокурорын байгуулага энэ асуудлыг болоогүй, энэ бичлэг эвлүүлэг, худал зүйл гэж хэлээгүй, дүгнээгүй. Дахин хэлье.
+	Энэ асуудал, яригдсан зүйл нь хэрэгт авагдсан бусад баримтаар тогтоогдсон!"</p>
+ <p class="q-source">(prokuror.mn сайтад байршуулсан ярилцлагаас)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.10.25 Ц.Оюунгэрэл, УИХ-ын гишүүн асан:</p>
+ <p class="quota">"Г.Доржзодовын аюулгүй байдал өнөөдөр эмзэг байна.
+	Цаашдаа ч эмзэг байхаар байгаа. Монголын иргэнийх нь хувьд хамгаалах ёстой шүү дээ. Түүнчлэн гадны байгууллагуудын
+	хамгаалалтад ч оруулахгүй байх сонирхол байх шиг байна. Г.Доржзодов өнөөдөр ямар ч хэргийн сэжигтэн биш байхад
+	тэр хүн дээр хилийн хориг байсаар байгаа. Энэ хүнийг гадагш нь гаргахгүй, ажил ч хийх боломжгүй, амьдрах нөхцөл нь ч
+	ойлгомжгүй болчихоод байна шүү дээ. Гэтэл энэ хүнийг гэрч ч юм шиг, хэрэгтэн ч юм шиг, хохирогч ч юм шиг нөхцөл байдалтай
+	байлгаж байна. Г.Доржзодовын аюулгүй байдал ноцтой хэмжээнд байна гэж харж байгаа. Амь, амьдралаар нь заналхийлсэн үйл явдлыг
+	нүдээрээ үзсэн хүн шүү дээ. Хэн энэ хүнийг заналхийлж байгаа нь тодорхой."</p>
+ <p class="q-source">(medee.mn сайтад байршуулсан ярилцлагаас)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.09.04 Ж.Ариунаа, Нийслэлийн Ерөнхий прокурорын орлогч:</p>
+ <p class="quota">"Хэрэгт цугларсан бусад нотлох баримтуудаар
+	2014 онд Ц.Сандуй, А.Ганбаатар нар 2016 оны УИХ-ын болон орон нутгийн сонгуульд оролцох МАН-ын бодлого, мөрийн хөтөлбөр,
+	стратеги төлөвлөгөө, санхүүжилт зэргийн талаар ярилцаж байсан болох нь тогтоогдсон. Төрийн албыг үнэлж мөнгө босгох тухай уулзалтанд
+	У.Хүрэлсүх, Ц.Оюун-Эрдэнэ, Д.Амарбаясгалан нар оролцсон гэх нөхцөл байдал мөрдөн шалгах ажиллагаагаар болон А.Ганбаатарын өөрийнх нь
+	гэрчээр өгсөн мэдүүлэг зэргээр тогтоогдоогүй."</p>
+ <p class="q-source">(prokuror.mn сайтад байршуулсан ярилцлагаас)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.09.04 Нийслэлийн Ерөнхий прокурорын газар:</p>
+ <p class="quota">2017 оны 7 сарын 25-ны УЕПГ-ын шийдвэрээр байгуулагдсан АТГ, ТЕГ, ЦЕГ-ын Хамтарсан ажлын хэсэг мөрдөн шалгах ажиллагаа явуулж 2017 оны 8 сарын 31-ний өдөр хэрэг бүртгэлтийн хэргийг хаах санал гаргасаныг хяналт тавьж байсан
+	НПГ-ын прокурор Д.Ширэндэв 2017 оны 9 сарын 4-ний өдрийн №25 дугаартай Тогтоолоор хааж шийдвэрлэжээ.</p>
+ <p class="q-source">(2018.08.01-ны №62 Тогтоолоос)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.08.18 Д.Амарбаясгалан, МАН-ын НБД, НИТХ-ын төлөөлөгч:</p>
+ <p class="quota">"Харамсалтай нь саяхан болсон намын Удирдах зөвлөлийн хурал дээр энэнд холбогдсон Ц.Сандуй энэ бичлэг нь бодитой болсон юм гэдгийг өөрөө хүлээн зөвшөөрсөн."</p>
+ <p class="q-source">(АТГ-ын үүдэнд өгсөн ярилцлагаас)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.08.17 Ц.Нямдорж, УИХ-ын Дэд дарга:</p>
+ <p class="quota">"Нодлин жил УИХ-ын сонгуулийн үеэр тэр бичлэг ил гарсанаас
+	хойш гурав хоног комонд орсон шд манайхан. Хэн ч, юу ч ярьж чадах юм байхгүй. Тэгээд би М.Энхболдод хэлсэн
+	"Наад Сандуйгаа явуул аа. Ийм алхам хийхгүй бол огт болохгүй" гэж. Тэгээд ийм юм яриад сууж байсан чинь М.Энхболдын
+	өрөөнд Ц.Сандуй орж ирэхлээр нь би шууд нүүрэн дээр нь хэлсэн "Одоо чи яв" гээд. Тэгээд явуулсан ч үгүй, явсан ч үгүй.
+	УИХ-д олон суудал авчихаараа Ц.Сандуйг НИТХ-ын дарга болгочихсон юм. Ахиад энэ асуудал сая Ерөнхийлөгчийн сонгуулийн үеэр сэдрээд.
+	Тэгээд ард түмэн дургүйцэхэд ихээхэн хэмжээний нөлөө үзүүллээ гэж хүн болгон ярьж байгаа шд."</p>
+ <p class="q-source">(ТВ5 ярицлагаас)</p></div>	
+	
+ <div class="q-line">
+ <p class="q-name">2017.08.17 Д.Энхбат, УИХ-ын гишүүн асан, data.com:</p>
+ <p class="quota">"60 тэрбум бол маш чухал үзэгдэл. Намуудын дотоод бохир саваа дүүрч халих цэг. Монголд ардчилсан төр, хууль ёс байгаа эсэхээ харуулах цэг."</p>
+ <p class="q-source">(twitter.com)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.08.17 Д.Амарбаясгалан, МАН-ын НБД:</p>
+ <p class="quota">"60 тэрбумынхан арчаагаа ч нэг алдаж байна даа. МАНай нам эднээр хангалттай тоглууллаа. Одоо хангалттай!!! Тоглоом тоотой нь дээр!!!"</p>
+ <p class="q-source">(twitter.com)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.07.25 Улсын ерөнхий прокурорын газар:</p>
+ <p class="quota">Нийслэлийн прокурорын газраас эрүүгийн хэрэг үүсгэхээс татгалзсан
+	2016 оны 8 сарын 2-ны №208 дугаартай прокурор Ц.Алдархишигийн Тогтоолыг Улсын Ерөнхий прокурорын газар хүчингүй болгож, Хэрэг бүртгэлтийн хэрэг нээж,
+	хэрэг бүртгэлт явуулахыг 2017 оны 7 сарын 25-ны өдрийн №1/03 дугаартай Тогтоолоор НПГ-т даалгав. Уг хэрэгт АТГ, ЦЕГ, ТЕГ-ын Хамтарсан ажлын хэсэг
+	томилон шалгуулахаар шийдвэрлэв.</p>
+ <p class="q-source">(prokuror.mn)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.07.22 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
+ <p class="quota">"Төрийн албыг арилжсан 60 тэрбумынханаас намаа цэвэрлэхийн төлөө хатуу тэмцэнэ"</p>
+ <p class="q-source">(twitter.com)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.07.04 Америкийн шүүх шинжээчийн дүгнэлт:</p>
+ <p class="quota">"Тухайн бичлэгийг шинжлээд ямар нэгэн засвар, өөрчлөлт, эвлүүлэг ороогүй гэсэн дүгнэлтэд хүрэв. Уг файл нь эхнээсээ дуусах хүртэл бүрэн эх хувь (Authentic буюу Жинхэнэ хувь) болох нь тогтоогдож байна."</p>
+ <p class="q-source">(Шинжээчийн дүгнэлтээс)</p></div>	
+	
+ <div class="q-line">
+ <p class="q-name">2017.06.20 Х.Баттулга, Ерөнхийлөгчийн сонгуульд нэр дэвшигч:</p>
+ <p class="quota">"Би Ерөнхийлөгч болвол Г.Доржзодовт Улсын Баатар цол олгоно"</p>
+ <p class="q-source">(Сонгогчидтой уулзах үеэр хэлсэн үгнээс)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.06.19 @0210Gbd:</p>
+ <p class="quota">"МАН зөвхөн Доржзодовын эсрэг мэдээлэлд 2 өдрийн дотор 600сая төгрөг зарсан байна гэнэ."</p>
+ <p class="q-source">(twitter.com)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.06.09 Ж.Мөнхбат, ЗГХЭГ-ын дарга, МАН-ын ЕНБД:</p>
+ <p class="quota">"Бичлэг бол эвлүүлэг байсан юм гэсэн нэвтрүүлэг хийж өгвөл гэр бүлээр чинь хүссэн улс руу чинь 7 хоногийн дотор визийг нь гаргая, $1сая өгье. Мөнгийг Т.Ганболдоос аваарай"</p>
+ <p class="q-source">(Энканто VIP саунд хэлсэн үг)</p></div>	
+	
+ <div class="q-line">
+ <p class="q-name">2017.06.06 Нийслэлийн прокурорын газар:</p>
+ <p class="quota">Улсын Ерөнхий прокурорын газарт УИХ-ын гишүүдээс 90 минутын бичлэг,
+	39 хуудас материал ирүүлсэний дагуу 2017 оны 6 сарын 6-ны өдөр Хамтарсан ажлын хэсэг байгуулах, Шинжээч томилох Тогтоол үйлдэв.
+	ШШҮХ-ийн шинжээч 90 минутын аудио бичлэгийг шинжлээд 2017 оны 5 сарын 9-ний өдөр хуулбарласан байх тул шинжилгээ хийх боломжгүй
+	гэх №3395 дугаартай шинжээчийн Дүгнэлт үйлдэж ирүүлсэнийг үндэслэн 2016 оны 8 сарын 2-ны №208 дугаартай прокурор Ц.Алдархишигийн хэрэгсэхгүй болгох
+	тогтоолыг НПГ-аас хэвээр үлдээж шийдвэрлэв.</p>
+ <p class="q-source">(2017.07.06-ны 5/32 дугаартай НПГ-ын Ерөнхий прокурор Д.Баярмагнайгийн албан бичгээс)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.06.01 МУ-ын Үндэсний аюулгүй байдлын зөвлөл:</p>
+ <p class="quota">"Хүссэн гадаадын сургуулиа сонго, улсаа сонго, дээр нь нэмээд 2 өрөө байр өгье. 60 тэрбумын уулзалтын талаар зүгээр мартчих"</p>
+ <p class="q-source">(ҮАБЗ-өөс хүнээр дайлгасан үг)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2017.04.05 А.Ганбаатар, Ц.Сандуйн зөвлөх, Нийслэлийн МАН-ын гишүүн:</p>
+ <p class="quota">"Аятайхан байхгүй бол Зоригийн хэрэг шиг болгочихно шүү. Дарга (М.Энхболд) зөвшөөрвөл ядах юм байхгүй шүү. Гэр бүлийнхэнийг чинь бүгдийг нь ажиглаж байгаа шүү. Маргааш офис дээр ирж надтай уулз!"</p>
+ <p class="q-source">(Гэрийн үүдэнд отож уулзаад хэлсэн үг)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2016.10.28 Л.Болд, УИХ-ын гишүүн:</p>
+ <p class="quota">"60 тэрбумын бичлэгийг замхруулбал Монголын төр хэзээ ч цэвэршихгүй"</p>
+ <p class="q-source">(twitter.com)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2016.06.30 Шинжээчийн дүгнэлт №4225:</p>
+ <p class="quota">"ДУУ АВИАНЫ БИЧЛЭГТ ЭВЛҮҮЛЭГ, МОНТАЖ ХИЙГДЭЭГҮЙ БАЙНА"</p>
+ <p class="q-source">(ШШҮХ-ийн шүүх шинжээч Д.Мөнхбаатарын №4225 дүгнэлтээс)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2016.06.27 З.Энхболд, АН-ын Дарга:</p>
+ <p class="quota">"Манай Нийслэлийн сонгуулийн штабаас тэр бичлэгийг интернетээс
+	олж аваад, хүсэлт гаргаад, криминалистикийн албаар шалгуулсан юм байна лээ. Криминалистикийн шинжилгээгээр зөв гэсэн
+	байгаа юм. Би бас итгээгүй юм. Хоолой нь мөн ч юм шиг байсан. Ц.Сандуйгийн мэдэгдэл хийх хүртэл би итгээгүй л дээ.
+	Ц.Сандуй бол тэр (бичлэг)-ийг бид нар хоёр жилийн өмнө ярьсан яриа байна гэсэн."</p>
+ <p class="q-source">(УИХ-ын сонгуулийн мэтгэлцээн)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2016.06.27 Д.Баттулга, НИТХ-ын төлөөлөгч:</p>
+ <p class="quota">"Энд хоёр зүйлийг хэлмээр байна. Нэгдүгээрт,
+	энэ бичлэгийг Ц.Сандуй "Бид нар хоёр жилийн өмнө ярьж байсан. Тэр бичлэгийг хэн нэгэн гадагшаа цацсан байна. Бид нар
+	хууль хяналтын байгууллагад хандана" гэж. Өөрөөр хэлбэл, Нийслэлийн МАН-ын дарга Ц.Сандуй энэ бичлэгийг
+	үнэн, мөн гэдгийг өөрөө хүлээн зөвшөөрсөн. Үүнээс хойшхи янз бүрийн тайлбар бол тайлбар биш!
+	Өөрийнхөө үзэмжээр л энэ зүйлээс бултах гэсэн янз бүрийн хүмүүсийн оролдлого гэж үзэх хэрэгтэй.
+	Хоёрдугаарт, холбогдох (шинжилгээний) байгууллагууд нь энийг үнэн бодитой гэдгийг бид нарт тогтоогоод өглөө."</p>
+ <p class="q-source">(Нийслэлийн АН-ын Хэвлэлийн бага хурал)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2016.06.25 Ардчилсан намын мэдэгдэл:</p>
+ <p class="quota">"МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй нарын
+	төрийн албыг үнэлэн худалдах санаархал нь Үндсэн хуулийн 46, 19-р зүйл, Эрүүгийн хуулийн 82-р зүйл "Төрийн эрх мэдлийг хууль бусаар
+	авах, хуйвалдаан зохион байгуулах", Төрийн албаны тухай хуулийн 17.1, Сонгуулийн тухай хуулийн 50.1, 70.1.8, Улс төрийн намуудын
+	тухай хуулийн 18.3, Эрүүгийн хуулийн хахууль, албан тушаалын гэмт хэрэгт холбогдох олон зүйл анги, заалтуудыг ноцтой зөрчсөн
+	баримт байх тул хууль хяналтын байгууллагад хандан шалгуулахаар шийдвэрлэсэнээ мэдэгдэж байна."</p>
+ <p class="q-source">(Төрийн ордонд хийсэн Мэдэгдлээс)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2016.06.24 Ц.Сандуй, Нийслэлийн МАН-ын дарга:</p>
+ <p class="quota">"ОДООНООС ХОЁР ЖИЛ ГАРАНГИЙН ӨМНӨ 2014 ОНЫ 9 САРД МАН БАС НИЙСЛЭЛИЙН МАН СТРАТЕГИ, ТАКТИКАА ЯРИХ ХУРАЛДААН БОЛСОН. ТЭР ҮЕИЙН БИЧЛЭГ АЛДАГДСАН БАЙНА. БИД НАР ХЭН АЛДАЖ,
+	ХЭН ЭНЭ БИЧЛЭГИЙГ ГАДАГШ НЬ ӨГСӨН БАЙНА ГЭДГИЙГ ХУУЛЬ ХЯНАЛТЫН БАЙГУУЛЛАГААР ДАВХАР ШАЛГУУЛНА."</p>
+ <p class="q-source">(ТТО-ны үүдэнд хийсэн мэдэгдэл)</p></div>
+	
+ <div class="q-line">
+ <p class="q-name">2016.06.22 Шинжээчийн дүгнэлт №4113:</p>
+ <p class="quota">"БИЧЛЭГ ДЭХ ДУУ ХООЛОЙ Ц.САНДУЙГИЙН ДУУ ХООЛОЙТОЙ ТОХИРЧ БАЙНА"</p>
+ <p class="q-source">(ШШҮХ-ийн шүүх шинжээч Д.Мөнхбаатарын №4113 дүгнэлтээс)</p></div>
 
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.09.19 Ц.Нямдорж, УИХ-ын гишүүн, ХЗДХ-ийн Сайд:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"...Тэр ярьсан хүмүүс нь ёс суртахууны хариуцлага хүлээх ёстой.
-						Энийг бол эвлүүлэг гэж болохгүй... Ямар ч байсан Сандуй нь (ажлаа) өгчихсөн шүү дээ. Намайг тэр үгийг
-						(2017.08.17-нд ТВ5 телевизэд өгсөн ярилцлагаа хэлж буй) хэлсэний дараа. Хүлээсэн байгаа биз?! Эрүүл хүний санаанд оромгүй юм ярьцгаасан.
-						Нэр усыг нь жигштэл, зэвүүцэл төрүүлмээр. Ийм юм хэлчихсэн л юм бол уучлаарай гэж хэлэх ухаан төрөх л ёстой шүү дээ."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(ТВ5 Тодруулга ярилцлага)</p>
-                </div>
-
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.09.17 Л.Болд, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Хуулийн байгууллага өнгөрсөн хугацаанд 60 тэрбумын асуудлыг
-						зориуд царцааж, булзайруулсан байдлаар ажиллаж ирлээ... УИХ-ын 26 гишүүн 60 тэрбумын асуудлаар ээлжит бус чуулган
-						зарлан хуралдуулах шаардлагатай гэж үзэн, гарын үсгээ зурсан. Ерөнхийлөгч Х.Баттулга ээлжит бус чуулганыг 60 тэрбумын
-						асуудлаар зарлан хуралдуулахыг шаардсан албан бичгийг УИХ-ын дарга М.Энхболдод хүргүүлсэн. Энэ хоёр хүсэлтийг
-						УИХ-ын дарга М.Энхболд хүлээж авсангүй. Ингэснээр Үндсэн хуулийн хоёр зөрчил яг бодитойгоор үүсчихлээ..."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(medee.mn сайтад өгсөн ярилцлагаас)</p>
-                </div>
-
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.09.10 Н.Алтанхуяг, УИХ-ын гишүүн асан:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"ШШҮХ 2016 оны сонгуулиас өмнө 60 тэрбумын бичлэгийг хоёр удаа шинжлээд
-						үнэн мөнөөр нь тогтоосон байдаг. Бичлэгт гарч байгаа дуу хоолой нь Ц.Сандуйгийн дуу хоолойтой тохирч байна. Бичлэгт монтаж, эвлүүлэг ороогүй
-						байна гэсэн дүгнэлт гарсан. Гэтэл сонгуульд МАН 65 суудал авсаны дараа ШШҮХ эвлүүлэг гэсэн дүгнэлт гаргасан. Миеэгомбын Энхболд
-						гэдэг хүнтэй холбоотой асуудал энэ хүнийг УИХ-ын Дарга байхад шийдэгдэхгүй байх. Яагаад гэвэл, АТГ-ын Энхжаргал даргыг энэ хүн тавьсан.
-						АТГ-ын Дарга яалаа гэж тавьсан хүнийхээ ийм юманд оролцсон гэдгийг тогтоох вэ дээ! Тогтоох сонирхол ч байхгүй."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Шударга ёс №4. нэвтрүүлгийн хэсгээс)</p>
-                </div>
-
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.08.06 Д.Амарбаясгалан, МАН-ын ЕНБД, НИТХ-ын төлөөлөгч:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"...Ганц 60 тэрбумын хэрэг гэлгүй ёсзүйгүй нөхдөд бүгдэд нь хариуцлага тооцно..."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Тусгаар тогтнолын ордонд хийсэн Хэвлэлийн хурлаас)</p>
-                </div>
-
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2018.08.03 МАН-ын Хяналтын ерөнхий хороо:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Нийслэлийн МАН-ын хорооны дарга асан Ц.Сандуй энэ (60 тэрбумын) талаар ярьсан нь үнэн,
-						бичлэг алдагдсан гэж хэвлэл мэдээллийн хэрэгслээр мэдээлсэн, мөн Нийслэлийн МАН-ын хорооны тэргүүлэгч, намын хорооны даргын санхүүгийн
-						асуудал хариуцсан зөвлөх А.Ганбаатар дээрх яриа болсон талаар хариу тайлбар өгсөн зэргээс үзэхэд 60 тэрбумын гэх яриа болсон гэдэг нь батлагдаж
-						байна. МАН-ын гишүүн М.Энхболд дээрх 60 тэрбумын гэх асуудалд намынхаа нэр хүндийг холбогдуулсандаа туйлын харамсаж байна гэж МАН-ын ХЕХ-нд
-						бичгээр илэрхийлсэн байна. Дээрх нэр бүхий 3 гишүүний тайлбар, хүсэлт зэргийг авч үзэхэд МАН-ын гишүүн Ц.Сандуй, А.Ганбаатар, М.Энхболд нар
-						ёс зүйн алдаа гаргаж МАН-ын Ёс зүйн дүрмийн 2.4, 2.5, 2.7, 2.8 дахь заалтыг зөрчсөн байна. МАН-ын УЗ-ийн гишүүн М.Энхболд ёс зүйн алдаагаа ухамсарлаж байгааг
-						тэмдэглэв. ... ТОГТООХ НЬ: (1) МАН-ын Дүрмийн 4-р зүйлийн 4.2.5, 4.2.6, 4.2.8, 4.2.9 дэх заалтыг зөрчиж, ёсзүйн алдаа гаргасан 
-						МАН-ын гишүүн М.Энхболдын асуудлыг МАН-ын Удирдах зөвлөлийн хуралдаанаар хэлэлцүүлж, хариуцлага тооцон, цаашид МАН-ын гишүүдийн зүгээс
-						энэ асуудлыг дэврээж хандахгүй байхыг намын бүх шатны байгууллагад чиглэл болгохыг МАН-ын ЕНБД Д.Амарбаясгаланд даалгасугай.
-						(2) МАН-ын гишүүн Ц.Сандуй МАН-ын Дүрмийн 4-р зүйлийн 4.2.5, 4.2.8, 4.2.9 дэх заалтыг
-						зөрчиж ёсзүйн алдаа гаргасан байх тул 4.4, 4.5 дахь заалтад заасан хариуцлагыг тооцож ажиллахыг МАН-ын ЕНБД Д.Амарбаясгаланд даалгасугай.
-						(3) МАН гишүүн А.Ганбаатар МАН Дүрмийн 4-р зүйлийн 4.2.5, 4.2.9 дэх заалтыг зөрчиж алдаа гаргасан байх тул
-						4-р зүйлийн 4.4, 4.5, 6-р зүйлийн 6.6 дахь хариуцлагыг тооцохоор Нийслэлийн МАН-ын хорооны Тэргүүлэгчдийн хуралдаанд чиглэл болгосугай."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(МАН-ын ХЕХ-ны 2018 оны 8 сарын 3-ны өдрийн №13 тоот Тогтоолоос)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2018.08.02 М.Энхболд, УИХ-ын дарга:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"...намынхаа нэр хүндийг 60тэрбумын асуудалд холбогдуулсандаа туйлын харамсаж байна."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(МАН-ын Хяналтын Ерөнхий хороонд бичгээр өгсөн Тайлбараас)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2018.08.01 Улсын ерөнхий прокурорын газар:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">НПГ-ын Ерөнхий прокурор Д.Баярмагнай ТЕГ-аас 2018 оны 7 сарын 27-ны өдөр
-					ирүүлсэн №08/704 дугаартай "... шалгах тодорхой үндэслэл бүхий мэдээ, мэдээлэл авагдсан" гэх албан бичгийн дагуу НПГ-ын 2017 оны 9 сарын 4-ний
-					өдрийн №25 дугаартай тогтоолоор хяналтын прокурор Д.Ширэндэвийн хааж шийдвэрлэсэн эрүүгийн 170200016 дугаартай хэргийг дахин хянаад
-					2018 оны 8 сарын 1-ний өдрийн №62 дугаартай тогтоолоор уг хэрэгт нэмэлт хэрэг бүртгэлтийн ажиллагаа явуулахаар сэргээжээ.</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(2018.08.01-ны НПГ-ын №62 Тогтоолоос)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.07.31 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Эвлүүлэг гэж дүгнэлт гаргахын тулд шаардлагатай бүх хууль тогтоомжийг
-						ашигласан байгаа юм. Энэ дүгнэлт дээр "...дууг дүрсжүүлсэн учраас эвлүүлэг..." гэжээ. Монголд Миеэгомбын Энхболд гэдэг
-						улстөрч мэлзэж болох байх л даа... Хамгийн хортой нь, төр нь дагаж мэлзэж байгаа юм. АТГ нь томилсон хүнээ дагаад
-						мэлзэж байгаа байхгүй юу. Дууг аваад дүрсжүүлсэн учраас энэ бол эвлүүлэг юмаа гэдэг дүгнэлтийг АТГ гаргаад сууж байгаа байхгүй юу..."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Мэлзээ төр нэвтрүүлгээс)</p>
-                </div>
-
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.06.28 У.Хүрэлсүх, Ерөнхий сайд, МАН-ын дарга:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Намын эв нэгдлийг бодоод нэг жил
-						дуугүй явлаа. Одоо цаашид “60 тэрбум”-ыг өмөөрч чадахгүй. Энхболд оо, чи ёс зүйн хариуцлага хүлээгээд
-						ажлаа өг. Наад бичлэг чинь үнэн. Өнөөдөр шударга ёсыг тогтооход хамгийн их саад болж байгаа газар АТГ өөрөө
-						болоод байна. Буруутныг хаацайлж байгаа АТГ-ын даргыг ч өөрчилнө."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(УИХ дахь МАН-ын Бүлгийн хурал)</p>
-                </div>
-
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2018.06.20 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"УИХ-ын Дарга М.Энхболд та ёсзүйн хариуцлага
-						хүлээж огцрох ёстой... 60 тэрбумтай холбоотой асуудлыг цаасан дээрх байдлаар бус бичлэг дээрх нэр бүхий гурван хүн
-						буюу УИХ-ын дарга М.Энхболд, гэрч Доржзодов, бусад гэрчүүд, хууль хяналтын байгууллага, бичлэг
-						эх хувиараа байна гэж нотолсон шинжээч, хэвлэл мэдээллийнхэн олон нийтийн өмнө нээлттэй сонсгол хийхийг
-						УИХ-ын гишүүдэд уриалж байна."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Төрийн ордонд хийсэн Хэвлэлийн бага хурлаас)</p>
-                </div>
-
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.11.02 Д.Баярмагнай, Нийслэлийн Ерөнхий прокурор:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Хэрэгт авагдсан бусад нотлох баримтаар 2014 онд
-						Шинэ Монгол хаад групп ХХК-ын байранд Ц.Сандуй, А.Ганбаатар нар нь МАН-ын 2016 оны УИХ-ын болон аймаг,
-						нийслэлийн ИТХ-ын сонгуульд оролцох, бодлого, стратеги, төлөвлөгөө, санхүүжилт хэрхэн босгох талаарх яриа хэлцэл
-						хийсэн нь нотлогдож тогтоогдсон. Одоо энэ аудио бичлэгийг үнэн худал гэх асуудал хамаагүй. Би дээр хэлсэн шүү дээ.
-						Прокурорын байгуулага энэ асуудлыг болоогүй, энэ бичлэг эвлүүлэг, худал зүйл гэж хэлээгүй, дүгнээгүй. Дахин хэлье.
-						Энэ асуудал, яригдсан зүйл нь хэрэгт авагдсан бусад баримтаар тогтоогдсон!"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(prokuror.mn сайтад байршуулсан ярилцлагаас)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.10.25 Ц.Оюунгэрэл, УИХ-ын гишүүн асан:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Г.Доржзодовын аюулгүй байдал өнөөдөр эмзэг байна.
-						Цаашдаа ч эмзэг байхаар байгаа. Монголын иргэнийх нь хувьд хамгаалах ёстой шүү дээ. Түүнчлэн гадны байгууллагуудын
-						хамгаалалтад ч оруулахгүй байх сонирхол байх шиг байна. Г.Доржзодов өнөөдөр ямар ч хэргийн сэжигтэн биш байхад
-						тэр хүн дээр хилийн хориг байсаар байгаа. Энэ хүнийг гадагш нь гаргахгүй, ажил ч хийх боломжгүй, амьдрах нөхцөл нь ч
-						ойлгомжгүй болчихоод байна шүү дээ. Гэтэл энэ хүнийг гэрч ч юм шиг, хэрэгтэн ч юм шиг, хохирогч ч юм шиг нөхцөл байдалтай
-						байлгаж байна. Г.Доржзодовын аюулгүй байдал ноцтой хэмжээнд байна гэж харж байгаа. Амь, амьдралаар нь заналхийлсэн үйл явдлыг
-						нүдээрээ үзсэн хүн шүү дээ. Хэн энэ хүнийг заналхийлж байгаа нь тодорхой."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(medee.mn сайтад байршуулсан ярилцлагаас)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.09.04 Ж.Ариунаа, Нийслэлийн Ерөнхий прокурорын орлогч:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Хэрэгт цугларсан бусад нотлох баримтуудаар
-						2014 онд Ц.Сандуй, А.Ганбаатар нар 2016 оны УИХ-ын болон орон нутгийн сонгуульд оролцох МАН-ын бодлого, мөрийн хөтөлбөр,
-						стратеги төлөвлөгөө, санхүүжилт зэргийн талаар ярилцаж байсан болох нь тогтоогдсон. Төрийн албыг үнэлж мөнгө босгох тухай уулзалтанд
-						У.Хүрэлсүх, Ц.Оюун-Эрдэнэ, Д.Амарбаясгалан нар оролцсон гэх нөхцөл байдал мөрдөн шалгах ажиллагаагаар болон А.Ганбаатарын өөрийнх нь
-						гэрчээр өгсөн мэдүүлэг зэргээр тогтоогдоогүй."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(prokuror.mn сайтад байршуулсан ярилцлагаас)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.09.04 Нийслэлийн Ерөнхий прокурорын газар:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">2017 оны 7 сарын 25-ны УЕПГ-ын шийдвэрээр байгуулагдсан АТГ, ТЕГ, ЦЕГ-ын
-					Хамтарсан ажлын хэсэг мөрдөн шалгах ажиллагаа явуулж 2017 оны 8 сарын 31-ний өдөр хэрэг бүртгэлтийн хэргийг хаах санал гаргасаныг хяналт тавьж байсан
-					НПГ-ын прокурор Д.Ширэндэв 2017 оны 9 сарын 4-ний өдрийн №25 дугаартай Тогтоолоор хааж шийдвэрлэжээ.</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(2018.08.01-ны №62 Тогтоолоос)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.08.18 Д.Амарбаясгалан, МАН-ын НБД, НИТХ-ын төлөөлөгч:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Харамсалтай нь саяхан болсон намын Удирдах зөвлөлийн хурал дээр
-						энэнд холбогдсон Ц.Сандуй энэ бичлэг нь бодитой болсон юм гэдгийг өөрөө хүлээн зөвшөөрсөн."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(АТГ-ын үүдэнд өгсөн ярилцлагаас)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.08.17 Ц.Нямдорж, УИХ-ын Дэд дарга:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Нодлин жил УИХ-ын сонгуулийн үеэр тэр бичлэг ил гарсанаас
-						хойш гурав хоног комонд орсон шд манайхан. Хэн ч, юу ч ярьж чадах юм байхгүй. Тэгээд би М.Энхболдод хэлсэн
-						"Наад Сандуйгаа явуул аа. Ийм алхам хийхгүй бол огт болохгүй" гэж. Тэгээд ийм юм яриад сууж байсан чинь М.Энхболдын
-						өрөөнд Ц.Сандуй орж ирэхлээр нь би шууд нүүрэн дээр нь хэлсэн "Одоо чи яв" гээд. Тэгээд явуулсан ч үгүй, явсан ч үгүй.
-						УИХ-д олон суудал авчихаараа Ц.Сандуйг НИТХ-ын дарга болгочихсон юм. Ахиад энэ асуудал сая Ерөнхийлөгчийн сонгуулийн үеэр сэдрээд.
-						Тэгээд ард түмэн дургүйцэхэд ихээхэн хэмжээний нөлөө үзүүллээ гэж хүн болгон ярьж байгаа шд."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(ТВ5 ярицлагаас)</p>
-                </div>				
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.08.17 Д.Энхбат, УИХ-ын гишүүн асан, data.com:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"60 тэрбум бол маш чухал үзэгдэл. Намуудын дотоод бохир саваа дүүрч
-						халих цэг. Монголд ардчилсан төр, хууль ёс байгаа эсэхээ харуулах цэг."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(twitter.com)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.08.17 Д.Амарбаясгалан, МАН-ын НБД:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"60 тэрбумынхан арчаагаа ч нэг алдаж байна даа. МАНай нам эднээр хангалттай тоглууллаа.
-						Одоо хангалттай!!! Тоглоом тоотой нь дээр!!!"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(twitter.com)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.07.25 Улсын ерөнхий прокурорын газар:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">Нийслэлийн прокурорын газраас эрүүгийн хэрэг үүсгэхээс татгалзсан
-					2016 оны 8 сарын 2-ны №208 дугаартай прокурор Ц.Алдархишигийн Тогтоолыг Улсын Ерөнхий прокурорын газар хүчингүй болгож, Хэрэг бүртгэлтийн хэрэг нээж,
-					хэрэг бүртгэлт явуулахыг 2017 оны 7 сарын 25-ны өдрийн №1/03 дугаартай Тогтоолоор НПГ-т даалгав. Уг хэрэгт АТГ, ЦЕГ, ТЕГ-ын Хамтарсан ажлын хэсэг
-					томилон шалгуулахаар шийдвэрлэв.</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(prokuror.mn)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.07.22 Л.Оюун-Эрдэнэ, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Төрийн албыг арилжсан 60 тэрбумынханаас намаа цэвэрлэхийн төлөө хатуу тэмцэнэ"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(twitter.com)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.07.04 Америкийн шүүх шинжээчийн дүгнэлт:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Тухайн бичлэгийг шинжлээд ямар нэгэн засвар, өөрчлөлт, эвлүүлэг ороогүй
-					гэсэн дүгнэлтэд хүрэв. Уг файл нь эхнээсээ дуусах хүртэл бүрэн эх хувь (Authentic буюу Жинхэнэ хувь) болох нь тогтоогдож байна."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Шинжээчийн дүгнэлтээс)</p>
-                </div>	
-								
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.06.20 Х.Баттулга, Ерөнхийлөгчийн сонгуульд нэр дэвшигч:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Би Ерөнхийлөгч болвол Г.Доржзодовт Улсын Баатар цол олгоно"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Сонгогчидтой уулзах үеэр хэлсэн үгнээс)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2017.06.19 @0210Gbd:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"МАН зөвхөн Доржзодовын эсрэг мэдээлэлд 2 өдрийн дотор 600сая төгрөг зарсан байна гэнэ."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(twitter.com)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.06.09 Ж.Мөнхбат, ЗГХЭГ-ын дарга, МАН-ын ЕНБД:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Бичлэг бол эвлүүлэг байсан юм гэсэн нэвтрүүлэг хийж
-						өгвөл гэр бүлээр чинь хүссэн улс руу чинь 7 хоногийн дотор визийг нь гаргая, $1сая өгье. Мөнгийг Т.Ганболдоос аваарай"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Энканто VIP саунд хэлсэн үг)</p>
-                </div>				
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.06.06 Нийслэлийн прокурорын газар:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">Улсын Ерөнхий прокурорын газарт УИХ-ын гишүүдээс 90 минутын бичлэг,
-					39 хуудас материал ирүүлсэний дагуу 2017 оны 6 сарын 6-ны өдөр Хамтарсан ажлын хэсэг байгуулах, Шинжээч томилох Тогтоол үйлдэв.
-					ШШҮХ-ийн шинжээч 90 минутын аудио бичлэгийг шинжлээд 2017 оны 5 сарын 9-ний өдөр хуулбарласан байх тул шинжилгээ хийх боломжгүй
-					гэх №3395 дугаартай шинжээчийн Дүгнэлт үйлдэж ирүүлсэнийг үндэслэн 2016 оны 8 сарын 2-ны №208 дугаартай прокурор Ц.Алдархишигийн хэрэгсэхгүй болгох
-					тогтоолыг НПГ-аас хэвээр үлдээж шийдвэрлэв.</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(2017.07.06-ны 5/32 дугаартай НПГ-ын Ерөнхий прокурор Д.Баярмагнайгийн албан бичгээс)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.06.01 МУ-ын Үндэсний аюулгүй байдлын зөвлөл:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Хүссэн гадаадын сургуулиа сонго, улсаа сонго,
-						дээр нь нэмээд 2 өрөө байр өгье. 60 тэрбумын уулзалтын талаар зүгээр мартчих"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(ҮАБЗ-өөс хүнээр дайлгасан үг)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2017.04.05 А.Ганбаатар, Ц.Сандуйн зөвлөх, Нийслэлийн МАН-ын гишүүн:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; font-style: italic;">"Аятайхан байхгүй бол Зоригийн хэрэг шиг болгочихно шүү.
-						Дарга (М.Энхболд) зөвшөөрвөл ядах юм байхгүй шүү. Гэр бүлийнхэнийг чинь бүгдийг нь ажиглаж байгаа шүү.
-						Маргааш офис дээр ирж надтай уулз!"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Гэрийн үүдэнд отож уулзаад хэлсэн үг)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2016.10.28 Л.Болд, УИХ-ын гишүүн:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"60 тэрбумын бичлэгийг замхруулбал Монголын төр хэзээ ч цэвэршихгүй"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(twitter.com)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2016.06.30 Шинжээчийн дүгнэлт №4225:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; text-transform: uppercase;">"ДУУ АВИАНЫ БИЧЛЭГТ ЭВЛҮҮЛЭГ, МОНТАЖ ХИЙГДЭЭГҮЙ БАЙНА"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(ШШҮХ-ийн шүүх шинжээч Д.Мөнхбаатарын №4225 дүгнэлтээс)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2016.06.27 З.Энхболд, АН-ын Дарга:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Манай Нийслэлийн сонгуулийн штабаас тэр бичлэгийг интернетээс
-						олж аваад, хүсэлт гаргаад, криминалистикийн албаар шалгуулсан юм байна лээ. Криминалистикийн шинжилгээгээр зөв гэсэн
-						байгаа юм. Би бас итгээгүй юм. Хоолой нь мөн ч юм шиг байсан. Ц.Сандуйгийн мэдэгдэл хийх хүртэл би итгээгүй л дээ.
-						Ц.Сандуй бол тэр (бичлэг)-ийг бид нар хоёр жилийн өмнө ярьсан яриа байна гэсэн."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(УИХ-ын сонгуулийн мэтгэлцээн)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2016.06.27 Д.Баттулга, НИТХ-ын төлөөлөгч:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"Энд хоёр зүйлийг хэлмээр байна. Нэгдүгээрт,
-						энэ бичлэгийг Ц.Сандуй "Бид нар хоёр жилийн өмнө ярьж байсан. Тэр бичлэгийг хэн нэгэн гадагшаа цацсан байна. Бид нар
-						хууль хяналтын байгууллагад хандана" гэж. Өөрөөр хэлбэл, Нийслэлийн МАН-ын дарга Ц.Сандуй энэ бичлэгийг
-						үнэн, мөн гэдгийг өөрөө хүлээн зөвшөөрсөн. Үүнээс хойшхи янз бүрийн тайлбар бол тайлбар биш!
-						Өөрийнхөө үзэмжээр л энэ зүйлээс бултах гэсэн янз бүрийн хүмүүсийн оролдлого гэж үзэх хэрэгтэй.
-						Хоёрдугаарт, холбогдох (шинжилгээний) байгууллагууд нь энийг үнэн бодитой гэдгийг бид нарт тогтоогоод өглөө."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Нийслэлийн АН-ын Хэвлэлийн бага хурал)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;">2016.06.25 Ардчилсан намын мэдэгдэл:</p>
-                    <p style="font-size: 14px; margin: 5px 0; font-style: italic;">"МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй нарын
-						төрийн албыг үнэлэн худалдах санаархал нь Үндсэн хуулийн 46, 19-р зүйл, Эрүүгийн хуулийн 82-р зүйл "Төрийн эрх мэдлийг хууль бусаар
-						авах, хуйвалдаан зохион байгуулах", Төрийн албаны тухай хуулийн 17.1, Сонгуулийн тухай хуулийн 50.1, 70.1.8, Улс төрийн намуудын
-						тухай хуулийн 18.3, Эрүүгийн хуулийн хахууль, албан тушаалын гэмт хэрэгт холбогдох олон зүйл анги, заалтуудыг ноцтой зөрчсөн
-						баримт байх тул хууль хяналтын байгууллагад хандан шалгуулахаар шийдвэрлэсэнээ мэдэгдэж байна."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(Төрийн ордонд хийсэн Мэдэгдлээс)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2016.06.24 Ц.Сандуй, Нийслэлийн МАН-ын дарга:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; text-transform: uppercase;">"ОДООНООС ХОЁР ЖИЛ ГАРАНГИЙН ӨМНӨ 2014 ОНЫ 9 САРД МАН БАС
-						НИЙСЛЭЛИЙН МАН СТРАТЕГИ, ТАКТИКАА ЯРИХ ХУРАЛДААН БОЛСОН. ТЭР ҮЕИЙН БИЧЛЭГ АЛДАГДСАН БАЙНА. БИД НАР ХЭН АЛДАЖ,
-						ХЭН ЭНЭ БИЧЛЭГИЙГ ГАДАГШ НЬ ӨГСӨН БАЙНА ГЭДГИЙГ ХУУЛЬ ХЯНАЛТЫН БАЙГУУЛЛАГААР ДАВХАР ШАЛГУУЛНА."</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(ТТО-ны үүдэнд хийсэн мэдэгдэл)</p>
-                </div>
-				
-                <div style="margin-bottom: 15px; border-bottom: 1px dashed #ccc; padding-bottom: 10px;">
-                    <p style="font-size: 13px; color: #666; margin: 0; text-transform: uppercase;"><b>2016.06.22 Шинжээчийн дүгнэлт №4113:</b></p>
-                    <p style="font-size: 14px; color: #ff0535; margin: 5px 0; text-transform: uppercase;">"БИЧЛЭГ ДЭХ ДУУ ХООЛОЙ Ц.САНДУЙГИЙН ДУУ ХООЛОЙТОЙ ТОХИРЧ БАЙНА"</p>
-                    <p style="font-size: 11px; color: #999; margin: 0;">(ШШҮХ-ийн шүүх шинжээч Д.Мөнхбаатарын №4113 дүгнэлтээс)</p>
-                </div>
 
             </div>
         </div>
+       
+        
+        
+        
+	    </div>
+	</div>
     </div>
+
+
+
+
+
+	</div>
+        <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
 </div>
-<!-- SIDE BLOCK END			--------------------------------------------------- -->
-<!-- HOMEPAGE BLOCK 2 END	--------------------------------------------------- -->
-
-
-
-
-</div>
-</div>
-<!-- CONTAINER END			--------------------------------------------------- -->
-
-
-
-
-
-
-<!-- FOOTER START			--------------------------------------------------- -->
-<div style="text-align: center; font-size:13px; color: #555; margin: 0 auto; padding: 30px">
-<footer>
-        &copy; 2017-2026 Dorjzodov G. All Rights Reserved.
-</footer>
-
-<!-- FOOTER END				--------------------------------------------------- -->
-
-
-
-
-
-
-<!-- SCRIPT START			--------------------------------------------------- -->
-<script>
-	<!-- МЕНЮ СКРИПТ -->
-// 1. Товчлуур дээр дарахад нээх/хаах функц
-function myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
-}
-
-// 2. Гадна талд дарахад хаах (Гар утас + PC)
-window.addEventListener('mousedown', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
-
-    // Хэрэв меню нээлттэй байвал
-    if (x.style.display === "block") {
-        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
-});
-
-// Гар утасны touch үйлдлийг дэмжих
-window.addEventListener('touchstart', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon");
-
-    if (x.style.display === "block") {
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
-});
-	
     
-	
-</script>
-<!-- SCRIPT END				--------------------------------------------------- -->
 
+    <script>
+        // 1. LENIS ЗӨӨЛӨН СКРОЛЛ ТОХИРГОО
+        const lenis = new Lenis({
+            duration: 1.5, // Скролл үргэлжлэх хугацаа
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            smoothWheel: true 
+        });
 
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
 
+        // 2. STICKY NAVBAR ЛОГИК
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
+        window.addEventListener('scroll', () => {
+            // 1-р дэлгэцийн төгсгөлд хүрэх үед барыг дээд талд наана
+            if (window.scrollY >= window.innerHeight - 38) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+        });
 
+        // 3. ГАМБУРГЕР ЦЭСНИЙ ЛОГИК
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Даралтыг body руу дамжуулахгүй байх
+            navLinks.classList.toggle('active');
+        });
 
+        // ГАДНА ТАЛД ДАРАХАД МЕНЮ ХААХ
+        document.addEventListener('click', (e) => {
+            // Хэрэв даралт цэс болон гамбургер товч дээр биш бол
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // ЛИНК ДЭЭР ДАРАХАД ЦЭС ХААХ
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
