@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The2m16 - Pages</title>
+    <title>Glassmorph - Pages</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
     <script src="https://the2m16.github.io/web/script/lenis.min.js"></script> 
 
@@ -85,7 +85,7 @@
             justify-content: center;
             flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
             align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
-            gap: 20px;              /* Блокууд хоорондын зайг 30px болгоно */ }
+            gap: 20px;              /* Блокууд хоорондын зай */ }
         .glass-box {
             max-width: 1000px;
             width: 100%;
@@ -97,16 +97,17 @@
             backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 10px;
-            font-size: 0.9em;
+            padding: 2%;
+            font-size: 0.95em;
 			text-align: justify;
-            color: #f1f5f9; /* glass-box global text color */
+            color: #f1f5f9;                           /* glass-box global text color */
+            -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            line-height: 1.3;
+            line-height: 1.5;
             height: fit-content; }
-        p {color: #f1f5f9;}
-        h2 {color: #f1f5f9;}
-        li {color: #f1f5f9; }
+        p {color: #f1f5f9; margin-top: 10px; margin-bottom: 10px;}
+        h3 {color: #f1f5f9; font-size: 1.2em; line-height: 1.2;}
+        li {color: #f1f5f9;}
         a {color: #1a8cff; text-decoration: none;}
         .list {list-style-type: square; margin-left: 3em; margin-top: 0.5em; margin-bottom: 0.5em;}
         .q-line {margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 10px;}
@@ -121,8 +122,8 @@
         @media (max-width: 1000px) {
         .hamburger { display: flex; }
 		.nav-links {
-        	display: flex;             /* FLEX-ийг заавал идэвхжүүлэх */
-        	flex-direction: column;    /* Линкүүдийг босоо болгоно (Зурган дээрх алдааг засах гол код) */
+        	display: flex;
+        	flex-direction: column;
         	position: fixed; 
         	top: 38px; 
         	right: -250px; 
@@ -132,7 +133,7 @@
         	transition: 0.4s ease;
         	border-radius: 0 0 0 6px;
 			box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
-        	z-index: 1001;             /* Бусад элементүүдийн дээр харагдах */ }
+        	z-index: 1001;
     	.nav-links.active { right: 0; }
     	.nav-links li { width: 100%; display: block; }
     	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
@@ -167,7 +168,7 @@
         <div class="glass-box">
             <h2>М.ЭНХБОЛД, Ц.САНДУЙ, А.ГАНБААТАР НАР 60 ТЭРБУМЫН СХЕМИЙГ ХЭЛЭЛЦСЭН УУЛЗАЛТЫН АУДИО БИЧЛЭГ, ТРАНСКРИПТ</h2>
             <p></p>
-        </div>
+        </div><!-- glass box end -->
 
 
 
@@ -181,7 +182,7 @@
 
 
         <div class="glass-box">            
-        </div>
+        </div><!-- glass box end -->
         <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
     </div>
 
