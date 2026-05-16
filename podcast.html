@@ -133,10 +133,7 @@
 		.podcast-logo { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; padding: 0px; }
 		.episode-number { font-size: 1rem; color: #8cbaff; font-weight: bold; margin-bottom: 5px; }
 		.episode-title { height: 40px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        
-        audio { width: 100%; margin-bottom: 10px; -webkit-filter: invert(100%) hue-rotate(180deg) contrast(180%) brightness(1.1);
-        filter: invert(100%) hue-rotate(180deg) contrast(180%) brightness(1.1); }
-
+		audio { width: 100%; margin-bottom: 10px; filter: invert(100%) hue-rotate(180deg) brightness(1); }
 		.description-box { height: 55px; background: transparent; padding-left: 10px; padding-right: 10px; border-radius: 4px; font-size: 0.85rem; color: #7087a9; line-height: 1.2; text-align: justify; font-style: italic;}
 
 		.list-title { font-size: 13px; font-weight: bold; color: rgba(255, 255, 255, 0.9); margin: 25px 0 15px; text-transform: uppercase; }
@@ -193,7 +190,7 @@
 	</div>
 
 	<div class="list-title">Podcast List</div>
-	<div class="podcast-list" id="playlist"></div>
+	<div class="podcast-list" id="playlist" data-lenis-prevent></div>
 
 <!--                               PLAYER END                                  -->
         </div><!-- glass box end -->
