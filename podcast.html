@@ -1,43 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>The2m16 - Podcast</title>
-	<link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
-	<link rel="stylesheet" href="https://the2m16.github.io/web/css/podstyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorph - Pages</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
+    <script src="https://the2m16.github.io/web/script/lenis.min.js"></script> 
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html, body { overflow-x: hidden; width: 100%; }
+        body {
+            width: 100%;
+			margin: 0; }
+		.mobile-bg-fix {
+    		position: fixed;
+    		top: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://the2m16.github.io/web/images/background3872x2592.webp');
+    		background-size: cover;
+    		background-position: center;
+    		z-index: -1;
+    		-webkit-transform: translateZ(0);
+    		transform: translateZ(0); }
+		
+        /* ХУУДАС АЧААЛАГДАХ ҮЕД ЗӨӨЛӨН ТОДРОХ (FADE-IN) */
+        @keyframes pageFadeIn {
+            to { opacity: 1; } }
+
+        /* NAVIGATION BAR FIXED POSITION */
+        .navbar {
+            width: 100%;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.2); /* Шилэн бараан туяа--------------------------------- */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed; /* Тогтмол байрлал */
+            top: 0;
+            left: 0; }
+        .navbar.sticky {
+            position: fixed; /* Скролл хийхэд дээд талд наах */
+            top: 0;
+            transform: none;
+            background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
+        .logo { color: white; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
+
+        /* MENU BUTTON */
+        .nav-links { display: flex; list-style: none; height: 100%; }
+        .nav-links li { height: 100%; }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: 0.3s; }
+        .nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+
+		/* CONTENT SECTION INCLUDING GLASSMORPHIC BOX */
+        .content-section {
+            position: relative;
+            z-index: 2;
+            padding-top: 58px;
+            padding-bottom: 0px;
+            padding-right: 5px;
+            padding-left: 5px;
+			margin-left: auto;
+            margin-right: auto;
+			background: linear-gradient(rgba(0,0,40,0.2), rgba(0,0,0,0.6)); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
+			backdrop-filter: blur(15px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
+			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
+            display: flex;
+            justify-content: center;
+            flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
+            align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
+            gap: 20px;              /* Блокууд хоорондын зай */ }
+        .glass-box {
+            max-width: 450px;
+            width: 100%;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            font-size: 0.95em;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            height: fit-content; }
+            
+ 
+
+        
+        
+        footer { flex-shrink: 0; text-align: center; margin-bottom: 20px; margin-top: 0px; font-size: 13px; background: transparent; color: rgb(255, 255, 255, 0.6); width: 100%; box-sizing: border-box; }
+
+        /* HAMBURGER MENU (MOBILE SCREEN) */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+        .hamburger span { width: 22px; height: 2px; background: white; transition: 0.4s; }
+        @media (max-width: 1000px) {
+        .hamburger { display: flex; }
+		.nav-links {
+        	display: flex;
+        	flex-direction: column;
+        	position: fixed; 
+        	top: 38px; 
+        	right: -250px; 
+        	width: 180px;
+        	height: auto; 
+        	background: rgba(15, 23, 42, 0.6); 
+        	transition: 0.4s ease;
+        	border-radius: 0 0 0 6px;
+			box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
+        	z-index: 1001;
+    	.nav-links.active { right: 0; }
+    	.nav-links li { width: 100%; display: block; }
+    	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
+        
+        
+        
+        
+        /* PODCAST PLAYER STYLE */
+	.main-player { text-align: center; margin-bottom: 20px; }
+	.podcast-logo { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; padding: 0px; }
+	.episode-number { font-size: 1rem; color: #8cbaff; font-weight: bold; margin-bottom: 5px; }
+	.episode-title { height: 40px; font-size: 0.8rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+	audio { width: 100%; margin-bottom: 10px; filter: invert(100%) hue-rotate(180deg) brightness(1); }
+	.description-box { height: 55px; background: transparent; padding-left: 10px; padding-right: 10px; border-radius: 4px; font-size: 0.85rem; color: #7087a9; line-height: 1.2; text-align: justify; font-style: italic;}
+
+/* LIST STYLE */
+	.list-title { font-size: 13px; font-weight: bold; margin: 25px 0 15px; text-transform: uppercase; }
+	.podcast-list { max-height: 400px; overflow-y: auto; border-top: 1px solid #2d3748; }
+	.list-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid #2d3748; cursor: pointer; transition: background 0.3s; }
+	.list-item:hover { background: rgba(255,255,255,0.05); }
+	.list-item.active { border-left: 3px solid #8cbaff; }
+	.list-info .ep-num { color: #8cbaff; font-size: 11px; font-weight: bold; display: block; }
+	.list-info .ep-name { font-size: 12px; }
+	.play-icon { color: #8cbaff; font-size: 15px; }
+
+/* SCROLL BAR STYLE */
+	.podcast-list::-webkit-scrollbar { width: 5px; }
+	.podcast-list::-webkit-scrollbar-thumb { background: #4a5568; border-radius: 10px; }
+        
+        
+        
+    </style>
 </head>
 
+
+
+
+
 <body>
-<!-- NAVIGATION START		--------------------------------------------------- -->
-<div class="navbar">
-  <div id="myLinks">
-	<a href="https://the2m16.github.io/web/index.html">эхлэл</a>
-	<a href="https://the2m16.github.io/web/90min.html">90 мин</a>
-	<a href="https://the2m16.github.io/web/40min.html">40 мин</a>
-	<a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
-	<a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a>
-	<a href="https://the2m16.github.io/web/news.html">Ньюс</a>
-	<a href="https://the2m16.github.io/web/podcast.html">Подкаст</a>
-	<a href="https://the2m16.github.io/web/0blanc.html">TestPage</a>
-  </div>
-
-	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-	&#9776;
-	</a>
-</div>
-<!-- NAVIGATION END			--------------------------------------------------- -->
-<!-- CONTAINER START		--------------------------------------------------- -->
-<div class="container">
+	<div class="mobile-bg-fix"></div>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" id="navbar">
+        <div class="logo"><!-- logo text --></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
+            <li><a href="https://the2m16.github.io/web/90min.html">90МИН</a></li>
+            <li><a href="https://the2m16.github.io/web/40min.html">40МИН</a></li>
+            <li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ ШИНЖЭЭЧ</a></li>
+            <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
+            <li><a href="https://the2m16.github.io/web/news.html">НЬЮС</a></li>
+            <li><a href="https://the2m16.github.io/web/podcast.html">ПОДКАСТ</a></li>
+            <li><a href="https://the2m16.github.io/web/0blanc.html">ТЕСТпейж</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
 
 
 
-
-
-
-
-
-<!--                               PLAYER START                                  -->
+    <!-- Үндсэн агуулга -->
+    <div class="content-section">
+        <div class="glass-box">
+            <!--                               PLAYER START                                  -->
 	<div class="main-player">
 		<div class="podcast-logo"><img src="https://the2m16.github.io/web/images/podcastcover.png"></div>
 		<div id="active-episode-num" class="episode-number">EPISODE #01</div>
@@ -50,69 +201,67 @@
 	<div class="podcast-list" id="playlist"></div>
 
 <!--                               PLAYER END                                  -->
-</div>
-<!--                               CONTAINER END                                  -->
+        </div><!-- glass box end -->
 
 
 
 
 
 
-<!--                               FOOTER START                                  -->
-<footer>
-        &copy; 2017-2026 Dorjzodov G. All rights reserved.
-</footer>
-<!--                               FOOTER END                                  -->
 
 
 
 
 
 
-<!--                               SCRIPT START                                  -->
-<script>
-	<!-- МЕНЮ СКРИПТ -->
-// 1. Товчлуур дээр дарахад нээх/хаах функц
-function myFunction() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
-}
 
-// 2. Гадна талд дарахад хаах (Гар утас + PC)
-window.addEventListener('mousedown', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
+        <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
+    </div>
 
-    // Хэрэв меню нээлттэй байвал
-    if (x.style.display === "block") {
-        // Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
+
+    <script>
+        // 1. Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
         }
-    }
-});
+        requestAnimationFrame(raf);
 
-// Гар утасны touch үйлдлийг дэмжих
-window.addEventListener('touchstart', function(event) {
-    var x = document.getElementById("myLinks");
-    var menuIcon = document.querySelector(".icon");
+        // 2. Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
-    if (x.style.display === "block") {
-        if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-            x.style.display = "none";
-        }
-    }
-});
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+        });
 
+        // Гадна талд дарахад хаах
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
 
-
-
-
-// Podcast list
+        // Линк дарахад хаах
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        
+        
+        
+        
+        
+        // Podcast list
 	const episodes = [
 		{
 			id: "01",
@@ -214,20 +363,12 @@ window.addEventListener('touchstart', function(event) {
 
 	// Анхны ачаалалт
 	renderPlaylist();
-
-
-
-
-
-
-
-</script>
-<!--                               SCRIPT END                                  -->
-
-
-
-
-
+        
+        
+        
+        
+        
+    </script>
 
 </body>
 </html>
