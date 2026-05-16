@@ -1,8 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The2m16 - Home</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
     <script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
@@ -142,14 +142,8 @@
     	.nav-links.active { right: 0; }
     	.nav-links li { width: 100%; display: block; }
     	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-		.mobile-bg-fix {
-        /* Гар утсанд зориулсан тусгай өндөр */
-        height: 100vh; 
-        height: -webkit-fill-available; } }
+		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
 
-        
-        
-        
         /* GRID CONTAINER */
 		.grid-container {
 			display: grid;
@@ -171,13 +165,13 @@
 			background: transparent;
 			border: 1px solid rgba(255, 255, 255, 0); /* grid border color */
 			color: #f1f5f9; /* TEXT COLOR */
+			-webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; /* үгийг үеэр таслах */
 			min-height: min-content; /* Контентоосоо хамаарч сунана */ }
         .right-sub { height: auto; margin-bottom: 2px; /* Блокуудын хоорондох зай */ }
 		.right-sub:last-child { flex-grow: 1; }   /* Зүүн талын том блок 3 мөрийг дамнах ёстой */
 		.left-main { grid-row: span 3; height: 100%; }
         .left-main p {text-indent: 2em; text-align: justify; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
 		@media (max-width: 1000px) {.grid-container { grid-template-columns: 1fr; } .left-main { grid-row: span 1; } }
-
         
     </style>
 </head>
@@ -215,10 +209,6 @@
     <!-- Урсах контент секшн -->
 <div class="content-section">
 	<div class="glass-box">
-
-
-
-
 
 	<div class="grid-container">
     <div class="grid-item left-main">
