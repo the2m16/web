@@ -1,203 +1,303 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>The2m16 - 0blanc</title>
-	<link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
-	<link rel="stylesheet" href="https://the2m16.github.io/web/css/gstyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The2m16 - TestPage</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
+    <script src="https://the2m16.github.io/web/script/lenis.min.js"></script> 
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html, body { overflow-x: hidden; width: 100%; }
+        body {
+            width: 100%;
+			margin: 0; }
+		.mobile-bg-fix {
+    		position: fixed;
+    		top: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://the2m16.github.io/web/images/background3872x2592.webp');
+    		background-size: cover;
+    		background-position: center;
+    		z-index: -1;
+    		-webkit-transform: translateZ(0);
+    		transform: translateZ(0); }
+		
+/* ХУУДАС АЧААЛАГДАХ ҮЕД ЗӨӨЛӨН ТОДРОХ (FADE-IN) */
+        @keyframes pageFadeIn {
+            to { opacity: 1; } }
+
+/* NAVIGATION BAR FIXED POSITION */
+        .navbar {
+            width: 100%;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.2); /* Шилэн бараан туяа--------------------------------- */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed; /* Тогтмол байрлал */
+            top: 0;
+            left: 0; }
+        .navbar.sticky {
+            position: fixed; /* Скролл хийхэд дээд талд наах */
+            top: 0;
+            transform: none;
+            background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
+        .logo { color: white; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
+
+/* MENU BUTTON */
+        .nav-links { display: flex; list-style: none; height: 100%; }
+        .nav-links li { height: 100%; }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: 0.3s; }
+        .nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+
+/* CONTENT SECTION INCLUDING GLASSMORPHIC BOX */
+        .content-section {
+            position: relative;
+            z-index: 2;
+            padding-top: 58px;
+            padding-bottom: 0px;
+            padding-right: 5px;
+            padding-left: 5px;
+			margin-left: auto;
+            margin-right: auto;
+			background: linear-gradient(rgba(0,0,40,0.2), rgba(0,0,0,0.6)); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
+			backdrop-filter: blur(15px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
+			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
+            display: flex;
+            justify-content: center;
+            flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
+            align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
+            gap: 20px;              /* Блокууд хоорондын зай */ }
+        .glass-box {
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 0.95em;
+			text-align: justify;
+            color: #f1f5f9;                           /* glass-box global text color */
+            -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            line-height: 1.5;
+            height: fit-content; }
+        p {text-indent: 2em; color: #f1f5f9; margin-top: 10px; margin-bottom: 10px;}
+        h3 {color: #f1f5f9; font-size: 1.2em; line-height: 1.2; text-align: left;}
+        li {color: #f1f5f9;}
+        a {color: #1a8cff; text-decoration: none;}
+        .list {list-style-type: square; margin-left: 3em; margin-top: 0.5em; margin-bottom: 0.5em;}
+        .q-line {margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 10px;}
+		.q-name {font-size: 13px; color: rgba(255, 255, 255, 0.8); text-align: left; margin: 0; text-transform: uppercase;}
+		.quota {font-size: 14px; color: #f1f5f9; margin: 5px 0; font-style: italic; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;}
+		.q-source {font-size: 11px; color: #999; margin: 0;}
+        footer { flex-shrink: 0; text-align: center; margin-bottom: 20px; margin-top: 0px; font-size: 13px; background: transparent; color: rgb(255, 255, 255, 0.6); width: 100%; box-sizing: border-box; }
+
+/* HAMBURGER MENU (MOBILE SCREEN) */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+        .hamburger span { width: 22px; height: 2px; background: white; transition: 0.4s; }
+        @media (max-width: 1000px) {
+        .hamburger { display: flex; }
+		.nav-links {
+        	display: flex;
+        	flex-direction: column;
+        	position: fixed; 
+        	top: 38px; 
+        	right: -250px; 
+        	width: 180px;
+        	height: auto; 
+        	background: rgba(15, 23, 42, 0.6); 
+        	transition: 0.4s ease;
+        	border-radius: 0 0 0 6px;
+			box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
+        	z-index: 1001;}
+    	.nav-links.active { right: 0; }
+    	.nav-links li { width: 100%; display: block; }
+    	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
+
+/* IMAGE ALBUM GRID STYLE START */
+.dynamic-album { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr)); gap: 5px; margin-top: 0px; }
+.album-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 3; background-color: #eee; }
+.album-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; border: 1px dotted #999; box-sizing: border-box; border-radius: 4px; }
+.album-item:hover img { transform: scale(1.1); }
+.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: normal; pointer-events: none; }
+
+/* Image Light box style */
+#lightbox {
+	display: none;					/* Анх хуудас ачаалахад харагдахгүй байх */
+	position: fixed;				/* Дэлгэцийн байрлалаас уяж, гүйлгэхэд хамт хөдлөхгүй байх */
+	z-index: 10000;					/* Бусад бүх элементүүдийн хамгийн дээр харагдахыг баталгаажуулах */
+	top: 0; left: 0;				/* Дэлгэцийн зүүн дээд буланд наах */
+	width: 100%; height: 100%;		/* Бүхэл дэлгэцийг бүрхэх */
+	background: rgba(0, 0, 0, 0.95);
+	justify-content: center;		/* Доторх зургийг хэвтээ тэнхлэгийн дагуу голлуулах (Flexbox) */
+	align-items: center;			/* Доторх зургийг босоо тэнхлэгийн дагуу голлуулах (Flexbox) */
+	user-select: none;				/* Хэрэглэгч арын дэвсгэр эсвэл текстийг идэвхжүүлж сонгохыг хориглох */ }
+#lightbox img { max-width: 90%; max-height: 85%; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+.nav-btn {
+	position: absolute;
+	center: 0;						/* Дээд ирмэгээс эхлэх */
+	height: 50%;					/* Зургийн хоёр талд бүтэн босоо талбар үүсгэх */
+	width: 10%;						/* Дэлгэцийн зүүн/баруун талын 20%-ийг дарах талбар болгох */
+	display: flex;					/* Доторх сумыг Flexbox-оор байршуулах */
+	align-items: center;			/* Сумыг босоо чиглэлд голлуулах */
+	justify-content: center;		/* Сумыг хэвтээ чиглэлд голлуулах */
+	color: rgba(255, 255, 255, 0.5);	/* Сумны өнгийг 50% тунгалаг цагаан болгох */
+	font-size: 60px;
+	text-decoration: none;
+	cursor: pointer;
+	z-index: 20;
+	transition: background 0.3s;
+	user-select: none;				/* Сум дээр олон дарахад цэнхэрлэж сонгогдохоос сэргийлэх */ }
+.nav-btn:hover { color: white; background: transparent; text-shadow: 0 0 5px rgba(0,0,0,0.8); }
+.prev { left: 0; background: transparent;	/* Prev.Button */ }
+.next { right: 0; background: transparent;	/* Next.Button */ }
+.prev:hover { background: transparent;	/* Prev.Button shadow */ }
+.close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+/* IMAGE ALBUM GRID STYLE END*/
+
+/* VIDEO CONTAINER STYLE START */
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px; background: #000; border: 1px dotted #999; box-sizing: border-box; border-radius: 4px; }
+.video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
+/* VIDEO CONTAINER STYLE END */
+
+
+	</style>
 </head>
 
+
+
+
+
 <body>
-<!-- NAVIGATION START		--------------------------------------------------- -->
-<div class="navbar">
-  <div id="myLinks">
-	<a href="https://the2m16.github.io/web/index.html">эхлэл</a>
-	<a href="https://the2m16.github.io/web/90min.html">90 мин</a>
-	<a href="https://the2m16.github.io/web/40min.html">40 мин</a>
-	<a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ шинжээч</a>
-	<a href="https://the2m16.github.io/web/forensicfbi.html">FBI шинжээч</a>
-	<a href="https://the2m16.github.io/web/news.html">Ньюс</a>
-	<a href="https://the2m16.github.io/web/podcast.html">Подкаст</a>
-	<a href="https://the2m16.github.io/web/0blanc.html">TestPage</a>
-  </div>
-
-	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-	&#9776;
-	</a>
-</div>
-<!-- NAVIGATION END			--------------------------------------------------- -->
-<!-- CONTAINER START		--------------------------------------------------- -->
-<div class="container">
+	<div class="mobile-bg-fix"></div>
+<!-- NAVIGATION BAR -->
+    <nav class="navbar" id="navbar">
+        <div class="logo"><!-- logo text --></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
+            <li><a href="https://the2m16.github.io/web/90min.html">90МИН</a></li>
+            <li><a href="https://the2m16.github.io/web/40min.html">40МИН</a></li>
+            <li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ ШИНЖЭЭЧ</a></li>
+            <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
+            <li><a href="https://the2m16.github.io/web/news.html">НЬЮС</a></li>
+            <li><a href="https://the2m16.github.io/web/podcast.html">ПОДКАСТ</a></li>
+            <li><a href="https://the2m16.github.io/web/0blanc.html">ТЕСТпейж</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
 
 
 
+<!-- Үндсэн агуулга -->
+    <div class="content-section">
+        <div class="glass-box">
+        
+            <h3>ОЛОН ЗУРАГ</h2>
+            <p>Олон зураг</p>
+            <div class="dynamic-album" data-images="
+				https://cdn.itoim.mn/media/imagel/14729/image.jpeg,
+				https://dundgovi.mn/uploads/posts/2018-06/thumbs/1529546728_31875.jpg,
+				https://the2m16.github.io/web/images/2017.05.06AnnMAltman.png,
+				https://ene.mn/uploads/posts/2019-11/1572572390_712-1572522738zjr7vm9ii6xadkh6b5ip.jpg,
+				https://the2m16.github.io/web/images/2017.06.19TheDiplomat.PNG,
+				https://the2m16.github.io/web/images/2017.06.21montsame.png,
+				https://the2m16.github.io/web/images/2017.06.23AssociatedPress.png,
+				https://the2m16.github.io/web/images/2012.12.10batolzvoi.png,
+				https://the2m16.github.io/web/images/2017.06.15.0728.jpg,
+				https://the2m16.github.io/web/images/2019.02.18sandui.jpg,
+				https://the2m16.github.io/web/images/2019.02.21ganbaatar.jpg,
+				https://the2m16.github.io/web/images/2019.10.31montsame.png,
+				https://the2m16.github.io/web/images/2019.12.26dorjzodov.png">
+        	</div>
+        
+        </div><!-- glass box end -->
 
 
 
+		<div class="glass-box">
+    	
+			<h3>ВИДЕО</h2>
+            <p>Видео</p>
+			<div class="video-container">
+			<iframe 
+				src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fkhaasaigui%2Fvideos%2F434928783544517%2F&show_text=false&width=560&t=0" 
+				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" 
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen>
+			</iframe>
+			</div>
+
+		</div><!-- glass-box end -->
 
 
 
+        <div class="glass-box">
 
-<div class="news-box">
-	<div class="news">
-		<h2>ЗУРАГ+ВИДЕО</h2>
-		МЭДЭЭНИЙ ТЕКСТ...
-	</div>
+			<h3>ВИДЕО+ВИДЕО</h2>
+            <p>Видео+Видео</p>
+			<div class="video-container">
+			<iframe 
+				src="https://www.youtube.com/embed/bM_RZ7DeCxo?si=OYI4cdKctY7VjjQH" 
+				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" 
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen>
+			</iframe>
+			</div>
 
-	<div class="dynamic-album" data-images="
-		https://cdn.itoim.mn/media/imagel/14729/image.jpeg,
-		https://dundgovi.mn/uploads/posts/2018-06/thumbs/1529546728_31875.jpg,
-		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.png,
-		https://ene.mn/uploads/posts/2019-11/1572572390_712-1572522738zjr7vm9ii6xadkh6b5ip.jpg,
-		https://the2m16.github.io/web/images/2017.06.19TheDiplomat.PNG,
-		https://the2m16.github.io/web/images/2017.06.21montsame.png,
-		https://the2m16.github.io/web/images/2017.06.23AssociatedPress.png,
-		https://the2m16.github.io/web/images/2012.12.10batolzvoi.png,
-		https://the2m16.github.io/web/images/2017.06.15.0728.jpg,
-		https://the2m16.github.io/web/images/2019.02.18sandui.jpg,
-		https://the2m16.github.io/web/images/2019.02.21ganbaatar.jpg,
-		https://the2m16.github.io/web/images/2019.10.31montsame.png,
-		https://the2m16.github.io/web/images/2019.12.26dorjzodov.png
-	"></div>
-	
-	<div class="video-container">
-		<iframe 
-			src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fkhaasaigui%2Fvideos%2F434928783544517%2F&show_text=false&width=560&t=0" 
-			style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-			frameborder="0" 
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-			allowfullscreen>
-		</iframe>
-	</div>
-</div>
-<!-- IMAGE NEWS BOX END -->
+			<div class="video-container">
+			<iframe 
+				src="https://www.youtube.com/embed/WKoh2K3gXY0?si=oRMq1Y7zZOpCHwVQ" 
+				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" 
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen>
+			</iframe>
+			</div>
+
+		</div><!-- glass-box end -->
 
 
 
+		<div class="glass-box">
 
-
-
-
-<!-- NEWS BOX START -->
-<div class="news-box">
-	<div class="news">
-		<h2>ОЛОН ЗУРАГ</h2>
-		МЭДЭЭНИЙ ТЕКСТ...
-	</div>
-
-	<div class="dynamic-album" data-images="
-		https://i.ytimg.com/vi/gT6jSUxX9Po/maxresdefault.jpg,
-		https://the2m16.github.io/web/images/2017.06.14man.jpg,
-		https://cdn.itoim.mn/media/imagel/14729/image.jpeg,
-		https://dundgovi.mn/uploads/posts/2018-06/thumbs/1529546728_31875.jpg,
-		https://resource4.sodonsolution.org/assa/image/2019/10/22/k9v1i9uw0a4dtivw/1.jpg,
-		https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThxGZc0y2hHlRgQ8meLVXLzu0pPbB0nUEWTw&s,
-		https://ene.mn/uploads/posts/2019-11/1572572390_712-1572522738zjr7vm9ii6xadkh6b5ip.jpg
-	"></div>
-	</div>
-<!-- NEWS BOX END -->
-
-
-
-
-
-
-
-<!-- VIDEO NEWS BOX START -->
-<div class="news-box">
-	<div class="news">
-		<h2>ВИДЕО+ВИДЕО</h2>		
-		МЭДЭЭНИЙ ТЕКСТ...
-	</div>
-
-	<div class="video-container">
-		<iframe 
-			src="https://www.youtube.com/embed/WKoh2K3gXY0?si=oRMq1Y7zZOpCHwVQ" 
-			style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-			frameborder="0" 
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-			allowfullscreen>
-		</iframe>
-	</div>
-
-	<div class="video-container">
-		<iframe 
-			src="https://www.youtube.com/embed/bM_RZ7DeCxo?si=OYI4cdKctY7VjjQH" 
-			style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-			frameborder="0" 
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-			allowfullscreen>
-		</iframe>
-	</div>
-</div>
-<!-- VIDEO NEWS BOX END -->
-
-
-
-
-
-
-<!-- PDF NEWS BOX START -->
-<div class="news-box">
-	<div class="news">
-		<h2>PDF</h2>
-		МЭДЭЭНИЙ ТЕКСТ...
-	</div>
-
-	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #ccc; margin-top: 0px;">
-		<iframe 
+			<h3>PDF</h2>
+            <p>Pdf</p>
+			<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #ccc; margin-top: 0px;">
+			<iframe 
 			src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/2018.06.26TheWashingtonPost.pdf&embedded=true"
 			style="width: 100%; height: 100%; border: none;"
 			loading="lazy">
-		</iframe>
-	</div>
-</div>
-<!-- PDF NEWS BOX END -->
+			</iframe>
+			</div>
 
-
-
-
-
-
-<!-- PDF NEWS BOX START -->
-<div class="news-box">
-	<div class="news">
-		<h2>PDF</h2>
-		МЭДЭЭНИЙ ТЕКСТ...
-	</div>
-
-	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid #ccc; margin-top: 0px;">
-		<iframe 
-			src="https://docs.google.com/viewer?url=https://www.uih.mn/upload/sudalgaa/files/606_5262050.pdf&embedded=true" 
-			style="width: 100%; height: 100%; border: none;"
-			loading="lazy">
-		</iframe>
-	</div>
-</div>
-<!-- PDF NEWS BOX END -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		</div><!-- glass-box end -->
 
 
 
@@ -209,17 +309,55 @@
 		<img id="lightboxImg" src="" onclick="event.stopPropagation()">
 		<span class="nav-btn next" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
 	</div>    
-<!-- LIGHT BOX END -->
+<!-- LIGHT BOX END -->      
 
-<!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- FOOTER START -->
+
+
 <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
-<!-- FOOTER END -->
+    </div><!-- content-section end -->
 
 
-<!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- SCRIPT START -->
-	<script>
+
+    <script>
+<!-- ----------------------------------------MENU+LENIS SCRIPT START------------------------------------------------------------- -->
+        // 1. Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+        });
+
+        // Гадна талд дарахад хаах
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Линк дарахад хаах
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+<!-- --------------------------------------MENU+LENIS SCRIPT END--------------------------------------------------------------- -->
+        
+<!-- -----------------------------------------ALBUM SCRIPT START------------------------------------------------------------ -->
 		let currentAlbumImages = [];
 		let currentIndex = 0;
 
@@ -294,48 +432,8 @@
 
 		// Эхлүүлэх
 		initAlbums();
+<!-- -------------------------------------ALBUM SCRIPT END---------------------------------------------------------------- -->
+    </script>
 
-
-<!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- МЕНЮ СКРИПТ -->
-// 1. МЕНЮ ТОВЧЛУУР ДЭЭР ДАРАХАД НЭЭХ/ХААХ
-function myFunction() {
-	var x = document.getElementById("myLinks");
-	if (x.style.display === "block") {
-		x.style.display = "none";
-	} else {
-		x.style.display = "block";
-	}
-}
-
-// 2. МЕНЮНИЙ БЛОКИЙН ГАДНА ДАРАХАД ХААХ (Гар утас + PC)
-window.addEventListener('mousedown', function(event) {
-	var x = document.getElementById("myLinks");
-	var menuIcon = document.querySelector(".icon"); // Таны <a> tag-ийн class нэр
-
-	// Хэрэв меню нээлттэй байвал
-	if (x.style.display === "block") {
-		// Хэрэв даралт меню дотор биш БӨГӨӨД товчлуур дээр биш бол хаах
-		if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-			x.style.display = "none";
-		}
-	}
-});
-
-// 3. МЕНЮ ГАР УТАСНЫ TOUCH ҮЙЛДЛИЙГ ДЭМЖИХ
-window.addEventListener('touchstart', function(event) {
-	var x = document.getElementById("myLinks");
-	var menuIcon = document.querySelector(".icon");
-
-	if (x.style.display === "block") {
-		if (!x.contains(event.target) && !menuIcon.contains(event.target)) {
-			x.style.display = "none";
-		}
-	}
-});
-
-</script>
-<!-- SCRIPT END -->
-</div>
 </body>
 </html>
