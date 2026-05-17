@@ -8,6 +8,22 @@
  
 
     <style>
+        
+        
+        
+        
+/* LENIS START */
+        html.lenis, html.lenis body {height: auto;}
+		.lenis.lenis-smooth {scroll-behavior: auto !important;}
+		.lenis.lenis-smooth [data-lenis-prevent] {overflow: auto;}
+		.lenis.lenis-stopped {overflow: hidden;}
+		.lenis.lenis-smooth iframe {pointer-events: none;}
+/* LENIS END */
+        
+        
+        
+        
+        
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
         html, body { overflow-x: hidden; width: 100%; }
         body {
@@ -305,8 +321,29 @@
 
 
 
+
+
+
+
+	<script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
     <script>
 <!-- ----------------------------------------MENU+LENIS SCRIPT START------------------------------------------------------------- -->
+        // 1. Lenis
+        const lenis = new Lenis({
+			duration: 1.2, // Скролл хэр зөөлөн үргэлжлэх хугацаа (секундээр)
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Хурдсах уусалт
+			smoothWheel: true
+			});
+		// Хөтчийн скролл хийх болгонд Lenis-ийг байнга шинэчилж ажиллуулах функц
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+			}
+		requestAnimationFrame(raf);
+        
+        
+        
+        
         // 2. Mobile Menu Logic
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
@@ -409,7 +446,6 @@
 <!-- -------------------------------------ALBUM SCRIPT END---------------------------------------------------------------- -->
     </script>
 
-<!-- ----------------------------------------------------------------------------------------------------- -->
 
 
 
