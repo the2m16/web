@@ -156,138 +156,187 @@
 		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
 
 /* IMAGE ALBUM GRID STYLE START */
-        .gl-row-grid {
-            display: grid; /* Сүлжээ бүтэц асаах */
-            grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)); 
-            gap: 6px; /* Зураг хоорондын зай яг 10px */
-            max-width: auto; /* Галлерейн хамгийн дээд өргөн */
-            width: 100%; /* Утасны дэлгэцэнд уян хатан агших */ }
+        /* 📱 Галлерей Сүлжээ */
+        .gl-row-grid { /* Цомог доторх зургуудыг өөр хооронд нь өрөх торлог бүтэц */
+            display: grid; /* Grid бүтцийг идэвхжүүлнэ */
+            grid-template-columns: repeat(auto-fit, minmax(calc(50% - 6px), 1fr)); /* Дэлгэцийн хэмжээнээс хамаарч картуудыг 2 баганаар автоматаар өрнө */
+            gap: 8px; /* Картууд хоорондын зайг 12 пикселээр тогтооно */
+            max-width: 960px; /* Нийт галлерейн хамгийн их өргөнийг Glass-Box 1000px-ээр хязгаарлана */
+            width: 100%; /* Дэлгэц жижигрэхэд өргөн нь 100% уян хатан байна */
+            margin-bottom: 30px; /* Цомог доороосоо 30 пиксел хоосон зай авна */
+        } /* Grid стилийн тохиргоо дуусна */
 
-        .gl-card-item {
-            position: relative; /* Доторх маскыг өөртөө харьцангуй байрлуулах */
-            background: rgba(255, 255, 255, 0.03); /* Шилэн картын маш нимгэн арын өнгө */
-            border-radius: 4px; /* Яг 10px бордер-радиус */
-            overflow: hidden; /* Картын хүрээнээс хальсан зургийг далдлах */
-            border: 1px solid rgba(255, 255, 255, 0.08); /* Картын нарийн цагаан хүрээ шугам */
-            cursor: pointer; /* Хулгана очиход гар гаргах */
-            aspect-ratio: 16 / 10; /* Зургийн харьцааг жигд барих */ }
+        .gl-row-grid[data-count="1"] .gl-card-item { /* Хэрэв цомогт ганцхан файл байвал ажиллах стиль */
+            aspect-ratio: 21 / 9; /* Ганцхан зурагтай үед киноны дэлгэц шиг урт өргөн харьцаатай харуулна */
+        } /* Ганц картын тохиргоо дуусна */
 
-        /* 🌟 Хэрэв ганцхан зураг байвал 16:10 харьцаа хэт өндөр харагдахаас сэргийлж уртааш нь илүү цэгцтэй (кино шиг) харуулах тохиргоо */
-        .gl-row-grid[data-count="1"] .gl-card-item {
-            aspect-ratio: 21 / 9; }
+        /* 🎴 Картын Дизайн */
+        .gl-card-item { /* Зураг эсвэл видеоны гаднах хайрцагны стиль */
+            position: relative; /* Дотор нь байрлах Play товч зэргийг absolute байрлуулахад суурь нь болно */
+            background: rgba(255, 255, 255, 0.03); /* Картын арын дэвсгэрт үл ялиг гэрэлтсэн цагаан туяа өгнө */
+            border-radius: 6px; /* Картын 4 өнцгийг 12 пикселээр дугуйруулна */
+            overflow: hidden; /* Картын хэмжээнээс хальсан зургийг гадагшлуулахгүй нууна */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Картыг хүрээлсэн маш нарийн бүдгэрсэн шугам татна */
+            cursor: pointer; /* Хулгана дээр нь очиход хурууны дүрс гаргаж, дарах боломжтойг илтгэнэ */
+            aspect-ratio: 16 / 10; /* Картын стандарт харьцааг 16:10 форматаар тогтооно */
+            -webkit-tap-highlight-color: transparent; /* Гар утас дээр дарахад үүсдэг цэнхэр хүрээг устгана */
+        } /* Картын суурь стиль дуусна */
 
-        .gl-card-item img {
-            width: 100%; /* Зургийн өргөнийг хайрцагтаа дүүргэх */
-            height: 100%; /* Зургийн өндрийг хайрцагтаа дүүргэх */
-            object-fit: cover; /* Зургийг сунгаж гажуудуулахгүйгээр зүсэх */
-            transition: transform 0.3s ease; /* Hover хөдөлгөөнийг зөөлөн болгох */ }
+        .gl-card-item img { /* Карт доторх үндсэн зургийн стиль */
+            width: 100%; /* Зургийн өргөнийг карттайгаа ижил 100% болгоно */
+            height: 100%; /* Зургийн өндрийг карттайгаа ижил 100% болгоно */
+            object-fit: cover; /* Зургийг сунгаж гажуудуулахгүйгээр картыг дүүргэж харуулна */
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Хулгана очих үед зураг томрох хөдөлгөөнийг зөөлөн болгоно */
+        } /* Зургийн стиль дуусна */
 
-        .gl-card-item:hover img {
-            transform: scale(1.03); /* Хулгана очиход зөөлөн томрох эффект */ }
+        .gl-card-item:hover img { /* Хулгана карт дээр очих үеийн эффект */
+            transform: scale(1.04); /* Зургийг үл ялиг 4 хувиар томруулж амьд мэдрэмж өгнө */
+        } /* Hover эффект дуусна */
 
-        /* БАРУУН ЗУРАГ ДЭЭРХ БАРААН МАСК (Олон зурагтай үед 2 дахь зураг дээр гарна) */
-        .gl-dark-mask {
-            position: absolute; /* Карт дотор дээгүүр нь бүрэн хучих байрлал */
-            top: 0; left: 0; /* Зүүн дээд буланд тулгах */
-            width: 100%; height: 100%; /* Картыг тэр чигт нь бүрэн хаах хэмжээ */
-            background-color: rgba(0, 0, 0, 0.7); /* Бараан маскны өнгө */
-            display: flex; /* Текстийг голлуулах флекс бүтэц */
-            justify-content: center; /* Текстийг хэвтээ голлуулах */
-            align-items: center; /* Текстийг босоо голлуулах */
-            color: #ffffff; /* Тооны өнгийг цагаан болгох */
-            font-size: 24px; /* Үсгийн хэмжээ */
-            font-weight: bold; /* Үсгийг бүдүүн болгох */
-            opacity: 0; /* Анхлан харагдахгүй нууц байна */
-            transition: opacity 0.3s ease; /* Маск гарч ирэх хугацааг уусгах */
-            pointer-events: none; /* Маск өөрөө зураг дарахад саад болохоос хамгаалах */ }
+        /* 🎥 Захиалгат улаан Play товчийг бүрэн устгасан, учир нь лайтбокс нээгдэхэд YouTube-ийн ориг улаан товч харагдана */
 
-        .gl-card-item:last-child .gl-dark-mask {
-            opacity: 1; /* Зөвхөн хамгийн сүүлийн харагдах карт дээр маскыг ил харуулах */ }
+        .gl-dark-mask { /* 2-оос олон зурагтай үед сүүлчийн карт дээр нэмэлт тоо харуулах маск */
+            position: absolute; /* Картан дотор чөлөөтэй байрлана */
+            top: 0; left: 0; /* Картыг зүүн дээд өнцгөөс нь эхэлж бүрэн бүрхэнэ */
+            width: 100%; height: 100%; /* Картыг 100% бүрэн халхална */
+            background-color: rgba(0, 0, 0, 0.65); /* Арын зургийг харанхуйлах хагас тунгалаг хар маск татна */
+            backdrop-filter: blur(4px); /* Маскны ард байгаа зургийг үл ялиг бүрэлзүүлж гоё эффект өгнө */
+            display: flex; /* Доторх "+3" гэх мэт текстийг голлуулахаар flex идэвхжүүлнэ */
+            justify-content: center; /* Текстийг хэвтээ тэнхлэгт голлуулна */
+            align-items: center; /* Текстийг босоо тэнхлэгт голлуулна */
+            color: #ffffff; /* Текстийн өнгийг цагаан болгоно */
+            font-size: 26px; /* Текстийн хэмжээг 26 пикселээр томруулна */
+            font-weight: 600; /* Текстийн үсгийг бүдүүн (Bold) болгоно */
+            pointer-events: none; /* Энэ маск нь өөрөө хулганы даралтыг хаахгүй, картын даралтад саад болохгүй */
+            z-index: 3; /* Хамгийн дээд давхаргад гаргана */
+        } /* Маскны стиль дуусна */
 
-        #gl-lightbox-popup {
-            display: none; /* Анхлан вэб ачаалагдахад харагдахгүй нууц байна */
-            position: fixed; /* Скролл хийхэд дээшээ гүйхгүй дэлгэцийн цонхонд түгжих (Lenis-ээс хамгаална) */
-            z-index: 999999; /* Цэс болон бусад бүх элементээс үргэлж дээгүүр харагдуулах */
-            top: 0; left: 0; /* Дэлгэцийн зүүн дээд буланд тулгах */
-            width: 100vw; height: 100vh; /* Бүхэл дэлгэцийг бүрэн бүрхэх өргөн, өндөр */
-            background: rgba(5, 5, 5, 0.98); /* Лайтбокс ард үүсэх маш харанхуй гоё дэвсгэр */
-            justify-content: center; /* Зургийг хэвтээ голд байрлуулах */
-            align-items: center; /* Зургийг босоо голд байрлуулах */
-            user-select: none; /* Зургийг хэрэглэгч чирч сонгохыг хаах */
-            cursor: pointer; /* Нав баттон, хаах товчноос бусад талбайд дарахад хаагдах заагч */ }
+        /* 🌟 ЛАЙТБОКС СУУРЬ (Glassmorphism Overlay) */
+        #gl-lightbox-popup { /* Попап нээгдэх үед арын вэб хуудсыг тэр чигт нь бүрхэх үндсэн суурь */
+            display: none; /* Анх вэб хуудас нээгдэхэд харагдахгүй нууц байна */
+            position: fixed; /* Дэлгэцийг гүйлгэсэн (scroll) байсан ч дэлгэцэнд хадаастай тогтвортой байна */
+            z-index: 999999; /* Вэбийн бүх элементүүдийн хамгийн дээр харагдахаар маш өндөр давхарга өгнө */
+            top: 0; left: 0; /* Дэлгэцийг зүүн дээд өнцгөөс эхэлж бүтэн бүрхэнэ */
+            width: 100vw; /* Нийт дэлгэцийн өргөнийг 100% эзэлнэ */
+            height: 100vh; /* Нийт дэлгэцийн өндрийг 100% эзэлнэ */
+            background: rgba(4, 5, 7, 0.97); /* Арын дэвсгэрийг маш гүн харанхуй, үл ялиг тунгалаг болгоно */
+            backdrop-filter: blur(10px); /* Попапны ард үлдсэн үндсэн вэбийг маш гоё бүрэлзүүлж харуулна */
+            justify-content: center; /* Доторх контентуудыг хэвтээ тэнхлэгт голлуулна */
+            align-items: center; /* Доторх контентуудыг босоо тэнхлэгт голлуулна */
+            user-select: none; /* Лайтбокс доторх зураг, текстийг хулганаар чирч цэнхэрлүүлж сонгохыг хаана */
+        } /* Лайтбокс суурь стиль дуусна */
 
-        /* Зураг болон түүнийг барьж буй хайрцаг */
-        .gl-lightbox-wrapper {
-            position: relative; /* Төвлөрсөн байрлал */
-            max-width: 85%; /* Дэлгэц халихаас хамгаалах өргөн */
-            max-height: 80vh; /* Дэлгэц халихаас хамгаалах босоо өндөр */
-            display: flex; /* Зургийг голлуулах флекс */
-            justify-content: center; /* Хэвтээ гол */
-            align-items: center; /* Босоо гол */
-            cursor: default; /* Энэ хайрцаг болон зураг дээр дарахад хаагдахгүй байх тохиргоо */
-            margin-bottom: 50px; }
+        /* 📦 Лайтбокс Контент Төвлөрүүлэгч */
+        .gl-lightbox-wrapper { /* Доторх бүх сум, медиа, хаах товчийг багцалж буй хайрцаг */
+            position: relative; /* Сум болон хаах товчийг absolute байрлуулах суурь болно */
+            width: 100%; /* Өргөнийг дэлгэцийн 100% авна */
+            height: 100%; /* Өндрийг дэлгэцийн 100% авна */
+            display: flex; /* Доторх медиа хайрцгийг голлуулахаар flex идэвхжүүлнэ */
+            justify-content: center; /* Хэвтээ тэнхлэгт голлуулна */
+            align-items: center; /* Босоо тэнхлэгт голлуулна */
+        } /* Хайрцагны стиль дуусна */
 
-        #gl-lightbox-img {
-            max-width: 100%; /* Зургийг хайрцагны өргөнд тулгах */
-            max-height: 80vh; /* Зургийг хайрцагны өндөрт тулгах */
-            object-fit: contain; /* Зургийг оригиналь харьцаагаар нь харуулах */
-            border-radius: 8px; /* Томруулсан зургийн булангуудыг зөөлрүүлэх */ }
+        /* 🖼 Медиа Элементүүд */
+        .gl-media-container { /* Зураг эсвэл видео тоглуулагч байрлах голын үндсэн талбар */
+            position: relative; /* Доторх элементүүдээ удирдах суурь болно */
+            width: 85%; /* Дэлгэцийн хажуу талаас навигацийн суманд зориулж 15% зай үлдээнэ */
+            max-width: 100%; /* Хамгийн ихдээ 900 пиксел өргөн байна */
+            display: flex; /* Текст болон медиаг дээрээс доош голлуулахаар flex идэвхжүүлнэ */
+            flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
+            align-items: center; /* Хэвтээ чиглэлд голлуулна */
+            z-index: 5; /* Навигацийн арын талбайн дээр харагдахаар давхаргыг өгнө */
+        } /* Медиа хайрцагны стиль дуусна */
 
-        /* НАВИГЭШН ТОВЧНУУД: Босоо 50%, Хэвтээ 10% мэдрэх талбай */
-        .gl-nav-zone {
-            position: absolute; /* Дэлгэц дээр сумуудыг хадаж байрлуулах */
-            top: 25%; /* Дээрээс 25%-ийн зайд эхэлнэ */
-            height: 50%; /* Босоо тэнхлэгтээ яг 50% өндөртэй мэдрэх талбай */
-            width: 10%; /* Хэвтээ тэнхлэгтээ яг 10% өргөнтэй мэдрэх талбай */
-            display: flex; /* Сумны дүрсийг голлуулах бүтэц */
-            justify-content: center; /* Сумны дүрсийг хэвтээ голлуулах */
-            align-items: center; /* Сумны дүрсийг босоо голлуулах */
-            cursor: pointer; /* Хулгана очиход гар гаргах */
-            color: rgba(255, 255, 255, 0.4); /* Сумны өнгийг уусгаж бүдгэвтэр болгох */
-            font-size: 40px; /* Сумны хэмжээ */
-            transition: color 0.2s, background-color 0.2s; /* Hover эффектийг уусгах */
-            z-index: 10; /* Зургийн дээр харагдах түвшин */ }
+        #gl-lightbox-img { /* Лайтбокс доторх том зургийн стиль */
+            max-width: 100%; /* Зургийн өргөн нь контейнероосоо давахгүй 100% байна */
+            max-height: 75vh; /* Зургийн өндөр нь дэлгэцийн өндрийн 75%-иас хэтрэхгүй (ингэснээр тайлбарт зай үлдэнэ) */
+            object-fit: contain; /* Зургийг тайрахгүйгээр өөрийнх нь харьцаагаар багтааж харуулна */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Картыг хүрээлсэн маш нарийн бүдгэрсэн шугам татна */
+            border-radius: 6px; /* Зургийн өнцгүүдийг 8 пикселээр дугуйруулна */
+            display: none; /* Анх нээгдэхэд нууц байна, зураг дарахад JS-ээр гарч ирнэ */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* Зургийн араас зөөлөн хар сүүдэр хаяж, урагшаа тодорсон эффект өгнө */
+        } /* Том зургийн стиль дуусна */
 
-        .gl-nav-zone:hover {
-            color: #ffffff; /* Хулгана очиход сум цав цагаан болж тодрох */
-            background-color: rgba(255, 255, 255, 0.03); /* Мэдрэх талбайг хэрэглэгчид уусгаж харуулах */ }
+        #gl-lightbox-video { /* Лайтбокс доторх YouTube тоглуулагчийн стиль */
+            width: 100%; /* Өргөнийг контейнерын 100% дүүргэнэ */
+            aspect-ratio: 16 / 9; /* YouTube-ийн стандарт 16:9 харьцааг хадгална */
+            max-height: 75vh; /* Өндөр нь дэлгэцийн 75%-иас хэтрэхгүй */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Картыг хүрээлсэн маш нарийн бүдгэрсэн шугам татна */
+            border-radius: 6px; /* Видеоны 4 өнцгийг 8 пикселээр дугуйруулна */
+            display: none; /* Анх нээгдэхэд нууц байна, видео карт дарахад JS-ээр гарч ирнэ */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* Видеоны араас сүүдэр хаяна */
+        } /* Тоглуулагчийн стиль дуусна */
 
-        .gl-nav-zone.gl-prev { left: 0; } /* Зүүн талын сумны талбайг зүүн ирмэгт наах */
-        .gl-nav-zone.gl-next { right: 0; } /* Баруун талын сумны талбайг баруун ирмэгт наах */
+        /* 📝 Тайлбар Хэсэг */
+        #gl-lightbox-caption { /* Медиагийн доор гарах тайлбар бичвэр */
+            margin-top: 25px; /* Медиа элементээсээ доошоо 25 пиксел зай авна */
+            color: rgba(255, 255, 255, 0.9); /* Бичвэрийн өнгийг бүдэг цагаан болгоно */
+            font-size: 15px; /* Үсгийн хэмжээг 15 пиксел болгоно */
+            text-align: center; /* Текстийг голлуулж хэвлэнэ */
+            width: 100%; /* Өргөнийг 100% эзэлнэ */
+            line-height: 1.6; /* Мөр хоорондын зайг уншихад уян хатан 1.6 болгоно */
+        } /* Тайлбарын стиль дуусна */
 
-        .gl-close-btn {
-            position: absolute; /* Баруун дээд буланд хадах байрлал */
-            top: 20px; /* Дээрээс 20px зай авах */
-            right: 20px; /* Баруун талаас 20px зай авах */
-            font-size: 35px; /* Хаах X тэмдэгтийн хэмжээ */
-            color: #ffffff; /* Өнгийг цагаан болгох */
-            opacity: 0.6; /* Үл мэдэг бүдгэвтэр байх */
-            cursor: pointer; /* Гар гаргах */
-            z-index: 20; /* Навигашны мэдрэх талбайнуудаас ч дээгүүр байрлах (Давхцахгүй) */
-            padding: 10px; /* Дарахад амар байх дотоод зай */ }
+        /* ❌ Хаах Товч (Баруун дээд буланд тогтмол) */
+        .gl-close-btn { /* Баруун дээд буланд байрлах "X" товч */
+            position: absolute; /* Лайтбокс хаах хайрцаг дотор чөлөөтэй байрлана */
+            top: 25px; /* Дээрээсээ 25 пиксел зай авна */
+            right: 30px; /* Баруун талаасаа 30 пиксел зай авна */
+            font-size: 38px; /* "X" тэмдгийг 38 пикселээр томруулна */
+            color: rgba(255, 255, 255, 0.5); /* Тэмдгийн өнгийг хагас тунгалаг цагаан болгоно */
+            cursor: pointer; /* Дээр нь очиход хурууны дүрс гаргана */
+            z-index: 50; /* Сум болон медиагийн дээр харагдахаар давхаргыг дээшлүүлнэ */
+            transition: color 0.2s, transform 0.2s; /* Хулгана очиход солигдох хөдөлгөөнийг зөөлөн болгоно */
+            padding: 5px; /* Дарахад амар байх үүднээс эргэн тойронд нь 5 пиксел мэдрэгч талбар нэмнэ */
+        } /* Хаах товч стиль дуусна */
 
-        .gl-close-btn:hover {
-            opacity: 1; /* Хулгана очиход тодрох */ }
+        .gl-close-btn:hover { /* Хаах товч дээр хулгана очих үед */
+            color: #ffffff; /* Өнгө нь тодорч цэвэр цагаан болно */
+            transform: scale(1.05); /* Үл ялиг 5 хувиар томорно */
+        } /* Хаах товчны hover дуусна */
 
-        #gl-lightbox-caption {
-            position: absolute; /* Байрлалыг хадах */
-            top: calc(100% + 30px); /* Зургийн доод ирмэгээс 30px зай авах */
-            left: 50%; /* Зүүнээс 50% түлхэх */
-            transform: translateX(-50%); /* Хэвтээ тэнхлэгт яг голлуулах */
-            color: rgba(255, 255, 255, 0.7); /* Текстийн өнгө */
-            font-size: 18px; /* Текстийн хэмжээ */
-            text-align: center; /* Текстийг голлуулж жагсаах */
-            max-width: 90%; /* Текст урт бол дэлгэц халихаас хамгаалах */
-            pointer-events: none; /* Текст өөрөө даралт мэдрэхгүй байх (Хаах үйлдлийг гацаахгүй) */ }
+        /* ↔️ НАВИГАЦИЙН СУМНУУД (Дэлгэцийн 50% өндөрт тогтмол, дөрвөлжин талбар) */
+        .gl-nav-zone { /* Дэлгэцийн хоёр талд байрлах навигацийн бүтэн талбар */
+            position: fixed; /* Дэлгэцэнд хадаастай байрлана */
+            top: 25%; /* Дээд захаас эхэлнэ */
+            height: 50%; /* Дэлгэцийн 100% бүтэн өндрийг эзэлж, сум нь яг голдоо (50% өндөрт) автомат flex-ээр байрлана */
+            width: 10%; /* Навигацийн мэдрэгч дөрвөлжин талбайн өргөнийг тогтооно */
+            display: flex; /* Доторх сумны тэмдгийг голлуулахаар flex идэвхжүүлнэ */
+            justify-content: center; /* Хэвтээ тэнхлэгт сумыг голлуулна */
+            align-items: center; /* Босоо тэнхлэгийн дагуу сумыг яг дэлгэцийн 50% голд байрлуулна */
+            cursor: pointer; /* Сум дээр очиход хурууны дүрс гаргана */
+            color: rgba(255, 255, 255, 0.2); /* Сумны тэмдгийн үндсэн өнгийг маш бүдэг цагаан болгоно */
+            font-size: 45px; /* Сумны хэмжээг 45 пикселээр том харуулна */
+            transition: all 0.2s ease; /* Hover эффект орох хөдөлгөөнийг зөөлөн болгоно */
+            z-index: 40; /* Голын медиа контейнероос бусад бүх зүйлсийн дээр байрлана */
+            -webkit-tap-highlight-color: transparent; /* Утан дээр дарахад хажуу тал тэр чигтээ цэнхэрлэхийг устгана */
+        } /* Навигацийн талбайн стиль дуусна */
 
-        @media (max-width: 600px) {
-            .gl-nav-zone { width: 15%; } /* Утасны дэлгэц жижиг тул мэдрэх талбайг 15% болгох */ }
+        .gl-nav-zone:hover { /* Навигацийн талбар дээр хулгана очих үед */
+            color: #ffffff; /* Сумны тэмдэг тодорч цэвэр цагаан болно */
+            background: rgba(255, 255, 255, 0.02); /* Хөгжүүлэгчийн дизайны дагуу хажуу талын дөрвөлжин талбар үл ялиг цагаан туяагаар гэрэлтэнэ */
+        } /* Навигацийн hover дуусна */
+
+        .gl-nav-zone.gl-prev { left: 0; } /* Өмнөх рүү шилжих сумыг зүүн захад хадна */
+        .gl-nav-zone.gl-next { right: 0; } /* Дараагийнх руу шилжих сумыг баруун захад хадна */
+
+        /* 📱 Гар утас болон Жижиг дэлгэцийн зохицол */
+        @media (max-width: 768px) { /* Дэлгэцийн өргөн 768 пикселээс багасах үед ажиллах нөхцөл */
+            .gl-nav-zone { /* Гар утас дээр навигацийн талбайн хэмжээ өөрчлөгдөнө */
+                width: 55px; /* Талбайн өргөнийг утасны дэлгэцэнд зориулж 55 пиксел болгож багасгана */
+                font-size: 32px; /* Сумны хэмжээг утасны дэлгэцэнд зориулж 32 пиксел болгоно */
+            } /* Навигацийн утасны стиль дуусна */
+            .gl-media-container { /* Голын медиа хайрцаг утас дээр өөрчлөгдөнө */
+                width: 90%; /* Зургийн өргөнийг дэлгэгийн 90 хувиар томруулж харуулна */
+            } /* Контейнерын утасны стиль дуусна */
+            .gl-close-btn { /* Хаах товч утас дээр өөрчлөгдөнө */
+                top: 15px; right: 20px; /* Утасны дэлгэцийн захад илүү ойртуулна */
+                font-size: 32px; /* "X" тэмдгийн хэмжээг үл ялиг багасгана */
+            } /* Хаах товчны утасны стиль дуусна */
+        } /* Responsive нөхцөл дуусна */
 /* IMAGE ALBUM GRID STYLE END*/
 
-/* VIDEO CONTAINER STYLE START */
-.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.1); box-sizing: border-box; border-radius: 4px; }
-.video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
-/* VIDEO CONTAINER STYLE END */
+
 
 
 	</style>
@@ -321,13 +370,16 @@
     <div class="content-section">
         <div class="glass-box">
         
-            <h3>ОЛОН ЗУРАГ</h2>
-            <p>Олон зураг</p>
+            <h3>МЕДИА ГРИД</h2>
+            <p>Миксед </p>
 			<div class="gl-row-grid" data-images="
 				https://cdn.itoim.mn/media/imagel/14729/image.jpeg | 60 Тэрбумыг мэдээлэх утас 9310-6060. Хэвлэлийн бага хурал.,
-				https://dundgovi.mn/uploads/posts/2018-06/thumbs/1529546728_31875.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
-				https://the2m16.github.io/web/images/2017.05.06AnnMAltman.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
-				https://ene.mn/uploads/posts/2019-11/1572572390_712-1572522738zjr7vm9ii6xadkh6b5ip.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+				https://www.youtube.com/watch?v=1Tax4SHuicY | 1st video,
+				https://the2m16.github.io/web/images/2017.06.21montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+				https://www.youtube.com/watch?v=Cv0I7C8rKgg | 2nd video,
+				https://www.youtube.com/watch?v=x5EpnSccCbo | 4th video,
+				https://the2m16.github.io/web/images/2012.12.10batolzvoi.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2017.06.19TheDiplomat.PNG | Test Caption Test Caption Test Caption Test Caption Test Caption.,
                 https://the2m16.github.io/web/images/2017.06.21montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2017.06.23AssociatedPress.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
@@ -335,9 +387,8 @@
 				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2019.02.18sandui.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2019.02.21ganbaatar.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
-				https://the2m16.github.io/web/images/2019.10.31montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
-				https://the2m16.github.io/web/images/2019.12.26dorjzodov.png | Test Caption Test Caption Test Caption Test Caption Test Caption.
-			"></div>
+				https://www.youtube.com/watch?v=0GQ4gdbwTcg | 3rd video
+    		"></div>
 
 		</div><!-- glass box end -->
 
@@ -345,17 +396,12 @@
 
 		<div class="glass-box">
     	
-			<h3>ВИДЕО</h2>
-            <p>Видео</p>
-			<div class="video-container">
-			<iframe 
-				src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fkhaasaigui%2Fvideos%2F434928783544517%2F&show_text=false&width=560&t=0" 
-				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" 
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen>
-			</iframe>
-			</div>
+            <h3>МЕДИА ГРИД</h2>
+            <p>Дабл видео</p>
+			<div class="gl-row-grid" data-images="
+				https://www.youtube.com/watch?v=Z3u_TIQuu0M | 4th video,
+				https://www.youtube.com/watch?v=WKoh2K3gXY0 | 2016 оны 6 сарын 24, Ц.Сандуй
+    		"></div>
 
 		</div><!-- glass-box end -->
 
@@ -363,31 +409,28 @@
 
         <div class="glass-box">
 
-			<h3>ВИДЕО+ВИДЕО</h2>
-            <p>Видео+Видео</p>
-			<div class="video-container">
-			<iframe 
-				src="https://www.youtube.com/embed/bM_RZ7DeCxo?si=OYI4cdKctY7VjjQH" 
-				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" 
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen>
-			</iframe>
-			</div>
-
-			<div class="video-container">
-			<iframe 
-				src="https://www.youtube.com/embed/WKoh2K3gXY0?si=oRMq1Y7zZOpCHwVQ" 
-				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" 
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen>
-			</iframe>
-			</div>
+            <h3>МЕДИА ГРИД</h2>
+            <p>Сингл зураг</p>
+			<div class="gl-row-grid" data-images="
+				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.
+    		"></div>
 
 		</div><!-- glass-box end -->
 
 
+
+        <div class="glass-box">
+
+            <h3>МЕДИА ГРИД</h2>
+            <p>Дабл зураг</p>
+			<div class="gl-row-grid" data-images="
+				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+				https://the2m16.github.io/web/images/2017.06.21montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.
+    		"></div>
+
+		</div><!-- glass-box end -->
+
+		
 
 		<div class="glass-box">
 
@@ -457,114 +500,183 @@
 <!-- --------------------------------------MENU+LENIS SCRIPT END--------------------------------------------------------------- -->
         
 <!-- -----------------------------------------ALBUM SCRIPT START------------------------------------------------------------ -->
-        // 1. Өгөгдлийг уншиж цэвэрлэх
-        const glGridContainer = document.querySelector('.gl-row-grid'); /* Галлерейн хайрцгийг барьж авах */
-        const glRawData = glGridContainer.getAttribute('data-images').split(','); /* Таслалаар нь салгаж мөрүүд болгох */
-        
-        const glParsedImages = glRawData.map(item => {
-            const parts = item.split('|'); /* Босоо зураасаар нь линк болон тайлбарыг салгах */
-            return {
-                url: parts[0].trim(), /* Зургийн цэвэр линк хаяг */
-                caption: parts[1] ? parts[1].trim() : "Тайлбаргүй" /* Мөр бүрийн тайлбар текст */
-            };
-        });
+		let glGlobalAlbums = []; // Вэб дээрх бүх цомгийн өгөгдлийг багцалж хадгалах дэлхийн (global) массив
+        let glActiveAlbumIndex = 0; // Яг одоо хэрэглэгчийн нээчихсэн байгаа цомгийн дугаар (индекс)
+        let glActiveImgIndex = 0; // Яг одоо лайтбокс дотор харагдаж байгаа зураг/видеоны дугаар (индекс)
 
-        const glTotalImages = glParsedImages.length; /* Нийт зургийн тоо */
-        
-        // 🌟 Галлерейн үндсэн хайрцагт нийт зургийн тоог атрибутаар оноож өгөх (CSS дээр ганц зурагтайг танихад хэрэгтэй)
-        glGridContainer.setAttribute('data-count', glTotalImages);
+        // Линкээс YouTube ID салгаж авах хамгийн найдвартай Regex функц
+        function parseYouTubeId(url) { 
+            // YouTube линкнүүдийн бүтцийг таних тогтмол илэрхийлэл (Regular Expression)
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp); // Оруулсан линкийг дээрх загвартай тулгаж шалгана
+            // Хэрэв линк тохирч байвал, түүний ард байгаа 11 тэмдэгттэй ID кодыг буцаана, үгүй бол null буцаана
+            return (match && match[2].length === 11) ? match[2] : null;
+        } // Функц дуусна
 
-        // 2. Галлерейг зурж үүсгэх (Хэрэв 1 зураг байвал 1-ийг, олон байвал хамгийн ихдээ эхний 2-ыг харуулна)
-        glGridContainer.innerHTML = ''; /* Хуучин хоосон бүтцийг цэвэрлэх */
-        
-        // 🌟 ОНОШ: 1 зурагтай үед 1 удаа, 2 болон түүнээс дээш зурагтай үед яг 2 удаа давтах ухаалаг тохиргоо
-        const displayCount = glTotalImages === 1 ? 1 : 2;
-        
-        for (let index = 0; index < displayCount; index++) {
-            if (!glParsedImages[index]) break; /* Хэрэв зураг байхгүй бол циклийг зогсоөх */
+        // HTML хуудасны бүх бүтэц уншигдаж дуусах үед ажиллах гол үйл явдал
+        document.addEventListener("DOMContentLoaded", () => {
+            // Вэб хуудас дээрх `.gl-row-grid` ангилалтай бүх цомгуудыг хайж олоод жагсаалт болгоно
+            const albumElements = document.querySelectorAll('.gl-row-grid');
             
-            const imgData = glParsedImages[index]; /* Тухайн зургийн өгөгдлийг авах */
-            const itemDiv = document.createElement('div'); /* Шинэ галлерейн хайрцаг үүсгэх */
-            itemDiv.className = 'gl-card-item'; /* Класс нэрийг оноох */
-            
-            const img = document.createElement('img'); /* Шинэ зураг элемент үүсгэх */
-            img.src = imgData.url; /* Линкийг нь оноох */
-            img.loading = "lazy"; /* Lazy ажиллагааг асаах */
-            itemDiv.appendChild(img); /* Хайрцаг дотор зургийг хийх */
+            // Олдсон цомгуудыг нэг нэгээр нь авч боловсруулах гол давталт эхэлнэ
+            albumElements.forEach((albumEl, albumIdx) => {
+                // Цомгийн data-images доторх текстийг таслал `,` тэмдэгтээр нь салгаж массив болгоно
+                const rawData = albumEl.getAttribute('data-images').split(',');
+                const parsedImages = []; // Цэвэрлэж бэлдсэн өгөгдлүүдийг хадгалах түр массив
 
-            // 🌟 Хэрэв нийт зургийн тоо 2-оос их бол 2 дахь нүд маск тавих. 1 бол 2 нүд дамнан зураг харуулах
-            if (glTotalImages > 2 && index === 1) {
-                const overlay = document.createElement('div'); /* Шинэ маск хайрцаг үүсгэх */
-                overlay.className = 'gl-dark-mask'; /* Класс нэр өгөх */
-                overlay.innerText = `+${glTotalImages - 1}`; /* Нэгдүгээр зургийг хасаж үлдсэн тоог хэвлэх */
-                itemDiv.appendChild(overlay); /* 2 дахь карт дотор маскыг хавчуулах */
-            }
+                // Салгаж авсан текст медиа бүрийг нэг бүрчлэн унших давталт
+                rawData.forEach(item => {
+                    const cleanItem = item.trim(); // Текстийн урд болон ард үлдсэн илүүдэл хоосон зай, шинэ мөрийг устгана
+                    if (!cleanItem) return; // Хэрэв хоосон мөр байвал алгасаад дараагийнх руу шилжинэ
 
-            itemDiv.onclick = () => openGlLightbox(index); /* Карт дээр дарахад лайтбокс нээх үйлдлийг уях */
-            glGridContainer.appendChild(itemDiv); /* Сайтын дэлгэц рүү картыг зурж гаргах */
-        }
+                    const parts = cleanItem.split('|'); // Текстиг босоо зураас `|` тэмдэгтээр линк болон тайлбар болгож хуваана
+                    const url = parts[0].trim(); // Эхний хэсэг буюу медиагийн линкийг авч хоосон зайг нь цэвэрлэнэ
+                    const videoId = parseYouTubeId(url); // Линкийг YouTube мөн эсэхийг шалгаж, ID кодыг нь салгаж авна
 
-        let glCurrentImgIndex = 0; /* Одоо нээлттэй байгаа зургийн дугаар */
+                    // Бэлэн болсон цэвэр өгөгдлийг объект болгон түр массив руу хийнэ
+                    parsedImages.push({
+                        url: url, // Медиагийн бодит линк
+                        caption: parts[1] ? parts[1].trim() : "Тайлбаргүй", // Тайлбар байвал авна, байхгүй бол "Тайлбаргүй" гэж бичнэ
+                        isVideo: videoId !== null, // YouTube ID олдсон бол true (видео), олдоогүй бол false (зураг) болно
+                        youtubeId: videoId // Салгаж авсан YouTube ID кодыг хадгална
+                    }); // Объект оруулах хэсэг дуусна
+                }); // Текст унших давталт дуусна
 
-        // 3. Лайтбокс функцүүд
-        function openGlLightbox(index) {
-            glCurrentImgIndex = index; /* Дарагдсан зургийн дугаарыг идэвхжүүлэх */
-            updateGlLightbox(); /* Лайтбоксын контентыг шинэчлэх */
-            document.getElementById('gl-lightbox-popup').style.display = 'flex'; /* Лайтбоксыг дэлгэцэнд гаргах */
-            if (window.lenis) lenis.stop(); /* Ленис скрипт асаалттай байвал скроллыг түр царцаах */
-        }
+                glGlobalAlbums.push(parsedImages); // Бэлэн болсон цомгийн датаг үндсэн том массив руу нэмнэ
+                const totalCount = parsedImages.length; // Энэ цомогт нийт хэдэн медиа файл байгааг тоолно
+                albumEl.setAttribute('data-count', totalCount); // HTML элемент дээр data-count атрибутаар тоог тэмдэглэнэ
+                albumEl.innerHTML = ''; // HTML дотор байсан түүхий бичвэрүүдийг устгаж цэвэрлэнэ
 
+                // Вэб хуудас дээр цомгоос хамгийн ихдээ хэдэн карт гаргахыг шийднэ (1 файлтай бол 1 карт, олон бол 2 карт харагдана)
+                const displayCount = totalCount === 1 ? 1 : 2;
+
+                // Тогтоосон тооны дагуу вэб хуудас дээр картуудыг үүсгэж зурах давталт
+                for (let i = 0; i < displayCount; i++) {
+                    const mediaData = parsedImages[i]; // Яг одоо зурах гэж буй медиа өгөгдлийг авна
+                    const itemDiv = document.createElement('div'); // Шинээр карт болгох `div` элемент үүсгэнэ
+                    itemDiv.className = 'gl-card-item'; // Үүсгэсэн div-дээ 'gl-card-item' CSS ангиллыг өгнө
+
+                    const img = document.createElement('img'); // Карт дотор байрлах зургийн `img` элемент үүсгэнэ
+                    if (mediaData.isVideo) { // Хэрэв энэ файл видео байвал
+                        // YouTube-ийн серверээс тухайн видеоны автоматаар үүсдэг ковер зургийг дуудаж src-д нь онооно
+                        img.src = `https://img.youtube.com/vi/${mediaData.youtubeId}/mqdefault.jpg`;
+                        img.loading = "lazy"; // Зургийг уян хатан уншуулна
+                        itemDiv.appendChild(img); // Ковер зургийг карт дотроо хуулж оруулна
+
+                        // 🎥 Нэмэлт улаан Play тэмдэг үүсгэдэг байсан кодыг эндээс бүрэн хассан
+                    } else { // Хэрэв видео биш ердийн зураг байвал
+                        img.src = mediaData.url; // Зургийн бодит линкийг src-д нь онооно
+                        img.loading = "lazy"; // Вэб ачааллыг хөнгөвчлөх үүднээс зургийг lazy уншуулна
+                        itemDiv.appendChild(img); // Зургийг карт дотор хуулж оруулна
+                    } // Нөхцөл дуусна
+
+                    // Хэрэв цомогт 2-оос олон файл байгаад, яг одоо 2 дахь картыг зурж байвал
+                    if (totalCount > 2 && i === 1) {
+                        const overlay = document.createElement('div'); // Харанхуйлах маск div үүсгэнэ
+                        overlay.className = 'gl-dark-mask'; // Маскны CSS ангиллыг онооно
+                        overlay.innerText = `+${totalCount - 1}`; // Үлдэж буй зургийн тоог тооцож бичнэ
+                        itemDiv.appendChild(overlay); // Маскийг карт дотор хуулж оруулна
+                    } // Маск үүсгэх нөхцөл дуусна
+
+                    // Картыг дарах үед Лайтбокс попапыг тухайн цомог, тухайн зургийн дугаартайгаар нээх үйлдэл
+                    itemDiv.onclick = () => openGlLightbox(albumIdx, i);
+                    albumEl.appendChild(itemDiv); // Бэлэн болсон бүтэн картыг вэб хуудасны Grid блок руу хуулж оруулна
+                } // Карт зурах давталт дуусна
+            }); // Цомог боловсруулах давталт дуусна
+        }); // DOMContentLoaded үйл явдал дуусна
+
+        // Лайтбокс цонхыг нээх функц
+        function openGlLightbox(albumIdx, imgIdx) {
+            glActiveAlbumIndex = albumIdx; // Сонгосон цомгийн дугаарыг глобал хувьсагчид хадгална
+            glActiveImgIndex = imgIdx; // Сонгосон зургийн дугаарыг глобал хувьсагчид хадгална
+            updateGlLightbox(); // Лайтбокс доторх зураг, текстийг шинэчилж зурах функцийг дуудна
+            // Лайтбокс суурь попап div-ийг дэлгэцэнд харагдуулахын тулд стилийг нь 'flex' болгоно
+            document.getElementById('gl-lightbox-popup').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Попап нээлттэй үед арын үндсэн вэб хуудсыг гүйж scroll хийхийг хаана
+        } // Функц дуусна
+
+        // Лайтбокс доторх контентыг сольж шинэчлэх гол функц
         function updateGlLightbox() {
-            const data = glParsedImages[glCurrentImgIndex]; /* Жагсаалтаас одоогийн зургийн өгөгдлийг унших */
-            document.getElementById('gl-lightbox-img').src = data.url; /* Зургийн линкийг солих */
-            document.getElementById('gl-lightbox-caption').innerText = data.caption; /* Тайлбар текстийг солих */
+            const currentAlbum = glGlobalAlbums[glActiveAlbumIndex]; // Идэвхтэй байгаа цомгийн датаг массив хэлбэрээр авна
+            const media = currentAlbum[glActiveImgIndex]; // Одоо харуулах ёстой зургийн өгөгдлийг авна
             
-            // 🌟 Хэрэв ганцхан зурагтай галлерей байвал лайтбокс доторх баруун, зүүн сумыг нуух ухаалаг логик
+            // Лайтбокс доторх HTML элементүүдийг ID-гаар нь дуудаж хувьсагчид авна
+            const imgEl = document.getElementById('gl-lightbox-img');
+            const videoEl = document.getElementById('gl-lightbox-video');
+            const captionEl = document.getElementById('gl-lightbox-caption');
+
+            // Өмнөх дуудагдсан байсан src болон зургуудыг бүрэн цэвэрлэж нууна (Давхцаж алдаа гарахаас сэргийлнэ)
+            imgEl.style.display = 'none'; // Зургийн элементийг нууна
+            imgEl.src = ''; // Зургийн линкийг хоосон болгоно
+            videoEl.style.display = 'none'; // Видео тоглуулагчийг нууна
+            videoEl.src = ''; // Видео тоглуулагчийн линкийг хоосон болгоно
+
+            if (media.isVideo) { // Хэрэв харуулах медиа видео байвал
+                // 🛠 ЗАСВАР (YouTube Ориг товч): autoplay=1-ийг хассанаар видео шууд тоглохгүй, YouTube-ийн өөрийнх нь ориг том улаан товч гарч ирнэ.
+                // Мөн Error 153-аас сэргийлж enablejsapi=1 болон origin-ийг хэвээр үлдээв.
+                videoEl.src = `https://www.youtube.com/embed/${media.youtubeId}?rel=0&enablejsapi=1&origin=${window.location.origin}`;
+                videoEl.style.display = 'block'; // Видео тоглуулагчийг дэлгэцэнд гаргана
+            } else { // Хэрэв ердийн зураг байвал
+                imgEl.src = media.url; // Зургийн бодит линкийг онооно
+                imgEl.style.display = 'block'; // Зургийн элементийг дэлгэцэнд гаргана
+            } // Нөхцөл дуусна
+            
+            captionEl.innerText = media.caption; // Доод талын тайлбар хэсэгт медиагийн текстийг хэвлэнэ
+
+            // Хэрэв тухайн цомогт ганцхан файл байвал хажуу талын навигацийн сумуудыг нууна, олон бол харуулна
             const navs = document.querySelectorAll('.gl-nav-zone');
-            navs.forEach(nav => nav.style.display = glTotalImages === 1 ? 'none' : 'flex');
-        }
+            navs.forEach(nav => nav.style.display = currentAlbum.length === 1 ? 'none' : 'flex');
+        } // Функц дуусна
 
+        // Сум дарах үед зураг урагш хойш солих функц
         function changeGlImage(direction, event) {
-            if (event) event.stopPropagation(); /* Сум дээр дарахад арын суурь руу дамжиж хаагдахаас хамгаалах */
-            if (glTotalImages === 1) return; /* Ганцхан зурагтай үед сум дарахад хөдлөхгүй */
-            glCurrentImgIndex += direction; /* Дугаарыг нэмэх эсвэл хасах */
-            if (glCurrentImgIndex >= glTotalImages) glCurrentImgIndex = 0; /* Төгсгөлд хүрвэл эхний зураг руу тойруулах */
-            if (glCurrentImgIndex < 0) glCurrentImgIndex = glTotalImages - 1; /* Эхлэлээс буцвал сүүлийн зураг руу үсэргэх */
-            updateGlLightbox(); /* Шинэ зургийг хэвлэх */
-        }
+            if (event) event.stopPropagation(); // Сум дарах үед хаах үйлдэл (popup click) давхар ажиллахаас хамгаална
+            const currentAlbum = glGlobalAlbums[glActiveAlbumIndex]; // Одоо байгаа цомгийн файлыг авна
+            if (currentAlbum.length === 1) return; // Хэрэв ганцхан зурагтай цомог бол солих үйлдэл хийхгүй зогсооно
 
+            glActiveImgIndex += direction; // Зургийн индексийг даралтаас хамаарч 1-ээр нэмнэ эсвэл хасна
+            if (glActiveImgIndex >= currentAlbum.length) glActiveImgIndex = 0; // Хэрэв хамгийн сүүлчийн зураг дээр очоод дахин урагшилбал эхний зураг руу шилжүүлнэ
+            if (glActiveImgIndex < 0) glActiveImgIndex = currentAlbum.length - 1; // Хэрэв эхний зураг дээр байхдаа буцвал хамгийн сүүлчийн зураг руу аваачна
+            
+            updateGlLightbox(); // Шинэ зургийг лайтбокс дотор зурж шинэчилнэ
+        } // Функц дуусна
+
+        // Лайтбокс цонхыг хаах функц
         function closeGlLightbox() {
-            document.getElementById('gl-lightbox-popup').style.display = 'none'; /* Лайтбокс хайрцгийг буцааж нуух */
-            if (window.lenis) lenis.start(); /* Лайтбокс хаагдахад Ленис скроллыг буцааж чөлөөлөх */
-        }
+            document.getElementById('gl-lightbox-popup').style.display = 'none'; // Үндсэн попап div-ийг бүрэн нууна
+            document.getElementById('gl-lightbox-video').src = ''; // Видеог бүрэн зогсоохын тулд iframe-ийн src-ийг хоосон болгоно
+            document.getElementById('gl-lightbox-img').src = ''; // Зургийн src линкийг мөн цэвэрлэнэ
+            document.body.style.overflow = ''; // Арын үндсэн вэбийн гүйж scroll хийх эрхийг буцааж нээнэ
+        } // Функц дуусна
 
-        // Гарны клав унших (Гарнаас удирдах UX соёл)
+        // Компьютерийн гар (клавиатур)-аас удирдах UX функц
         document.addEventListener('keydown', (e) => {
-            if (document.getElementById('gl-lightbox-popup').style.display === 'flex') { /* Зөвхөн лайтбокс нээлттэй үед ажиллана */
-                if (e.key === 'ArrowRight') changeGlImage(1); /* Баруун сум дарахад дараагийн зураг */
-                if (e.key === 'ArrowLeft') changeGlImage(-1); /* Зүүн сум дарахад өмнөх зураг */
-                if (e.key === 'Escape') closeGlLightbox(); /* ESC дарахад лайтбоксыг шууд хаах */
-            }
-        });
+            // Зөвхөн Лайтбокс попап дэлгэцэнд нээлттэй харагдаж байгаа үед л энэ товчлуурууд ажиллана
+            if (document.getElementById('gl-lightbox-popup').style.display === 'flex') {
+                if (e.key === 'ArrowRight') changeGlImage(1); // Баруун сум дарахад дараагийн зураг руу шилжинэ
+                if (e.key === 'ArrowLeft') changeGlImage(-1); // Зүүн сум дарахад өмнөх зураг руу буцна
+                if (e.key === 'Escape') closeGlLightbox(); // Гарын Escape товчийг дарахад попап хаагдана
+            } // Нөхцөл дуусна
+        }); // Үйл явдал дуусна
 <!-- -------------------------------------ALBUM SCRIPT END---------------------------------------------------------------- -->
     </script>
 
 
 
 
-<!-- LIGHT BOX START -->
-	<div id="gl-lightbox-popup" onclick="closeGlLightbox()"> <span class="gl-close-btn" onclick="closeGlLightbox()">&times;</span>
-    
-    	<div class="gl-nav-zone gl-prev" onclick="changeGlImage(-1, event)">&#10094;</div>
-    	<div class="gl-nav-zone gl-next" onclick="changeGlImage(1, event)">&#10095;</div>
-    
-    	<div class="gl-lightbox-wrapper" onclick="event.stopPropagation()">
-        	<img src="" id="gl-lightbox-img">
-        	<div id="gl-lightbox-caption"></div> 
-    	</div>
-	</div>
-<!-- LIGHT BOX END -->
 
+<!-- * LIGHTBOX POP-UP START -->
+		<div id="gl-lightbox-popup" onclick="closeGlLightbox()">
+			<div class="gl-lightbox-wrapper">
+			<span class="gl-close-btn" onclick="closeGlLightbox()">&times;</span>
+				<div class="gl-nav-zone gl-prev" onclick="changeGlImage(-1, event)">&#10094;</div>
+				<div class="gl-nav-zone gl-next" onclick="changeGlImage(1, event)">&#10095;</div>
+				<div class="gl-media-container" onclick="event.stopPropagation()">
+				<img id="gl-lightbox-img" alt="Media view">
+                <iframe id="gl-lightbox-video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				<div id="gl-lightbox-caption"></div>
+		</div> </div> </div>
+<!-- LIGHTBOX POP-UP END -->
 
 
 
