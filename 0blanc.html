@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The2m16 - TestPage</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
-    <script src="https://the2m16.github.io/web/script/lenis.min.js"></script> 
+ 
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
@@ -146,24 +146,22 @@
 .album-item:hover img { transform: scale(1.1); }
 .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: normal; pointer-events: none; }
 
-/* Image Light box style */
+/* IMAGE LIGHTBOX STYLE (ТОМ ЗУРАГ) */
 #lightbox {
 	display: none;					/* Анх хуудас ачаалахад харагдахгүй байх */
 	position: fixed;				/* Дэлгэцийн байрлалаас уяж, гүйлгэхэд хамт хөдлөхгүй байх */
 	z-index: 10000;					/* Бусад бүх элементүүдийн хамгийн дээр харагдахыг баталгаажуулах */
 	top: 0; left: 0;				/* Дэлгэцийн зүүн дээд буланд наах */
-	width: 100vw; height: 100vh;		/* Бүхэл дэлгэцийг бүрхэх */
+	width: 100%; height: 100vh;		/* Бүхэл дэлгэцийг бүрхэх */
 	background: rgba(0, 0, 0, 0.95);
 	justify-content: center;		/* Доторх зургийг хэвтээ тэнхлэгийн дагуу голлуулах (Flexbox) */
 	align-items: center;			/* Доторх зургийг босоо тэнхлэгийн дагуу голлуулах (Flexbox) */
-	user-select: none;				/* Хэрэглэгч арын дэвсгэр эсвэл текстийг идэвхжүүлж сонгохыг хориглох */
-    overflow: hidden; }
-#lightbox img { max-width: 90%; max-height: 85vh; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+	user-select: none;				/* Хэрэглэгч арын дэвсгэр эсвэл текстийг идэвхжүүлж сонгохыг хориглох */ }
+#lightbox img { max-width: 90%; max-height: 85%; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 .nav-btn {
 	position: absolute;
-	top: 50%;						/* Дээд ирмэгээс эхлэх */
-	transform: translateY(-50%);
-    height: 80%;					/* Зургийн хоёр талд бүтэн босоо талбар үүсгэх */
+	center: 0;						/* Дээд ирмэгээс эхлэх */
+	height: 50%;					/* Зургийн хоёр талд бүтэн босоо талбар үүсгэх */
 	width: 10%;						/* Дэлгэцийн зүүн/баруун талын 20%-ийг дарах талбар болгох */
 	display: flex;					/* Доторх сумыг Flexbox-оор байршуулах */
 	align-items: center;			/* Сумыг босоо чиглэлд голлуулах */
@@ -302,19 +300,6 @@
 		</div><!-- glass-box end -->
 
 
-
-<!-- ----------------------------------------------------------------------------------------------------- -->
-<!-- LIGHT BOX START -->
-	<div id="lightbox" onclick="closeLightbox()">
-		<span class="close-btn">&times;</span>
-		<span class="nav-btn prev" onclick="event.stopPropagation(); changeImage(-1)">&#10094;</span>
-		<img id="lightboxImg" src="" onclick="event.stopPropagation()">
-		<span class="nav-btn next" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
-	</div>    
-<!-- LIGHT BOX END -->      
-
-
-
 <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
     </div><!-- content-section end -->
 
@@ -322,19 +307,6 @@
 
     <script>
 <!-- ----------------------------------------MENU+LENIS SCRIPT START------------------------------------------------------------- -->
-        // 1. Lenis Smooth Scroll
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
         // 2. Mobile Menu Logic
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
@@ -436,6 +408,25 @@
 		initAlbums();
 <!-- -------------------------------------ALBUM SCRIPT END---------------------------------------------------------------- -->
     </script>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+
+
+<!-- LIGHT BOX START -->
+	<div id="lightbox" onclick="closeLightbox()">
+		<span class="close-btn">&times;</span>
+		<span class="nav-btn prev" onclick="event.stopPropagation(); changeImage(-1)">&#10094;</span>
+		<img id="lightboxImg" src="" onclick="event.stopPropagation()">
+		<span class="nav-btn next" onclick="event.stopPropagation(); changeImage(1)">&#10095;</span>
+	</div>    
+<!-- LIGHT BOX END -->
+
+
+
+
+
+
 
 </body>
 </html>
