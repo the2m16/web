@@ -1,4 +1,15 @@
-<!DOCTYPE html> <html lang="mn"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Premium Fixed Multi-Album Module</title> <style> /* 🎨 Суурь Цэвэрлэгээ */
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The2m16 - TestPage</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
+
+
+
+<style>
         * { /* Вэб дээрх бүх элементүүдийг сонгоно */
             margin: 0; /* Бүх элементийн гаднах хоосон зайг тэгжлэнэ */
             padding: 0; /* Бүх элементийн доторх хоосон зайг тэгжлэнэ */
@@ -8,19 +19,34 @@
         body { /* Хуудасны үндсэн body хэсгийн стилийг тодорхойлно */
             background-color: #0b0c10; /* Вэб хуудасны арын дэвсгэрийг тансаг харанхуй өнгөтэй болгоно */
             color: #ffffff; /* Үндсэн бичвэрийн өнгийг цагаан болгоно */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Орчин үеийн цэвэрхэн харагдах фонтуудыг зааж өгнө */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Орон үеийн цэвэрхэн харагдах фонтуудыг зааж өгнө */
             padding: 60px 20px; /* Хуудасны дээрээс болон хажуу талаас нь хоосон зай авна */
             display: flex; /* Flexbox бүтцийг идэвхжүүлнэ */
             flex-direction: column; /* Элементүүдийг дээрээс доош цуварсан байрлалтай болгоно */
             align-items: center; /* Бүх элементүүдийг хэвтээ тэнхлэгийн дагуу голлуулна */
         } /* Body стилийн тохиргоо дуусна */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         /* 📱 Галлерей Сүлжээ */
         .gl-row-grid { /* Цомог доторх зургуудыг өөр хооронд нь өрөх торлог бүтэц */
             display: grid; /* Grid бүтцийг идэвхжүүлнэ */
             grid-template-columns: repeat(auto-fit, minmax(calc(50% - 6px), 1fr)); /* Дэлгэцийн хэмжээнээс хамаарч картуудыг 2 баганаар автоматаар өрнө */
-            gap: 12px; /* Картууд хоорондын зайг 12 пикселээр тогтооно */
-            max-width: 800px; /* Нийт галлерейн хамгийн их өргөнийг 800 пикселээр хязгаарлана */
+            gap: 8px; /* Картууд хоорондын зайг 12 пикселээр тогтооно */
+            max-width: 960px; /* Нийт галлерейн хамгийн их өргөнийг Glass-Box 1000px-ээр хязгаарлана */
             width: 100%; /* Дэлгэц жижигрэхэд өргөн нь 100% уян хатан байна */
             margin-bottom: 30px; /* Цомог доороосоо 30 пиксел хоосон зай авна */
         } /* Grid стилийн тохиргоо дуусна */
@@ -33,7 +59,7 @@
         .gl-card-item { /* Зураг эсвэл видеоны гаднах хайрцагны стиль */
             position: relative; /* Дотор нь байрлах Play товч зэргийг absolute байрлуулахад суурь нь болно */
             background: rgba(255, 255, 255, 0.03); /* Картын арын дэвсгэрт үл ялиг гэрэлтсэн цагаан туяа өгнө */
-            border-radius: 12px; /* Картын 4 өнцгийг 12 пикселээр дугуйруулна */
+            border-radius: 6px; /* Картын 4 өнцгийг 12 пикселээр дугуйруулна */
             overflow: hidden; /* Картын хэмжээнээс хальсан зургийг гадагшлуулахгүй нууна */
             border: 1px solid rgba(255, 255, 255, 0.08); /* Картыг хүрээлсэн маш нарийн бүдгэрсэн шугам татна */
             cursor: pointer; /* Хулгана дээр нь очиход хурууны дүрс гаргаж, дарах боломжтойг илтгэнэ */
@@ -52,32 +78,7 @@
             transform: scale(1.04); /* Зургийг үл ялиг 4 хувиар томруулж амьд мэдрэмж өгнө */
         } /* Hover эффект дуусна */
 
-        /* 🎥 Play Товчлуур */
-        .gl-video-badge { /* Видео картны голд байрлах Play тэмдэг */
-            position: absolute; /* Картын яг хаана ч хамаагүй чөлөөтэй байрлах боломж олгоно */
-            top: 50%; /* Дээрээсээ картны яг 50 хувьд байрлана */
-            left: 50%; /* Зүүн талаасаа картны яг 50 хувьд байрлана */
-            transform: translate(-50%, -50%); /* Элементийн өөрийнх нь хэмжээг тооцож яг төв голд нь тэгшилж байрлуулна */
-            width: 54px; /* Play товчны өргөнийг 54 пиксел болгоно */
-            height: 54px; /* Play товчны өндрийг 54 пиксел болгоно */
-            background: rgba(0, 0, 0, 0.75); /* Товчны арын дэвсгэрийг хагас тунгалаг хараар будна */
-            border-radius: 50%; /* Товчийг төгс бөөрөнхий хэлбэртэй болгоно */
-            display: flex; /* Доторх гурвалжин тэмдгийг голлуулахын тулд flex идэвхжүүлнэ */
-            justify-content: center; /* Хэвтээ тэнхлэгийн дагуу тэмдгийг голлуулна */
-            align-items: center; /* Босоо тэнхлэгийн дагуу тэмдгийг голлуулна */
-            color: #ffffff; /* Гурвалжин play тэмдгийн өнгийг цагаан болгоно */
-            font-size: 16px; /* Тэмдгийн хэмжээг 16 пикселээр тогтооно */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Товчны гадуур нарийн цагаан хүрээ татна */
-            transition: all 0.3s ease; /* Хулгана очиход өөрчлөгдөх хөдөлгөөнийг зөөлөн болгоно */
-            z-index: 2; /* Зургийн дээгүүр харагдахаар давхаргыг дээшлүүлнэ */
-        } /* Play товчны стиль дуусна */
-
-        .gl-card-item:hover .gl-video-badge { /* Хулгана карт дээр очиход Play товч өөрчлөгдөх хэсэг */
-            background: #ff0000; /* Арын хагас тунгалаг хар өнгө нь YouTube-ийн улаан өнгөөр солигдоно */
-            border-color: #ff0000; /* Хүрээний өнгийг мөн улаан болгоно */
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); /* Товчны араас улаан туяа цацарч буй эффект өгнө */
-            transform: translate(-50%, -50%) scale(1.1); /* Төв байрлалаа алдахгүйгээр 10 хувь томорч тодорно */
-        } /* Play товчны hover дуусна */
+        /* 🎥 Захиалгат улаан Play товчийг бүрэн устгасан, учир нь лайтбокс нээгдэхэд YouTube-ийн ориг улаан товч харагдана */
 
         .gl-dark-mask { /* 2-оос олон зурагтай үед сүүлчийн карт дээр нэмэлт тоо харуулах маск */
             position: absolute; /* Картан дотор чөлөөтэй байрлана */
@@ -91,7 +92,7 @@
             color: #ffffff; /* Текстийн өнгийг цагаан болгоно */
             font-size: 26px; /* Текстийн хэмжээг 26 пикселээр томруулна */
             font-weight: 600; /* Текстийн үсгийг бүдүүн (Bold) болгоно */
-            pointer-events: none; /* Эне маск нь өөрөө хулганы даралтыг хаахгүй, картын даралтад саад болохгүй */
+            pointer-events: none; /* Энэ маск нь өөрөө хулганы даралтыг хаахгүй, картын даралтад саад болохгүй */
             z-index: 3; /* Хамгийн дээд давхаргад гаргана */
         } /* Маскны стиль дуусна */
 
@@ -117,14 +118,14 @@
             height: 100%; /* Өндрийг дэлгэцийн 100% авна */
             display: flex; /* Доторх медиа хайрцгийг голлуулахаар flex идэвхжүүлнэ */
             justify-content: center; /* Хэвтээ тэнхлэгт голлуулна */
-            align-items: center; /* Босоо тэнхлэгт goолуулна */
+            align-items: center; /* Босоо тэнхлэгт голлуулна */
         } /* Хайрцагны стиль дуусна */
 
         /* 🖼 Медиа Элементүүд */
         .gl-media-container { /* Зураг эсвэл видео тоглуулагч байрлах голын үндсэн талбар */
             position: relative; /* Доторх элементүүдээ удирдах суурь болно */
             width: 85%; /* Дэлгэцийн хажуу талаас навигацийн суманд зориулж 15% зай үлдээнэ */
-            max-width: 900px; /* Хамгийн ихдээ 900 пиксел өргөн байна */
+            max-width: 65%; /* Хамгийн ихдээ 900 пиксел өргөн байна */
             display: flex; /* Текст болон медиаг дээрээс доош голлуулахаар flex идэвхжүүлнэ */
             flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
             align-items: center; /* Хэвтээ чиглэлд голлуулна */
@@ -135,7 +136,8 @@
             max-width: 100%; /* Зургийн өргөн нь контейнероосоо давахгүй 100% байна */
             max-height: 75vh; /* Зургийн өндөр нь дэлгэцийн өндрийн 75%-иас хэтрэхгүй (ингэснээр тайлбарт зай үлдэнэ) */
             object-fit: contain; /* Зургийг тайрахгүйгээр өөрийнх нь харьцаагаар багтааж харуулна */
-            border-radius: 8px; /* Зургийн өнцгүүдийг 8 пикселээр дугуйруулна */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Картыг хүрээлсэн маш нарийн бүдгэрсэн шугам татна */
+            border-radius: 6px; /* Зургийн өнцгүүдийг 8 пикселээр дугуйруулна */
             display: none; /* Анх нээгдэхэд нууц байна, зураг дарахад JS-ээр гарч ирнэ */
             box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* Зургийн араас зөөлөн хар сүүдэр хаяж, урагшаа тодорсон эффект өгнө */
         } /* Том зургийн стиль дуусна */
@@ -144,8 +146,8 @@
             width: 100%; /* Өргөнийг контейнерын 100% дүүргэнэ */
             aspect-ratio: 16 / 9; /* YouTube-ийн стандарт 16:9 харьцааг хадгална */
             max-height: 75vh; /* Өндөр нь дэлгэцийн 75%-иас хэтрэхгүй */
-            border: none; /* Iframe-ийн гадуурх хөтчийн хүрээг устгана */
-            border-radius: 8px; /* Видеоны 4 өнцгийг 8 пикселээр дугуйруулна */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Картыг хүрээлсэн маш нарийн бүдгэрсэн шугам татна */
+            border-radius: 6px; /* Видеоны 4 өнцгийг 8 пикселээр дугуйруулна */
             display: none; /* Анх нээгдэхэд нууц байна, видео карт дарахад JS-ээр гарч ирнэ */
             box-shadow: 0 20px 50px rgba(0,0,0,0.6); /* Видеоны араас сүүдэр хаяна */
         } /* Тоглуулагчийн стиль дуусна */
@@ -162,7 +164,7 @@
 
         /* ❌ Хаах Товч (Баруун дээд буланд тогтмол) */
         .gl-close-btn { /* Баруун дээд буланд байрлах "X" товч */
-            position: absolute; /* Лайтбокс хайрцаг дотор чөлөөтэй байрлана */
+            position: absolute; /* Лайтбокс хаах хайрцаг дотор чөлөөтэй байрлана */
             top: 25px; /* Дээрээсээ 25 пиксел зай авна */
             right: 30px; /* Баруун талаасаа 30 пиксел зай авна */
             font-size: 38px; /* "X" тэмдгийг 38 пикселээр томруулна */
@@ -171,7 +173,7 @@
             z-index: 50; /* Сум болон медиагийн дээр харагдахаар давхаргыг дээшлүүлнэ */
             transition: color 0.2s, transform 0.2s; /* Хулгана очиход солигдох хөдөлгөөнийг зөөлөн болгоно */
             padding: 5px; /* Дарахад амар байх үүднээс эргэн тойронд нь 5 пиксел мэдрэгч талбар нэмнэ */
-        } /* Хаах товчны стиль дуусна */
+        } /* Хаах товч стиль дуусна */
 
         .gl-close-btn:hover { /* Хаах товч дээр хулгана очих үед */
             color: #ffffff; /* Өнгө нь тодорч цэвэр цагаан болно */
@@ -181,9 +183,9 @@
         /* ↔️ НАВИГАЦИЙН СУМНУУД (Дэлгэцийн 50% өндөрт тогтмол, дөрвөлжин талбар) */
         .gl-nav-zone { /* Дэлгэцийн хоёр талд байрлах навигацийн бүтэн талбар */
             position: fixed; /* Дэлгэцэнд хадаастай байрлана */
-            top: 0; /* Дээд захаас эхэлнэ */
-            height: 100vh; /* Дэлгэцийн 100% бүтэн өндрийг эзэлж, сум нь яг голдоо (50% өндөрт) автомат flex-ээр байрлана */
-            width: 80px; /* Навигацийн мэдрэгч дөрвөлжин талбайн өргөнийг 80 пикселээр тогтооно */
+            top: 25%; /* Дээд захаас эхэлнэ */
+            height: 50%; /* Дэлгэцийн 100% бүтэн өндрийг эзэлж, сум нь яг голдоо (50% өндөрт) автомат flex-ээр байрлана */
+            width: 10%; /* Навигацийн мэдрэгч дөрвөлжин талбайн өргөнийг тогтооно */
             display: flex; /* Доторх сумны тэмдгийг голлуулахаар flex идэвхжүүлнэ */
             justify-content: center; /* Хэвтээ тэнхлэгт сумыг голлуулна */
             align-items: center; /* Босоо тэнхлэгийн дагуу сумыг яг дэлгэцийн 50% голд байрлуулна */
@@ -217,19 +219,63 @@
                 font-size: 32px; /* "X" тэмдгийн хэмжээг үл ялиг багасгана */
             } /* Хаах товчны утасны стиль дуусна */
         } /* Responsive нөхцөл дуусна */
-    </style> </head> <body> <div class="gl-row-grid" data-images="
-        https://cdn.itoim.mn/media/imagel/14729/image.jpeg | 60 Тэрбумыг мэдээлэх утас 9310-6060. Хэвлэлийн бага хурал.,
-        https://dundgovi.mn/uploads/posts/2018-06/thumbs/1529546728_31875.jpg | Уулзалтын үйл явц албан ёсны танхимд.,
-        https://www.youtube.com/watch?v=dQw4w9WgXcQ | Хэргийн холбогдолтой баримт видео бичлэг
-    "></div> <div id="gl-lightbox-popup" onclick="closeGlLightbox()">
-        <div class="gl-lightbox-wrapper"> <span class="gl-close-btn" onclick="closeGlLightbox()">&times;</span>
-            
-            <div class="gl-nav-zone gl-prev" onclick="changeGlImage(-1, event)">&#10094;</div>
-            <div class="gl-nav-zone gl-next" onclick="changeGlImage(1, event)">&#10095;</div>
-            
-            <div class="gl-media-container" onclick="event.stopPropagation()">
-                <img id="gl-lightbox-img" alt="Media view"> <iframe id="gl-lightbox-video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                <div id="gl-lightbox-caption"></div> </div> </div> </div> <script> let glGlobalAlbums = []; // Вэб дээрх бүх цомгийн өгөгдлийг багцалж хадгалах дэлхийн (global) массив
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div class="gl-row-grid" data-images="
+			https://cdn.itoim.mn/media/imagel/14729/image.jpeg | 60 Тэрбумыг мэдээлэх утас 9310-6060. Хэвлэлийн бага хурал.,
+			https://www.youtube.com/watch?v=1Tax4SHuicY | Хэргийн холбогдолтой баримт видео бичлэг,
+			https://the2m16.github.io/web/images/2017.06.21montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+			https://www.youtube.com/watch?v=Cv0I7C8rKgg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+			https://the2m16.github.io/web/images/2012.12.10batolzvoi.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+			https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.
+    	"></div>
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- * LIGHTBOX POP-UP START -->
+		<div id="gl-lightbox-popup" onclick="closeGlLightbox()">
+			<div class="gl-lightbox-wrapper">
+			<span class="gl-close-btn" onclick="closeGlLightbox()">&times;</span>
+				<div class="gl-nav-zone gl-prev" onclick="changeGlImage(-1, event)">&#10094;</div>
+				<div class="gl-nav-zone gl-next" onclick="changeGlImage(1, event)">&#10095;</div>
+				<div class="gl-media-container" onclick="event.stopPropagation()">
+				<img id="gl-lightbox-img" alt="Media view">
+                <iframe id="gl-lightbox-video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				<div id="gl-lightbox-caption"></div>
+		</div> </div> </div>
+<!-- LIGHTBOX POP-UP END -->
+
+
+<script>
+		let glGlobalAlbums = []; // Вэб дээрх бүх цомгийн өгөгдлийг багцалж хадгалах дэлхийн (global) массив
         let glActiveAlbumIndex = 0; // Яг одоо хэрэглэгчийн нээчихсэн байгаа цомгийн дугаар (индекс)
         let glActiveImgIndex = 0; // Яг одоо лайтбокс дотор харагдаж байгаа зураг/видеоны дугаар (индекс)
 
@@ -258,7 +304,7 @@
                     const cleanItem = item.trim(); // Текстийн урд болон ард үлдсэн илүүдэл хоосон зай, шинэ мөрийг устгана
                     if (!cleanItem) return; // Хэрэв хоосон мөр байвал алгасаад дараагийнх руу шилжинэ
 
-                    const parts = cleanItem.split('|'); // Текстийг босоо зураас `|` тэмдэгтээр линк болон тайлбар болгож хуваана
+                    const parts = cleanItem.split('|'); // Текстиг босоо зураас `|` тэмдэгтээр линк болон тайлбар болгож хуваана
                     const url = parts[0].trim(); // Эхний хэсэг буюу медиагийн линкийг авч хоосон зайг нь цэвэрлэнэ
                     const videoId = parseYouTubeId(url); // Линкийг YouTube мөн эсэхийг шалгаж, ID кодыг нь салгаж авна
 
@@ -289,15 +335,13 @@
                     if (mediaData.isVideo) { // Хэрэв энэ файл видео байвал
                         // YouTube-ийн серверээс тухайн видеоны автоматаар үүсдэг ковер зургийг дуудаж src-д нь онооно
                         img.src = `https://img.youtube.com/vi/${mediaData.youtubeId}/mqdefault.jpg`;
-                        itemDiv.appendChild(img); // Зургийг карт дотроо хуулж оруулна
+                        img.loading = "lazy"; // Зургийг уян хатан уншуулна
+                        itemDiv.appendChild(img); // Ковер зургийг карт дотроо хуулж оруулна
 
-                        const badge = document.createElement('div'); // Дээр нь гарах Play товчны div үүсгэнэ
-                        badge.className = 'gl-video-badge'; // Play товчны CSS ангиллыг өгнө
-                        badge.innerHTML = '&#9654;'; // Гурвалжин play тэмдгийн кодыг дотор нь бичнэ
-                        itemDiv.appendChild(badge); // Play товчийг карт дотор хуулж оруулна
+                        // 🎥 Нэмэлт улаан Play тэмдэг үүсгэдэг байсан кодыг эндээс бүрэн хассан
                     } else { // Хэрэв видео биш ердийн зураг байвал
                         img.src = mediaData.url; // Зургийн бодит линкийг src-д нь онооно
-                        img.loading = "lazy"; // Вэб ачааллыг хөнгөвчлөх үүднээс зургийг дэлгэцэнд дөхөж ирэхэд нь уншуулна (Lazy load)
+                        img.loading = "lazy"; // Вэб ачааллыг хөнгөвчлөх үүднээс зургийг lazy уншуулна
                         itemDiv.appendChild(img); // Зургийг карт дотор хуулж оруулна
                     } // Нөхцөл дуусна
 
@@ -305,7 +349,7 @@
                     if (totalCount > 2 && i === 1) {
                         const overlay = document.createElement('div'); // Харанхуйлах маск div үүсгэнэ
                         overlay.className = 'gl-dark-mask'; // Маскны CSS ангиллыг онооно
-                        overlay.innerText = `+${totalCount - 1}`; // Үлдэж буй зургийн тоог "+3" гэх мэтээр тооцож бичнэ
+                        overlay.innerText = `+${totalCount - 1}`; // Үлдэж буй зургийн тоог тооцож бичнэ
                         itemDiv.appendChild(overlay); // Маскийг карт дотор хуулж оруулна
                     } // Маск үүсгэх нөхцөл дуусна
 
@@ -343,8 +387,9 @@
             videoEl.src = ''; // Видео тоглуулагчийн линкийг хоосон болгоно
 
             if (media.isVideo) { // Хэрэв харуулах медиа видео байвал
-                // 🛠 ЗАСВАР (Error 153 засалт): YouTube API-д заавал байх ёстой enablejsapi=1 болон origin-ийг залгаж аюулгүй байдлын алдааг бүрэн заслаа.
-                videoEl.src = `https://www.youtube.com/embed/${media.youtubeId}?autoplay=1&rel=0&enablejsapi=1&origin=${window.location.origin}`;
+                // 🛠 ЗАСВАР (YouTube Ориг товч): autoplay=1-ийг хассанаар видео шууд тоглохгүй, YouTube-ийн өөрийнх нь ориг том улаан товч гарч ирнэ.
+                // Мөн Error 153-аас сэргийлж enablejsapi=1 болон origin-ийг хэвээр үлдээв.
+                videoEl.src = `https://www.youtube.com/embed/${media.youtubeId}?rel=0&enablejsapi=1&origin=${window.location.origin}`;
                 videoEl.style.display = 'block'; // Видео тоглуулагчийг дэлгэцэнд гаргана
             } else { // Хэрэв ердийн зураг байвал
                 imgEl.src = media.url; // Зургийн бодит линкийг онооно
@@ -388,6 +433,16 @@
                 if (e.key === 'Escape') closeGlLightbox(); // Гарын Escape товчийг дарахад попап хаагдана
             } // Нөхцөл дуусна
         }); // Үйл явдал дуусна
-    </script> </body> </html> ```
+</script>
 
-Энэ кодыг тэр чигт нь хуулаад файлынхаа кодыг солиод нээгээрэй. "Error 153" бүрмөсөн арилж, видео шууд тоглогдох болно!
+
+
+
+
+
+
+
+
+
+</body>
+</html>
