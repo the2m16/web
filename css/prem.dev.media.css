@@ -175,6 +175,36 @@
             transform: scale(1.04); /* Зургийг үл ялиг 4 хувиар томруулж амьд мэдрэмж өгнө */
         } /* Hover эффект дуусна */
 
+/* 🎥 YOUTUBE-ИЙН ОРИГИНАЛЬ PLAY ТОВЧНЫ ДИЗАЙН (Сайжруулсан) */
+.gl-youtube-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Картны яг голд бэхэлнэ */
+    width: 68px; /* YouTube-ийн оригиналь логоны стандарт өргөн */
+    height: 48px;
+    z-index: 10; /* Бусад бүх зүйлсийн дээр гаргана */
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Хулгана очиход томрох хөдөлгөөн */
+    pointer-events: none; /* Карт дээрх даралтыг хаахгүй */
+}
+
+/* Хулгана карт дээр очих үед товчлуурыг үл ялиг томруулах UX эффект */
+.gl-card-item:hover .gl-youtube-play-btn {
+    transform: translate(-50%, -50%) scale(1.1); /* 10%-иар томруулна */
+}
+
+/* 🔴 Оригиналь YouTube-ийн өнгө солигдох шилжилт (SVG-ийн дэвсгэр) */
+.gl-youtube-play-btn svg .yt-bg {
+    fill: rgba(33, 33, 33, 0.85); /* Анх харагдах зөөлөн харанхуй өнгө (Original Default) */
+    transition: fill 0.2s ease-in-out;
+}
+
+/* Карт дээр хулгана очиход... */
+.gl-card-item:hover .gl-youtube-play-btn svg .yt-bg {
+    fill: #ff0000; /* ...яг оригиналь улаан өнгөөр солигдоно! */
+}
+
         /* 🎥 Захиалгат улаан Play товчийг бүрэн устгасан, учир нь лайтбокс нээгдэхэд YouTube-ийн ориг улаан товч харагдана */
 
         .gl-dark-mask { /* 2-оос олон зурагтай үед сүүлчийн карт дээр нэмэлт тоо харуулах маск */
