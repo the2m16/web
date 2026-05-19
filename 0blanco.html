@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="mn">
 <head>
@@ -5,7 +6,342 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The2m16 - TestPage</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
-	<link rel="stylesheet" href="https://the2m16.github.io/web/css/prem.dev.media.css">
+	<style>
+    
+    
+    
+/* LENIS START */
+        html.lenis, html.lenis body {height: auto;}
+		.lenis.lenis-smooth {scroll-behavior: auto !important;}
+		.lenis.lenis-smooth [data-lenis-prevent] {overflow: auto;}
+		.lenis.lenis-stopped {overflow: hidden;}
+		.lenis.lenis-smooth iframe {pointer-events: none;}
+/* LENIS END */
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html, body { overflow-x: hidden; width: 100%; }
+        body {
+            width: 100%;
+			margin: 0; }
+		.mobile-bg-fix {
+    		position: fixed;
+    		top: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 100%;
+    		background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://the2m16.github.io/web/images/background3872x2592.webp');
+    		background-size: cover;
+    		background-position: center;
+    		z-index: -1;
+    		-webkit-transform: translateZ(0);
+    		transform: translateZ(0); }
+		
+/* ХУУДАС АЧААЛАГДАХ ҮЕД ЗӨӨЛӨН ТОДРОХ (FADE-IN) */
+        @keyframes pageFadeIn {
+            to { opacity: 1; } }
+
+/* NAVIGATION BAR FIXED POSITION */
+        .navbar {
+            width: 100%;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.2); /* Шилэн бараан туяа--------------------------------- */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed; /* Тогтмол байрлал */
+            top: 0;
+            left: 0; }
+        .navbar.sticky {
+            position: fixed; /* Скролл хийхэд дээд талд наах */
+            top: 0;
+            transform: none;
+            background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
+        .logo { color: white; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
+
+/* MENU BUTTON */
+        .nav-links { display: flex; list-style: none; height: 100%; }
+        .nav-links li { height: 100%; }
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: 0.3s; }
+        .nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+
+/* CONTENT SECTION INCLUDING GLASSMORPHIC BOX */
+        .content-section {
+            position: relative;
+            z-index: 2;
+            padding-top: 58px;
+            padding-bottom: 0px;
+            padding-right: 5px;
+            padding-left: 5px;
+			margin-left: auto;
+            margin-right: auto;
+			background: linear-gradient(rgba(0,0,40,0.2), rgba(0,0,0,0.6)); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
+			backdrop-filter: blur(15px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
+			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
+            display: flex;
+            justify-content: center;
+            flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
+            align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
+            gap: 20px;              /* Блокууд хоорондын зай */ }
+        .glass-box {
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 0.95em;
+			text-align: justify;
+            color: #f1f5f9;                           /* glass-box global text color */
+            -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            line-height: 1.5;
+            height: fit-content; }
+        p {text-indent: 2em; color: #f1f5f9; margin-top: 10px; margin-bottom: 10px;}
+        h3 {color: #f1f5f9; font-size: 1.2em; line-height: 1.2; text-align: left;}
+        li {color: #f1f5f9;}
+        a {color: #1a8cff; text-decoration: none;}
+        .list {list-style-type: square; margin-left: 3em; margin-top: 0.5em; margin-bottom: 0.5em;}
+        .q-line {margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 10px;}
+		.q-name {font-size: 13px; color: rgba(255, 255, 255, 0.8); text-align: left; margin: 0; text-transform: uppercase;}
+		.quota {font-size: 14px; color: #f1f5f9; margin: 5px 0; font-style: italic; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;}
+		.q-source {font-size: 11px; color: #999; margin: 0;}
+        footer { flex-shrink: 0; text-align: center; margin-bottom: 20px; margin-top: 0px; font-size: 13px; background: transparent; color: rgb(255, 255, 255, 0.6); width: 100%; box-sizing: border-box; }
+
+/* HAMBURGER MENU (MOBILE SCREEN) */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+        .hamburger span { width: 22px; height: 2px; background: white; transition: 0.4s; }
+        @media (max-width: 1000px) {
+        .hamburger { display: flex; }
+		.nav-links {
+        	display: flex;
+        	flex-direction: column;
+        	position: fixed; 
+        	top: 38px; 
+        	right: -250px; 
+        	width: 180px;
+        	height: auto; 
+        	background: rgba(0, 0, 0, 0.9); 
+        	transition: 0.4s ease;
+        	border-radius: 0 0 0 6px;
+			box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
+        	z-index: 1001;}
+    	.nav-links.active { right: 0; }
+    	.nav-links li { width: 100%; display: block; }
+    	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
+
+
+/* TEXT WRAPPER START */
+/* 📝 Текстийг удирдах гаднах хайрцаг */
+.gl-text-wrapper { position: relative; margin: 0px 0px 5px 0px; width: 100%; }
+.gl-truncate-text { /* ✂️ Текстийг заасан мөрөөр автоматаар таслах гол хэсэг */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 👈 ИЛ ХАРАГДАХ МӨРНИЙ ТООГ ЭНД ТОХИРУУЛНА (2, 3, эсвэл 4) */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5; }
+.gl-truncate-text.gl-expanded { /* 🔓 Дэлгэх үед ажиллах стиль: Текстийг урсгалаар нь бүтэн гаргаж, доорх зургуудыг доош нь түлхэнэ */
+    display: block; /* box-оос block руу шилжүүлснээр хязгааргүй мөр гарна */
+    overflow: visible; }
+.gl-toggle-btn { /* 🖱 "... Цааш нь унших" болон "Хумих" товчлуурын дизайн */
+    display: none; /* Анх харагдахгүй, хэрэв урт текст байвал JS-ээр ил гарна */
+    color: #4da6ff; /* Таны дизайны гоё тод шар өнгө #ffd700 */
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0px;
+    font-size: 0.95em;
+    transition: color 0.2s;
+    -webkit-tap-highlight-color: transparent; }
+.gl-toggle-btn:hover { color: #ffffff; }
+/* TEXT WRAPPER END */
+    
+    
+    
+/* VIDEO CONTAINER STYLE */
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px; background: #000; border: 1px dotted #999; box-sizing: border-box; border-radius: 4px; }
+.video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
+    
+    
+    
+
+    
+        /* ==========================================================================
+           2. УХААЛАГ АЛБОМ ГРИД (ЗӨВХӨН ЗЭРЭГЦЭЭ 2 КАРТ - 1 МӨРТЭЙ)
+           ========================================================================== */
+        .gl-smart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)); gap: 4px; width: 100%; }
+        .gl-card-item { 
+            position: relative; /* Доторх элементүүд болон маскийг байршуулах суурь цэг болгоно */
+            background: rgba(0, 0, 0, 0.3); /* Зураг уншиж байх үед харагдах арын суурь бараан өнгө */
+            border-radius: 4px; /* Картны буланг 4 пикселээр дугуйлна */
+            overflow: hidden; /* Картнаас хальж гарсан зургийг зүсэж нууна */
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Картны нарийн цайвар хүрээ */
+            width: 100%; /* Өргөнийг багана дүүрэн болгоно */
+            aspect-ratio: 4 / 3; /* Тэгш өнцөгт хэлбэртэй байлгахын тулд харьцааг 16:9-өөр түгжинэ */
+            cursor: pointer; /* Хулгана дээгүүр очиход дарах боломжтойг илтгэж гар хэлбэртэй болно */ }
+
+        .gl-card-item img { 
+            width: 100%; /* Зургийн өргөнийг карт дүүрэн болгоно */
+            height: 100%; /* Зургийн өндрийг карт дүүрэн болгоно */
+            object-fit: cover; /* Зургийн харьцааг алдагдуулахгүйгээр тааруулж дүүргэнэ */
+            object-position: top; /* Зургийг дээрээс нь эхэлж харуулна */
+            transition: transform 0.4s ease; /* Хулгана очих үед зөөлөн томрох хөдөлгөөний хугацаа */ }
+
+        .gl-card-item:hover img { transform: scale(1.03); }
+
+        /* БАРУУН ТАЛЫН ДЭЭД НҮДЭНД ХАРАГДАХ ХАР МАСК (+ТОО) */
+        .gl-more-overlay {
+            position: absolute; /* Карт дүүрэн бүрхэж байрлана */
+            top: 0; left: 0; /* Зүүн дээд буланд наана */
+            width: 100%; height: 100%; /* Өргөн, өндрийг карттай яг ижил болгоно */
+            background: rgba(6, 9, 17, 0.78); /* Арын фонтой уусах хагас тунгалаг бараан маск */
+            display: flex; /* Текстийг голлуулахаар Flexbox идэвхжүүлнэ */
+            align-items: center; /* Босоо тэнхлэгийн дагуу яг голд нь байрлуулна */
+            justify-content: center; /* Хэвтээ тэнхлэгийн дагуу яг голд нь байрлуулна */
+            font-size: 24px; /* Үлдсэн зургийн тоог харуулах үсгийн хэмжээ */
+            font-weight: 500; /* Үсгийг дунд зэргийн зузаантай болгоно */
+            color: #ffffff; /* Текстийн өнгийг цэвэр цагаан болгоно */
+            z-index: 10; /* Зургийн наагуур харуулах давхарга */
+            pointer-events: none; /* Даралт, клик үйлдлийг карт руу шууд нэвтрүүлнэ */ }
+
+        /* ==========================================================================
+           3. ЛАЙТБОКС СИСТЕМ (ПОПАП ТОМРУУЛАГЧ ЦОНХ)
+           ========================================================================== */
+        .gl-modal-overlay {
+            position: fixed; /* Дэлгэцийн байрлалаас уяж, хуудсыг гүйлгэхэд хамт хөдлөхгүй болгоно */
+            top: 0; left: 0; /* Дэлгэцийн зүүн дээд буланд наана */
+            width: 100%; height: 100%; /* Бүхэл дэлгэцийг бүрэн бүрхэнэ */
+            background: rgba(6, 9, 17, 0.96); /* Модал нээгдэх үеийн арын гүн бараан суурь өнгө */
+            backdrop-filter: blur(20px); /* Ард үлдсэн үндсэн хуудсыг маш гоё бүдгэрүүлнэ */
+            -webkit-backdrop-filter: blur(20px); /* Safari хөтөчид зориулсан бүдгэрүүлэгч эффект */
+            z-index: 9999; /* Хуудасны бусад бүх элементүүдийн хамгийн дээр гаргана */
+            display: flex; /* Доторх зургийг голлуулахаар Flexbox ашиглана */
+            align-items: center; /* Босоо чиглэлд яг голд нь байрлуулна */
+            justify-content: center; /* Хэвтээ чиглэлд яг голд нь байрлуулна */
+            opacity: 0; /* Анх хуудас ачаалахад харагдахгүй тунгалаг байна */
+            pointer-events: none; /* Идэвхгүй үед клик үйлдэл хүлээж авахгүй */
+            transition: opacity 0.3s ease; /* Нээгдэж хаагдах үеийн зөөлөн уусалт эффект */
+            touch-action: none; /* Хөтөчийн үндсэн scroll-оос сэргийлж swipe хийхэд тусална */ }
+
+        .gl-modal-overlay.active { 
+            opacity: 1; /* Идэвхжих үед бүтэн тодорч харагдана */
+            pointer-events: auto; /* Бүх даралт, клик үйлдлийг идэвхжүүлж ажиллуулна */ }
+        
+        .gl-modal-container { 
+            width: 90%; /* Чинглэгийн өргөн дэлгэцийн 90 хувьтай тэнцүү байна */
+            max-width: 750px; /* Хамгийн ихдээ 750 пиксел өргөн байна */
+            position: relative; /* Доторх навигацийн сумуудыг уях суурь цэг болно */
+            display: flex; /* Босоо цуваа бүтэц үүсгэхээр Flexbox идэвхжүүлнэ */
+            flex-direction: column; /* Элементүүдийг дээрээс нь доош нь цувуулна */
+            align-items: center; /* Хэвтээ тэнхлэгийн дагуу голлуулна */
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Гар утас дээр доош чирэх үед зөөлөн хөдлөх эффект */ }
+        
+        .gl-modal-content { 
+            width: 100%; /* Өргөнийг чингэлэг дүүрэн болгоно */
+            border-radius: 12px; /* Буланг зөөлөн дугуйлж засна */
+            overflow: hidden; /* Чинглэгээс хальсан зургийг нууна */
+            background: rgba(0, 0, 0, 0.4); /* Арын суурь тунгалаг бараан өнгө */
+            border: 1px solid rgba(255, 255, 255, 0.06); /* Нарийхан шилэн хүрээ */
+            display: flex; /* Зургийг голлуулна */
+            justify-content: center; 
+            align-items: center; }
+
+.gl-modal-content img { 
+    max-width: 100%;      /* Өргөнийг дэлгэцийн ирмэгт тулгана */
+    max-height: 90vh;     /* Өндрийг дэлгэцийн 85 хувьд барина (85vh болгож томруулсан) */
+    object-fit: contain;   /* Зургийн бүх хэсгийг бүтэн харуулна */
+    pointer-events: none;  /* Мобайл дээр хуруугаар чирэхэд зураг гацахаас сэргийлнэ */
+    user-select: none;     /* Зургийг идэвхжүүлж сонгохыг хориглоно */ }}
+        
+        .gl-modal-caption { 
+            margin-top: 15px; /* Зургийн тайлбарын дээд талын тусгаарлах зай */
+            color: rgba(255, 255, 255, 0.7); /* Тайлбар текстийн тунгалаг цайвар өнгө */
+            font-size: 13px; /* Үсгийн хэмжээ */
+            text-align: center; /* Текстийг голд нь байрлуулна */
+            padding: 0 10px; /* Баруун зүүн талаас авах дотор зай */ }
+        
+        .gl-modal-close { 
+            position: absolute; /* Дээд талд чөлөөт байрлалаар гаргана */
+            top: -45px; right: 0; /* Баруун дээд буланд байршуулах зай */
+            background: none; /* Ардаа ямар нэгэн өнгөгүй болгоно */
+            border: none; /* Хүрээг устгана */
+            color: rgba(255, 255, 255, 0.6); /* Товчны өнгө */
+            font-size: 36px; /* Икс (&times;) тэмдэгтийн хэмжээ */
+            cursor: pointer; /* Дээр нь очиход гар хэлбэртэй болно */
+            padding: 5px; /* Дарахад хялбар байх дотор зай */
+            -webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад цэнхэртэж харагдахыг устгана */
+            transition: color 0.2s; /* Өнгө өөрчлөгдөх хугацаа */ }
+        
+        .gl-modal-close:hover { color: #ffffff; /* Хулгана очиход товчийг цэвэр цагаан болгоно */ }
+
+        /* НАВИГАЦИЙН СУМУУД (ПРЕВ, НЕКСТ ДАРАХ ОРЧИН) */
+        .gl-nav-btn-zone { 
+            position: absolute; /* Модал чингэлэгээс уяж чөлөөт байрлалд оруулна */
+            top: 50%; /* Дээд талаас 50 хувиар доошлуулна */
+            transform: translateY(-50%); /* Босоо чиглэлд яг таг голлуулна */
+            width: 60px; /* Дарах орчны өргөн */
+            height: 100px; /* Дарах орчны өндөр */
+            display: flex; /* Сумыг Flexbox-оор голлуулна */
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; /* Гар хэлбэртэй болгоно */
+            background: transparent; /* Арын дэвсгэрийг тунгалаг болгоно */
+            z-index: 1010; /* Зургийн наагуур харагдах давхарга */
+            user-select: none; /* Сум дээр олон дарахад цэнхэрлэж сонгогдохоос сэргийлнэ */
+            -webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад өнгө орохыг устгана */ }
+        
+        .gl-nav-btn-zone.prev { left: -85px; } /* Компьютер дэлгэц дээр зүүн сумыг зургийн гадна зүүн талд гаргана */
+        .gl-nav-btn-zone.next { right: -85px; } /* Компьютер дэлгэц дээр баруун сумыг зургийн гадна баруун талд гаргана */
+        
+        .gl-arrow-line { 
+            width: 16px; /* Сумны шугамын урт */
+            height: 16px; /* Сумны шугамын өндөр */
+            border-top: 3px solid rgba(255, 255, 255, 0.5); /* Дээд талын зузаан хүрээ */
+            border-left: 3px solid rgba(255, 255, 255, 0.5); /* Зүүн талын зузаан хүрээ */
+            transition: border-color 0.2s ease; /* Сумны өнгө хувирах зөөлөн шилжилт */ }
+        
+        .gl-nav-btn-zone.prev .gl-arrow-line { transform: rotate(-45deg); } /* Шугамыг 45 градус эргүүлж зүүн зүг заасан сум болгоно */
+        .gl-nav-btn-zone.next .gl-arrow-line { transform: rotate(135deg); } /* Шугамыг 135 градус эргүүлж баруун зүг заасан сум болгоно */
+        .gl-nav-btn-zone:hover .gl-arrow-line { border-color: #38bdf8; } /* Хулгана очиход сумыг гоё тод цэнхэр өнгөтэй болгоно */
+
+        /* 📱 ГАР УТАС БА ТАБЛЕТАД ЗОРИУЛСАН RESPONSIVE ЗАСВАР */
+        @media (max-width: 1024px) {
+            .gl-modal-container { width: 95%; } /* Модал өргөнийг дэлгэцийн 95 хувь болгож томруулна */
+            .gl-nav-btn-zone {
+                background: rgba(0, 0, 0, 0.4); /* Гар утас дээр сумыг харуулах хагас тунгалаг дугуй дэвсгэр */
+                border-radius: 50%; /* Төгс дугуй хэлбэртэй болгоно */
+                width: 46px; /* Гар утасны товчны өргөн */
+                height: 46px; /* Гар утасны товчны өндөр */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Товчны доорх жижиг сүүдэр */
+                backdrop-filter: blur(4px); /* Товчны арыг үл ялиг бүдгэрүүлнэ */ }
+            .gl-nav-btn-zone.prev { left: 10px; } /* Зүүн сумыг зургийн дотор талд зүүн ирмэгт наана */
+            .gl-nav-btn-zone.next { right: 10px; } /* Баруун сумыг зургийн дотор талд баруун ирмэгт naana */
+            .gl-arrow-line { width: 12px; height: 12px; } /* Гар утас дээр сумыг үл ялиг жижигсгэнэ */
+            .gl-modal-close { top: -50px; right: 10px; } /* Хаах икс товчийг гар утасны дэлгэцийн баруун дээд буланд тааруулна */ }    
+    
+    
+    
+    
+    </style>
 </head>
 
 
@@ -34,17 +370,32 @@
 
 <!-- Үндсэн агуулга -->
     <div class="content-section">
-        <div class="glass-box">
+
+
+
+
+		
+        <div class="glass-box"><!-- glass-box start -->
         
-            <h3>МЕДИА ГРИД MIXED</h2>
+            <h3>YOUTUBE</h3>
 			<div class="gl-text-wrapper"><p class="gl-truncate-text">Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-			<div class="gl-row-grid" data-images="
-				https://cdn.itoim.mn/media/imagel/14729/image.jpeg | 60 Тэрбумыг мэдээлэх утас 9310-6060. Хэвлэлийн бага хурал.,
-				https://www.youtube.com/watch?v=1Tax4SHuicY | 1st video,
-				https://the2m16.github.io/web/images/2017.06.21montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
-				https://www.youtube.com/watch?v=Cv0I7C8rKgg | 2nd video,
-				https://www.youtube.com/watch?v=x5EpnSccCbo | 4th video,
-				https://the2m16.github.io/web/images/2012.12.10batolzvoi.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
+			
+<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/vT49C-Iy4x0?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+			frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe>
+	</div>
+		</div><!-- glass box end -->
+
+
+
+		<div class="glass-box"><!-- glass-box start -->
+    	
+            <h3>MULTIPLE IMG ALBUM</h3>
+            <div class="gl-text-wrapper"><p class="gl-truncate-text">Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаарn догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
+			   
+            <div class="gl-smart-grid" data-images="
+                https://the2m16.github.io/web/images/2012.12.10batolzvoi.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2017.06.19TheDiplomat.PNG | Test Caption Test Caption Test Caption Test Caption Test Caption.,
                 https://the2m16.github.io/web/images/2017.06.21montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.,
@@ -53,54 +404,39 @@
 				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2019.02.18sandui.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
 				https://the2m16.github.io/web/images/2019.02.21ganbaatar.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
-				https://www.youtube.com/watch?v=0GQ4gdbwTcg | 3rd video
-    		"></div>
-
-		</div><!-- glass box end -->
-
-
-
-		<div class="glass-box">
-    	
-            <h3>МЕДИА ГРИД DOUBLE VID</h2>
-            <div class="gl-text-wrapper"><p class="gl-truncate-text">Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаарn догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-			<div class="gl-row-grid" data-images="
-				https://www.youtube.com/watch?v=Z3u_TIQuu0M | 4th video,
-				https://www.youtube.com/watch?v=WKoh2K3gXY0 | 2016 оны 6 сарын 24. Ц.Сандуй
-    		"></div>
+				https://the2m16.github.io/web/images/2017.07.25uepg.png | Прокурорын шийдвэр гарсан тухай мэдээлэл,
+                https://the2m16.github.io/web/images/2017.07.25uep1.jpg | Албан бичгийн эхний хуудас,
+                https://the2m16.github.io/web/images/2017.07.25uep2.jpg | Прокурорын тогтоолын төгсгөл хэсэг,
+				https://cdn.itoim.mn/media/imagel/14729/image.jpeg | 60 Тэрбумыг мэдээлэх утас 9310-6060. Хэвлэлийн бага хурал
+            "></div>
 
 		</div><!-- glass-box end -->
 
 
 
-        <div class="glass-box">
+        <div class="glass-box"><!-- glass-box start -->
 
-            <h3>МЕДИА ГРИД SINGLE IMG</h2>
+            <h3>EMPTY GLASS-BOX</h3>
             <div class="gl-text-wrapper"><p class="gl-truncate-text">Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-			<div class="gl-row-grid" data-images="
-				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.
-    		"></div>
+			
 
 		</div><!-- glass-box end -->
 
 
 
-        <div class="glass-box">
+        <div class="glass-box"><!-- glass-box start -->
 
-            <h3>МЕДИА ГРИД DOUBLE IMG</h2>
+            <h3>EMPTY GLASS-BOX</h3>
             <div class="gl-text-wrapper"><p class="gl-truncate-text">Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаарn догол мөр авч буй параграф</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-			<div class="gl-row-grid" data-images="
-				https://the2m16.github.io/web/images/2017.06.15.0728.jpg | Test Caption Test Caption Test Caption Test Caption Test Caption.,
-				https://the2m16.github.io/web/images/2017.06.21montsame.png | Test Caption Test Caption Test Caption Test Caption Test Caption.
-    		"></div>
+			
 
 		</div><!-- glass-box end -->
 
 		
 
-		<div class="glass-box">
+		<div class="glass-box"><!-- glass-box start -->
 
-			<h3>PDF</h2>
+			<h3>PDF</h3>
             <div class="gl-text-wrapper"><p class="gl-truncate-text">Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаарn догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф, Автоматаар догол мөр авч буй параграф</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
 			<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
 			<iframe 
@@ -113,30 +449,321 @@
 		</div><!-- glass-box end -->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
-    </div><!-- content-section end -->
+</div><!-- content-section end -->
+	
+	
+<script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
+<script>
+
+/* ----------------------------ALBUM GRID START-------------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        const grids = document.querySelectorAll('.gl-smart-grid'); // Хуудсан дээрх бүх смарт гридүүдийг олж авна
+        const modal = document.getElementById('glMediaModal'); // Лайтбокс overlay-ийг олж авна
+        const modalContainer = modal.querySelector('.gl-modal-container'); // Доторх хөдөлгөөнт чингэлэгийг авна
+        const modalContent = document.getElementById('glModalContent'); // Зураг орох DIV-ийг авна
+        const modalCaption = document.getElementById('glModalCaption'); // Капшн орох DIV-ийг авна
+        const modalClose = document.getElementById('glModalClose'); // Хаах товчийг авна
+        const btnPrev = document.getElementById('glBtnPrev'); // Өмнөх товчийг авна
+        const btnNext = document.getElementById('glBtnNext'); // Дараагийн товчийг авна
+
+        let currentAlbumItems = []; // Одоо нээгдсэн цомгийн зургуудын жагсаалтыг хадгалах хоосон массив
+        let currentActiveIndex = 0; // Одоо дэлгэц дээр харагдаж буй зургийн дугаар (индекс)
+
+        // Хуудсан дээрх бүх смарт гридүүдийг унших давталт
+        grids.forEach(gridEl => {
+            const rawData = gridEl.getAttribute('data-images').split(','); // data-images доторх текстийг таслалаар салгаж массив болгоно
+            const parsedItems = []; // Цэвэрлэж бэлдсэн зургуудыг хадгалах шинэ массив
+
+            // Салгаж авсан мөр бүрийг уншиж задлах давталт
+            rawData.forEach(item => {
+                let trimmed = item.trim(); // Текстийн эхлэл болон төгсгөлийн илүүдэл хоосон зайг устгана
+                if (!trimmed) return; // Хэрэв хоосон мөр байвал алгасна
+                
+                const parts = trimmed.split('|'); // Хамгийн чухал хэсэг: Зургийн ЮРЛ болон Капшныг босоо зураасаар салгана
+                const url = parts[0] ? parts[0].trim() : ''; // Зураасын зүүн талын текстийг ЮРЛ хаяг болгоно
+                const caption = parts[1] ? parts[1].trim() : ''; // Зураасын баруун талын текстийг Тайлбар (Caption) болгоно
+                if (!url) return; // Хэрэв зурагны линк байхгүй бол шууд алгасна
+
+                parsedItems.push({ url, caption }); // Өгөгдлийг цэгцлээд массив руу шахна
+            });
+
+            const totalCount = parsedItems.length; // Энэ цомогт нийт хэдэн зураг байгааг тоолно
+            const displayCount = Math.min(totalCount, 2); // Дэлгэц дээр зөвхөн зэрэгцээ 2 картыг л үүсгэж зурна (1 мөр)
+
+            // Эхний зэрэгцээ 2 карт үүсгэх давталт
+            for (let i = 0; i < displayCount; i++) {
+                const mediaData = parsedItems[i]; // Одоо үүсгэх зургийн датаг авна
+                const itemDiv = document.createElement('div'); // Картны үндсэн DIV элементийг үүсгэнэ
+                itemDiv.className = 'gl-card-item'; // Класс нэр оноож өгнө
+
+                itemDiv.innerHTML = `<img src="${mediaData.url}" alt="">`; // Карт дотор зураг харуулах img таг-ийг хийнэ
+
+                // 🎯 БАРУУН ТАЛЫН ДЭЭД НҮДЭНД (2-Р КАРТ ДЭЭР) МАСК БОЛОН ҮЛДСЭН ЗУРГИЙН ТООГ ХАРУУЛАХ ХЭСЭГ
+                if (totalCount > 2 && i === 1) {
+                    const overlay = document.createElement('div'); // Хар маск DIV үүсгэнэ
+                    overlay.className = 'gl-more-overlay'; // Класс нэр онооно
+                    overlay.innerText = `+${totalCount - 1}`; // Баруун доороос дээд нүдэнд шилжүүлж үлдсэн зургийн тоог харуулна
+                    itemDiv.appendChild(overlay); // Карт дотор маскыг залгаж оруулна
+                }
+
+                // Карт дээр дарахад лайтбокс томруулж нээх үйлдэл
+                itemDiv.addEventListener('click', () => {
+                    currentAlbumItems = parsedItems; // Энэ цомгийн бүх зургуудыг идэвхтэй массиваар бүртгэнэ
+                    openLightbox(i); // Дарсан зургийн дугаараар лайтбокс нээнэ
+                });
+
+                gridEl.appendChild(itemDiv); // Бэлэн болсон картыг ухаалаг грид чингэлэгтээ залгаж оруулна
+            }
+        });
+
+        // ЛАЙТБОКС ДОТОР ИДЭВХТЭЙ ЗУРГИЙГ УХААЛГААР ЗУРЖ ХАРУУЛАХ ФУНКЦ
+        function renderActiveMedia(index) {
+            modalContent.innerHTML = ""; // Хуучин байсан зургийг бүрмөсөн арчиж цэвэрлэнэ
+            const data = currentAlbumItems[index]; // Массиваас одоо харуулах зургийн датаг индексээр уншиж авна
+            modalCaption.textContent = data.caption; // Доорх капшн талбарт тайлбар текстийг хуулж тавина
+
+            const img = document.createElement('img'); // Шинэ img таг үүсгэнэ
+            img.src = data.url; // Зургийн хаягийг зааж өгнө
+            modalContent.appendChild(img); // Чинглэг дотор зургийг залгаж оруулна
+
+            // Навигацийн сумуудыг ухаалгаар харуулах/нуух логик
+            if (currentAlbumItems.length > 1) {
+                btnPrev.style.display = 'flex'; // 1-ээс олон зурагтай бол өмнөх сумыг харуулна
+                btnNext.style.display = 'flex'; // 1-ээс олон зурагтай бол дараагийн сумыг харуулна
+            } else {
+                btnPrev.style.display = 'none'; // Ганцхан зурагтай бол зүүн сумыг нууна
+                btnNext.style.display = 'none'; // Ганцхан зурагтай бол баруун сумыг нууна
+            }
+        }
+
+        // ЛАЙТБОКС МОДАЛЫГ ИДЭВХЖҮҮЛЖ НЭЭХ ФУНКЦ
+        function openLightbox(index) {
+            currentActiveIndex = index; // Одоогийн идэвхтэй зургийн дугаарыг хадгална
+            renderActiveMedia(currentActiveIndex); // Зургийг рэндэрлэж зурна
+            modal.classList.add('active'); // Модал чингэлэгт active класс нэмж тодруулна
+
+            // Хэрэв хуудсанд урсгал скролл (Lenis) ашиглаж байгаа бол арын скроллыг түр гацааж зогсооно
+            if (window.lenis) window.lenis.stop();
+            else if (typeof lenis !== 'undefined') lenis.stop();
+        }
+
+        // ӨМНӨХ ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
+        function navigatePrev() {
+            if (currentAlbumItems.length <= 1) return; // Ганцхан зурагтай бол шилжилт хийхгүй
+            currentActiveIndex--; // Индексийг нэгээр хасна
+            if (currentActiveIndex < 0) currentActiveIndex = currentAlbumItems.length - 1; // Хамгийн эхний зургаас өмнөх рүү дарвал хамгийн сүүлчийн зураг руу үсрэнэ
+            renderActiveMedia(currentActiveIndex); // Шинэ зургийг харуулна
+        }
+
+        // ДАРААГИЙН ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
+        function navigateNext() {
+            if (currentAlbumItems.length <= 1) return; // Ганцхан зурагтай бол шилжилт хийхгүй
+            currentActiveIndex++; // Индексийг нэгээр нэмнэ
+            if (currentActiveIndex >= currentAlbumItems.length) currentActiveIndex = 0; // Сүүлчийн зургаас цааш дарвал эхний зураг руу буцаж тойрно
+            renderActiveMedia(currentActiveIndex); // Шинэ зургийг харуулна
+        }
+
+        // Сумнуудын товшилт бүртгэх эвентүүд
+        btnPrev.addEventListener('click', (e) => { e.stopPropagation(); navigatePrev(); }); // Зүүн сум дарахад өмнөх зураг руу шилжинэ
+        btnNext.addEventListener('click', (e) => { e.stopPropagation(); navigateNext(); }); // Баруун сум дарахад дараагийн зураг руу шилжинэ
+
+        // ЛАЙТБОКСЫГ БҮРМӨСӨН ХААЖ ЦЭВЭРЛЭХ ФУНКЦ
+        const closeBox = () => { 
+            modal.classList.remove('active'); // active классыг хасаж модалыг нууна
+            modalContainer.style.transform = 'none'; // Гар утас дээр чирэгдсэн байрлалыг анхны хэлбэрт оруулна
+            modalContent.innerHTML = ""; // Цаана нь илүүдэл өгөгдөл үлдэхээс сэргийлж img таг-ийг бүрмөсөн цэвэрлэнэ
+
+            // Арын скролл (Lenis)-ийг буцааж хэвийн ажиллуулах асаалт
+            if (window.lenis) window.lenis.start();
+            else if (typeof lenis !== 'undefined') lenis.start();
+        };
+
+        modalClose.addEventListener('click', closeBox); // Хаах икс товч дээр дарах эвент
+        modal.addEventListener('click', (e) => { if (e.target === modal || e.target === modalContainer) closeBox(); }); // Арын хар дэвсгэр дээр дарахад хаах
+
+        // Компьютерийн клавтурын сумаар удирдах болон Escape товчоор хаах логик
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return; // Хэрэв модал нээлттэй биш бол ажиллахгүй
+            if (e.key === 'Escape') closeBox(); // Эскейп товч дарахад хаагдана
+            if (e.key === 'ArrowLeft') navigatePrev(); // Зүүн сумаар өмнөх зураг руу шилжинэ
+            if (e.key === 'ArrowRight') navigateNext(); // Баруун сумаар дарахад дараагийн зураг руу шилжинэ
+        });
+
+        // ==========================================================================
+        // 📱 ГАР УТАС БА ТАБЛЕТ: ДООШ ЧИРЭХЭД ХААХ (SWIPE DOWN) БОЛОН СУИП КАРАУСЕЛЬ
+        // ==========================================================================
+        let touchStartX = 0; let touchStartY = 0; // Хуруу анх хүрсэн цэгийг хадгалах хувьсагчууд
+        let touchCurrentX = 0; let touchCurrentY = 0; // Хуруу одоо хөдөлж буй цэгийг хадгалах хувьсагчууд
+        let isDragging = false; // Чирэх үйлдэл идэвхтэй байгаа эсэхийг заагч туг
+
+        // Хуруу дэлгэцэнд хүрэх үеийн анхны цэгүүдийг тэмдэглэх эвент
+        modal.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX; // Анхны хэвтээ байрлал
+            touchStartY = e.touches[0].clientY; // Анхны босоо байрлал
+            touchCurrentX = touchStartX; // Одоогийн байрлалыг анхныхтай ижилсүүлнэ
+            touchCurrentY = touchStartY; // Одоогийн байрлалыг анхныхтай ижилсүүлнэ
+            isDragging = true; // Чирэх төлөвийг асаана
+            modalContainer.style.transition = 'none'; // Хуруу дагаж зэрэг хөдлөх тул шилжилтийн хугацааг унтраана
+        }, { passive: true });
+
+        // Хуруугаа дэлгэц дүүрэн чирч хөдөлгөх үед ажиллах хөдөлгөөн
+        modal.addEventListener('touchmove', (e) => {
+            if (!isDragging) return; // Хэрэв чирэх төлөв асаагүй бол ажиллахгүй
+            touchCurrentX = e.touches[0].clientX; // Хөдөлж буй хэвтээ цэг
+            touchCurrentY = e.touches[0].clientY; // Хөдөлж буй босоо цэг
+            
+            const deltaX = touchCurrentX - touchStartX; // Хэвтээ тэнхлэг дагуу туулсан зай
+            const deltaY = touchCurrentY - touchStartY; // Босоо тэнхлэг дагуу туулсан зай
+            
+            // ЗУРГИЙГ ДООШ ЧИРЭХ ЭФФЕКТ (Лайтбокс чингэлэг яг таг хурууны хөдөлгөөн дагаж уруудна)
+            if (deltaY > 0 && Math.abs(deltaY) > Math.abs(deltaX)) {
+                modalContainer.style.transform = `translateY(${deltaY}px)`;
+            }
+        }, { passive: true });
+
+        // Хуруугаа дэлгэцнээс авах үед үйлдлийг шийдвэрлэх эцсийн хэсэг
+        modal.addEventListener('touchend', () => {
+            if (!isDragging) return; // Чирэх төлөв асаагүй бол алгасна
+            isDragging = false; // Төлөвийг унтраана
+            modalContainer.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)'; // Буцаж байрандаа орох зөөлөн анимаци идэвхжүүлнэ
+            
+            const deltaX = touchCurrentX - touchStartX; // Эцсийн хэвтээ зөрүү зай
+            const deltaY = touchCurrentY - touchStartY; // Эцсийн босоо зөрүү зай
+            const swipeThreshold = 55; // Шудрах хөдөлгөөнийг бүртгэх хамгийн бага пикселийн хязгаар
+            
+            // 1. SWIPE DOWN TO CLOSE: Хэрэв зургийг доош нь 110 пикселээс илүү чирсэн байвал лайтбоксыг шууд хаана
+            if (deltaY > 110 && Math.abs(deltaY) > Math.abs(deltaX)) {
+                closeBox(); // Хаах функцийг дуудна
+                return;
+            } else {
+                modalContainer.style.transform = 'none'; // Хангалттай доош чирээгүй бол буцаж голдоо байрандаа орно
+            }
+            
+            // 2. TOUCH SWIPE CAROUSEL: Баруун зүүн тийш хуруугаараа шудрахад зураг солигдох логик
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+                if (deltaX > 0) {
+                    navigatePrev(); // Баруун тийш шударвал өмнөх зураг руу шилжинэ
+                } else {
+                    navigateNext(); // Зүүн тийш шударвал дараагийн зураг руу шилжинэ
+                }
+            }
+        });
+    });
+/* ----------------------------ALBUM GRID END-------------------------------- */
+    
+/* ----------------------------TEXT WRAPPER START-------------------------------- */
+document.addEventListener("DOMContentLoaded", () => {
+    // Вэб дээрх бүх текстийн хайрцагуудыг олно
+    const wrappers = document.querySelectorAll('.gl-text-wrapper');
+    
+    wrappers.forEach(wrapper => {
+        const textEl = wrapper.querySelector('.gl-truncate-text');
+        const btnEl = wrapper.querySelector('.gl-toggle-btn');
+        
+        // Текстийн бодит өндөр нь харагдаж буй өндрөөсөө их байвал (урт текст гэсэн үг)
+        if (textEl.scrollHeight > textEl.offsetHeight) {
+            btnEl.style.display = 'inline-block'; // "Цааш нь унших" товчийг ил гаргана
+        } else {
+            btnEl.style.display = 'none'; // 2-оос цөөн мөр бол товчлуурыг бүрмөсөн нууна
+        }
+    });
+});
+
+// 📑 Текстийг доош түлхэж дэлгэх болон буцааж хумих функц
+function toggleGlText(btnElement) {
+    const textElement = btnElement.parentElement.querySelector('.gl-truncate-text');
+    
+    // Классыг идэвхжүүлнэ (Зургуудыг араар нь оруулахгүй, доош нь түлхэнэ)
+    textElement.classList.toggle('gl-expanded');
+    
+    // Төлөвөөс хамаарч текстийг солих
+    if (textElement.classList.contains('gl-expanded')) {
+        btnElement.innerText = "Хумих";
+    } else {
+        btnElement.innerText = "Цааш нь";
+    }
+
+    // 🌟 Lenis Scroll ашиглаж байгаа үед хуудасны өндөр өөрчлөгдсөнийг Lenis-д мэдэгдэж шинэчлэх
+    if (window.lenis) {
+        window.lenis.resize();
+    } else if (typeof lenis !== 'undefined') {
+        lenis.resize();
+    }
+}
+/* ----------------------------TEXT WRAPPER END-------------------------------- */
+
+/* ----------------------------LENIS SCRIPT START-------------------------------- */
+        // 1. Lenis
+        const lenis = new Lenis({
+			duration: 1.2, // Скролл хэр зөөлөн үргэлжлэх хугацаа (секундээр)
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Хурдсах уусалт
+			smoothWheel: true
+			});
+		// Хөтчийн скролл хийх болгонд Lenis-ийг байнга шинэчилж ажиллуулах функц
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+			}
+		requestAnimationFrame(raf);
+/* ----------------------------LENIS SCRIPT END-------------------------------- */
+        
+/* ----------------------------MENU SCRIPT START-------------------------------- */
+        // 2. Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+        });
+
+        // Гадна талд дарахад хаах
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Линк дарахад хаах
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+/* ----------------------------MENU SCRIPT END-------------------------------- */
+
+    </script>
 
 
 
 
 
 
-
-	<script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
-    <script src="https://the2m16.github.io/web/script/prem.dev.media.js"></script>
-
-
+	
 <!-- * LIGHTBOX POP-UP START -->
-		<div id="gl-lightbox-popup" onclick="closeGlLightbox()">
-			<div class="gl-lightbox-wrapper">
-			<span class="gl-close-btn" onclick="closeGlLightbox()">&times;</span>
-				<div class="gl-nav-zone gl-prev" onclick="changeGlImage(-1, event)">&#10094;</div>
-				<div class="gl-nav-zone gl-next" onclick="changeGlImage(1, event)">&#10095;</div>
-				<div class="gl-media-container" onclick="event.stopPropagation()">
-				<img id="gl-lightbox-img" alt="Media view">
-                <iframe id="gl-lightbox-video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-				<div id="gl-lightbox-caption"></div>
-		</div> </div> </div>
+        <div class="gl-modal-overlay" id="glMediaModal">
+        <div class="gl-modal-container">
+            <button class="gl-modal-close" id="glModalClose" aria-label="Хаах">&times;</button> <div class="gl-nav-btn-zone prev" id="glBtnPrev"><div class="gl-arrow-line"></div></div>
+            <div class="gl-nav-btn-zone next" id="glBtnNext"><div class="gl-arrow-line"></div></div>
+            
+            <div class="gl-modal-content" id="glModalContent"></div> <div class="gl-modal-caption" id="glModalCaption"></div> </div>
+    </div>
 <!-- LIGHTBOX POP-UP END -->
 
 
