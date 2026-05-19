@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The2m16 - News</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
- 
-
-    <style>
-        
-        
-        
-        
+	<style>
+    
+    
+    
 /* LENIS START */
         html.lenis, html.lenis body {height: auto;}
 		.lenis.lenis-smooth {scroll-behavior: auto !important;}
@@ -20,11 +16,7 @@
 		.lenis.lenis-stopped {overflow: hidden;}
 		.lenis.lenis-smooth iframe {pointer-events: none;}
 /* LENIS END */
-        
-        
-        
-        
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
         html, body { overflow-x: hidden; width: 100%; }
         body {
@@ -156,93 +148,21 @@
     	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
 
-/* IMAGE ALBUM GRID STYLE START */
-        /* ==========================================================================
-           2. УХААЛАГ ГРИД СҮЛЖЭЭ & КАРТНЫ ХАРЬЦАА ЗАСВАР (A=B, C=D)
-           ========================================================================== */
-        .gl-smart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; width: 100%; /* */ }
-        .gl-card-item { 
-            position: relative; background: rgba(0, 0, 0, 0.2); border-radius: 4px; overflow: hidden; /* */
-            border: 1px solid rgba(255, 255, 255, 0.05); width: 100%; aspect-ratio: 16 / 9; /* 16/9, 4/3 */
-            cursor: pointer; transition: transform 0.3s ease, border-color 0.3s ease; /* */ }
 
-        .gl-card-item:hover { transform: translateY(0px); border-color: rgba(255, 255, 255, 0.15); /* */ }
-
-        /* 🥇 НӨХЦӨЛ 1: 1 контенттой үед өндөр нь 2 карттай үеийнхтэй ижил байна (A=B, C=D) */
-        .gl-smart-grid.count-1 .gl-card-item { grid-column: span 2; aspect-ratio: 16 / 9; /* өндрийг 32/9, 16/9, 8/3, 4/3 */ }
-
-        /* Картууд доторх медиа элементүүдийг бүтэн сунгаж дүүргэх бэлтгэл */
-        .gl-card-item img, .gl-card-item canvas { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.3s ease; /* */ }
-        .gl-card-item:hover img, .gl-card-item:hover canvas { transform: scale(1.03); }
-
-        /* 🔴 YOUTUBE PLAY BUTTON СТИЛЬ */
-        .gl-youtube-play-btn {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 54px; height: 38px; z-index: 5; pointer-events: none; }
-        .gl-youtube-play-btn svg .yt-bg { fill: rgba(15, 15, 15, 0.85); transition: fill 0.2s ease; } /* */
-        .gl-card-item:hover .gl-youtube-play-btn svg .yt-bg { fill: #ff0000; } /* */
-
-        /* ⚫ ОЛОН КОНТЕНТТОЙ ҮЕД БАРУУН КАРТ ДЭЭР СУУХ ХАР МАСК */
-        .gl-more-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(6, 9, 17, 0.78); display: flex; align-items: center; justify-content: center; /* */
-            font-size: 24px; font-weight: 500; color: #ffffff; z-index: 10; pointer-events: none; /* */ }
-
-        /* ==========================================================================
-           3. ЛАЙТБОКС СИСТЕМ (ПОПАП ЦОНХ)
-           ========================================================================== */
-        .gl-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(6, 9, 17, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            z-index: 9999; display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-
-        .gl-modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .gl-modal-container { width: 85%; max-width: 750px; position: relative; display: flex; flex-direction: column; align-items: center; }
-        .gl-modal-content { width: 100%; border-radius: 12px; overflow: hidden; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: center; align-items: center; }
-
-        .gl-modal-content img { max-width: 100%; max-height: 68vh; object-fit: contain; }
-        .gl-modal-content iframe { width: 100%; aspect-ratio: 16 / 9; border: none; }
-        .gl-modal-content iframe.sc-viewer { height: 166px; aspect-ratio: auto; }
-        .gl-modal-content iframe.pdf-viewer { height: 68vh; aspect-ratio: auto; }
-        .gl-modal-caption { margin-top: 15px; color: rgba(255, 255, 255, 0.6); font-size: 13px; text-align: center; }
-        .gl-modal-close { position: absolute; top: -45px; right: 0; background: none; border: none; color: rgba(255, 255, 255, 0.5); font-size: 30px; cursor: pointer; }
-        .gl-nav-btn-zone { position: absolute; top: 50%; transform: translateY(-50%); width: 70px; height: 100px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; z-index: 100; user-select: none; }
-
-        .gl-nav-btn-zone.prev { left: -85px; }
-        .gl-nav-btn-zone.next { right: -85px; }
-        .gl-arrow-line { width: 15px; height: 15px; border-top: 2px solid rgba(255, 255, 255, 0.4); border-left: 2px solid rgba(255, 255, 255, 0.4); transition: border-color 0.2s ease; }
-        .gl-nav-btn-zone.prev .gl-arrow-line { transform: rotate(-45deg); }
-        .gl-nav-btn-zone.next .gl-arrow-line { transform: rotate(135deg); }
-        .gl-nav-btn-zone:hover .gl-arrow-line { border-color: #ffd700; }
-/* IMAGE ALBUM GRID STYLE END*/
-
-/* МӨРӨӨР ТАСЛАГЧ START */
+/* TEXT WRAPPER START */
 /* 📝 Текстийг удирдах гаднах хайрцаг */
-.gl-text-wrapper {
-    position: relative;
-    margin: 0px 0px 5px 0px;
-    width: 100%;
-}
-
-/* ✂️ Текстийг заасан мөрөөр автоматаар таслах гол хэсэг */
-.gl-truncate-text {
+.gl-text-wrapper { position: relative; margin: 0px 0px 5px 0px; width: 100%; }
+.gl-truncate-text { /* ✂️ Текстийг заасан мөрөөр автоматаар таслах гол хэсэг */
     display: -webkit-box;
     -webkit-line-clamp: 3; /* 👈 ИЛ ХАРАГДАХ МӨРНИЙ ТООГ ЭНД ТОХИРУУЛНА (2, 3, эсвэл 4) */
     -webkit-box-orient: vertical;  
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.5;
-}
-
-/* 🔓 Дэлгэх үед ажиллах стиль: Текстийг урсгалаар нь бүтэн гаргаж, доорх зургуудыг доош нь түлхэнэ */
-.gl-truncate-text.gl-expanded {
+    line-height: 1.5; }
+.gl-truncate-text.gl-expanded { /* 🔓 Дэлгэх үед ажиллах стиль: Текстийг урсгалаар нь бүтэн гаргаж, доорх зургуудыг доош нь түлхэнэ */
     display: block; /* box-оос block руу шилжүүлснээр хязгааргүй мөр гарна */
-    overflow: visible;
-}
-
-/* 🖱 "... Цааш нь унших" болон "Хумих" товчлуурын дизайн */
-.gl-toggle-btn {
+    overflow: visible; }
+.gl-toggle-btn { /* 🖱 "... Цааш нь унших" болон "Хумих" товчлуурын дизайн */
     display: none; /* Анх харагдахгүй, хэрэв урт текст байвал JS-ээр ил гарна */
     color: #4da6ff; /* Таны дизайны гоё тод шар өнгө #ffd700 */
     font-weight: 500;
@@ -250,18 +170,180 @@
     margin-top: 0px;
     font-size: 0.95em;
     transition: color 0.2s;
-    -webkit-tap-highlight-color: transparent;
-}
+    -webkit-tap-highlight-color: transparent; }
+.gl-toggle-btn:hover { color: #ffffff; }
+/* TEXT WRAPPER END */
+    
+    
+    
+/* VIDEO CONTAINER STYLE */
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px; background: #000; border: 1px dotted #999; box-sizing: border-box; border-radius: 4px; }
+.video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
+    
+    
+    
 
-.gl-toggle-btn:hover {
-    color: #ffffff;
-}
-/* МӨРӨӨР ТАСЛАГЧ END */
+    
+        /* ==========================================================================
+           2. УХААЛАГ АЛБОМ ГРИД (ЗӨВХӨН ЗЭРЭГЦЭЭ 2 КАРТ - 1 МӨРТЭЙ)
+           ========================================================================== */
+        .gl-smart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)); gap: 4px; width: 100%; }
+        .gl-card-item { 
+            position: relative; /* Доторх элементүүд болон маскийг байршуулах суурь цэг болгоно */
+            background: rgba(0, 0, 0, 0.3); /* Зураг уншиж байх үед харагдах арын суурь бараан өнгө */
+            border-radius: 4px; /* Картны буланг 4 пикселээр дугуйлна */
+            overflow: hidden; /* Картнаас хальж гарсан зургийг зүсэж нууна */
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Картны нарийн цайвар хүрээ */
+            width: 100%; /* Өргөнийг багана дүүрэн болгоно */
+            aspect-ratio: 4 / 3; /* Тэгш өнцөгт хэлбэртэй байлгахын тулд харьцааг 16:9-өөр түгжинэ */
+            cursor: pointer; /* Хулгана дээгүүр очиход дарах боломжтойг илтгэж гар хэлбэртэй болно */ }
 
+        .gl-card-item img { 
+            width: 100%; /* Зургийн өргөнийг карт дүүрэн болгоно */
+            height: 100%; /* Зургийн өндрийг карт дүүрэн болгоно */
+            object-fit: cover; /* Зургийн харьцааг алдагдуулахгүйгээр тааруулж дүүргэнэ */
+            object-position: top; /* Зургийг дээрээс нь эхэлж харуулна */
+            transition: transform 0.4s ease; /* Хулгана очих үед зөөлөн томрох хөдөлгөөний хугацаа */ }
 
+        .gl-card-item:hover img { transform: scale(1.03); }
 
-</style>
+        /* БАРУУН ТАЛЫН ДЭЭД НҮДЭНД ХАРАГДАХ ХАР МАСК (+ТОО) */
+        .gl-more-overlay {
+            position: absolute; /* Карт дүүрэн бүрхэж байрлана */
+            top: 0; left: 0; /* Зүүн дээд буланд наана */
+            width: 100%; height: 100%; /* Өргөн, өндрийг карттай яг ижил болгоно */
+            background: rgba(0, 0, 0, 0.8); /* Арын фонтой уусах хагас тунгалаг бараан маск */
+            display: flex; /* Текстийг голлуулахаар Flexbox идэвхжүүлнэ */
+            align-items: center; /* Босоо тэнхлэгийн дагуу яг голд нь байрлуулна */
+            justify-content: center; /* Хэвтээ тэнхлэгийн дагуу яг голд нь байрлуулна */
+            font-size: 24px; /* Үлдсэн зургийн тоог харуулах үсгийн хэмжээ */
+            font-weight: 500; /* Үсгийг дунд зэргийн зузаантай болгоно */
+            color: #ffffff; /* Текстийн өнгийг цэвэр цагаан болгоно */
+            z-index: 10; /* Зургийн наагуур харуулах давхарга */
+            pointer-events: none; /* Даралт, клик үйлдлийг карт руу шууд нэвтрүүлнэ */ }
+
+        /* ==========================================================================
+           3. ЛАЙТБОКС СИСТЕМ (ПОПАП ТОМРУУЛАГЧ ЦОНХ)
+           ========================================================================== */
+        .gl-modal-overlay {
+            position: fixed; /* Дэлгэцийн байрлалаас уяж, хуудсыг гүйлгэхэд хамт хөдлөхгүй болгоно */
+            top: 0; left: 0; /* Дэлгэцийн зүүн дээд буланд наана */
+            width: 100%; height: 100%; /* Бүхэл дэлгэцийг бүрэн бүрхэнэ */
+            background: rgba(0, 0, 0, 0.6); /* Модал нээгдэх үеийн арын гүн бараан суурь өнгө. 4-р тоог 1 гэчихвэл тас хар фон, 0 гэчихвэл блюрдсэн тунгалаг фон болно*/
+            backdrop-filter: blur(20px); /* Ард үлдсэн үндсэн хуудсыг маш гоё бүдгэрүүлнэ */
+            -webkit-backdrop-filter: blur(20px); /* Safari хөтөчид зориулсан бүдгэрүүлэгч эффект */
+            z-index: 9999; /* Хуудасны бусад бүх элементүүдийн хамгийн дээр гаргана */
+            display: flex; /* Доторх зургийг голлуулахаар Flexbox ашиглана */
+            align-items: center; /* Босоо чиглэлд яг голд нь байрлуулна */
+            justify-content: center; /* Хэвтээ чиглэлд яг голд нь байрлуулна */
+            opacity: 0; /* Анх хуудас ачаалахад харагдахгүй тунгалаг байна */
+            pointer-events: none; /* Идэвхгүй үед клик үйлдэл хүлээж авахгүй */
+            transition: opacity 0.3s ease; /* Нээгдэж хаагдах үеийн зөөлөн уусалт эффект */
+            touch-action: none; /* Хөтөчийн үндсэн scroll-оос сэргийлж swipe хийхэд тусална */ }
+
+        .gl-modal-overlay.active { 
+            opacity: 1; /* Идэвхжих үед бүтэн тодорч харагдана */
+            pointer-events: auto; /* Бүх даралт, клик үйлдлийг идэвхжүүлж ажиллуулна */ }
+        
+        .gl-modal-container { 
+            width: 80%; /* Чинглэгийн өргөн дэлгэцийн 90 хувьтай тэнцүү байна */
+            max-width: 100vw; /* Хамгийн ихдээ 750 пиксел өргөн байна. ЗУРГИЙН ХЭМЖЭЭГ ЖИЖИГРҮҮЛЖ БАРИАД БСАН ГАЗАР. 750px бсаныг 100vw болгоод ок */
+            position: relative; /* Доторх навигацийн сумуудыг уях суурь цэг болно */
+            display: flex; /* Босоо цуваа бүтэц үүсгэхээр Flexbox идэвхжүүлнэ */
+            flex-direction: column; /* Элементүүдийг дээрээс нь доош нь цувуулна */
+            align-items: center; /* Хэвтээ тэнхлэгийн дагуу голлуулна */
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Гар утас дээр доош чирэх үед зөөлөн хөдлөх эффект */ }
+        
+        .gl-modal-content { 
+            width: 100%; /* Өргөнийг чингэлэг дүүрэн болгоно */
+            border-radius: 12px; /* Буланг зөөлөн дугуйлж засна */
+            overflow: hidden; /* Чинглэгээс хальсан зургийг нууна */
+            background: rgba(0, 0, 0, 0); /* Арын суурь тунгалаг бараан өнгө */
+            border: 1px solid rgba(0, 0, 0, 0); /* Нарийхан шилэн хүрээ */
+            display: flex; /* Зургийг голлуулна */
+            justify-content: center; 
+            align-items: center; }
+
+		.gl-modal-content img { 
+    		max-width: 100%;      /* Өргөнийг дэлгэцийн ирмэгт тулгана */
+		    max-height: 80vh;     /* Өндрийг дэлгэцийн 85 хувьд барина (85vh болгож томруулсан) */
+    		object-fit: contain;   /* Зургийн бүх хэсгийг бүтэн харуулна */
+    		pointer-events: none;  /* Мобайл дээр хуруугаар чирэхэд зураг гацахаас сэргийлнэ */
+    		user-select: none;     /* Зургийг идэвхжүүлж сонгохыг хориглоно */ }
+        
+        .gl-modal-caption { 
+            margin-top: 15px; /* Зургийн тайлбарын дээд талын тусгаарлах зай */
+            color: white; /* Тайлбар текстийн тунгалаг цайвар өнгө */
+            font-size: 13px; /* Үсгийн хэмжээ */
+            text-align: center; /* Текстийг голд нь байрлуулна */
+            padding: 0 10px; /* Баруун зүүн талаас авах дотор зай */ }
+        
+        .gl-modal-close { 
+            position: absolute; /* Дээд талд чөлөөт байрлалаар гаргана */
+            top: -45px; right: 0; /* Баруун дээд буланд байршуулах зай */
+            background: none; /* Ардаа ямар нэгэн өнгөгүй болгоно */
+            border: none; /* Хүрээг устгана */
+            color: rgba(255, 255, 255, 0.6); /* Товчны өнгө */
+            font-size: 36px; /* Икс (&times;) тэмдэгтийн хэмжээ */
+            cursor: pointer; /* Дээр нь очиход гар хэлбэртэй болно */
+            padding: 5px; /* Дарахад хялбар байх дотор зай */
+            -webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад цэнхэртэж харагдахыг устгана */
+            transition: color 0.2s; /* Өнгө өөрчлөгдөх хугацаа */ }
+        
+        .gl-modal-close:hover { color: #ffffff; /* Хулгана очиход товчийг цэвэр цагаан болгоно */ }
+
+        /* НАВИГАЦИЙН СУМУУД (ПРЕВ, НЕКСТ ДАРАХ ОРЧИН) */
+        .gl-nav-btn-zone { 
+            position: absolute; /* Модал чингэлэгээс уяж чөлөөт байрлалд оруулна */
+            top: 50%; /* Дээд талаас 50 хувиар доошлуулна */
+            transform: translateY(-50%); /* Босоо чиглэлд яг таг голлуулна */
+            width: 60px; /* Дарах орчны өргөн */
+            height: 100px; /* Дарах орчны өндөр */
+            display: flex; /* Сумыг Flexbox-оор голлуулна */
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; /* Гар хэлбэртэй болгоно */
+            background: transparent; /* Арын дэвсгэрийг тунгалаг болгоно */
+            z-index: 1010; /* Зургийн наагуур харагдах давхарга */
+            user-select: none; /* Сум дээр олон дарахад цэнхэрлэж сонгогдохоос сэргийлнэ */
+            -webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад өнгө орохыг устгана */ }
+        
+        .gl-nav-btn-zone.prev { left: -85px; } /* Компьютер дэлгэц дээр зүүн сумыг зургийн гадна зүүн талд гаргана */
+        .gl-nav-btn-zone.next { right: -85px; } /* Компьютер дэлгэц дээр баруун сумыг зургийн гадна баруун талд гаргана */
+        
+        .gl-arrow-line { 
+            width: 16px; /* Сумны шугамын урт */
+            height: 16px; /* Сумны шугамын өндөр */
+            border-top: 3px solid rgba(255, 255, 255, 0.5); /* Дээд талын зузаан хүрээ */
+            border-left: 3px solid rgba(255, 255, 255, 0.5); /* Зүүн талын зузаан хүрээ */
+            transition: border-color 0.2s ease; /* Сумны өнгө хувирах зөөлөн шилжилт */ }
+        
+        .gl-nav-btn-zone.prev .gl-arrow-line { transform: rotate(-45deg); } /* Шугамыг 45 градус эргүүлж зүүн зүг заасан сум болгоно */
+        .gl-nav-btn-zone.next .gl-arrow-line { transform: rotate(135deg); } /* Шугамыг 135 градус эргүүлж баруун зүг заасан сум болгоно */
+        .gl-nav-btn-zone:hover .gl-arrow-line { border-color: #38bdf8; } /* Хулгана очиход сумыг гоё тод цэнхэр өнгөтэй болгоно */
+
+        /* 📱 ГАР УТАС БА ТАБЛЕТАД ЗОРИУЛСАН RESPONSIVE ЗАСВАР */
+        @media (max-width: 1024px) {
+            .gl-modal-container { width: 95%; } /* Модал өргөнийг дэлгэцийн 95 хувь болгож томруулна */
+            .gl-nav-btn-zone {
+                background: rgba(0, 0, 0, 0.4); /* Гар утас дээр сумыг харуулах хагас тунгалаг дугуй дэвсгэр */
+                border-radius: 50%; /* Төгс дугуй хэлбэртэй болгоно */
+                width: 46px; /* Гар утасны товчны өргөн */
+                height: 46px; /* Гар утасны товчны өндөр */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Товчны доорх жижиг сүүдэр */
+                backdrop-filter: blur(4px); /* Товчны арыг үл ялиг бүдгэрүүлнэ */ }
+            .gl-nav-btn-zone.prev { left: 10px; } /* Зүүн сумыг зургийн дотор талд зүүн ирмэгт наана */
+            .gl-nav-btn-zone.next { right: 10px; } /* Баруун сумыг зургийн дотор талд баруун ирмэгт naana */
+            .gl-arrow-line { width: 12px; height: 12px; } /* Гар утас дээр сумыг үл ялиг жижигсгэнэ */
+            .gl-modal-close { top: -50px; right: 10px; } /* Хаах икс товчийг гар утасны дэлгэцийн баруун дээд буланд тааруулна */ }    
+    
+    
+    
+    
+    </style>
 </head>
+
+
 
 
 
@@ -278,21 +360,23 @@
             <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
             <li><a href="https://the2m16.github.io/web/news.html">НЬЮС</a></li>
             <li><a href="https://the2m16.github.io/web/podcast.html">ПОДКАСТ</a></li>
-            <li><a href="https://the2m16.github.io/web/0blanc.html">ТЕСТпейж</a></li>
         </ul>
         <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </nav>
 
+
+
 <!-- Үндсэн агуулга -->
     <div class="content-section">
-    
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2019.10.31 БАЯНГОЛ ДҮҮРГИЙН ЭРҮҮГИЙН ХЭРГИЙН АНХАН ШАТНЫ ШҮҮХ №1702000160209 ДУГААРТАЙ ЭРҮҮГИЙН ХЭРГИЙГ Ц.САНДУЙ, А.ГАНБААТАРЫН ӨМГӨӨЛӨГЧ НАРЫН ХҮСЭЛТЭЭР ХААЛТТАЙ ХЭЛЭЛЦЭЭД ШИЙТГЭХ ТОГТООЛОО УНШИЖ ТАНИЛЦУУЛАВ</h3>
+
+<div class="glass-box"><!-- glass-box start -->
+        
+            <h3>2019.10.31 БАЯНГОЛ ДҮҮРГИЙН ЭРҮҮГИЙН ХЭРГИЙН АНХАН ШАТНЫ ШҮҮХ №1702000160209 ДУГААРТАЙ ЭРҮҮГИЙН ХЭРГИЙГ Ц.САНДУЙ, А.ГАНБААТАРЫН ӨМГӨӨЛӨГЧ НАРЫН ХҮСЭЛТЭЭР ХААЛТТАЙ ХЭЛЭЛЦЭЭД ШИЙТГЭХ ТОГТООЛОО УНШИЖ ТАНИЛЦУУЛАВ</h3>
         <div class="gl-text-wrapper"><p class="gl-truncate-text">Баянгол дүүргийн Эрүүгийн хэргийн анхан шатны шүүх 2019 оны 10 дугаар сарын 31-ны өдөр №1702000160209 дугаартай эрүүгийн хэргийг хаалттай хэлэлцэж 2019/ШЦТ/902 дугаартай Шийтгэх тогтоолоо гаргасаны дараа хэвлэлийнхэнийг байлцуулан уншиж танилцуулав.<br><br>
         Ерөнхийд нь тоймловол, НПГ-аас эрүүгийн №1702000160209 дугаартай хэрэгт 2002 оны Эрүүгийн хуулиар зүйлчлэн яллах дүгнэлт үйлдэж БГД-ийн ЭХАШШ-д шилжүүлсэн байх ба хаалттай шүүх хуралдааны үеэр
 	улсын яллагч Ц.Сүхбат, Д.Үүлэн нар хөөн хэлэлцэх хугацаа дууссан үндэслэлээр Ц.Сандуй, А.Ганбаатар нарт холбогдох хэргийг хэрэгсэхгүй болгох байр суурийг илэрхийлжээ. Гэтэл шүүх бүрэлдэхүүн
@@ -308,14 +392,17 @@
 	Давж заалдах шатны шүүхэд гаргасан Прокурорын эсэргүүцлээс тодорхой харагдана.<br><br>
     2019/ШЦТ/902 дугаартай Шийтгэх тогтоолын эх сурвалж: <a href="https://shuukh.mn/single_case/38121?daterange=2019-10-31%20-%202019-11-01&id=1&court_cat=2&bb=1">Шүүхийн шийдвэрийн сан</a>
         </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-        <div class="gl-smart-grid" data-images="
-        	https://www.youtube.com/watch?v=vT49C-Iy4x0 | Шүүх бүрэлдэхүүн 2019/ШЦТ/902 дугаартай Шийтгэх тогтоолыг уншиж танилцуулав,
-        "></div>
-        
+			
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/vT49C-Iy4x0?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+            
+            
         <div class="gl-text-wrapper"><p class="gl-truncate-text">
         2019 оны 10 дугаар сарын 31-ны өдрийн 2019/ШЦТ/902 дугаартай Шийтгэх тогтоол (БҮРЭН ЭХЭЭРЭЭ):
         </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-                
+        
         	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
 			<iframe 
 			src="https://docs.google.com/viewer?url=https://the2m16.github.io/web/files/2019.10.31bgd.pdf&embedded=true"
@@ -324,7 +411,8 @@
 			</iframe>
 			</div>
         
-    </div><!-- glass box end -->
+
+		</div><!-- glass box end -->
 
 
 
@@ -334,9 +422,14 @@
     <div class="glass-box">
         <h3>2019.01.11 МОНГОЛ УЛСЫН ЕРӨНХИЙ ПРОКУРОР М.ЭНХ-АМГАЛАН: 60 ТЭРБУМЫН ХЭРГИЙГ ПРОКУРОРЫН БАЙГУУЛЛАГА ЭВЛҮҮЛЭГ ГЭЖ ХААГААГҮЙ</h3>
         <div class="gl-text-wrapper"><p class="gl-truncate-text">ПРОКУРОРЫН БАЙГУУЛЛАГА ЭНЭ ҮЙЛ ЯВДАЛ, ЯРИА ХӨӨРӨӨ БҮГДЭЭРЭЭ БОЛСОН ЮМАА ГЭДГИЙГ ШИЙДВЭР ГАРГАСАН ТОГТООЛДОО ЗААЖ ӨГСӨН.</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=9ST_06DJFSY | Автомат PDF ковер уншилт
-        "></div>
+
+        
+        	<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/9ST_06DJFSY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+        
+        
     </div><!-- glass box end -->
 
 
@@ -441,8 +534,12 @@
 		мэдэгдэл хийж байсандаа би харамсаж байгаа. Би буруу зүйлд итгэж явж байсан байна гэж өнөөдөр бодож байна.</span>
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
+            <div class="video-container">
+			<iframe src="https://www.youtube.com/embed/W0KUTkL88uw?si=nOJFPYshQDMkakeR&amp;start=78" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+            
         <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=W0KUTkL88uw&t=78s | 2017.08.18 АТГ-ын өмнө,
             https://the2m16.github.io/web/images/2017.12.01amarbayasgalan.jpg | А.Ганбаатар 2017.08.17-ны өдөр Хэвлэлийн бага хурал хийхдээ тараасан мэдээллээ Шүүхэд өөрөө нотолж чадаагүй,
             https://the2m16.github.io/web/images/2017.08.17ganbaatar.jpg | А.Ганбаатар 2017.08.17-ны өдөр Хэвлэлийн бага хурал хийхдээ тарааж байгаа нь
         "></div>
@@ -469,9 +566,11 @@
 		зайлах ёстой шд. Улстөрийн наад захын асуудал шд ...". Ярилцлагыг бүтнээр ҮЗЭХ:
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=zkInnnAZqVA | 2017.08.17
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/zkInnnAZqVA?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+            
     </div><!-- glass box end -->
 
 
@@ -533,9 +632,11 @@
 		болох нь харагдаж байна. Дуу авианы нарийвчилсан техник, дууны хэлбэлзлийн шинжилгээ (waveform analysis) болон
 		спектрографийн шинжилгээ нь эдгээр дүгнэлтийг нотолж байна."</span> гэж дүгнэжээ. Хэвлэлийн бага хурлыг ҮЗЭХ:
         </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-        <div class="gl-smart-grid" data-images="
-        	https://www.youtube.com/watch?v=p7iCclFzoPc | 2017.07.04 Тайлбар,
-        "></div>
+        
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/p7iCclFzoPc?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
 
         	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
 			<iframe 
@@ -625,9 +726,13 @@
 		ҮҮСЭЖ БОЛОХ НӨХЦӨЛ БАЙДЛЫГ БИЙ БОЛГОСОН. ҮҮНЭЭС УРЬДЧИЛАН СЭРГИЙЛЭХ ЗОРИЛГООР ЦАГДААГИЙН БАЙГУУЛЛАГА ХҮЧЛЭН ХАМГААЛАЛТ АВСАН"
 		(<a href="https://the2m16.github.io/web/images/2017.06.16shirendev.png">ЯРИЛЦЛАГЫГ ҮЗЭХ</a>)
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-            
+
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/rh4d6iPqtkY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+
         <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=rh4d6iPqtkY | YouTube видео,
             	https://the2m16.github.io/web/images/2017.06.14man.jpg | Ердийн зураг,
             	https://the2m16.github.io/web/images/2017.06.15neworder.jpg | 60 Тэрбумыг мэдээлэх утас 9310-6060. Хэвлэлийн бага хурал.
         "></div>
@@ -802,9 +907,11 @@
 		хууль сахиулах байгууллагын эрх бүхий албан тушаалтнуудын (ТЕГ, ЦЕГ, АТГ-ын мөрдөгчдийн) хууль бус гүйцэтгэх ажиллагаанд эрүүгийн хэрэг үүсгэдэг зүйл анги юм.</span>
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=jK73ehnkA4E | YouTube видео
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/jK73ehnkA4E?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+            
     </div><!-- glass box end -->
 
 
@@ -824,9 +931,11 @@
 		А.Ганбаатарыг огт шалгаагүй, гэрчүүдээс тайлбар аваагүй, камерийн бичлэг шүүгээгүй, доорх бичлэгийг үнэлээгүй, хав дараад өнгөрөөсөн.)
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=rBRUpJXwpAo | YouTube видео
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/rBRUpJXwpAo?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+            
     </div><!-- glass box end -->
 
 
@@ -972,9 +1081,11 @@
 		Тайлбартаа тэмдэглэсэн байдаг!!!.</b> Тайлбарыг <a href="/web/forensicmn.html"><b>ҮЗЭХ</b></a>
             </p>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=9g7y91VoXbo&t=208s | YouTube видео
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/9g7y91VoXbo?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+
     </div><!-- glass box end -->
 
 
@@ -1033,9 +1144,11 @@
 		бид нар 2 жилийн өмнө ярьсан яриа байна гэсэн. 2 жилийн өмнө МАН-ыг урьж Засагт оруулсан үетэй бас таараад байгаа юм. (Одоо) би энэ бүх (60 тэрбумын) яриа бол үнэн гэдэгт эргэлзэхээ больсон...
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=lzPIJTlSJz4&t=1942s | YouTube видео
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/lzPIJTlSJz4?si=O-QUSrDrM-WdMyzY&amp;start=2270" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+            
     </div><!-- glass box end -->
 
 
@@ -1044,7 +1157,7 @@
 
 
     <div class="glass-box">
-        <h3>2016.06.27 НИЙСЛЭЛИЙН АН-ЫН СОНГУЛИЙН ШТАБААС ХИЙСЭН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
+        <h3>2016.06.27 НИЙСЛЭЛИЙН АН-ЫН СОНГУУЛИЙН ШТАБААС ХИЙСЭН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
             <div class="gl-text-wrapper"><p class="gl-truncate-text">
             <b>Д.Баттулга:</b> Энэ бичлэг анх 6 сарын 17-нд Noname Rainman твитр хаягнаас цацагдсан юм. Эндээс бид нар энэ бичлэгийг олж авсан.
 		Энэ бичлэгийг тухайн үед 598 хүн үзсэн байдаг юм. Тэгээд бид энэ бичлэгийг үнэн бодитой бичлэг мөн үү, биш үү гэдгийг шалгуулахаар
@@ -1058,9 +1171,10 @@
 		БАЙГУУЛЛАГУУД НЬ ЭНИЙГ ҮНЭН БОДИТОЙ ГЭДГИЙГ НЬ БИД НАРТ ТОГТООГООД ӨГЛӨӨ.
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=aRmyyUFgKJk | YouTube видео
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/aRmyyUFgKJk?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
     </div><!-- glass box end -->
 
 
@@ -1074,9 +1188,10 @@
             <b>Н.Энхбаяр:</b> Монголын төрийг М.Энхболд, Ц.Сандуй нар худалдчихжээ...
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=-aqUhXZ2pbY | YouTube видео
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/-aqUhXZ2pbY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
     </div><!-- glass box end -->
 
 
@@ -1093,9 +1208,13 @@
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
         <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=M1_WOMJ00pQ | YouTube видео,
 			https://the2m16.github.io/web/images/2016.06.25DPstatement.png | Test Caption Test Caption Test 
         "></div>
+        
+        	<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/M1_WOMJ00pQ?si=Lwf3VdvzN8lV5W62&amp;start=3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
     </div><!-- glass box end -->
 
 
@@ -1104,15 +1223,25 @@
 
 
     <div class="glass-box">
-        <h3>2016.06.25 МАН-ЫН НБД Д.АМАРБАЯСГАЛАНГИЙН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
+        <h3>2016.06.25 МАН-ЫН НБД Д.АМАРБАЯСГАЛАНГИЙН ХЭВЛЭЛИЙН БАГА ХУРАЛ (НЭГ ЖИЛИЙН ЗАЙТАЙ ХИЙСЭН ХОЁР МЭДЭГДЛИЙН АГУУЛГЫГ ХАРЬЦУУЛЖ СОНСОНО УУ)</h3>
             <div class="gl-text-wrapper"><p class="gl-truncate-text">
-            Энэ Хэвлэлийн бага хурлыг 2017 оны 8 сарын 18-ны өдөр МАН-ын ЕНБД Д.Амарбаясгалан АТГ-ын үүдэнд хийсэн мэдэгдэлтэй харьцуулж үзэх
+            МАН-ын НБД Д.Амарбаясгалан 2016 оны 6 сарын 25-ны өдөр. Намынхаа сонгуулийн штабыг удирдаж байсан Нарийн бичгийн дарга байх үе.
+            </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
+
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/Fin_b7Uzi18?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+            
+            <div class="gl-text-wrapper"><p class="gl-truncate-text">
+            МАН-ын ЕНБД Д.Амарбаясгалан 2017 оны 8 сарын 18-ны өдөр. Намынхаа Ерөнхий нарийн бичгийн дарга болсон үе.
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=Fin_b7Uzi18 | 2016.06.25,
-			https://www.youtube.com/watch?v=uTNiURHux0U&t=233s | 2017.08.17 
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/uTNiURHux0U?si=xecaDbtN4iNfzTOT&amp;start=234" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+
     </div><!-- glass box end -->
 
 
@@ -1123,9 +1252,11 @@
     <div class="glass-box">
         <h3>2016.06.24 20:00 ЦАГИЙН ХҮРД МЭДЭЭЛЛИЙН ХӨТӨЛБӨР</h3>
                         
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=6QIBI0w2S4I | 2016.06.24 
-        "></div>
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/6QIBI0w2S4I?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+
     </div><!-- glass box end -->
 
 
@@ -1135,17 +1266,17 @@
 
     <div class="glass-box">
         <h3>2016.06.24 12:00 МАН-ЫН НИЙСЛЭЛИЙН НАМЫН ХОРООНЫ ДАРГА Ц.САНДУЙГИЙН АНХНЫ МЭДЭГДЭЛ</h3>
-            <div class="gl-text-wrapper"><p class="gl-truncate-text">
-            Э.Эрдэнэжамъяныг ХБХ хийсэнээс хойш 1 цагийн дараа <b>Нийслэлийн МАН-ын дарга Ц.Сандуй:</b> 
+            <p>Э.Эрдэнэжамъяныг ХБХ хийсэнээс хойш 1 цагийн дараа Нийслэлийн МАН-ын дарга Ц.Сандуй:
 		<span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"ОДООНООС 2 ЖИЛ ГАРАНГИЙН
 		ӨМНӨ 2014 ОНЫ 9 САРД МАН БАС НИЙСЛЭЛИЙН МАН СТРАТЕГИ, ТАКТИКАА ЯРИХ ХУРАЛДААН БОЛСОН. ТЭР ҮЕИЙН БИЧЛЭГ АЛДАГДСАН БАЙНА.
 		БИД НАР ХЭН АЛДАЖ, ХЭН ЭНЭ БИЧЛЭГИЙГ ГАДАГШ НЬ ӨГСӨН БАЙНА ГЭДГИЙГ ХУУЛЬ ХЯНАЛТЫН БАЙГУУЛЛАГААР ДАВХАР ШАЛГУУЛНА."</span>
-		гэж сэтгүүлчдэд хандан мэдэгдэл хийв.
-            </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
-            
-        <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=WKoh2K3gXY0 | 2016.06.24 
-        "></div>
+		гэж сэтгүүлчдэд хандан мэдэгдэл хийв.</p>
+
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/WKoh2K3gXY0?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>
+
     </div><!-- glass box end -->
 
 
@@ -1159,8 +1290,12 @@
             Сошлд анх цацагдсан 2 мин 16 сек аудио бичлэгийг телевизийн студид дүрсжүүлж олон нийтэд хүргэсэн Хэвлэлийн бага хурал
             </p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
             
+			<div class="video-container">
+			<iframe src="https://www.youtube.com/embed/D8XzpUUVrU4?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe></div>            
+            
         <div class="gl-smart-grid" data-images="
-            https://www.youtube.com/watch?v=D8XzpUUVrU4 | YouTube видео,
 			https://the2m16.github.io/web/images/2016.06.24erdenejamyan.jpg | Өдрийн сонины 2016 оны 6 дугаар сарын 25-ны №150(5415) дугаар 
         "></div>
     </div><!-- glass box end -->
@@ -1243,276 +1378,220 @@
 
 
 
-<!-- ---------------------------------------------------------------8888888888888888888888888888888888888888888------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+		
 <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
-    </div><!-- content-section end -->
+</div><!-- content-section end -->
+	
+	
+<script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
+<script>
 
-
-
-
-
-
-
-	<script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
-    <script>
-<!-- ----------------------------------------MENU+LENIS SCRIPT START------------------------------------------------------------- -->
-        // 1. Lenis
-        const lenis = new Lenis({
-			duration: 1.2, // Скролл хэр зөөлөн үргэлжлэх хугацаа (секундээр)
-			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Хурдсах уусалт
-			smoothWheel: true
-			});
-		// Хөтчийн скролл хийх болгонд Lenis-ийг байнга шинэчилж ажиллуулах функц
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-			}
-		requestAnimationFrame(raf);
+/* ----------------------------ALBUM GRID START-------------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
         
-        
-        
-        
-        // 2. Mobile Menu Logic
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        const grids = document.querySelectorAll('.gl-smart-grid'); // Хуудсан дээрх бүх смарт гридүүдийг олж авна
+        const modal = document.getElementById('glMediaModal'); // Лайтбокс overlay-ийг олж авна
+        const modalContainer = modal.querySelector('.gl-modal-container'); // Доторх хөдөлгөөнт чингэлэгийг авна
+        const modalContent = document.getElementById('glModalContent'); // Зураг орох DIV-ийг авна
+        const modalCaption = document.getElementById('glModalCaption'); // Капшн орох DIV-ийг авна
+        const modalClose = document.getElementById('glModalClose'); // Хаах товчийг авна
+        const btnPrev = document.getElementById('glBtnPrev'); // Өмнөх товчийг авна
+        const btnNext = document.getElementById('glBtnNext'); // Дараагийн товчийг авна
 
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navLinks.classList.toggle('active');
-        });
+        let currentAlbumItems = []; // Одоо нээгдсэн цомгийн зургуудын жагсаалтыг хадгалах хоосон массив
+        let currentActiveIndex = 0; // Одоо дэлгэц дээр харагдаж буй зургийн дугаар (индекс)
 
-        // Гадна талд дарахад хаах
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-                navLinks.classList.remove('active');
-            }
-        });
-
-        // Линк дарахад хаах
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-<!-- --------------------------------------MENU+LENIS SCRIPT END--------------------------------------------------------------- -->
-        
-<!-- -----------------------------------------ALBUM SCRIPT START------------------------------------------------------------ -->
-    document.addEventListener("DOMContentLoaded", () => {
-        // PDF.js арын процессорыг асаах
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
-
-        const grids = document.querySelectorAll('.gl-smart-grid');
-        const modal = document.getElementById('glMediaModal');
-        const modalContent = document.getElementById('glModalContent');
-        const captionTarget = document.getElementById('glModalCaption');
-        const modalClose = document.getElementById('glModalClose');
-        const btnPrev = document.getElementById('glModalPrev');
-        const btnNext = document.getElementById('glModalNext');
-
-        let currentAlbumItems = [];
-        let currentActiveIndex = 0;
-
+        // Хуудсан дээрх бүх смарт гридүүдийг унших давталт
         grids.forEach(gridEl => {
-            const rawData = gridEl.getAttribute('data-images').split(',');
-            const parsedItems = [];
+            const rawData = gridEl.getAttribute('data-images').split(','); // data-images доторх текстийг таслалаар салгаж массив болгоно
+            const parsedItems = []; // Цэвэрлэж бэлдсэн зургуудыг хадгалах шинэ массив
 
+            // Салгаж авсан мөр бүрийг уншиж задлах давталт
             rawData.forEach(item => {
-                let trimmed = item.trim();
-                if (!trimmed) return;
-                const parts = trimmed.split('|');
-                const url = parts[0] ? parts[0].trim() : '';
-                const caption = parts[1] ? parts[1].trim() : ''; /* */
-                if (!url) return;
+                let trimmed = item.trim(); // Текстийн эхлэл болон төгсгөлийн илүүдэл хоосон зайг устгана
+                if (!trimmed) return; // Хэрэв хоосон мөр байвал алгасна
+                
+                const parts = trimmed.split('|'); // Хамгийн чухал хэсэг: Зургийн ЮРЛ болон Капшныг босоо зураасаар салгана
+                const url = parts[0] ? parts[0].trim() : ''; // Зураасын зүүн талын текстийг ЮРЛ хаяг болгоно
+                const caption = parts[1] ? parts[1].trim() : ''; // Зураасын баруун талын текстийг Тайлбар (Caption) болгоно
+                if (!url) return; // Хэрэв зурагны линк байхгүй бол шууд алгасна
 
-                let ytId = null; let isYt = false;
-                const match = url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/);
-                if (match && match[2].length === 11) { ytId = match[2]; isYt = true; }
-
-                parsedItems.push({ url, caption, isYt, ytId });
+                parsedItems.push({ url, caption }); // Өгөгдлийг цэгцлээд массив руу шахна
             });
 
-            const totalCount = parsedItems.length;
-            gridEl.classList.add(`count-${totalCount > 2 ? 'multiple' : totalCount}`);
+            const totalCount = parsedItems.length; // Энэ цомогт нийт хэдэн зураг байгааг тоолно
+            const displayCount = Math.min(totalCount, 2); // Дэлгэц дээр зөвхөн зэрэгцээ 2 картыг л үүсгэж зурна (1 мөр)
 
-            const displayCount = Math.min(totalCount, 2);
-
+            // Эхний зэрэгцээ 2 карт үүсгэх давталт
             for (let i = 0; i < displayCount; i++) {
-                const mediaData = parsedItems[i]; /* */
-                const itemDiv = document.createElement('div'); /* */
-                itemDiv.className = 'gl-card-item'; /* */
+                const mediaData = parsedItems[i]; // Одоо үүсгэх зургийн датаг авна
+                const itemDiv = document.createElement('div'); // Картны үндсэн DIV элементийг үүсгэнэ
+                itemDiv.className = 'gl-card-item'; // Класс нэр оноож өгнө
 
-                // 🔴 1. PDF КАРТ ҮҮСГЭХ
-                if (mediaData.url.startsWith('pdf:')) {
-                    const actualPdf = mediaData.url.replace('pdf:', '').trim();
-                    const canvasId = `pdf-canvas-${Math.floor(Math.random() * 1000000)}`;
-                    
-                    itemDiv.innerHTML = `
-                        <canvas id="${canvasId}" style="width:100%; height:100%; object-fit:cover; display:block;"></canvas>
-                        <div style="position:absolute; inset:0; background:rgba(0, 0, 0, 0); z-index:2;"></div>
-                        <div style="position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; width:100%; padding:20px; text-align:center;">
-                            <svg viewBox="0 0 24 24" style="width:36px; height:36px; fill:#ef4444; margin-bottom:8px;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                            <div style="font-size:12px; font-weight:500; color:#ffffff; text-shadow:0 2px 4px rgba(0,0,0,0.2);">${mediaData.caption}</div>
-                        </div>
-                    `;
+                itemDiv.innerHTML = `<img src="${mediaData.url}" alt="">`; // Карт дотор зураг харуулах img таг-ийг хийнэ
 
-                    setTimeout(() => {
-                        pdfjsLib.getDocument(actualPdf).promise.then(pdf => {
-                            pdf.getPage(1).then(page => {
-                                const canvas = document.getElementById(canvasId);
-                                if (!canvas) return;
-                                const context = canvas.getContext('2d');
-                                const viewport = page.getViewport({ scale: 2.0 });
-                                canvas.height = viewport.height;
-                                canvas.width = viewport.width;
-                                page.render({ canvasContext: context, viewport: viewport });
-                            });
-                        }).catch(err => {
-                            const canvas = document.getElementById(canvasId);
-                            if(canvas) canvas.style.background = "rgba(255,255,255,0.05)";
-                        });
-                    }, 10);
-                } 
-                // 🔴 2. SOUNDCLOUD КАРТ ҮҮСГЭХ (ЗАСАР)
-                else if (mediaData.url.startsWith('sc:')) {
-                    const cleanRaw = mediaData.url.replace('sc:', '').trim();
-                    const sepIndex = cleanRaw.indexOf(' :: ');
-                    
-                    let actualSc = cleanRaw;
-                    let scCover = 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600';
-                    
-                    if (sepIndex !== -1) {
-                        actualSc = cleanRaw.substring(0, sepIndex).trim();
-                        scCover = cleanRaw.substring(sepIndex + 4).trim();
-                    }
-
-                    itemDiv.innerHTML = `
-                        <img src="${scCover}" style="position:absolute; width:100%; height:100%; object-fit:cover; filter:blur(18px) brightness(0.45); transform:scale(1.15); z-index:1;">
-                        <div style="position:relative; z-index:2; display:flex; align-items:center; gap:15px; width:100%; height:100%; padding:16px;">
-                            <img src="${scCover}" style="width:75px; height:75px; border-radius:6px; object-fit:cover; box-shadow:0 6px 12px rgba(0,0,0,0.5);">
-                            <div style="display:flex; flex-direction:column; justify-content:center; flex:1;">
-                                <span style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#ff5500; font-weight:700;">SoundCloud</span>
-                                <div style="font-size:12px; font-weight:500; color:#ffffff; margin-top:3px; line-height:1.3;">${mediaData.caption}</div>
-                            </div>
-                        </div>
-                    `;
-                } 
-                // 🔴 3. YOUTUBE КАРТ ҮҮСГЭХ
-                else if (mediaData.isYt) {
-    // ✅ maxresolution.jpg биш, maxresdefault.jpg болгож засав!
-    itemDiv.innerHTML = `<img src="https://img.youtube.com/vi/${mediaData.ytId}/mqdefault.jpg" alt="" style="width:100%; height:100%; object-fit:cover; object-position:top;"><div class="gl-youtube-play-btn"><svg viewBox="0 0 68 48" width="100%" height="100%"><path class="yt-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,0.13,34,0,34,0S12.21,0.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path><polygon points="26,33 44,24 26,15" fill="#ffffff"></polygon></svg></div>`;
-} 
-                // 🔴 4. ЕРДИЙН ЗУРАГ КАРТ ҮҮСГЭХ (БҮТЭН СУНАХ ЗАСВАРТАЙ)
-                else {
-                    itemDiv.innerHTML = `<img src="${mediaData.url}" alt="" style="width:100%; height:100%; object-fit:cover;">`; /* */
-                }
-
-                // 🎯 ҮЛДЭГДЭЛ ТОХИРГООНЫ МАСК ОРУУЛАХ ХЭСЭГ (ТОМЬЁО ЗАСВАР: totalCount - displayCount)
+                // 🎯 БАРУУН ТАЛЫН ДЭЭД НҮДЭНД (2-Р КАРТ ДЭЭР) МАСК БОЛОН ҮЛДСЭН ЗУРГИЙН ТООГ ХАРУУЛАХ ХЭСЭГ
                 if (totalCount > 2 && i === 1) {
-                    const overlay = document.createElement('div');
-                    overlay.className = 'gl-more-overlay';
-                    overlay.innerText = `+${totalCount - 1}`; /* */
-                    itemDiv.appendChild(overlay);
+                    const overlay = document.createElement('div'); // Хар маск DIV үүсгэнэ
+                    overlay.className = 'gl-more-overlay'; // Класс нэр онооно
+                    overlay.innerText = `+${totalCount - 1}`; // Баруун доороос дээд нүдэнд шилжүүлж үлдсэн зургийн тоог харуулна
+                    itemDiv.appendChild(overlay); // Карт дотор маскыг залгаж оруулна
                 }
 
+                // Карт дээр дарахад лайтбокс томруулж нээх үйлдэл
                 itemDiv.addEventListener('click', () => {
-                    currentAlbumItems = parsedItems;
-                    openLightbox(i);
+                    currentAlbumItems = parsedItems; // Энэ цомгийн бүх зургуудыг идэвхтэй массиваар бүртгэнэ
+                    openLightbox(i); // Дарсан зургийн дугаараар лайтбокс нээнэ
                 });
 
-                gridEl.appendChild(itemDiv);
+                gridEl.appendChild(itemDiv); // Бэлэн болсон картыг ухаалаг грид чингэлэгтээ залгаж оруулна
             }
         });
 
-        // 🖼 ЛАЙТБОКС ДОТОР КОНТЕНТЫГ УХААЛГААР ЗУРЖ ТОГЛУУЛАХ ФУНКЦ
+        // ЛАЙТБОКС ДОТОР ИДЭВХТЭЙ ЗУРГИЙГ УХААЛГААР ЗУРЖ ХАРУУЛАХ ФУНКЦ
         function renderActiveMedia(index) {
-            modalContent.innerHTML = ""; /* */
-            const data = currentAlbumItems[index];
-            captionTarget.innerText = data.caption; /* */
+            modalContent.innerHTML = ""; // Хуучин байсан зургийг бүрмөсөн арчиж цэвэрлэнэ
+            const data = currentAlbumItems[index]; // Массиваас одоо харуулах зургийн датаг индексээр уншиж авна
+            modalCaption.textContent = data.caption; // Доорх капшн талбарт тайлбар текстийг хуулж тавина
 
-            if (data.url.startsWith('pdf:')) {
-                const cleanPdfUrl = data.url.replace('pdf:', '').trim();
-                const iframe = document.createElement('iframe'); /* */
-                iframe.src = cleanPdfUrl; /* */
-                iframe.className = "pdf-viewer"; /* */
-                modalContent.appendChild(iframe); /* */
-            } 
-            else if (data.url.startsWith('sc:')) {
-                const cleanRaw = data.url.replace('sc:', '').trim();
-                const sepIndex = cleanRaw.indexOf(' :: ');
-                let cleanScUrl = sepIndex !== -1 ? cleanRaw.substring(0, sepIndex).trim() : cleanRaw;
+            const img = document.createElement('img'); // Шинэ img таг үүсгэнэ
+            img.src = data.url; // Зургийн хаягийг зааж өгнө
+            modalContent.appendChild(img); // Чинглэг дотор зургийг залгаж оруулна
 
-                if (cleanScUrl.includes('auto_play=false')) {
-                    cleanScUrl = cleanScUrl.replace('auto_play=false', 'auto_play=true');
-                }
-
-                const iframe = document.createElement('iframe'); /* */
-                iframe.src = cleanScUrl; /* */
-                iframe.className = "sc-viewer";
-                iframe.allow = "autoplay";
-                iframe.scrolling = "no";
-                iframe.frameBorder = "no";
-                modalContent.appendChild(iframe); /* */
-            } 
-            else if (data.isYt) {
-                const iframe = document.createElement('iframe'); /* */
-                iframe.src = `https://www.youtube.com/embed/${data.ytId}?autoplay=1`; /* */
-                iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"; /* */
-                iframe.allowFullscreen = true; /* */
-                modalContent.appendChild(iframe); /* */
-            } 
-            else {
-                const img = document.createElement('img'); /* */
-                img.src = data.url; /* */
-                modalContent.appendChild(img); /* */
+            // Навигацийн сумуудыг ухаалгаар харуулах/нуух логик
+            if (currentAlbumItems.length > 1) {
+                btnPrev.style.display = 'flex'; // 1-ээс олон зурагтай бол өмнөх сумыг харуулна
+                btnNext.style.display = 'flex'; // 1-ээс олон зурагтай бол дараагийн сумыг харуулна
+            } else {
+                btnPrev.style.display = 'none'; // Ганцхан зурагтай бол зүүн сумыг нууна
+                btnNext.style.display = 'none'; // Ганцхан зурагтай бол баруун сумыг нууна
             }
-
-            btnPrev.style.visibility = index === 0 ? 'hidden' : 'visible';
-            btnNext.style.visibility = index === currentAlbumItems.length - 1 ? 'hidden' : 'visible';
         }
 
-        // 🚀 ЛАЙТБОКС НЭЭХ (ЗАСВАР: LENIS STOP ХОЛБОСОН)
+        // ЛАЙТБОКС МОДАЛЫГ ИДЭВХЖҮҮЛЖ НЭЭХ ФУНКЦ
         function openLightbox(index) {
-            currentActiveIndex = index;
-            renderActiveMedia(currentActiveIndex); /* */
-            modal.classList.add('active'); /* */
+            currentActiveIndex = index; // Одоогийн идэвхтэй зургийн дугаарыг хадгална
+            renderActiveMedia(currentActiveIndex); // Зургийг рэндэрлэж зурна
+            modal.classList.add('active'); // Модал чингэлэгт active класс нэмж тодруулна
 
-            // ✅ Lenis скроллыг түр түгжих
-            if (window.lenis) {
-                window.lenis.stop();
-            } else if (typeof lenis !== 'undefined') {
-                lenis.stop();
-            }
+            // Хэрэв хуудсанд урсгал скролл (Lenis) ашиглаж байгаа бол арын скроллыг түр гацааж зогсооно
+            if (window.lenis) window.lenis.stop();
+            else if (typeof lenis !== 'undefined') lenis.stop();
         }
 
-        btnPrev.addEventListener('click', (e) => {
-            e.stopPropagation(); /* */
-            if (currentActiveIndex > 0) { currentActiveIndex--; renderActiveMedia(currentActiveIndex); } /* */
-        });
+        // ӨМНӨХ ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
+        function navigatePrev() {
+            if (currentAlbumItems.length <= 1) return; // Ганцхан зурагтай бол шилжилт хийхгүй
+            currentActiveIndex--; // Индексийг нэгээр хасна
+            if (currentActiveIndex < 0) currentActiveIndex = currentAlbumItems.length - 1; // Хамгийн эхний зургаас өмнөх рүү дарвал хамгийн сүүлчийн зураг руу үсрэнэ
+            renderActiveMedia(currentActiveIndex); // Шинэ зургийг харуулна
+        }
 
-        btnNext.addEventListener('click', (e) => {
-            e.stopPropagation(); /* */
-            if (currentActiveIndex < currentAlbumItems.length - 1) { currentActiveIndex++; renderActiveMedia(currentActiveIndex); } /* */
-        });
+        // ДАРААГИЙН ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
+        function navigateNext() {
+            if (currentAlbumItems.length <= 1) return; // Ганцхан зурагтай бол шилжилт хийхгүй
+            currentActiveIndex++; // Индексийг нэгээр нэмнэ
+            if (currentActiveIndex >= currentAlbumItems.length) currentActiveIndex = 0; // Сүүлчийн зургаас цааш дарвал эхний зураг руу буцаж тойрно
+            renderActiveMedia(currentActiveIndex); // Шинэ зургийг харуулна
+        }
 
-        // 🚀 ЛАЙТБОКС ХААХ (ЗАСВАР: LENIS START ХОЛБОСОН)
+        // Сумнуудын товшилт бүртгэх эвентүүд
+        btnPrev.addEventListener('click', (e) => { e.stopPropagation(); navigatePrev(); }); // Зүүн сум дарахад өмнөх зураг руу шилжинэ
+        btnNext.addEventListener('click', (e) => { e.stopPropagation(); navigateNext(); }); // Баруун сум дарахад дараагийн зураг руу шилжинэ
+
+        // ЛАЙТБОКСЫГ БҮРМӨСӨН ХААЖ ЦЭВЭРЛЭХ ФУНКЦ
         const closeBox = () => { 
-            modal.classList.remove('active'); /* */
-            modalContent.innerHTML = ""; /* */
+            modal.classList.remove('active'); // active классыг хасаж модалыг нууна
+            modalContainer.style.transform = 'none'; // Гар утас дээр чирэгдсэн байрлалыг анхны хэлбэрт оруулна
+            modalContent.innerHTML = ""; // Цаана нь илүүдэл өгөгдөл үлдэхээс сэргийлж img таг-ийг бүрмөсөн цэвэрлэнэ
 
-            // ✅ Lenis скроллыг буцааж ажиллуулах
-            if (window.lenis) {
-                window.lenis.start();
-            } else if (typeof lenis !== 'undefined') {
-                lenis.start();
-            }
+            // Арын скролл (Lenis)-ийг буцааж хэвийн ажиллуулах асаалт
+            if (window.lenis) window.lenis.start();
+            else if (typeof lenis !== 'undefined') lenis.start();
         };
 
-        modalClose.addEventListener('click', closeBox); /* */
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeBox(); }); /* */
-    });
-<!-- -------------------------------------ALBUM SCRIPT END---------------------------------------------------------------- -->
+        modalClose.addEventListener('click', closeBox); // Хаах икс товч дээр дарах эвент
+        modal.addEventListener('click', (e) => { if (e.target === modal || e.target === modalContainer) closeBox(); }); // Арын хар дэвсгэр дээр дарахад хаах
 
-<!-- -------------------------------------TEXT TASLAGCH START------------------------------------------------------------- -->
+        // Компьютерийн клавтурын сумаар удирдах болон Escape товчоор хаах логик
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return; // Хэрэв модал нээлттэй биш бол ажиллахгүй
+            if (e.key === 'Escape') closeBox(); // Эскейп товч дарахад хаагдана
+            if (e.key === 'ArrowLeft') navigatePrev(); // Зүүн сумаар өмнөх зураг руу шилжинэ
+            if (e.key === 'ArrowRight') navigateNext(); // Баруун сумаар дарахад дараагийн зураг руу шилжинэ
+        });
+
+        // ==========================================================================
+        // 📱 ГАР УТАС БА ТАБЛЕТ: ДООШ ЧИРЭХЭД ХААХ (SWIPE DOWN) БОЛОН СУИП КАРАУСЕЛЬ
+        // ==========================================================================
+        let touchStartX = 0; let touchStartY = 0; // Хуруу анх хүрсэн цэгийг хадгалах хувьсагчууд
+        let touchCurrentX = 0; let touchCurrentY = 0; // Хуруу одоо хөдөлж буй цэгийг хадгалах хувьсагчууд
+        let isDragging = false; // Чирэх үйлдэл идэвхтэй байгаа эсэхийг заагч туг
+
+        // Хуруу дэлгэцэнд хүрэх үеийн анхны цэгүүдийг тэмдэглэх эвент
+        modal.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX; // Анхны хэвтээ байрлал
+            touchStartY = e.touches[0].clientY; // Анхны босоо байрлал
+            touchCurrentX = touchStartX; // Одоогийн байрлалыг анхныхтай ижилсүүлнэ
+            touchCurrentY = touchStartY; // Одоогийн байрлалыг анхныхтай ижилсүүлнэ
+            isDragging = true; // Чирэх төлөвийг асаана
+            modalContainer.style.transition = 'none'; // Хуруу дагаж зэрэг хөдлөх тул шилжилтийн хугацааг унтраана
+        }, { passive: true });
+
+        // Хуруугаа дэлгэц дүүрэн чирч хөдөлгөх үед ажиллах хөдөлгөөн
+        modal.addEventListener('touchmove', (e) => {
+            if (!isDragging) return; // Хэрэв чирэх төлөв асаагүй бол ажиллахгүй
+            touchCurrentX = e.touches[0].clientX; // Хөдөлж буй хэвтээ цэг
+            touchCurrentY = e.touches[0].clientY; // Хөдөлж буй босоо цэг
+            
+            const deltaX = touchCurrentX - touchStartX; // Хэвтээ тэнхлэг дагуу туулсан зай
+            const deltaY = touchCurrentY - touchStartY; // Босоо тэнхлэг дагуу туулсан зай
+            
+            // ЗУРГИЙГ ДООШ ЧИРЭХ ЭФФЕКТ (Лайтбокс чингэлэг яг таг хурууны хөдөлгөөн дагаж уруудна)
+            if (deltaY > 0 && Math.abs(deltaY) > Math.abs(deltaX)) {
+                modalContainer.style.transform = `translateY(${deltaY}px)`;
+            }
+        }, { passive: true });
+
+        // Хуруугаа дэлгэцнээс авах үед үйлдлийг шийдвэрлэх эцсийн хэсэг
+        modal.addEventListener('touchend', () => {
+            if (!isDragging) return; // Чирэх төлөв асаагүй бол алгасна
+            isDragging = false; // Төлөвийг унтраана
+            modalContainer.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)'; // Буцаж байрандаа орох зөөлөн анимаци идэвхжүүлнэ
+            
+            const deltaX = touchCurrentX - touchStartX; // Эцсийн хэвтээ зөрүү зай
+            const deltaY = touchCurrentY - touchStartY; // Эцсийн босоо зөрүү зай
+            const swipeThreshold = 55; // Шудрах хөдөлгөөнийг бүртгэх хамгийн бага пикселийн хязгаар
+            
+            // 1. SWIPE DOWN TO CLOSE: Хэрэв зургийг доош нь 110 пикселээс илүү чирсэн байвал лайтбоксыг шууд хаана
+            if (deltaY > 110 && Math.abs(deltaY) > Math.abs(deltaX)) {
+                closeBox(); // Хаах функцийг дуудна
+                return;
+            } else {
+                modalContainer.style.transform = 'none'; // Хангалттай доош чирээгүй бол буцаж голдоо байрандаа орно
+            }
+            
+            // 2. TOUCH SWIPE CAROUSEL: Баруун зүүн тийш хуруугаараа шудрахад зураг солигдох логик
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+                if (deltaX > 0) {
+                    navigatePrev(); // Баруун тийш шударвал өмнөх зураг руу шилжинэ
+                } else {
+                    navigateNext(); // Зүүн тийш шударвал дараагийн зураг руу шилжинэ
+                }
+            }
+        });
+    });
+/* ----------------------------ALBUM GRID END-------------------------------- */
+    
+/* ----------------------------TEXT WRAPPER START-------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
     // Вэб дээрх бүх текстийн хайрцагуудыг олно
     const wrappers = document.querySelectorAll('.gl-text-wrapper');
@@ -1551,8 +1630,47 @@ function toggleGlText(btnElement) {
         lenis.resize();
     }
 }
-<!-- -------------------------------------TEXT TASLAGCH END--------------------------------------------------------------- -->
+/* ----------------------------TEXT WRAPPER END-------------------------------- */
 
+/* ----------------------------LENIS SCRIPT START-------------------------------- */
+        // 1. Lenis
+        const lenis = new Lenis({
+			duration: 1.2, // Скролл хэр зөөлөн үргэлжлэх хугацаа (секундээр)
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Хурдсах уусалт
+			smoothWheel: true
+			});
+		// Хөтчийн скролл хийх болгонд Lenis-ийг байнга шинэчилж ажиллуулах функц
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+			}
+		requestAnimationFrame(raf);
+/* ----------------------------LENIS SCRIPT END-------------------------------- */
+        
+/* ----------------------------MENU SCRIPT START-------------------------------- */
+        // 2. Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+        });
+
+        // Гадна талд дарахад хаах
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Линк дарахад хаах
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+/* ----------------------------MENU SCRIPT END-------------------------------- */
 
     </script>
 
@@ -1560,16 +1678,16 @@ function toggleGlText(btnElement) {
 
 
 
+
+	
 <!-- * LIGHTBOX POP-UP START -->
-<div class="gl-modal-overlay" id="glMediaModal">
-    <div class="gl-modal-container">
-        <button class="gl-modal-close" id="glModalClose">&times;</button>
-        <div class="gl-nav-btn-zone prev" id="glModalPrev"><div class="gl-arrow-line"></div></div>
-        <div class="gl-nav-btn-zone next" id="glModalNext"><div class="gl-arrow-line"></div></div>
-        <div class="gl-modal-content" id="glModalContent"></div>
-        <div class="gl-modal-caption" id="glModalCaption"></div>
+        <div class="gl-modal-overlay" id="glMediaModal">
+        <div class="gl-modal-container">
+            <button class="gl-modal-close" id="glModalClose" aria-label="Хаах">&times;</button> <div class="gl-nav-btn-zone prev" id="glBtnPrev"><div class="gl-arrow-line"></div></div>
+            <div class="gl-nav-btn-zone next" id="glBtnNext"><div class="gl-arrow-line"></div></div>
+            
+            <div class="gl-modal-content" id="glModalContent"></div> <div class="gl-modal-caption" id="glModalCaption"></div> </div>
     </div>
-</div>
 <!-- LIGHTBOX POP-UP END -->
 
 
