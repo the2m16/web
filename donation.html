@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="mn">
 <head>
@@ -81,7 +82,7 @@
         .content-section {
             position: relative;
             z-index: 2;
-            height: 100vh; /* ------------------------------- арын фоныг дэлгэц дүүрэн будах ------------------------ */ 
+            height: 100vh; /* ------------------------------- арын хар фоныг дэлгэц дүүрэн болгох ------------------------ */ 
             padding-top: 58px;
             padding-bottom: 0px;
             padding-right: 5px;
@@ -92,7 +93,7 @@
 			backdrop-filter: blur(15px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
 			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
             display: flex;
-            justify-content: center;
+            justify-content: top;
             flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
             align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
             gap: 20px;              /* Блокууд хоорондын зай */ }
@@ -352,7 +353,7 @@
 	<div class="mobile-bg-fix"></div>
 <!-- NAVIGATION BAR -->
     <nav class="navbar" id="navbar">
-        <div class="logo">Support The Whistleblower</div>
+        <div class="logo">Donate now</div>
         <ul class="nav-links" id="navLinks">
             <li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
             <li><a href="https://the2m16.github.io/web/90min.html">90МИН</a></li>
@@ -374,42 +375,29 @@
 
 
 
+    <div class="glass-box" style="padding-left: 390px;
+    	background: transparent;
+    	border: none;
+    	box-shadow: none;
+    	backdrop-filter: none;
+    	margin-top: 10%;
+        margin-left: auto;
+        margin-right: auto;">
+        <div id="anim-container"></div>
+    </div><!-- glass box end -->
 
 
 
-
-
-
-
-
-
-    <div class="glass-box" style="height: 500px; width: 600px; border-radius: 16px; border: black;">
-        <!-- <h3>ЭНЭ ХУУДСЫНАМЕРИКИЙН МУЖ УЛСЫН БОЛОН ХОЛБООНЫ ШҮҮХИЙН ХЭРЭГ ШИЙДВЭРЛЭХ АЖИЛЛАГААНЫ ДУУ, ДҮРС БИЧЛЭГИЙН ШҮҮХИЙН ШИНЖЭЭЧ ФРАНК ПИАЗЗА</h3> 
-            <div class="gl-text-wrapper"><p class="gl-truncate-text">Фрэнк Пиазза нь 1982 онд Berklee College of Music-ийг Хөгжмийн онолын мэргэжлээр, 2013 онд University of Colorado Denver-ийг Дижитал аудио нотлох баримтын шүүх шинжээч мэргэжлээр тус тус төгссөн, аудио-видео инженерийн мэргэжилтэй, 2000 оноос эхлэн АНУ даяар болон гадаад улсуудад эрүү болон иргэний хэргийн нотлох баримтууд дээр мэргэжлийн шүүх шинжээчээр ажилладаг, ажиглалтын камер, цагдаагийн энгэрийн камер, гар утасны бичлэг, 911 дуудлагын бичлэг, хяналтын камерын бичлэг, дуу, дүрс бичлэгийн дижитал болон аналог бүх төрлийн нотлох баримтууд дээр шүүхийн шинжилгээ хийдэг, АНУ-ын Прокурорын ерөнхий газар (U.S. Attorney's Office), Холбооны мөрдөх товчоо (FBI), Хууль сахиулах байгууллагууд, Хэвлэл мэдээллийн байгууллагууд, Хуульзүйн туслах нийгэмлэг, хуулийн хувийн фирмүүд, хувийн мөрдөгчид, шүүхийн шинжилгээний Stroz Friedberg, Gibson Dunn, Skadden Arps, Proskauer Rose, Kroll, Lefcourt Law зэрэг хуулийн байгууллага, фирмүүдэд мэргэжлийн шүүх шинжээчээр 26 жил тасралтгүй ажиллаж байгаа туршлагатай.</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div> -->
-        <!-- <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/donation.png | Donation
-        "></div> -->
+    <!-- <div class="glass-box" style="height: 500px; width: 650px; border-radius: 16px; border: black;">
+        <h4>АМЕРИКИЙН МУЖ УЛСЫН БОЛОН ХОЛБООНЫ ШҮҮХИЙН ХЭРЭГ ШИЙДВЭРЛЭХ АЖИЛЛАГААНЫ ДУУ, ДҮРС БИЧЛЭГИЙН ШҮҮХИЙН ШИНЖЭЭЧ ФРАНК ПИАЗЗА</h4> 
+        <div class="gl-text-wrapper"><p class="gl-truncate-text">Фрэнк Пиазза нь 1982 онд Berklee College of Music-ийг Хөгжмийн онолын мэргэжлээр, 2013 онд University of Colorado Denver-ийг Дижитал аудио нотлох баримтын шүүх шинжээч мэргэжлээр тус тус төгссөн, аудио-видео инженерийн мэргэжилтэй, 2000 оноос эхлэн АНУ даяар болон гадаад улсуудад эрүү болон иргэний хэргийн нотлох баримтууд дээр мэргэжлийн шүүх шинжээчээр ажилладаг, ажиглалтын камер, цагдаагийн энгэрийн камер, гар утасны бичлэг, 911 дуудлагын бичлэг, хяналтын камерын бичлэг, дуу, дүрс бичлэгийн дижитал болон аналог бүх төрлийн нотлох баримтууд дээр шүүхийн шинжилгээ хийдэг, АНУ-ын Прокурорын ерөнхий газар (U.S. Attorney's Office), Холбооны мөрдөх товчоо (FBI), Хууль сахиулах байгууллагууд, Хэвлэл мэдээллийн байгууллагууд, Хуульзүйн туслах нийгэмлэг, хуулийн хувийн фирмүүд, хувийн мөрдөгчид, шүүхийн шинжилгээний Stroz Friedberg, Gibson Dunn, Skadden Arps, Proskauer Rose, Kroll, Lefcourt Law зэрэг хуулийн байгууллага, фирмүүдэд мэргэжлийн шүүх шинжээчээр 26 жил тасралтгүй ажиллаж байгаа туршлагатай.</p><span class="gl-toggle-btn" onclick="toggleGlText(this)">Цааш нь</span></div>
     </div><!-- glass box end -->
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		
-<footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
+<!-- <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
 </div><!-- content-section end -->
 	
 	
@@ -693,6 +681,51 @@ function toggleGlText(btnElement) {
             });
         });
 /* ----------------------------MENU SCRIPT END-------------------------------- */
+
+
+
+/* ----------------------------ANIMATION TEXT SCRIPT START-------------------------------- */
+        const text = "This Page is under construction.";
+        const container = document.getElementById('anim-container');
+        const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*ячёсмитьвюЯЧЁСМИТЬВЮйыбөахролдпЙЫБӨАХРОЛДПфцужэнгшүзкеФЦУЖЭНГШҮЗКЕ()';
+        
+        function play() {
+            container.innerHTML = '';
+            const chars = text.split('');
+            const spanList = chars.map(c => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                container.appendChild(span);
+                return { el: span, char: c, isSpace: c === ' ' };
+            });
+            
+            let frame = 0;
+            function update() {
+                let allDone = true;
+                spanList.forEach((item, i) => {
+                    if (item.isSpace) { item.el.textContent = ' '; return; }
+                    const startFrame = i * 2;
+                    const endFrame = startFrame + 15;
+                    if (frame < startFrame) {
+                        allDone = false; item.el.textContent = '';
+                    } else if (frame < endFrame) {
+                        allDone = false; item.el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    } else {
+                        item.el.textContent = item.char;
+                    }
+                });
+                frame++;
+                if (!allDone) {
+                    setTimeout(() => requestAnimationFrame(update), 10);
+                } else {
+                    setTimeout(play, 2500);
+                }
+            }
+            update();
+        }
+        play();
+/* ----------------------------ANIMATION TEXT SCRIPT END-------------------------------- */
+
 
     </script>
 
