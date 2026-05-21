@@ -7,8 +7,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
 	<style>
     
-    
-    
 /* LENIS START */
         html.lenis, html.lenis body {height: auto;}
 		.lenis.lenis-smooth {scroll-behavior: auto !important;}
@@ -149,9 +147,8 @@
     	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
 
-
 /* TEXT WRAPPER START */
-/* 📝 Текстийг удирдах гаднах хайрцаг */
+/* Текстийг удирдах container box */
 .gl-text-wrapper { position: relative; margin: 0px 0px 5px 0px; width: 100%; }
 .gl-truncate-text { /* ✂️ Текстийг заасан мөрөөр автоматаар таслах гол хэсэг */
     display: -webkit-box;
@@ -175,19 +172,11 @@
 .gl-toggle-btn:hover { color: #ffffff; }
 /* TEXT WRAPPER END */
     
-    
-    
 /* VIDEO CONTAINER STYLE */
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px; background: #000; border: 1px solid rgba(255, 255, 255, 0.1); box-sizing: border-box; border-radius: 4px; }
 .video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
     
-    
-    
-
-    
-        /* ==========================================================================
-           2. УХААЛАГ АЛБОМ ГРИД (ЗӨВХӨН ЗЭРЭГЦЭЭ 2 КАРТ - 1 МӨРТЭЙ)
-           ========================================================================== */
+/* 1. УХААЛАГ АЛБОМ ГРИД (ЗӨВХӨН ЗЭРЭГЦЭЭ 2 КАРТ - 1 МӨРӨНД) ========================================================================== */
         .gl-smart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)); gap: 4px; width: 100%; }
         .gl-card-item { 
             position: relative; /* Доторх элементүүд болон маскийг байршуулах суурь цэг болгоно */
@@ -223,9 +212,7 @@
             z-index: 10; /* Зургийн наагуур харуулах давхарга */
             pointer-events: none; /* Даралт, клик үйлдлийг карт руу шууд нэвтрүүлнэ */ }
 
-        /* ==========================================================================
-           3. ЛАЙТБОКС СИСТЕМ (ПОПАП ТОМРУУЛАГЧ ЦОНХ)
-           ========================================================================== */
+/* 2. ЛАЙТБОКС СИСТЕМ (ПОПАП ТОМРУУЛАГЧ ЦОНХ) ========================================================================== */
         .gl-modal-overlay {
             position: fixed; /* Дэлгэцийн байрлалаас уяж, хуудсыг гүйлгэхэд хамт хөдлөхгүй болгоно */
             top: 0; left: 0; /* Дэлгэцийн зүүн дээд буланд наана */
@@ -323,7 +310,7 @@
         .gl-nav-btn-zone.next .gl-arrow-line { transform: rotate(135deg); } /* Шугамыг 135 градус эргүүлж баруун зүг заасан сум болгоно */
         .gl-nav-btn-zone:hover .gl-arrow-line { border-color: #38bdf8; } /* Хулгана очиход сумыг гоё тод цэнхэр өнгөтэй болгоно */
 
-        /* 📱 ГАР УТАС БА ТАБЛЕТАД ЗОРИУЛСАН RESPONSIVE ЗАСВАР */
+/* 📱 ГАР УТАС БА ТАБЛЕТАД ЗОРИУЛСАН RESPONSIVE ЗАСВАР */
         @media (max-width: 1024px) {
             .gl-modal-container { width: 95%; } /* Модал өргөнийг дэлгэцийн 95 хувь болгож томруулна */
             .gl-nav-btn-zone {
@@ -339,26 +326,21 @@
             .gl-modal-close { top: -50px; right: 10px; } /* Хаах икс товчийг гар утасны дэлгэцийн баруун дээд буланд тааруулна */ }    
     
     
-    /* animation word start */
+/* animation word start */
         .char { display: inline-block; white-space: pre; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 0; } 50% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-    /* animation word end */
+/* animation word end */
     
-    /* BANK ACCOUNT NUMBER COPY BUTTON */
+/* BANK ACCOUNT NUMBER COPY BUTTON */
         .account-container { display: flex; align-items: center; justify-content: space-between; background-color: #f5f5f7; padding: 12px 16px; border-radius: 8px; border: 1px solid #e8e8ed; }
         .copy-btn { background-color: #0066cc; color: white; border: none; padding: 8px 14px; font-size: 12px; font-weight: 500; border-radius: 6px; cursor: pointer; transition: background-color 0.2s ease; white-space: nowrap; }
         .copy-btn:hover { background-color: #1a8cff; }
         .copy-btn.copied { background-color: #34c759; /* Амжилттай хуулбал ногоон өнгөтэй болно */ }
-    /* BANK ACCOUNT NUMBER COPY BUTTON */
+/* BANK ACCOUNT NUMBER COPY BUTTON */
     
     
-    </style>
+</style>
 </head>
-
-
-
-
-
 <body>
 	<div class="mobile-bg-fix"></div>
 <!-- NAVIGATION BAR -->
@@ -380,12 +362,9 @@
 
 
 <!-- Үндсэн агуулга -->
-    <div class="content-section">
+<div class="content-section">
 
-
-
-
-    <div  style="max-width: 100vw;
+<div  style="max-width: 100vw;
     	background: transparent;
     	border: none;
     	box-shadow: none;
@@ -397,13 +376,7 @@
         font-weight: 100;
         font-size: 2.5rem;">
 <div id="anim-container"></div>
-    </div><!-- glass box end -->
-
-
-
-
-
-
+</div>
 
 
 
@@ -413,14 +386,10 @@
         <p style="font-size: 1.3em; color: #99ceff; line-height: 1.0;">MN 1400 1500 &#8203; &#8203;<span style="user-select: all; -webkit-user-select: all; pointer-events: text;" id="accountNum">&#8203;117&#8203;510&#8203;4590</span></p>
         <p style="font-size: 1.2em; color: #99ceff; line-height: 0.6; margin-bottom: 25px;">Dorjzodov G.</p>
         <button class="copy-btn" id="copyBtn" onclick="copyAccount()">ХУУЛАХ</button>
-    
-        
-    </div><!-- glass box end -->
+</div><!-- glass box end -->
 
 
 
-
-		
 <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
 </div><!-- content-section end -->
 	
@@ -730,6 +699,7 @@ function toggleGlText(btnElement) {
         }
         play();
 /* ----------------------------ANIMATION TEXT SCRIPT END-------------------------------- */
+
 /* ----------------------------ACCOUNT NUMBER COPY BUTTON START ------------------------ */
 function copyAccount() {
     // 1. Дансны дугаарыг текстээр авна (Тусгай тэмдэгтийг цэвэрлэж авна)
@@ -770,6 +740,13 @@ function copyAccount() {
 <!-- LIGHTBOX POP-UP END -->
 
 
+
+
+
+<!-- <p>Нөлөө бүхий улстөрчдийн 60 тэрбумын хэргийг 10-аад жилийн өмнө нийгэмд илчилж шүгэл үлээсэнээрээ би ахуй амьдралаараа бүхэлдээ хохирч, нийгмийн ялгаварлан гадуурхалтад өртөж, нийгмийн харилцаанаас тусгаарлагдсан нь хатуу үнэн. Улмаар ажил хөдөлмөр эрхлэх, гэр бүлээ хамгаалах, эрүүл мэндээ дэмжих бүхий л боломжоо алдсан.</p>
+<p>Амьжиргааны зардал, эм, хоол хүнс, өдөр тутмын хэрэглээний болон ашиглалтын урсгал зардалд зориулсан тэтгэлэг;</p>
+<p>Ажиллах, бүтээл туурвихад шаардлагатай компьютер, офис техник хэрэгсэл, интернет холболт, домайн, вебхостод зориулсан тэтгэлэг;</p>
+<p>Аюулгүй зорчих, нийгмийн харилцаанд оролцох эрхийн баталгаа;</p> -->
 
 
 
