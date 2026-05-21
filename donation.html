@@ -105,7 +105,7 @@
             backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 20px 30px 20px 30px;
+            padding: 20px 25px 20px 25px;
             font-size: 0.90em;
 			text-align: left;
             color: #f1f5f9;                           /* glass-box global text color */
@@ -385,7 +385,7 @@
         <p style="font-size: 1.1em; margin-bottom: 10px; color: #a6a6a6;">ГОЛОМТ БАНКНЫ ДАНС:</p>
         <p style="font-size: 1.3em; color: #99ceff; line-height: 1.0;">MN 1400 1500 &#8203; &#8203;<span style="user-select: all; -webkit-user-select: all; pointer-events: text;" id="accountNum">&#8203;117&#8203;510&#8203;4590</span></p>
         <p style="font-size: 1.2em; color: #99ceff; line-height: 0.6; margin-bottom: 25px;">Доржзодов Г.</p>
-        <button class="copy-btn" id="copyBtn" onclick="copyAccount()">ХУУЛАХ</button>
+        <button class="copy-btn" id="copyBtn" onclick="copyAccount()">ДАНСНЫ ДУГААРЫГ ХУУЛАХ</button>
 </div><!-- glass box end -->
 
 
@@ -723,7 +723,7 @@ function copyAccount() {
 
         // 2 секундын дараа буцаад хэвэндээ орно
         setTimeout(() => {
-            copyBtn.innerText = "ХУУЛАХ";
+            copyBtn.innerText = "ДАНСНЫ ДУГААРЫГ ХУУЛАХ";
             copyBtn.classList.remove("copied");
         }, 2000);
     }).catch(err => {
