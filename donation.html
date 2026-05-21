@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The2m16 - Make A Donate</title>
+    <title>The2m16 - Make A Donation</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
 	<style>
     
@@ -107,15 +107,15 @@
             backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 20px 120px;
+            padding: 20px 80px;
             font-size: 0.95em;
-			text-align: justify;
+			text-align: left;
             color: #f1f5f9;                           /* glass-box global text color */
             -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             line-height: 1.5;
             height: fit-content; }
-        p {text-indent: 2em; color: #f1f5f9; margin-top: 10px; margin-bottom: 10px;}
+        p {color: #f1f5f9; margin-top: 10px; margin-bottom: 10px;}
         h3 {color: #f1f5f9; font-size: 1.2em; line-height: 1.2; text-align: left;}
         li {color: #f1f5f9;}
         a {color: #1a8cff; text-decoration: none;}
@@ -401,7 +401,9 @@
 
 <div class="glass-box">
         <h4></h4> 
-        <p>Golomt Bank<br>MN1400 1500 1175104590<br>Dorjzodov G.</p>
+        <p style="font-size: 1.1em; margin-bottom: 20px; color: #bfbfbf;">GOLOMT BANK</p>
+        <p style="font-size: 1.3em; line-height: 0.6;">MN1400 1500 1175104590</p>
+        <p style="font-size: 1.2em; line-height: 0.8;">Dorjzodov G.</p>
     </div><!-- glass box end -->
 
 
@@ -712,7 +714,7 @@ function toggleGlText(btnElement) {
                 container.appendChild(span);
             });
             
-            const totalTime = (chars.length * 0.05 * 1000) + (0.5 * 1000) + 2500;
+            const totalTime = (chars.length * 0.05 * 1000) + (0.5 * 1000) + 10000;
             setTimeout(play, totalTime);
         }
         play();
