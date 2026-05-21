@@ -105,7 +105,7 @@
             backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 20px 25px 20px 25px;
+            padding: 15px 25px 15px 25px;
             font-size: 0.90em;
 			text-align: left;
             color: #f1f5f9;                           /* glass-box global text color */
@@ -333,11 +333,15 @@
     
 /* BANK ACCOUNT NUMBER COPY BUTTON */
         .account-container { display: flex; align-items: center; justify-content: space-between; background-color: #f5f5f7; padding: 12px 16px; border-radius: 8px; border: 1px solid #e8e8ed; }
-        .copy-btn { background-color: #0066cc; color: white; border: none; padding: 8px 14px; font-size: 12px; font-weight: 500; border-radius: 6px; cursor: pointer; transition: background-color 0.2s ease; white-space: nowrap; }
+        .copy-btn { background-color: #0066cc; color: white; border: none; padding: 8px 14px; margin-bottom: 20px; font-size: 12px; font-weight: 500; border-radius: 6px; cursor: pointer; transition: background-color 0.2s ease; white-space: nowrap; }
         .copy-btn:hover { background-color: #1a8cff; }
         .copy-btn.copied { background-color: #34c759; /* Амжилттай хуулбал ногоон өнгөтэй болно */ }
 /* BANK ACCOUNT NUMBER COPY BUTTON */
-    
+
+
+
+
+
     
 </style>
 </head>
@@ -381,22 +385,23 @@
 
 
 <div class="glass-box">
-        <h4></h4> 
         <p style="font-size: 1.1em; margin-bottom: 10px; color: #a6a6a6;">ГОЛОМТ БАНКНЫ ДАНС:</p>
-        <p style="font-size: 1.3em; color: #99ceff; line-height: 1.0;">MN 1400 1500 &#8203; &#8203;<span style="user-select: all; -webkit-user-select: all; pointer-events: text;" id="accountNum">&#8203;117&#8203;510&#8203;4590</span></p>
-        <p style="font-size: 1.2em; color: #99ceff; line-height: 0.6; margin-bottom: 25px;">Доржзодов Г.</p>
-        <button class="copy-btn" id="copyBtn" onclick="copyAccount()">ДАНСНЫ ДУГААРЫГ ХУУЛАХ</button>
+        <p style="font-size: 1.3em; color: #99ceff; line-height: 1.0;">MN 1400 1500 &#8203; &#8203;<span class="account-number" id="bank-acc">&#8203;117&#8203;510&#8203;4590</span></p>
+        <p style="font-size: 1.2em; color: #99ceff; line-height: 0.6; margin-bottom: 25px;">Dorjzodov G.</p>
+        <button class="copy-btn" style="margin-bottom: 10px;" onclick="copyText('bank-acc', this)">ДАНСНЫ ДУГААРЫГ ХУУЛАХ</button>
 </div><!-- glass box end -->
 
 
 <div class="glass-box">
-        <h4></h4> 
-        <p style="font-size: 1.1em; margin-bottom: 10px; color: #a6a6a6;">CRYPTO DONATION (USDT - TRC20 network)</p>
-        <p style="font-size: 17px; color: #99ceff; line-height: 1.0;">TJ9tqfaa6gzaFXTWRYqmFSwAy6Ruay86kn</p>
+        <p style="font-size: 1.1em; margin-bottom: 10px; color: #a6a6a6;">CRYPTO DONATION (USDT - TRC20):</p>
+        <p style="font-size: 17px; color: #99ceff; line-height: 1.0;" class="account-number crypto-addr" id="crypto-addr">TJ9tqfaa6gzaFXTWRYqmFSwAy6Ruay86kn</p>
         <p style="font-size: 1.0em; color: #99ceff; line-height: 0.6; margin-bottom: 25px;">(Анхаар: Заавал TRC20 сүлжээгээр илгээнэ үү)</p>
+        <button class="copy-btn" onclick="copyText('crypto-addr', this)">ХАЯГИЙГ ХУУЛАХ</button>
         <div style="text-align: center; margin-bottom: 10px;"><img src="https://the2m16.github.io/web/images/USDTtrc20.jpeg" width="200" height="200"></div>
-        
 </div><!-- glass box end -->
+
+
+
 	
 
 <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
@@ -710,25 +715,29 @@ function toggleGlText(btnElement) {
 /* ----------------------------ANIMATION TEXT SCRIPT END-------------------------------- */
 
 /* ----------------------------ACCOUNT NUMBER COPY BUTTON START ------------------------ */
-function copyAccount() {
-    // 1. Дансны дугаарыг текстээр авна (Тусгай тэмдэгтийг цэвэрлэж авна)
-    const accountText = document.getElementById("accountNum").innerText.replace(/[\u200B-\u200D\uFEFF]/g, "");
-    const copyBtn = document.getElementById("copyBtn");
-
-    // 2. Түр санах ойд (Clipboard) хуулна
-    navigator.clipboard.writeText(accountText).then(() => {
-        // 3. Товчлуурын төлөвийг өөрчилж харуулна
-        copyBtn.innerText = "ХУУЛАГДЛАА";
-        copyBtn.classList.add("copied");
-
-        // 2 секундын дараа буцаад хэвэндээ орно
-        setTimeout(() => {
-            copyBtn.innerText = "ДАНСНЫ ДУГААРЫГ ХУУЛАХ";
-            copyBtn.classList.remove("copied");
-        }, 2000);
-    }).catch(err => {
-        console.error('Алдаа гарлаа: ', err);
-    });
+function copyText(elementId, button) {
+  // 1. ID-аар нь дансны дугаарыг олж авна
+  const textToCopy = document.getElementById(elementId).innerText;
+  
+  // 2. Хэрэглэгчийн утас эсвэл компьютерын санах ойд (Clipboard) хуулна
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    
+    // Хуучин текстийг нь түр хадгалж авна (Жишээ нь: "ХАЯГИЙГ ХУУЛАХ")
+    const originalText = button.innerText;
+    
+    // Товчлуурын харагдах байдлыг өөрчилнө
+    button.innerText = "ХУУЛАГДЛАА!";
+    button.classList.add("copied"); // Ногоон өнгөтэй CSS-ийг идэвхжүүлнэ
+    
+    // 2 секундын дараа буцаад хуучин хэвэнд нь оруулна
+    setTimeout(() => {
+      button.innerText = originalText;
+      button.classList.remove("copied");
+    }, 2000);
+    
+  }).catch(err => {
+    console.error("Хуулахад алдаа гарлаа: ", err);
+  });
 }
 /* ----------------------------ACCOUNT NUMBER COPY BUTTON END ------------------------ */
     </script>
