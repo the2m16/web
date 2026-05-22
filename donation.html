@@ -149,10 +149,9 @@
 /* ANIMATED TEXT END */
     
 /* BANK ACCOUNT NUMBER COPY BUTTON START */
-        .account-container { display: flex; align-items: center; justify-content: space-between; background-color: #f5f5f7; padding: 12px 16px; border-radius: 8px; border: 1px solid #e8e8ed; }
         .copy-btn { background-color: #0066cc; color: white; border: none; padding: 8px 14px; margin-bottom: 20px; font-size: 12px; font-weight: 500; border-radius: 6px; cursor: pointer; transition: background-color 0.2s ease; white-space: nowrap; }
         .copy-btn:hover { background-color: #1a8cff; }
-        .copy-btn.copied { background-color: #34c759; /* Амжилттай хуулбал ногоон өнгөтэй болно */ }
+        .copy-btn.copied { background-color: #34c759; /* ХУУЛАГДЛАА товчны ногоон өнгө */ }
 /* BANK ACCOUNT NUMBER COPY BUTTON END */
 
 
@@ -202,21 +201,19 @@
 
 
 <div class="glass-box">
-        <p style="font-size: 16px; margin-bottom: 10px; color: #a6a6a6;">ГОЛОМТ БАНКНЫ ДАНС:</p>
-        <p style="font-size: 1.3em; color: #99ceff; line-height: 1.0;">MN 1400 1500 &#8203; &#8203;<span class="account-number" id="bank-acc">&#8203;117&#8203;510&#8203;4590</span></p>
-        <p style="font-size: 15px; color: #99ceff; line-height: 0.6; margin-bottom: 25px;">Г.Доржзодов</p>
-        <button class="copy-btn" style="margin-bottom: 10px;" onclick="copyText('bank-acc', this)">ДАНСНЫ ДУГААРЫГ ХУУЛАХ</button>
+    <p style="font-size: 16px; font-weight: 600; margin-bottom: 10px; color: #a6a6a6;">ГОЛОМТ БАНКНЫ ДАНС:</p>
+    <p style="font-size: 17px; color: #99ceff; line-height: 1.2; margin-bottom: 5px;">MN 1400 1500 1175104590</p><span id="bank-acc" style="display: none;">140015001175104590</span>
+    <p style="font-size: 17px; color: #99ceff; line-height: 1.2; margin-bottom: 20px;">Г.Доржзодов</p>
+    <button class="copy-btn" style="margin-bottom: 10px;" onclick="copyText('bank-acc', this)">ДАНСНЫ ДУГААРЫГ ХУУЛАХ</button>
 </div><!-- glass box end -->
-
 
 <div class="glass-box">
-        <p style="font-size: 16px; margin-bottom: 10px; color: #a6a6a6;">CRYPTO DONATION (USDT - TRC20):</p>
-        <p style="font-size: 17px; color: #99ceff; line-height: 1.0;" class="account-number crypto-addr" id="crypto-addr">TJ9tqfaa6gzaFXTWRYqmFSwAy6Ruay86kn</p>
-        <p style="font-size: 15px; color: #99ceff; line-height: 0.6; margin-bottom: 25px;">(<i>TRC20 сүлжээгээр илгээнэ үү</i>)</p>
-        <button class="copy-btn" style="margin-bottom: 25px;" onclick="copyText('crypto-addr', this)">ХАЯГИЙГ ХУУЛАХ</button>
-        <div style="text-align: center;  margin-bottom: 10px;"><img src="https://the2m16.github.io/web/images/USDTtrc20.jpeg" width="200" height="200"></div>
+    <p style="font-size: 16px; font-weight: 600; margin-bottom: 10px; color: #a6a6a6;">CRYPTO SUPPORT (USDT)</p>
+    <p style="font-size: 17px; color: #99ceff; line-height: 1.2; margin-bottom: 5px;">NETWORK: TRC20</p>
+    <p style="font-size: 17px; color: #99ceff; line-height: 1.2; margin-bottom: 20px; word-break: break-all;" class="account-number crypto-addr" id="crypto-addr">TJ9tqfaa6gzaFXTWRYqmFSwAy6Ruay86kn</p>
+    <button class="copy-btn" style="margin-bottom: 20px;" onclick="copyText('crypto-addr', this)">ХЭТЭВЧНИЙ ХАЯГИЙГ ХУУЛАХ</button>
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;"><img src="https://the2m16.github.io/web/images/USDTtrc20.jpeg" width="200" height="200" alt="USDT TRC20 QR Code"></div>
 </div><!-- glass box end -->
-
 
 
 	
@@ -293,20 +290,15 @@
 
 /* ----------------------------ACCOUNT NUMBER COPY BUTTON START ------------------------ */
 function copyText(elementId, button) {
-  // 1. ID-аар нь дансны дугаарыг олж авна
-  const textToCopy = document.getElementById(elementId).innerText;
+  // textGroup -> textContent болгож өөрчлөв. Ингэснээр нууцлагдсан 18 орныг шууд уншина.
+  const textToCopy = document.getElementById(elementId).textContent;
   
-  // 2. Хэрэглэгчийн утас эсвэл компьютерын санах ойд (Clipboard) хуулна
   navigator.clipboard.writeText(textToCopy).then(() => {
-    
-    // Хуучин текстийг нь түр хадгалж авна (Жишээ нь: "ХАЯГИЙГ ХУУЛАХ")
     const originalText = button.innerText;
     
-    // Товчлуурын харагдах байдлыг өөрчилнө
     button.innerText = "ХУУЛАГДЛАА!";
-    button.classList.add("copied"); // Ногоон өнгөтэй CSS-ийг идэвхжүүлнэ
+    button.classList.add("copied");
     
-    // 2 секундын дараа буцаад хуучин хэвэнд нь оруулна
     setTimeout(() => {
       button.innerText = originalText;
       button.classList.remove("copied");
@@ -318,6 +310,13 @@ function copyText(elementId, button) {
 }
 /* ----------------------------ACCOUNT NUMBER COPY BUTTON END ------------------------ */
     </script>
+
+
+
+
+
+
+
 
 
 
