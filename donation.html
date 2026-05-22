@@ -201,7 +201,7 @@
 
 
 <div class="glass-box">
-    <p style="font-size: 16px; font-weight: 600; margin-bottom: 10px; color: #a6a6a6;">ГОЛОМТ БАНКНЫ ДАНС:</p>
+    <p style="font-size: 16px; font-weight: 600; margin-bottom: 10px; color: #a6a6a6;">ГОЛОМТ БАНК</p>
     <p style="font-size: 17px; color: #99ceff; line-height: 1.2; margin-bottom: 5px;">MN 1400 1500 1175104590</p><span id="bank-acc" style="display: none;">140015001175104590</span>
     <p style="font-size: 17px; color: #99ceff; line-height: 1.2; margin-bottom: 20px;">Г.Доржзодов</p>
     <button class="copy-btn" style="margin-bottom: 10px;" onclick="copyText('bank-acc', this)">ДАНСНЫ ДУГААРЫГ ХУУЛАХ</button>
@@ -266,27 +266,65 @@
 /* ----------------------------MENU SCRIPT END-------------------------------- */
 
 /* ----------------------------ANIMATED TEXT SCRIPT START-------------------------------- */
-        const text = "Support The Truth.";
-        const container = document.getElementById('anim-container');
-        
-        function play() {
-            container.innerHTML = '';
-            const chars = text.split('');
-            chars.forEach((char, index) => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.className = 'char';
-                span.style.opacity = '0';
-                span.style.animation = 'pulse 0.5s forwards';
-                span.style.animationDelay = `${index * 0.05}s`;
-                container.appendChild(span);
-            });
-            
-            const totalTime = (chars.length * 0.05 * 1000) + (0.5 * 1000) + 10000;
-            setTimeout(play, totalTime);
-        }
+const messages = [
+    "Support The Truth.",
+    "Verify The Facts.",
+    "Knowledge Is Power."
+];
+
+const container = document.getElementById('anim-container');
+let currentIndex = 0; // Одоо харагдаж байгаа мессежийн индекс
+
+function play() {
+    container.innerHTML = '';
+    
+    const currentText = messages[currentIndex];
+    const chars = currentText.split('');
+    
+    chars.forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.className = 'char';
+        span.style.opacity = '0';
+        span.style.animation = 'pulse 0.5s forwards';
+        span.style.animationDelay = `${index * 0.05}s`;
+        container.appendChild(span);
+    });
+    
+    const totalTime = (chars.length * 0.05 * 1000) + (0.5 * 1000) + 2000; 
+    // дэлгэц дээр тогтох хугацаа 2000=2sec, 10000=10sec
+    setTimeout(() => {
+        currentIndex = (currentIndex + 1) % messages.length; // Лүүп
         play();
+    }, totalTime);
+}
+
+play();
 /* ----------------------------ANIMATED TEXT SCRIPT END-------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ----------------------------ACCOUNT NUMBER COPY BUTTON START ------------------------ */
 function copyText(elementId, button) {
