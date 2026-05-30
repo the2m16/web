@@ -1634,14 +1634,6 @@
                 wrapper.classList.remove('gl-expanded');
                 wrapper.classList.add('gl-truncated');
                 button.textContent = 'Дэлгэрэнгүй...';
-                
-                // ЛЕНИС ЗӨРЧИЛ АРИЛГАХ ЗАСВАР:
-                // Хөтчийн scrollIntoView-ийг ашиглалгүй, Lenis-ийн өөрийнх нь scrollTo функцыг дуудна.
-                // Ингэснээр ямар ч гацалтгүй, маш зөөлөн текстийн орой руу скролл гүйнэ.
-                lenis.scrollTo(wrapper, {
-                    offset: -40, // Дээд талд нь бага зэрэг зай үлдээж харуулна (Glass box харагдахад гоё)
-                    duration: 0.8 // Хэр хурдан гүйхийг заана
-                });
             }
         }
 /* ----------------------------TEXT WRAPPER END-------------------------------- */
