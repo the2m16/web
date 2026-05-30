@@ -1,366 +1,328 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The2m16 - News</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>The2m16 - News</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="https://the2m16.github.io/web/images/favicon.png">
 	<style>
-    
-    
-    
+
 /* LENIS START */
-        html.lenis, html.lenis body {height: auto;}
+		html.lenis, html.lenis body {height: auto;}
 		.lenis.lenis-smooth {scroll-behavior: auto !important;}
 		.lenis.lenis-smooth [data-lenis-prevent] {overflow: auto;}
 		.lenis.lenis-stopped {overflow: hidden;}
 		.lenis.lenis-smooth iframe {pointer-events: none;}
 /* LENIS END */
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-        html, body { overflow-x: hidden; width: 100%; }
-        body {
-            width: 100%;
+		* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+		html, body { overflow-x: hidden; width: 100%; }
+		body {
+			width: 100%;
 			margin: 0; }
 		.mobile-bg-fix {
-    		position: fixed;
-    		top: 0;
-    		left: 0;
-    		width: 100%;
-    		height: 100%;
-    		background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://the2m16.github.io/web/images/background3872x2592.webp');
-    		background-size: cover;
-    		background-position: center;
-    		z-index: -1;
-    		-webkit-transform: translateZ(0);
-    		transform: translateZ(0); }
-		
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://the2m16.github.io/web/images/background3872x2592.webp');
+			background-size: cover;
+			background-position: center;
+			z-index: -1;
+			-webkit-transform: translateZ(0);
+			transform: translateZ(0); }
+
 /* ХУУДАС АЧААЛАГДАХ ҮЕД ЗӨӨЛӨН ТОДРОХ (FADE-IN) */
-        @keyframes pageFadeIn {
-            to { opacity: 1; } }
+		@keyframes pageFadeIn {
+			to { opacity: 1; } }
 
 /* NAVIGATION BAR FIXED POSITION */
-        .navbar {
-            width: 100%;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            z-index: 1000;
-            background: rgba(15, 23, 42, 0.2); /* Шилэн бараан туяа--------------------------------- */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: fixed; /* Тогтмол байрлал */
-            top: 0;
-            left: 0; }
-        .navbar.sticky {
-            position: fixed; /* Скролл хийхэд дээд талд наах */
-            top: 0;
-            transform: none;
-            background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
-        .logo { color: white; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
+		.navbar {
+			width: 100%;
+			height: 38px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 20px;
+			z-index: 1000;
+			background: rgba(15, 23, 42, 0.2); /* Шилэн бараан туяа--------------------------------- */
+			backdrop-filter: blur(15px);
+			-webkit-backdrop-filter: blur(15px);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			position: fixed; /* Тогтмол байрлал */
+			top: 0;
+			left: 0; }
+		.navbar.sticky {
+			position: fixed; /* Скролл хийхэд дээд талд наах */
+			top: 0;
+			transform: none;
+			background: rgba(15, 23, 42, 0.1); /* Скроллдох үед бараан болно */ }
+		.logo { color: white; font-weight: 400; font-size: 14px; letter-spacing: 1px; }
 
 /* MENU BUTTON */
-        .nav-links { display: flex; list-style: none; height: 100%; }
-        .nav-links li { height: 100%; }
-        .nav-links a {
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            height: 100%;
-            color: rgba(255, 255, 255, 0.5); /* menu button text color */
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            transition: 0.3s; }
-        .nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+		.nav-links { display: flex; list-style: none; height: 100%; }
+		.nav-links li { height: 100%; }
+		.nav-links a {
+			display: flex;
+			align-items: center;
+			padding: 0 15px;
+			height: 100%;
+			color: rgba(255, 255, 255, 0.5); /* menu button text color */
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: 400;
+			transition: 0.3s; }
+		.nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
 
 /* CONTENT SECTION INCLUDING GLASSMORPHIC BOX */
-        .content-section {
-            position: relative;
-            z-index: 2;
-            padding-top: 58px;
-            padding-bottom: 0px;
-            padding-right: 5px;
-            padding-left: 5px;
+		.content-section {
+			position: relative;
+			z-index: 2;
+			padding-top: 58px;
+			padding-bottom: 0px;
+			padding-right: 5px;
+			padding-left: 5px;
 			margin-left: auto;
-            margin-right: auto;
+			margin-right: auto;
 			background: linear-gradient(rgba(0,0,40,0.2), rgba(0,0,0,0.6)); /* Бараан тунгалаг өнгө (0.6 нь тунгалаг байдал) */
 			backdrop-filter: blur(15px);      /* Арын зургийг бүдгэрүүлэх (Блюр эффект) */
 			-webkit-backdrop-filter: blur(10px); /* Safari хөтөчид зориулсан */
-            display: flex;
-            justify-content: center;
-            flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
-            align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
-            gap: 20px;              /* Блокууд хоорондын зай */ }
-        .glass-box {
-            max-width: 1000px;
-            width: 100%;
-            margin-top: 0px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 0px;
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            font-size: 0.95em;
+			display: flex;
+			justify-content: center;
+			flex-direction: column; /* Элементүүдийг босоо чиглэлд цувуулна */
+			align-items: center;    /* Блокуудыг хэвтээ чиглэлд голлуулна */
+			gap: 20px;              /* Блокууд хоорондын зай */ }
+		.glass-box {
+			max-width: 1000px;
+			width: 100%;
+			margin-top: 0px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 0px;
+			background: rgba(0,0,0,0.2);
+			backdrop-filter: blur(25px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 10px;
+			padding: 20px;
+			font-size: 0.95em;
 			text-align: justify;
-            color: #f1f5f9;                           /* glass-box global text color */
-            -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            line-height: 1.5;
-            height: fit-content; }
-        p {text-indent: 2em; color: #f1f5f9; margin-top: 10px; margin-bottom: 10px;}
-        h3 {color: #f1f5f9; font-size: 1.2em; line-height: 1.2; text-align: left;}
-        li {color: #f1f5f9;}
-        a {color: #1a8cff; text-decoration: none;}
-        .list {list-style-type: square; margin-left: 3em; margin-top: 0.5em; margin-bottom: 0.5em;}
-        .q-line {margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 10px;}
+			color: #f1f5f9;                           /* glass-box global text color */
+			-webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;
+			box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+			line-height: 1.5;
+			height: fit-content; }
+		p {text-indent: 2em; color: #f1f5f9; margin-top: 10px; margin-bottom: 10px;}
+		h3 {color: #f1f5f9; font-size: 1.2em; line-height: 1.2; text-align: left;}
+		li {color: #f1f5f9;}
+		a {color: #1a8cff; text-decoration: none;}
+		.list {list-style-type: square; margin-left: 3em; margin-top: 0.5em; margin-bottom: 0.5em;}
+		.q-line {margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 10px;}
 		.q-name {font-size: 13px; color: rgba(255, 255, 255, 0.8); text-align: left; margin: 0; text-transform: uppercase;}
 		.quota {font-size: 14px; color: #f1f5f9; margin: 5px 0; font-style: italic; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word;}
 		.q-source {font-size: 11px; color: #999; margin: 0;}
-        footer { flex-shrink: 0; text-align: center; margin-bottom: 20px; margin-top: 0px; font-size: 13px; background: transparent; color: rgb(255, 255, 255, 0.6); width: 100%; box-sizing: border-box; }
+		footer { flex-shrink: 0; text-align: center; margin-bottom: 20px; margin-top: 0px; font-size: 13px; background: transparent; color: rgb(255, 255, 255, 0.6); width: 100%; box-sizing: border-box; }
 
 /* HAMBURGER MENU (MOBILE SCREEN) */
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
-        .hamburger span { width: 22px; height: 2px; background: white; transition: 0.4s; }
-        @media (max-width: 1000px) {
-        .hamburger { display: flex; }
+		.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+		.hamburger span { width: 22px; height: 2px; background: white; transition: 0.4s; }
+		@media (max-width: 1000px) {
+		.hamburger { display: flex; }
 		.nav-links {
-        	display: flex;
-        	flex-direction: column;
-        	position: fixed; 
-        	top: 38px; 
-        	right: -250px; 
-        	width: 180px;
-        	height: auto; 
-        	background: rgba(0, 0, 0, 0.9); 
-        	transition: 0.4s ease;
-        	border-radius: 0 0 0 6px;
+			display: flex;
+			flex-direction: column;
+			position: fixed; 
+			top: 38px; 
+			right: -250px; 
+			width: 180px;
+			height: auto; 
+			background: rgba(0, 0, 0, 0.9); 
+			transition: 0.4s ease;
+			border-radius: 0 0 0 6px;
 			box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
-        	z-index: 1001;}
-    	.nav-links.active { right: 0; }
-    	.nav-links li { width: 100%; display: block; }
-    	.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+			z-index: 1001;}
+		.nav-links.active { right: 0; }
+		.nav-links li { width: 100%; display: block; }
+		.nav-links a { display: flex; justify-content: left; width: 100%; height: 55px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 		.mobile-bg-fix { height: 100vh; height: -webkit-fill-available; } }
 
-
 /* TEXT WRAPPER START */
-        /* Таны параграфын тохиргоо */
-        .gl-text-wrapper p {
-            text-indent: 2em;                   /* догол мөр Р-ийн урдаас авах зай */
-            margin-bottom: 5px;
-            margin-top: 5px;
-			text-align: justify;
-        }
+	/* Таны параграфын тохиргоо */
+		.gl-text-wrapper p {
+			text-indent: 2em;                   /* догол мөр Р-ийн урдаас авах зай */
+			margin-bottom: 5px;
+			margin-top: 5px;
+			text-align: justify; }
+	/* Текст нуух wrapper */
+		.gl-text-wrapper {
+			position: relative;
+			overflow: hidden; }
+	/* Хумигдсан үеийн тохиргоо */
+		.gl-text-wrapper.gl-truncated {
+			display: -webkit-box;
+			-webkit-line-clamp: 4;				/* Энд ил харагдах мөрийн тоогоо заана */
+			-webkit-box-orient: vertical; }
+	/* Дэлгэгдсэн үеийн тохиргоо */
+		.gl-text-wrapper.gl-expanded {
+			display: block;
+			-webkit-line-clamp: unset;
+			overflow: visible; }
+	/* Товчлуурын загвар (Эхлээд нууц байна, JS-ээр шалгаж ил гаргана) */
+		.gl-toggle-btn {
+			display: none;
+			color: #4da6ff;
+			cursor: pointer;
+			font-weight: 300;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			user-select: none; }
+		.gl-toggle-btn:hover {
+			text-decoration: none;
+			color: #ffff00; }
 
-        /* 1. Текст нуух wrapper */
-        .gl-text-wrapper {
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* 2. Хумигдсан үеийн тохиргоо */
-        .gl-text-wrapper.gl-truncated {
-            display: -webkit-box;
-            -webkit-line-clamp: 4; /* Энд ил харагдах мөрийн тоогоо заана */
-            -webkit-box-orient: vertical;
-        }
-
-        /* 3. Дэлгэгдсэн үеийн тохиргоо */
-        .gl-text-wrapper.gl-expanded {
-            display: block;
-            -webkit-line-clamp: unset;
-            overflow: visible;
-        }
-
-        /* 4. Товчлуурын загвар (Эхлээд нууц байна, JS-ээр шалгаж ил гаргана) */
-        .gl-toggle-btn {
-            display: none; /* [ЗАСВАР] Анх хуудас ачаалагдахад товчийг нууна */
-            color: #4da6ff; /* Glass box дээр тод харах өнгө */
-            cursor: pointer;
-            font-weight: 300;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            user-select: none;
-        }
-        .gl-toggle-btn:hover {
-            text-decoration: none;
-            color: #ffff00;
-        }
-/* TEXT WRAPPER END */
-    
-    
-    
 /* VIDEO CONTAINER STYLE */
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 0px; margin-bottom: 0px; background: #000; border: 1px solid rgba(255, 255, 255, 0.1); box-sizing: border-box; border-radius: 4px; }
 .video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; background: #333; text-align: center; }
-    
-    
-    
 
-    
-        /* ==========================================================================
-           2. УХААЛАГ АЛБОМ ГРИД (ЗӨВХӨН ЗЭРЭГЦЭЭ 2 КАРТ - 1 МӨРТЭЙ)
-           ========================================================================== */
-        .gl-smart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)); gap: 4px; width: 100%; }
-        .gl-card-item { 
-            position: relative; /* Доторх элементүүд болон маскийг байршуулах суурь цэг болгоно */
-            background: rgba(0, 0, 0, 0.3); /* Зураг уншиж байх үед харагдах арын суурь бараан өнгө */
-            border-radius: 4px; /* Картны буланг 4 пикселээр дугуйлна */
-            overflow: hidden; /* Картнаас хальж гарсан зургийг зүсэж нууна */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Картны нарийн цайвар хүрээ */
-            width: 100%; /* Өргөнийг багана дүүрэн болгоно */
-            aspect-ratio: 4 / 3; /* Тэгш өнцөгт хэлбэртэй байлгахын тулд харьцааг 16:9-өөр түгжинэ */
-            cursor: pointer; /* Хулгана дээгүүр очиход дарах боломжтойг илтгэж гар хэлбэртэй болно */ }
 
-        .gl-card-item img { 
-            width: 100%; /* Зургийн өргөнийг карт дүүрэн болгоно */
-            height: 100%; /* Зургийн өндрийг карт дүүрэн болгоно */
-            object-fit: cover; /* Зургийн харьцааг алдагдуулахгүйгээр тааруулж дүүргэнэ */
-            object-position: top; /* Зургийг дээрээс нь эхэлж харуулна */
-            transition: transform 0.4s ease; /* Хулгана очих үед зөөлөн томрох хөдөлгөөний хугацаа */ }
+/* УХААЛАГ АЛБОМ ГРИД (ЗӨВХӨН ЗЭРЭГЦЭЭ 2 КАРТ - 1 МӨРТЭЙ) */
+		.gl-smart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)); gap: 4px; width: 100%; }
+		.gl-card-item { 
+			position: relative; /* Доторх элементүүд болон маскийг байршуулах суурь цэг болгоно */
+			background: rgba(0, 0, 0, 0.3); /* Зураг уншиж байх үед харагдах арын суурь бараан өнгө */
+			border-radius: 4px; /* Картны буланг 4 пикселээр дугуйлна */
+			overflow: hidden; /* Картнаас хальж гарсан зургийг зүсэж нууна */
+			border: 1px solid rgba(255, 255, 255, 0.1); /* Картны нарийн цайвар хүрээ */
+			width: 100%; /* Өргөнийг багана дүүрэн болгоно */
+			aspect-ratio: 4 / 3; /* Тэгш өнцөгт хэлбэртэй байлгахын тулд харьцааг 16:9-өөр түгжинэ */
+			cursor: pointer; /* Хулгана дээгүүр очиход дарах боломжтойг илтгэж гар хэлбэртэй болно */ }
+		.gl-card-item img { 
+			width: 100%; /* Зургийн өргөнийг карт дүүрэн болгоно */
+			height: 100%; /* Зургийн өндрийг карт дүүрэн болгоно */
+			object-fit: cover; /* Зургийн харьцааг алдагдуулахгүйгээр тааруулж дүүргэнэ */
+			object-position: top; /* Зургийг дээрээс нь эхэлж харуулна */
+			transition: transform 0.4s ease; /* Хулгана очих үед зөөлөн томрох хөдөлгөөний хугацаа */ }
+		.gl-card-item:hover img { transform: scale(1.03); }
 
-        .gl-card-item:hover img { transform: scale(1.03); }
+/* УХААЛАГ АЛБОМ. БАРУУН ТАЛЫН ДЭЭД НҮДЭНД ХАРАГДАХ ХАР МАСК (+ТОО) */
+		.gl-more-overlay {
+			position: absolute; /* Карт дүүрэн бүрхэж байрлана */
+			top: 0; left: 0; /* Зүүн дээд буланд наана */
+			width: 100%; height: 100%; /* Өргөн, өндрийг карттай яг ижил болгоно */
+			background: rgba(0, 0, 0, 0.8); /* Арын фонтой уусах хагас тунгалаг бараан маск */
+			display: flex; /* Текстийг голлуулахаар Flexbox идэвхжүүлнэ */
+			align-items: center; /* Босоо тэнхлэгийн дагуу яг голд нь байрлуулна */
+			justify-content: center; /* Хэвтээ тэнхлэгийн дагуу яг голд нь байрлуулна */
+			font-size: 24px; /* Үлдсэн зургийн тоог харуулах үсгийн хэмжээ */
+			font-weight: 500; /* Үсгийг дунд зэргийн зузаантай болгоно */
+			color: #ffffff; /* Текстийн өнгийг цэвэр цагаан болгоно */
+			z-index: 10; /* Зургийн наагуур харуулах давхарга */
+			pointer-events: none; /* Даралт, клик үйлдлийг карт руу шууд нэвтрүүлнэ */ }
 
-        /* БАРУУН ТАЛЫН ДЭЭД НҮДЭНД ХАРАГДАХ ХАР МАСК (+ТОО) */
-        .gl-more-overlay {
-            position: absolute; /* Карт дүүрэн бүрхэж байрлана */
-            top: 0; left: 0; /* Зүүн дээд буланд наана */
-            width: 100%; height: 100%; /* Өргөн, өндрийг карттай яг ижил болгоно */
-            background: rgba(0, 0, 0, 0.8); /* Арын фонтой уусах хагас тунгалаг бараан маск */
-            display: flex; /* Текстийг голлуулахаар Flexbox идэвхжүүлнэ */
-            align-items: center; /* Босоо тэнхлэгийн дагуу яг голд нь байрлуулна */
-            justify-content: center; /* Хэвтээ тэнхлэгийн дагуу яг голд нь байрлуулна */
-            font-size: 24px; /* Үлдсэн зургийн тоог харуулах үсгийн хэмжээ */
-            font-weight: 500; /* Үсгийг дунд зэргийн зузаантай болгоно */
-            color: #ffffff; /* Текстийн өнгийг цэвэр цагаан болгоно */
-            z-index: 10; /* Зургийн наагуур харуулах давхарга */
-            pointer-events: none; /* Даралт, клик үйлдлийг карт руу шууд нэвтрүүлнэ */ }
-
-        /* ==========================================================================
-           3. ЛАЙТБОКС СИСТЕМ (ПОПАП ТОМРУУЛАГЧ ЦОНХ)
-           ========================================================================== */
-        .gl-modal-overlay {
-            position: fixed; /* Дэлгэцийн байрлалаас уяж, хуудсыг гүйлгэхэд хамт хөдлөхгүй болгоно */
-            top: 0; left: 0; /* Дэлгэцийн зүүн дээд буланд наана */
-            width: 100%; height: 100%; /* Бүхэл дэлгэцийг бүрэн бүрхэнэ */
-            background: rgba(0, 0, 0, 0.6); /* Модал нээгдэх үеийн арын гүн бараан суурь өнгө. 4-р тоог 1 гэчихвэл тас хар фон, 0 гэчихвэл блюрдсэн тунгалаг фон болно*/
-            backdrop-filter: blur(20px); /* Ард үлдсэн үндсэн хуудсыг маш гоё бүдгэрүүлнэ */
-            -webkit-backdrop-filter: blur(20px); /* Safari хөтөчид зориулсан бүдгэрүүлэгч эффект */
-            z-index: 9999; /* Хуудасны бусад бүх элементүүдийн хамгийн дээр гаргана */
-            display: flex; /* Доторх зургийг голлуулахаар Flexbox ашиглана */
-            align-items: center; /* Босоо чиглэлд яг голд нь байрлуулна */
-            justify-content: center; /* Хэвтээ чиглэлд яг голд нь байрлуулна */
-            opacity: 0; /* Анх хуудас ачаалахад харагдахгүй тунгалаг байна */
-            pointer-events: none; /* Идэвхгүй үед клик үйлдэл хүлээж авахгүй */
-            transition: opacity 0.3s ease; /* Нээгдэж хаагдах үеийн зөөлөн уусалт эффект */
-            touch-action: none; /* Хөтөчийн үндсэн scroll-оос сэргийлж swipe хийхэд тусална */ }
-
-        .gl-modal-overlay.active { 
-            opacity: 1; /* Идэвхжих үед бүтэн тодорч харагдана */
-            pointer-events: auto; /* Бүх даралт, клик үйлдлийг идэвхжүүлж ажиллуулна */ }
-        
-        .gl-modal-container { 
-            width: 80%; /* Чинглэгийн өргөн дэлгэцийн 90 хувьтай тэнцүү байна */
-            max-width: 100vw; /* Хамгийн ихдээ 750 пиксел өргөн байна. ЗУРГИЙН ХЭМЖЭЭГ ЖИЖИГРҮҮЛЖ БАРИАД БСАН ГАЗАР. 750px бсаныг 100vw болгоод ок */
-            position: relative; /* Доторх навигацийн сумуудыг уях суурь цэг болно */
-            display: flex; /* Босоо цуваа бүтэц үүсгэхээр Flexbox идэвхжүүлнэ */
-            flex-direction: column; /* Элементүүдийг дээрээс нь доош нь цувуулна */
-            align-items: center; /* Хэвтээ тэнхлэгийн дагуу голлуулна */
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Гар утас дээр доош чирэх үед зөөлөн хөдлөх эффект */ }
-        
-        .gl-modal-content { 
-            width: 100%; /* Өргөнийг чингэлэг дүүрэн болгоно */
-            border-radius: 12px; /* Буланг зөөлөн дугуйлж засна */
-            overflow: hidden; /* Чинглэгээс хальсан зургийг нууна */
-            background: rgba(0, 0, 0, 0); /* Арын суурь тунгалаг бараан өнгө */
-            border: 1px solid rgba(0, 0, 0, 0); /* Нарийхан шилэн хүрээ */
-            display: flex; /* Зургийг голлуулна */
-            justify-content: center; 
-            align-items: center; }
-
+/* УХААЛАГ АЛБОМ. ЛАЙТБОКС СИСТЕМ (ПОПАП ТОМРУУЛАГЧ ЦОНХ) */
+		.gl-modal-overlay {
+			position: fixed; /* Дэлгэцийн байрлалаас уяж, хуудсыг гүйлгэхэд хамт хөдлөхгүй болгоно */
+			top: 0; left: 0; /* Дэлгэцийн зүүн дээд буланд наана */
+			width: 100%; height: 100%; /* Бүхэл дэлгэцийг бүрэн бүрхэнэ */
+			background: rgba(0, 0, 0, 0.6); /* Модал нээгдэх үеийн арын гүн бараан суурь өнгө. 4-р тоог 1 гэчихвэл тас хар фон, 0 гэчихвэл блюрдсэн тунгалаг фон болно*/
+			backdrop-filter: blur(20px); /* Ард үлдсэн үндсэн хуудсыг маш гоё бүдгэрүүлнэ */
+			-webkit-backdrop-filter: blur(20px); /* Safari хөтөчид зориулсан бүдгэрүүлэгч эффект */
+			z-index: 9999; /* Хуудасны бусад бүх элементүүдийн хамгийн дээр гаргана */
+			display: flex; /* Доторх зургийг голлуулахаар Flexbox ашиглана */
+			align-items: center; /* Босоо чиглэлд яг голд нь байрлуулна */
+			justify-content: center; /* Хэвтээ чиглэлд яг голд нь байрлуулна */
+			opacity: 0; /* Анх хуудас ачаалахад харагдахгүй тунгалаг байна */
+			pointer-events: none; /* Идэвхгүй үед клик үйлдэл хүлээж авахгүй */
+			transition: opacity 0.3s ease; /* Нээгдэж хаагдах үеийн зөөлөн уусалт эффект */
+			touch-action: none; /* Хөтөчийн үндсэн scroll-оос сэргийлж swipe хийхэд тусална */ }
+		.gl-modal-overlay.active { 
+			opacity: 1; /* Идэвхжих үед бүтэн тодорч харагдана */
+			pointer-events: auto; /* Бүх даралт, клик үйлдлийг идэвхжүүлж ажиллуулна */ }
+		.gl-modal-container { 
+			width: 80%; /* Чинглэгийн өргөн дэлгэцийн 90 хувьтай тэнцүү байна */
+			max-width: 100vw; /* Хамгийн ихдээ 750 пиксел өргөн байна. ЗУРГИЙН ХЭМЖЭЭГ ЖИЖИГРҮҮЛЖ БАРИАД БСАН ГАЗАР. 750px бсаныг 100vw болгоод ок */
+			position: relative; /* Доторх навигацийн сумуудыг уях суурь цэг болно */
+			display: flex; /* Босоо цуваа бүтэц үүсгэхээр Flexbox идэвхжүүлнэ */
+			flex-direction: column; /* Элементүүдийг дээрээс нь доош нь цувуулна */
+			align-items: center; /* Хэвтээ тэнхлэгийн дагуу голлуулна */
+			transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Гар утас дээр доош чирэх үед зөөлөн хөдлөх эффект */ }
+		.gl-modal-content { 
+			width: 100%; /* Өргөнийг чингэлэг дүүрэн болгоно */
+			border-radius: 12px; /* Буланг зөөлөн дугуйлж засна */
+			overflow: hidden; /* Чинглэгээс хальсан зургийг нууна */
+			background: rgba(0, 0, 0, 0); /* Арын суурь тунгалаг бараан өнгө */
+			border: 1px solid rgba(0, 0, 0, 0); /* Нарийхан шилэн хүрээ */
+			display: flex; /* Зургийг голлуулна */
+			justify-content: center; 
+			align-items: center; }
 		.gl-modal-content img { 
-    		max-width: 100%;      /* Өргөнийг дэлгэцийн ирмэгт тулгана */
-		    max-height: 80vh;     /* Өндрийг дэлгэцийн 85 хувьд барина (85vh болгож томруулсан) */
-    		object-fit: contain;   /* Зургийн бүх хэсгийг бүтэн харуулна */
-    		pointer-events: none;  /* Мобайл дээр хуруугаар чирэхэд зураг гацахаас сэргийлнэ */
-    		user-select: none;     /* Зургийг идэвхжүүлж сонгохыг хориглоно */ }
-        
-        .gl-modal-caption { 
-            margin-top: 15px; /* Зургийн тайлбарын дээд талын тусгаарлах зай */
-            color: white; /* Тайлбар текстийн тунгалаг цайвар өнгө */
-            font-size: 13px; /* Үсгийн хэмжээ */
-            text-align: center; /* Текстийг голд нь байрлуулна */
-            padding: 0 10px; /* Баруун зүүн талаас авах дотор зай */ }
-        
-        .gl-modal-close { 
-            position: absolute; /* Дээд талд чөлөөт байрлалаар гаргана */
-            top: -45px; right: 0; /* Баруун дээд буланд байршуулах зай */
-            background: none; /* Ардаа ямар нэгэн өнгөгүй болгоно */
-            border: none; /* Хүрээг устгана */
-            color: rgba(255, 255, 255, 0.6); /* Товчны өнгө */
-            font-size: 36px; /* Икс (&times;) тэмдэгтийн хэмжээ */
-            cursor: pointer; /* Дээр нь очиход гар хэлбэртэй болно */
-            padding: 5px; /* Дарахад хялбар байх дотор зай */
-            -webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад цэнхэртэж харагдахыг устгана */
-            transition: color 0.2s; /* Өнгө өөрчлөгдөх хугацаа */ }
-        
-        .gl-modal-close:hover { color: #ffffff; /* Хулгана очиход товчийг цэвэр цагаан болгоно */ }
+			max-width: 100%;      /* Өргөнийг дэлгэцийн ирмэгт тулгана */
+			max-height: 80vh;     /* Өндрийг дэлгэцийн 85 хувьд барина (85vh болгож томруулсан) */
+			object-fit: contain;   /* Зургийн бүх хэсгийг бүтэн харуулна */
+			pointer-events: none;  /* Мобайл дээр хуруугаар чирэхэд зураг гацахаас сэргийлнэ */
+			user-select: none;     /* Зургийг идэвхжүүлж сонгохыг хориглоно */ }
+		.gl-modal-caption { 
+			margin-top: 15px; /* Зургийн тайлбарын дээд талын тусгаарлах зай */
+			color: white; /* Тайлбар текстийн тунгалаг цайвар өнгө */
+			font-size: 13px; /* Үсгийн хэмжээ */
+			text-align: center; /* Текстийг голд нь байрлуулна */
+			padding: 0 10px; /* Баруун зүүн талаас авах дотор зай */ }
+		.gl-modal-close { 
+			position: absolute; /* Дээд талд чөлөөт байрлалаар гаргана */
+			top: -45px; right: 0; /* Баруун дээд буланд байршуулах зай */
+			background: none; /* Ардаа ямар нэгэн өнгөгүй болгоно */
+			border: none; /* Хүрээг устгана */
+			color: rgba(255, 255, 255, 0.6); /* Товчны өнгө */
+			font-size: 36px; /* Икс (&times;) тэмдэгтийн хэмжээ */
+			cursor: pointer; /* Дээр нь очиход гар хэлбэртэй болно */
+			padding: 5px; /* Дарахад хялбар байх дотор зай */
+			-webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад цэнхэртэж харагдахыг устгана */
+			transition: color 0.2s; /* Өнгө өөрчлөгдөх хугацаа */ }
+		.gl-modal-close:hover { color: #ffffff; /* Хулгана очиход товчийг цэвэр цагаан болгоно */ }
 
-        /* НАВИГАЦИЙН СУМУУД (ПРЕВ, НЕКСТ ДАРАХ ОРЧИН) */
-        .gl-nav-btn-zone { 
-            position: absolute; /* Модал чингэлэгээс уяж чөлөөт байрлалд оруулна */
-            top: 50%; /* Дээд талаас 50 хувиар доошлуулна */
-            transform: translateY(-50%); /* Босоо чиглэлд яг таг голлуулна */
-            width: 60px; /* Дарах орчны өргөн */
-            height: 100px; /* Дарах орчны өндөр */
-            display: flex; /* Сумыг Flexbox-оор голлуулна */
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; /* Гар хэлбэртэй болгоно */
-            background: transparent; /* Арын дэвсгэрийг тунгалаг болгоно */
-            z-index: 1010; /* Зургийн наагуур харагдах давхарга */
-            user-select: none; /* Сум дээр олон дарахад цэнхэрлэж сонгогдохоос сэргийлнэ */
-            -webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад өнгө орохыг устгана */ }
-        
-        .gl-nav-btn-zone.prev { left: -85px; } /* Компьютер дэлгэц дээр зүүн сумыг зургийн гадна зүүн талд гаргана */
-        .gl-nav-btn-zone.next { right: -85px; } /* Компьютер дэлгэц дээр баруун сумыг зургийн гадна баруун талд гаргана */
-        
-        .gl-arrow-line { 
-            width: 16px; /* Сумны шугамын урт */
-            height: 16px; /* Сумны шугамын өндөр */
-            border-top: 3px solid rgba(255, 255, 255, 0.5); /* Дээд талын зузаан хүрээ */
-            border-left: 3px solid rgba(255, 255, 255, 0.5); /* Зүүн талын зузаан хүрээ */
-            transition: border-color 0.2s ease; /* Сумны өнгө хувирах зөөлөн шилжилт */ }
-        
-        .gl-nav-btn-zone.prev .gl-arrow-line { transform: rotate(-45deg); } /* Шугамыг 45 градус эргүүлж зүүн зүг заасан сум болгоно */
-        .gl-nav-btn-zone.next .gl-arrow-line { transform: rotate(135deg); } /* Шугамыг 135 градус эргүүлж баруун зүг заасан сум болгоно */
-        .gl-nav-btn-zone:hover .gl-arrow-line { border-color: #38bdf8; } /* Хулгана очиход сумыг гоё тод цэнхэр өнгөтэй болгоно */
+/* УХААЛАГ АЛБОМ. НАВИГАЦИЙН СУМУУД (ПРЕВ, НЕКСТ ДАРАХ ОРЧИН) */
+		.gl-nav-btn-zone { 
+			position: absolute; /* Модал чингэлэгээс уяж чөлөөт байрлалд оруулна */
+			top: 50%; /* Дээд талаас 50 хувиар доошлуулна */
+			transform: translateY(-50%); /* Босоо чиглэлд яг таг голлуулна */
+			width: 60px; /* Дарах орчны өргөн */
+			height: 100px; /* Дарах орчны өндөр */
+			display: flex; /* Сумыг Flexbox-оор голлуулна */
+			align-items: center; 
+			justify-content: center; 
+			cursor: pointer; /* Гар хэлбэртэй болгоно */
+			background: transparent; /* Арын дэвсгэрийг тунгалаг болгоно */
+			z-index: 1010; /* Зургийн наагуур харагдах давхарга */
+			user-select: none; /* Сум дээр олон дарахад цэнхэрлэж сонгогдохоос сэргийлнэ */
+			-webkit-tap-highlight-color: transparent; /* Мобайл дээр дарахад өнгө орохыг устгана */ }
+		.gl-nav-btn-zone.prev { left: -85px; } /* Компьютер дэлгэц дээр зүүн сумыг зургийн гадна зүүн талд гаргана */
+		.gl-nav-btn-zone.next { right: -85px; } /* Компьютер дэлгэц дээр баруун сумыг зургийн гадна баруун талд гаргана */
+		.gl-arrow-line { 
+			width: 16px; /* Сумны шугамын урт */
+			height: 16px; /* Сумны шугамын өндөр */
+			border-top: 3px solid rgba(255, 255, 255, 0.5); /* Дээд талын зузаан хүрээ */
+			border-left: 3px solid rgba(255, 255, 255, 0.5); /* Зүүн талын зузаан хүрээ */
+			transition: border-color 0.2s ease; /* Сумны өнгө хувирах зөөлөн шилжилт */ }
+		.gl-nav-btn-zone.prev .gl-arrow-line { transform: rotate(-45deg); } /* Шугамыг 45 градус эргүүлж зүүн зүг заасан сум болгоно */
+		.gl-nav-btn-zone.next .gl-arrow-line { transform: rotate(135deg); } /* Шугамыг 135 градус эргүүлж баруун зүг заасан сум болгоно */
+		.gl-nav-btn-zone:hover .gl-arrow-line { border-color: #38bdf8; } /* Хулгана очиход сумыг гоё тод цэнхэр өнгөтэй болгоно */
 
-        /* 📱 ГАР УТАС БА ТАБЛЕТАД ЗОРИУЛСАН RESPONSIVE ЗАСВАР */
-        @media (max-width: 1024px) {
-            .gl-modal-container { width: 95%; } /* Модал өргөнийг дэлгэцийн 95 хувь болгож томруулна */
-            .gl-nav-btn-zone {
-                background: rgba(0, 0, 0, 0.4); /* Гар утас дээр сумыг харуулах хагас тунгалаг дугуй дэвсгэр */
-                border-radius: 50%; /* Төгс дугуй хэлбэртэй болгоно */
-                width: 46px; /* Гар утасны товчны өргөн */
-                height: 46px; /* Гар утасны товчны өндөр */
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Товчны доорх жижиг сүүдэр */
-                backdrop-filter: blur(4px); /* Товчны арыг үл ялиг бүдгэрүүлнэ */ }
-            .gl-nav-btn-zone.prev { left: 10px; } /* Зүүн сумыг зургийн дотор талд зүүн ирмэгт наана */
-            .gl-nav-btn-zone.next { right: 10px; } /* Баруун сумыг зургийн дотор талд баруун ирмэгт naana */
-            .gl-arrow-line { width: 12px; height: 12px; } /* Гар утас дээр сумыг үл ялиг жижигсгэнэ */
-            .gl-modal-close { top: -50px; right: 10px; } /* Хаах икс товчийг гар утасны дэлгэцийн баруун дээд буланд тааруулна */ }    
-    
-    
-    
-    
-    </style>
+/* УХААЛАГ АЛБОМ. ГАР УТАС БА ТАБЛЕТАД ЗОРИУЛСАН RESPONSIVE ЗАСВАР */
+		@media (max-width: 1024px) {
+		.gl-modal-container { width: 95%; } /* Модал өргөнийг дэлгэцийн 95 хувь болгож томруулна */
+		.gl-nav-btn-zone {
+			background: rgba(0, 0, 0, 0.4); /* Гар утас дээр сумыг харуулах хагас тунгалаг дугуй дэвсгэр */
+			border-radius: 50%; /* Төгс дугуй хэлбэртэй болгоно */
+			width: 46px; /* Гар утасны товчны өргөн */
+			height: 46px; /* Гар утасны товчны өндөр */
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Товчны доорх жижиг сүүдэр */
+			backdrop-filter: blur(4px); /* Товчны арыг үл ялиг бүдгэрүүлнэ */ }
+		.gl-nav-btn-zone.prev { left: 10px; } /* Зүүн сумыг зургийн дотор талд зүүн ирмэгт наана */
+		.gl-nav-btn-zone.next { right: 10px; } /* Баруун сумыг зургийн дотор талд баруун ирмэгт naana */
+		.gl-arrow-line { width: 12px; height: 12px; } /* Гар утас дээр сумыг үл ялиг жижигсгэнэ */
+		.gl-modal-close { top: -50px; right: 10px; } /* Хаах икс товчийг гар утасны дэлгэцийн баруун дээд буланд тааруулна */ }    
+
+	</style>
 </head>
 
 
@@ -370,63 +332,63 @@
 <body>
 	<div class="mobile-bg-fix"></div>
 <!-- NAVIGATION BAR -->
-    <nav class="navbar" id="navbar">
-        <div class="logo">News</div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
-            <li><a href="https://the2m16.github.io/web/90min.html">90МИН</a></li>
-            <li><a href="https://the2m16.github.io/web/40min.html">40МИН</a></li>
-            <li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ ШИНЖЭЭЧ</a></li>
-            <li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
-            <li><a href="https://the2m16.github.io/web/news.html"><span style="color: #ffffff;">НЬЮС</span></a></li>
-            <li><a href="https://the2m16.github.io/web/podcast.html">ПОДКАСТ</a></li>
-            <li><a href="https://the2m16.github.io/web/donation.html"><span style="color: #ffff1a; font-weight: 600;">DONATE</span></a></li>
-        </ul>
-        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </nav>
+	<nav class="navbar" id="navbar">
+		<div class="logo">News</div>
+		<ul class="nav-links" id="navLinks">
+			<li><a href="https://the2m16.github.io/web/index.html">ЭХЛЭЛ</a></li>
+			<li><a href="https://the2m16.github.io/web/90min.html">90МИН</a></li>
+			<li><a href="https://the2m16.github.io/web/40min.html">40МИН</a></li>
+			<li><a href="https://the2m16.github.io/web/forensicmn.html">ШШҮХ ШИНЖЭЭЧ</a></li>
+			<li><a href="https://the2m16.github.io/web/forensicfbi.html">FBI ШИНЖЭЭЧ</a></li>
+			<li><a href="https://the2m16.github.io/web/news.html"><span style="color: #ffffff;">НЬЮС</span></a></li>
+			<li><a href="https://the2m16.github.io/web/podcast.html">ПОДКАСТ</a></li>
+			<li><a href="https://the2m16.github.io/web/donation.html"><span style="color: #ffff1a; font-weight: 600;">DONATE</span></a></li>
+		</ul>
+		<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+	</nav>
 
 
 
-<!-- Үндсэн агуулга -->
-    <div class="content-section">
+<!-- ҮНДСЭН АГУУЛГА -->
+	<div class="content-section">
 
 
 
 
 
 
-<!-- <div class="glass-box">
-        
-            <h3>2020.05.25 БАЯНГОЛ ДҮҮРГИЙН ЭРҮҮГИЙН ХЭРГИЙН АНХАН ШАТНЫ ШҮҮХИЙН ШҮҮГЧИЙН ЗАХИРАМЖААР №1702000160209 ДУГААРТАЙ ЭРҮҮГИЙН ХЭРГИЙГ НЭМЭЛТ МӨРДӨН БАЙЦААЛТЫН АЖИЛЛАГАА ХИЙЛГЭХЭЭР НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАРТ БУЦААВ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-        000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000
-        </p>
+<!-- ЗАГВАР
+	<div class="glass-box">
+		<h3>2020.05.25 БАЯНГОЛ ДҮҮРГИЙН ЭРҮҮГИЙН ХЭРГИЙН АНХАН ШАТНЫ ШҮҮХИЙН ШҮҮГЧИЙН ЗАХИРАМЖААР №1702000160209 ДУГААРТАЙ ЭРҮҮГИЙН ХЭРГИЙГ НЭМЭЛТ МӨРДӨН БАЙЦААЛТЫН АЖИЛЛАГАА ХИЙЛГЭХЭЭР НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАРТ БУЦААВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>
+		000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000
+		</p>
 		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
-        	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
-			<iframe src="https://the2m16.github.io/web/files/2020.05.25.1160.html" width="100%" height="100%" style="border:none;" title="Шүүхийн Шийтгэх тогтоол №902"></iframe>
-			</div>
+
+		<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
+		<iframe src="https://the2m16.github.io/web/files/2020.05.25.1160.html" width="100%" height="100%" style="border:none;" title="Шүүхийн Шийтгэх тогтоол №902"></iframe>
+		</div>
 
 	</div>
 
 
 
+	<div class="glass-box">
 
+		<h3>2019.12.24 НИЙСЛЭЛИЙН ЭРҮҮГИЙН ХЭРГИЙН ДАВЖ ЗААЛДАХ ШАТНЫ ШҮҮХИЙН МАГАДЛАЛ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>
+		000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000
+		</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
+		<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
+		<iframe src="https://the2m16.github.io/web/files/2019.12.24niislel.html" width="100%" height="100%" style="border:none;" title="Шүүхийн Шийтгэх тогтоол №902"></iframe>
+		</div>
 
-<div class="glass-box">
-        
-            <h3>2019.12.24 НИЙСЛЭЛИЙН ЭРҮҮГИЙН ХЭРГИЙН ДАВЖ ЗААЛДАХ ШАТНЫ ШҮҮХИЙН МАГАДЛАЛ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-        000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000
-        </p>
-        </div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
-        	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
-			<iframe src="https://the2m16.github.io/web/files/2019.12.24niislel.html" width="100%" height="100%" style="border:none;" title="Шүүхийн Шийтгэх тогтоол №902"></iframe>
-			</div>
-
-	</div> -->
+	</div>
+ЗАГВАР -->
 
 
 
@@ -434,35 +396,37 @@
 
 
 	<div class="glass-box"><!-- glass-box start -->
-        
-            <h3>2019.10.31 БАЯНГОЛ ДҮҮРГИЙН ЭРҮҮГИЙН ХЭРГИЙН АНХАН ШАТНЫ ШҮҮХ №1702000160209 ДУГААРТАЙ ЭРҮҮГИЙН ХЭРГИЙГ Ц.САНДУЙ, А.ГАНБААТАРЫН ӨМГӨӨЛӨГЧ НАРЫН ХҮСЭЛТЭЭР ХААЛТТАЙ ХЭЛЭЛЦЭЭД ШИЙТГЭХ ТОГТООЛОО УНШИЖ ТАНИЛЦУУЛАВ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>Баянгол дүүргийн Эрүүгийн хэргийн анхан шатны шүүх 2019 оны 10 дугаар сарын 31-ны өдөр №1702000160209 дугаартай эрүүгийн хэргийг хаалттай хэлэлцэж 2019/ШЦТ/902 дугаартай Шийтгэх тогтоолоо гаргасаны дараа хэвлэлийнхэнийг байлцуулан уншиж танилцуулав.</p>
-        <p>Ерөнхийд нь тоймловол, НПГ-аас эрүүгийн №1702000160209 дугаартай хэрэгт 2002 оны Эрүүгийн хуулиар зүйлчлэн яллах дүгнэлт үйлдэж БГД-ийн ЭХАШШ-д шилжүүлсэн байх ба хаалттай шүүх хуралдааны үеэр
-	улсын яллагч Ц.Сүхбат, Д.Үүлэн нар хөөн хэлэлцэх хугацаа дууссан үндэслэлээр Ц.Сандуй, А.Ганбаатар нарт холбогдох хэргийг хэрэгсэхгүй болгох байр суурийг илэрхийлжээ. Гэтэл шүүх бүрэлдэхүүн
-	анх 2016 оны 6 сарын 24-нд олон нийтэд ил болсон учир хөөн хэлэлцэх хугацаа дуусаагүй, хэргийн зүйлчлэлийг 2015 оны Эрүүгийн хуулиар зүйлчлэн Шийтгэх тогтоолоо гаргасан байдаг.
-	Улсын яллагч нарын 2019 оны 11 сарын 22-ны өдрийн №66 дугаартай Давж заалдах шатны шүүхэд гаргасан Прокурорын эсэргүүцэлдээ мөн адил хэргийн зүйлчлэл болон хөөн хэлэлцэх
-	хугацаагаар уг хэргийг хэрэгсэхгүй болгуулах байр суурийг баримталж байв. Энэ нь Ц.Сандуй, А.Ганбаатар нарын зургаан өмгөөлөгчийн бүрэлдэхүүнтэй өмгөөллийн багтай
-	Улсын яллагч нар нэг тал болж ажилласаныг харуулдаг.</p>
-	<p>Прокурорын байгууллагын хувьд, 2016 онд АТГ-204 хэргийг анх НПГ-ын прокурор Ц.Алдархишиг хэрэгсэхгүй болгосон ба уг тогтоолыг нь дээд шатны прокурор
-	3 удаа хэрэгсэхгүй болгож хэргийг сэргээж байв. 2017 онд хоёр удаа уг хэргийг сэргээхэд зөвхөн НПГ-ын прокурор Д.Ширэндэв л хяналт тавих
-	прокуророор томилогддог, хэрэгсэхгүй болгож хаадаг, мөн гэрчид 2017 онд өөр нэгэн зохиомол эрүүгийн хэрэг үүсгэхэд мөн л прокурор Д.Ширэндэв хяналт тавих прокуророор томилогддог зүй тогтолтой байв.
-	Д.Ширэндэвд гаргасан хууль ёсны Гомдлуудыг хүлээж авахаас байнга татгалздаг, хавтаст хэргүүдтэй танилцах Хүсэлтүүдийг огт хангаж шийдвэрлэдэггүй байв. Сүүлд 2019 онд уг
-	хэргийн хаалттай шүүх хуралд Улсын яллагчаар оролцсон хоёр прокурор өмгөөллийн багтай нэг тал болж хэргийг хэрэгсэхгүй болгон хаалгах байр суурийг баримталж байсан нь Шийтгэх тогтоол болон
-	Давж заалдах шатны шүүхэд гаргасан Прокурорын эсэргүүцлээс тодорхой харагдана.</p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-			
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/vT49C-Iy4x0?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-            
-            
-        <div class="gl-text-wrapper gl-truncated"><p>
-        Баянгол дүүргийн Эрүүгийн хэргийн анхан шатны шүүхийн 2019 оны 10 дугаар сарын 31-ны өдрийн <a href="https://shuukh.mn/single_case/38121?daterange=2019-10-31%20-%202019-11-01&id=1&court_cat=2&bb=1">2019/ШЦТ/902</a> дугаартай Шийтгэх тогтоол:
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
-        	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
-			<iframe src="https://the2m16.github.io/web/files/2019.10.31.902.html" width="100%" height="100%" style="border:none;" title="Шүүхийн Шийтгэх тогтоол №902"></iframe>
-			</div>
+
+		<h3>2019.10.31 БАЯНГОЛ ДҮҮРГИЙН ЭРҮҮГИЙН ХЭРГИЙН АНХАН ШАТНЫ ШҮҮХ №1702000160209 ДУГААРТАЙ ЭРҮҮГИЙН ХЭРГИЙГ Ц.САНДУЙ, А.ГАНБААТАРЫН ӨМГӨӨЛӨГЧ НАРЫН ХҮСЭЛТЭЭР ХААЛТТАЙ ХЭЛЭЛЦЭЭД ШИЙТГЭХ ТОГТООЛОО УНШИЖ ТАНИЛЦУУЛАВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Баянгол дүүргийн Эрүүгийн хэргийн анхан шатны шүүх 2019 оны 10 дугаар сарын 31-ны өдөр №1702000160209 дугаартай эрүүгийн хэргийг хаалттай хэлэлцэж 2019/ШЦТ/902 дугаартай Шийтгэх тогтоолоо гаргасаны дараа хэвлэлийнхэнийг байлцуулан уншиж танилцуулав.</p>
+		<p>Ерөнхийд нь тоймловол, НПГ-аас эрүүгийн №1702000160209 дугаартай хэрэгт 2002 оны Эрүүгийн хуулиар зүйлчлэн яллах дүгнэлт үйлдэж БГД-ийн ЭХАШШ-д шилжүүлсэн байх ба хаалттай шүүх хуралдааны үеэр
+		улсын яллагч Ц.Сүхбат, Д.Үүлэн нар хөөн хэлэлцэх хугацаа дууссан үндэслэлээр Ц.Сандуй, А.Ганбаатар нарт холбогдох хэргийг хэрэгсэхгүй болгох байр суурийг илэрхийлжээ. Гэтэл шүүх бүрэлдэхүүн
+		анх 2016 оны 6 сарын 24-нд олон нийтэд ил болсон учир хөөн хэлэлцэх хугацаа дуусаагүй, хэргийн зүйлчлэлийг 2015 оны Эрүүгийн хуулиар зүйлчлэн Шийтгэх тогтоолоо гаргасан байдаг.
+		Улсын яллагч нарын 2019 оны 11 сарын 22-ны өдрийн №66 дугаартай Давж заалдах шатны шүүхэд гаргасан Прокурорын эсэргүүцэлдээ мөн адил хэргийн зүйлчлэл болон хөөн хэлэлцэх
+		хугацаагаар уг хэргийг хэрэгсэхгүй болгуулах байр суурийг баримталж байв. Энэ нь Ц.Сандуй, А.Ганбаатар нарын зургаан өмгөөлөгчийн бүрэлдэхүүнтэй өмгөөллийн багтай
+		Улсын яллагч нар нэг тал болж ажилласаныг харуулдаг.</p>
+		<p>Прокурорын байгууллагын хувьд, 2016 онд АТГ-204 хэргийг анх НПГ-ын прокурор Ц.Алдархишиг хэрэгсэхгүй болгосон ба уг тогтоолыг нь дээд шатны прокурор
+		3 удаа хэрэгсэхгүй болгож хэргийг сэргээж байв. 2017 онд хоёр удаа уг хэргийг сэргээхэд зөвхөн НПГ-ын прокурор Д.Ширэндэв л хяналт тавих
+		прокуророор томилогддог, хэрэгсэхгүй болгож хаадаг, мөн гэрчид 2017 онд өөр нэгэн зохиомол эрүүгийн хэрэг үүсгэхэд мөн л прокурор Д.Ширэндэв хяналт тавих прокуророор томилогддог зүй тогтолтой байв.
+		Д.Ширэндэвд гаргасан хууль ёсны Гомдлуудыг хүлээж авахаас байнга татгалздаг, хавтаст хэргүүдтэй танилцах Хүсэлтүүдийг огт хангаж шийдвэрлэдэггүй байв. Сүүлд 2019 онд уг
+		хэргийн хаалттай шүүх хуралд Улсын яллагчаар оролцсон хоёр прокурор өмгөөллийн багтай нэг тал болж хэргийг хэрэгсэхгүй болгон хаалгах байр суурийг баримталж байсан нь Шийтгэх тогтоол болон
+		Давж заалдах шатны шүүхэд гаргасан Прокурорын эсэргүүцлээс тодорхой харагдана.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/vT49C-Iy4x0?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe>
+		</div>
+
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Баянгол дүүргийн Эрүүгийн хэргийн анхан шатны шүүхийн 2019 оны 10 дугаар сарын 31-ны өдрийн <a href="https://shuukh.mn/single_case/38121?daterange=2019-10-31%20-%202019-11-01&id=1&court_cat=2&bb=1">2019/ШЦТ/902</a> дугаартай Шийтгэх тогтоол:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
+		<iframe src="https://the2m16.github.io/web/files/2019.10.31.902.html" width="100%" height="100%" style="border:none;" title="Шүүхийн Шийтгэх тогтоол №902"></iframe>
+		</div>
 
 	</div><!-- glass box end -->
 
@@ -471,34 +435,35 @@
 
 
 
-    <div class="glass-box">
-        <h3>2019.01.11 МОНГОЛ УЛСЫН ЕРӨНХИЙ ПРОКУРОР М.ЭНХ-АМГАЛАН: 60 ТЭРБУМЫН ХЭРГИЙГ ПРОКУРОРЫН БАЙГУУЛЛАГА ЭВЛҮҮЛЭГ ГЭЖ ХААГААГҮЙ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>ПРОКУРОРЫН БАЙГУУЛЛАГА ЭНЭ ҮЙЛ ЯВДАЛ, ЯРИА ХӨӨРӨӨ БҮГДЭЭРЭЭ БОЛСОН ЮМАА ГЭДГИЙГ ШИЙДВЭР ГАРГАСАН ТОГТООЛДОО ЗААЖ ӨГСӨН.</p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+	<div class="glass-box">
 
-        
-        	<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/9ST_06DJFSY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-        
-        
-    </div><!-- glass box end -->
+		<h3>2019.01.11 МОНГОЛ УЛСЫН ЕРӨНХИЙ ПРОКУРОР М.ЭНХ-АМГАЛАН: 60 ТЭРБУМЫН ХЭРГИЙГ ПРОКУРОРЫН БАЙГУУЛЛАГА ЭВЛҮҮЛЭГ ГЭЖ ХААГААГҮЙ</h3>
+		<div class="gl-text-wrapper gl-truncated"><p>ПРОКУРОРЫН БАЙГУУЛЛАГА ЭНЭ (60 ТЭРБУМЫН) ҮЙЛ ЯВДАЛ, ЯРИА ХӨӨРӨӨ БҮГДЭЭРЭЭ БОЛСОН ЮМАА ГЭДГИЙГ ШИЙДВЭР ГАРГАСАН ТОГТООЛДОО ЗААЖ ӨГСӨН.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
 
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/9ST_06DJFSY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
 
+	</div><!-- glass box end -->
 
 
 
-<!-- <div class="glass-box">
-        
-            <h3>2018.08.03 Хариуцлага тооцож ажиллах тухай</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-        000000 000000000000 00000000 00000000 000000000000 000000000000 00000000000 00000000000 00000000000 000000000000
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
-        	<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
-			<iframe src="https://the2m16.github.io/web/files/2018.08.03.man13.html" width="100%" height="100%" style="border:none;" title="Шүүхийн Шийтгэх тогтоол №902"></iframe>
-			</div>
+
+
+
+	<!-- <div class="glass-box">
+
+		<h3>2018.08.03 Хариуцлага тооцож ажиллах тухай</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>МАН-ын шат шатны Хяналтын Ерөнхий Хорооны шийдвэрүүд</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div style="width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: white; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; margin-top: 0px;">
+		<iframe src="https://the2m16.github.io/web/files/2018.08.03.man13.html" width="100%" height="100%" style="border:none;" title="МАН ХЕХ шийдвэрүүд"></iframe>
+		</div>
 
 	</div> -->
 
@@ -507,120 +472,126 @@
 
 
 
-    <div class="glass-box">
-        <h3>2018.08.01 НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР 60 ТЭРБУМЫН ХЭРГИЙГ ХААЖ ШИЙДВЭРЛЭСЭН ТОГТООЛЫГ ХҮЧИНГҮЙ БОЛГОЖ НЭМЭЛТ МӨРДӨН ШАЛГАХ АЖИЛЛАГАА ЯВУУЛАХААР ШИЙДВЭРЛЭВ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>НПГ-ын Ерөнхий прокурор Д.Баярмагнай ТЕГ-аас 2018 оны 7 сарын 27-ны өдөр ирүүлсэн №08/704 дугаартай "... шалгах тодорхой үндэслэл бүхий мэдээ, мэдээлэл авагдсан" гэх албан бичгийн дагуу НПГ-ын 2017 оны 9 сарын 4-ний өдрийн №25 дугаартай тогтоолоор хяналтын прокурор Д.Ширэндэвийн хааж шийдвэрлэсэн эрүүгийн 170200016 дугаартай хэргийг дахин хянаад 2018 оны 8 сарын 1-ний өдрийн №62 дугаартай тогтоолоор уг хэрэгт нэмэлт хэрэг бүртгэлтийн ажиллагаа явуулахаар сэргээжээ. Тогтоолыг ҮЗЭХ:</p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2018.08.01a.png | Тайлбар,
-            https://the2m16.github.io/web/images/2018.08.01b.png | Тайлбар,
-            https://the2m16.github.io/web/images/2018.08.01c.png | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+	<div class="glass-box">
+		<h3>2018.08.01 НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР 60 ТЭРБУМЫН ХЭРГИЙГ ХААЖ ШИЙДВЭРЛЭСЭН ТОГТООЛЫГ ХҮЧИНГҮЙ БОЛГОЖ НЭМЭЛТ МӨРДӨН ШАЛГАХ АЖИЛЛАГАА ЯВУУЛАХААР ШИЙДВЭРЛЭВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>НПГ-ын Ерөнхий прокурор Д.Баярмагнай ТЕГ-аас 2018 оны 7 сарын 27-ны өдөр ирүүлсэн №08/704 дугаартай "... шалгах тодорхой үндэслэл бүхий мэдээ, мэдээлэл авагдсан" гэх албан бичгийн дагуу НПГ-ын 2017 оны 9 сарын 4-ний өдрийн №25 дугаартай тогтоолоор хяналтын прокурор Д.Ширэндэвийн хааж шийдвэрлэсэн эрүүгийн 170200016 дугаартай хэргийг дахин хянаад 2018 оны 8 сарын 1-ний өдрийн №62 дугаартай тогтоолоор уг хэрэгт нэмэлт хэрэг бүртгэлтийн ажиллагаа явуулахаар сэргээжээ. Тогтоолыг ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+			https://the2m16.github.io/web/images/2018.08.01a.png | Тайлбар,
+			https://the2m16.github.io/web/images/2018.08.01b.png | Тайлбар,
+			https://the2m16.github.io/web/images/2018.08.01c.png | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2018.06.26 THE WASHINGTON POST: MONGOLIAN DEMOCRACY HAS A FAMILIAR AILMENT, AND IT'S ALL ABOUT MONEY</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>Эх сурвалж: <a href="https://www.washingtonpost.com/world/asia_pacific/mongolian-democracy-has-a-familiar-ailment-and-its-all-about- money/2018/06/25/76c4452a-68cb-11e8-a335-c4503d041eaf_story.html">The Washington Post</a></p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2018.06.26TheWashingtonPost1.webp | The Washington Post,
-            https://the2m16.github.io/web/images/2018.06.26TheWashingtonPost2.webp | The Washington Post,
-            https://the2m16.github.io/web/images/2018.06.26TheWashingtonPost3.webp | The Washington Post
-        "></div>
-    </div><!-- glass box end -->
+	<div class="glass-box">
+		<h3>2018.06.26 THE WASHINGTON POST: MONGOLIAN DEMOCRACY HAS A FAMILIAR AILMENT, AND IT'S ALL ABOUT MONEY</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Эх сурвалж: <a href="https://www.washingtonpost.com/world/asia_pacific/mongolian-democracy-has-a-familiar-ailment-and-its-all-about- money/2018/06/25/76c4452a-68cb-11e8-a335-c4503d041eaf_story.html">The Washington Post</a></p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+			https://the2m16.github.io/web/images/2018.06.26TheWashingtonPost1.webp | The Washington Post,
+			https://the2m16.github.io/web/images/2018.06.26TheWashingtonPost2.webp | The Washington Post,
+			https://the2m16.github.io/web/images/2018.06.26TheWashingtonPost3.webp | The Washington Post
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.11.02 НИЙСЛЭЛИЙН ЕРӨНХИЙ ПРОКУРОР Д.БАЯРМАГНАЙ: 2014 ОНД СТРАТЕГИ, ТӨЛӨВЛӨГӨӨ, САНХҮҮЖИЛТ ХЭРХЭН БОСГОХ ТАЛААРХ ЯРИА ХЭЛЦЭЛ ХИЙСЭН НЬ
+	<div class="glass-box">
+		<h3>2017.11.02 НИЙСЛЭЛИЙН ЕРӨНХИЙ ПРОКУРОР Д.БАЯРМАГНАЙ: 2014 ОНД СТРАТЕГИ, ТӨЛӨВЛӨГӨӨ, САНХҮҮЖИЛТ ХЭРХЭН БОСГОХ ТАЛААРХ ЯРИА ХЭЛЦЭЛ ХИЙСЭН НЬ
 		НОТЛОГДОЖ ТОГТООГДСОН. ДАХИН ХЭЛЬЕ. ЭНЭ АСУУДАЛ, ЯРИГДСАН ЗҮЙЛ НЬ ХЭРЭГТ АВАГДСАН БУСАД БАРИМТААР ТОГТООГДСОН</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            ХЭРЭГТ АВАГДСАН БУСАД НОТЛОХ БАРИМТААР 2014 ОНД ШИНЭ МОНГОЛ ХААД ГРУПП ХХК-ЫН БАЙРАНД Ц.САНДУЙ, А.ГАНБААТАР НАР НЬ МАН-ЫН 2016 ОНЫ УИХ-ЫН
+		<div class="gl-text-wrapper gl-truncated">
+		<p>ХЭРЭГТ АВАГДСАН БУСАД НОТЛОХ БАРИМТААР 2014 ОНД ШИНЭ МОНГОЛ ХААД ГРУПП ХХК-ЫН БАЙРАНД Ц.САНДУЙ, А.ГАНБААТАР НАР НЬ МАН-ЫН 2016 ОНЫ УИХ-ЫН
 		БОЛОН АЙМАГ, НИЙСЛЭЛИЙН ИТХ-ЫН СОНГУУЛЬД ОРОЛЦОХ, БОДЛОГО, СТРАТЕГИ, ТӨЛӨВЛӨГӨӨ, САНХҮҮЖИЛТ ХЭРХЭН БОСГОХ ТАЛААРХ ЯРИА ХЭЛЦЭЛ ХИЙСЭН НЬ НОТЛОГДОЖ ТОГТООГДСОН.
 		ОДОО ЭНЭ АУДИО БИЧЛЭГИЙГ ҮНЭН ХУДАЛ ГЭХ АСУУДАЛ ХАМААГҮЙ. БИ ДЭЭР ХЭЛСЭН ШҮҮ ДЭЭ. ПРОКУРОРЫН БАЙГУУЛАГА ЭНЭ АСУУДЛЫГ БОЛООГҮЙ, ЭНЭ БИЧЛЭГ ЭВЛҮҮЛЭГ,
-		ХУДАЛ ЗҮЙЛ ГЭЖ ХЭЛЭЭГҮЙ, ДҮГНЭЭГҮЙ. ДАХИН ХЭЛЬЕ. ЭНЭ АСУУДАЛ, ЯРИГДСАН ЗҮЙЛ НЬ ХЭРЭГТ АВАГДСАН БУСАД БАРИМТААР ТОГТООГДСОН.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.11.02bayarmagnai.png | www.prokuror.mn/index.php?newsid=1896 
-        "></div>
-    </div><!-- glass box end -->
+		ХУДАЛ ЗҮЙЛ ГЭЖ ХЭЛЭЭГҮЙ, ДҮГНЭЭГҮЙ. ДАХИН ХЭЛЬЕ. ЭНЭ АСУУДАЛ, ЯРИГДСАН ЗҮЙЛ НЬ ХЭРЭГТ АВАГДСАН БУСАД БАРИМТААР ТОГТООГДСОН.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+			https://the2m16.github.io/web/images/2017.11.02bayarmagnai.png | www.prokuror.mn/index.php?newsid=1896 
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.09.04 НИЙСЛЭЛИЙН ЕРӨНХИЙ ПРОКУРОРЫН ОРЛОГЧ Ж.АРИУНАА: 2014 ОНД Ц.САНДУЙ, А.ГАНБААТАР НАР СТРАТЕГИ ТӨЛӨВЛӨГӨӨ, САНХҮҮЖИЛТЫН ТАЛААР ЯРЬСАН БОЛОХ НЬ ТОГТООГДСОН</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            ХЭРЭГТ ЦУГЛАРСАН БУСАД НОТЛОХ БАРИМТУУДААР 2014 ОНД Ц.САНДУЙ, А.ГАНБААТАР НАР МАН-ЫН 2016 ОНЫ УИХ-ЫН БОЛОН ОРОН НУТГИЙН СОНГУУЛЬД ОРОЛЦОХ
+	<div class="glass-box">
+		<h3>2017.09.04 НИЙСЛЭЛИЙН ЕРӨНХИЙ ПРОКУРОРЫН ОРЛОГЧ Ж.АРИУНАА: 2014 ОНД Ц.САНДУЙ, А.ГАНБААТАР НАР СТРАТЕГИ ТӨЛӨВЛӨГӨӨ, САНХҮҮЖИЛТЫН ТАЛААР ЯРЬСАН БОЛОХ НЬ ТОГТООГДСОН</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>ХЭРЭГТ ЦУГЛАРСАН БУСАД НОТЛОХ БАРИМТУУДААР 2014 ОНД Ц.САНДУЙ, А.ГАНБААТАР НАР МАН-ЫН 2016 ОНЫ УИХ-ЫН БОЛОН ОРОН НУТГИЙН СОНГУУЛЬД ОРОЛЦОХ
 		МАН-ЫН БОДЛОГО, МАРИЙН ХӨТӨЛБӨР, СТРАТЕГИ ТӨЛӨВЛӨГӨӨ, САНХҮҮЖИЛТ ЗЭРГИЙН ТАЛААР ЯРИЛЦАЖ БАЙСАН БОЛОХ НЬ ТОГТООГДСОН. ТӨРИЙН АЛБЫГ ҮНЭЛЖ
 		МӨНГӨ БОСГОХ ТУХАЙ ЯРИА УУЛЗАЛТАНД У.ХҮРЭЛСҮХ, Ц.ОЮУН-ЭРДЭНЭ, Д.АМАРБАЯСГАЛАН НАР ОРОЛЦСОН ГЭХ НӨХЦӨЛ БАЙДАЛ МӨРДӨН ШАЛГАХ АЖИЛЛАГААГААР
-		БОЛОН А.ГАНБААТАРЫН ӨӨРИЙНХ НЬ ГЭРЧЭЭР ӨГСӨН МЭДҮҮЛЭГ ЗЭРГЭЭР ТОГТООГДООГҮЙ.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.09.04ariunaa.png | www.prokuror.mn/index.php?newsid=1748
-        "></div>
-    </div><!-- glass box end -->
+		БОЛОН А.ГАНБААТАРЫН ӨӨРИЙНХ НЬ ГЭРЧЭЭР ӨГСӨН МЭДҮҮЛЭГ ЗЭРГЭЭР ТОГТООГДООГҮЙ.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.09.04ariunaa.png | www.prokuror.mn/index.php?newsid=1748
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.09.04 НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР 60 ТЭРБУМЫН ХЭРГИЙГ ХААЖ ШИЙДВЭРЛЭВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            АТГ, ТЕГ, ЦЕГ-ЫН ДАРГА НАРЫН 2017 ОНЫ 7 САРЫН 28-НЫ ӨДРИЙН А/59, А/161, А/100 ДУГААРТАЙ ТУШААЛААР ХАМТАРСАН АЖЛЫН ХЭСЭГ БАЙГУУЛАН МӨРДӨН ШАЛГАХ АЖИЛЛАГАА ЯВУУЛЖ
+	<div class="glass-box">
+		<h3>2017.09.04 НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР 60 ТЭРБУМЫН ХЭРГИЙГ ХААЖ ШИЙДВЭРЛЭВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>АТГ, ТЕГ, ЦЕГ-ЫН ДАРГА НАРЫН 2017 ОНЫ 7 САРЫН 28-НЫ ӨДРИЙН А/59, А/161, А/100 ДУГААРТАЙ ТУШААЛААР ХАМТАРСАН АЖЛЫН ХЭСЭГ БАЙГУУЛАН МӨРДӨН ШАЛГАХ АЖИЛЛАГАА ЯВУУЛЖ
 		2017 ОНЫ 8 САЫН 31-НИЙ ӨДӨР ХЭРЭГ БҮРТГЭЛТИЙН ХЭРГИЙГ ХААХ САНАЛ ГАРГАН ПРОКУРОРТ ШИЛЖҮҮЛСЭНИЙГ НПГ-ЫН ХЭРЭГ БҮРТГЭЛТ, МӨРДӨН ШАЛГАХ АЖИЛЛАГААНД ХЯНАЛТ ТАВИХ
-		1-Р ХЭЛТСИЙН ХЯНАЛТЫН ПРОКУРОР Д.ШИРЭНДЭВ ХЯНААД 2017 ОНЫ 9 САРЫН 4-НИЙ ӨДРИЙН №25 ДУГААРТАЙ ТОГТООЛООР ХААЖ ШИЙДВЭРЛЭЖЭЭ.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-    </div><!-- glass box end -->
+		1-Р ХЭЛТСИЙН ХЯНАЛТЫН ПРОКУРОР Д.ШИРЭНДЭВ ХЯНААД 2017 ОНЫ 9 САРЫН 4-НИЙ ӨДРИЙН №25 ДУГААРТАЙ ТОГТООЛООР ХААЖ ШИЙДВЭРЛЭЖЭЭ.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.08.18 МАН-ЫН ЕНБД Д.АМАРБАЯСГАЛАН: Ц.САНДУЙ НЬ МАН-ЫН УДИРДАХ ЗӨВЛӨЛИЙН ХУРАЛ ДЭЭР ЭНЭ БИЧЛЭГ БОДИТОЙ БОЛСОН ЯВДАЛ ГЭДГИЙГ ХҮЛЭЭН ЗӨВШӨӨРСӨН</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            <b>Д.АМАРБАЯСГАЛАН:</b> Ер нь бол энэ 60 тэрбумын гэх зүйлийг би саяханыг хүртэл эвлүүлэг гэж бодож явсан. Яагаад гэхлээр 2016 оны үед бичлэг гарч ирээд цацагдах үед
+	<div class="glass-box">
+		<h3>2017.08.18 МАН-ЫН ЕНБД Д.АМАРБАЯСГАЛАН: Ц.САНДУЙ НЬ МАН-ЫН УДИРДАХ ЗӨВЛӨЛИЙН ХУРАЛ ДЭЭР ЭНЭ БИЧЛЭГ БОДИТОЙ БОЛСОН ЯВДАЛ ГЭДГИЙГ ХҮЛЭЭН ЗӨВШӨӨРСӨН</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p><b>Д.АМАРБАЯСГАЛАН:</b> Ер нь бол энэ 60 тэрбумын гэх зүйлийг би саяханыг хүртэл эвлүүлэг гэж бодож явсан. Яагаад гэхлээр 2016 оны үед бичлэг гарч ирээд цацагдах үед
 		энэнд холбогдсон этгээдүүд энэ бол эвлүүлэг гэж албан ёсоор хэлж байсан. Мөн СБД-ийн цагдаагаас энэ бичлэг бол эвлүүлэг байна гэсэн
 		албан тоотыг манай намд ирүүлсэн байдаг. Энийг үндэслээд би бол энэ 60 тэрбумын бичлэг бол эвлүүлэг юм гэсэн итгэл үнэмшилтэй явж ирсэн.
 		<span style="text-transform: uppercase; font-weight: bold;">Харамсалтай нь саяхан (2017.08.16-нд) болсон намын Удирдах зөвлөлийн хурал дээр
 		энэнд холбогдсон Ц.Сандуй энэ бичлэг нь бодитой болсон юм гэдгийг өөрөө хүлээн зөвшөөрсөн. Эвлүүлэг гэж олон нийтэд хандаж 2-3 удаа
-		мэдэгдэл хийж байсандаа би харамсаж байгаа. Би буруу зүйлд итгэж явж байсан байна гэж өнөөдөр бодож байна.</span>
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-            <div class="video-container">
-			<iframe src="https://www.youtube.com/embed/W0KUTkL88uw?si=nOJFPYshQDMkakeR&amp;start=78" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div><br>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.12.01amarbayasgalan.jpg | А.Ганбаатар 2017.08.17-ны өдөр Хэвлэлийн бага хурал хийхдээ тараасан мэдээллээ Шүүхэд өөрөө нотолж чадаагүй,
-            https://the2m16.github.io/web/images/2017.08.17ganbaatar.jpg | А.Ганбаатар 2017.08.17-ны өдөр Хэвлэлийн бага хурал
-        "></div>
-    </div><!-- glass box end -->
+		мэдэгдэл хийж байсандаа би харамсаж байгаа. Би буруу зүйлд итгэж явж байсан байна гэж өнөөдөр бодож байна.</span></p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/W0KUTkL88uw?si=nOJFPYshQDMkakeR&amp;start=78" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div><br>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.12.01amarbayasgalan.jpg | А.Ганбаатар 2017.08.17-ны өдөр Хэвлэлийн бага хурал хийхдээ тараасан мэдээллээ Шүүхэд өөрөө нотолж чадаагүй,
+		https://the2m16.github.io/web/images/2017.08.17ganbaatar.jpg | А.Ганбаатар 2017.08.17-ны өдөр Хэвлэлийн бага хурал
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.08.17 УИХ-ЫН ДЭД ДАРГА Ц.НЯМДОРЖ: ЭНЭ БОЛ ЭВЛҮҮЛЭГ БИШ! М.ЭНХБОЛД, Ц.САНДУЙ ХОЁРЫН ЯРЬЧИХСАН ЮМЫГ ЯАЖ ЭВЛҮҮЛЭГ ГЭЖ ҮЗДЭГ ЮМ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            <b>Ц.НЯМДОРЖ:</b> "... Нодлин жил УИХ-ын сонгуулийн үеэр тэр бичлэг ил гарсанаас хойш гурав хоног комонд орсон шд манайхан.
+	<div class="glass-box">
+		<h3>2017.08.17 УИХ-ЫН ДЭД ДАРГА Ц.НЯМДОРЖ: ЭНЭ БОЛ ЭВЛҮҮЛЭГ БИШ! М.ЭНХБОЛД, Ц.САНДУЙ ХОЁРЫН ЯРЬЧИХСАН ЮМЫГ ЯАЖ ЭВЛҮҮЛЭГ ГЭЖ ҮЗДЭГ ЮМ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p><b>Ц.НЯМДОРЖ:</b> "... Нодлин жил УИХ-ын сонгуулийн үеэр тэр бичлэг ил гарсанаас хойш гурав хоног комонд орсон шд манайхан.
 		Хэн ч юу ч ярьж чадах юм байхгүй. Тэгээд би М.Энхболдод хэлсэн "Наад Сандуйгаа явуул аа. Ийм алхам хийхгүй бол огт болохгүй!" гэж.
 		Тэгээд ийм юм яриад сууж байсан чинь М.Энхболдын өрөөнд Ц.Сандуй орж ирэхлээр нь би шууд нүүрэн дээр нь хэлсэн
 		"Одоо чи яв аа!" гээд. Тэгээд явуулсан ч үгүй, явсан ч үгүй. УИХ-д олон суудал авчихаараа Ц.Сандуйг НИТХ-ын дарга болгочихсон юм.
@@ -630,135 +601,134 @@
 		М.Энхболд гэдэг хүнд орж энийгээ танилцуулсан. Гурван хүний л асуудал байгаа шд. Энэ бол эвлүүлэг биш.</span> Эвлүүлэг гэдэг чинь Ц.Нямдоржийн
 		хоолойг Чаппи дууриахыг эвлүүлэг гэдэг болохоос биш, М.Энхболд, Ц.Сандуй хоёр ярьчихсан юмыг яаж эвлүүлэг гэж үздэг юм. Одоо болно...
 		Ямарч байсан ийм юм ярьж байна гэдэг чинь болвол зүгээр ярьсаныхаа төлөө л
-		зайлах ёстой шд. Улстөрийн наад захын асуудал шд ...". Ярилцлагыг бүтнээр ҮЗЭХ:
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/zkInnnAZqVA?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-            
-    </div><!-- glass box end -->
+		зайлах ёстой шд. Улстөрийн наад захын асуудал шд ...". Ярилцлагыг бүтнээр ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/zkInnnAZqVA?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.08.16 МАН-ЫН УДИРДАХ ЗӨВЛӨЛИЙН ХУРАЛ: МАН-ЫН ЛИДЕРҮҮДИЙГ ХАГАРАЛДУУЛСАН ХААЛТТАЙ ХУРАЛДААН</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж уг хурлын үеэр <span style="text-transform: uppercase; font-weight: bold;">
+	<div class="glass-box">
+		<h3>2017.08.16 МАН-ЫН УДИРДАХ ЗӨВЛӨЛИЙН ХУРАЛ: МАН-ЫН ЛИДЕРҮҮДИЙГ ХАГАРАЛДУУЛСАН ХААЛТТАЙ ХУРАЛДААН</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>МАН-ын Удирдах зөвлөлийн хурал 5 цаг үргэлжилж уг хурлын үеэр <span style="text-transform: uppercase; font-weight: bold;">
 		60 тэрбумын бичлэг нь эвлүүлэг бус бодит яриа байсныг Нийслэлийн МАН-ын дарга Ц.Сандуй өөрөө хүлээн зөвшөөрч энэ санаачлагадаа
 		Намын дарга М.Энхболдыг хамаатуулсанд уучлал гуйсан</span> байна. Ингэхдээ ярианд багтсан А.Ганбаатар гэгчийн талаар ч
 		зохисгүй үг хэлж өөрийгөө хамгаалсан байна. Ц.Сандуйгийн энэ мэдэгдлийг сонссон МАН-ын удирдлагууд дуу авалцан түүн рүү дайрч
 		<span style="text-transform: uppercase; font-weight: bold;">"Өдий хүртэл бидэнд энэ бичлэгийг эвлүүлэг гэж итгүүлж байсанд бухимдаж байна" гэх санал,
-		шүүмжлэлээ хэлж Ц.Сандуйг яаралтай намаас хөөх тухай ярьж эхэлсэн байна.</span> <a href="https://ikon.mn/n/130s">ikon.mn</a>
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.08.16manUZ.png | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+		шүүмжлэлээ хэлж Ц.Сандуйг яаралтай намаас хөөх тухай ярьж эхэлсэн байна.</span></p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.08.16manUZ.png | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.07.25 УЛСЫН ЕРӨНХИЙ ПРОКУРОРЫН ГАЗРААС "60 ТЭРБУМ"-ЫН БИЧЛЭГТЭЙ ХОЛБООТОЙ АСУУДЛААР ХЭРЭГ БҮРТГЭЛТИЙН ХЭРЭГ НЭЭЖ ШАЛГУУЛАХААР ШИЙДВЭРЛЭЖЭЭ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            УЛСЫН ЕРӨНХИЙ ПРОКУРОРЫН ГАЗРААС Г.ДОРЖЗОДОВЫН ӨМГӨӨЛӨГЧ Г.БААСАНГИЙН ТУС ПРОКУРОРЫН ГАЗАРТ ГАРГАСАН ГОМДЛЫН ДАГУУ НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗРААС
+	<div class="glass-box">
+		<h3>2017.07.25 УЛСЫН ЕРӨНХИЙ ПРОКУРОРЫН ГАЗРААС "60 ТЭРБУМ"-ЫН БИЧЛЭГТЭЙ ХОЛБООТОЙ АСУУДЛААР ХЭРЭГ БҮРТГЭЛТИЙН ХЭРЭГ НЭЭЖ ШАЛГУУЛАХААР ШИЙДВЭРЛЭЖЭЭ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>УЛСЫН ЕРӨНХИЙ ПРОКУРОРЫН ГАЗРААС Г.ДОРЖЗОДОВЫН ӨМГӨӨЛӨГЧ Г.БААСАНГИЙН ТУС ПРОКУРОРЫН ГАЗАРТ ГАРГАСАН ГОМДЛЫН ДАГУУ НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗРААС
 		"60 ТЭРБУМ"-ЫН БИЧЛЭГТЭЙ ХОЛБОГДУУЛАН ХЯНАН ШИЙДВЭРЛЭСЭН ЭРҮҮГИЙН ХЭРЭГ ҮҮСГЭХЭЭС ТАТГАЛЗСАН МАТЕРИАЛЫГ ХЯНАЖ ҮЗЭЭД 1/03 ДУГААРТАЙ ТОГТООЛООР
 		ЭРҮҮГИЙН ХЭРЭГ ҮҮСГЭХЭЭС ТАТГАЛЗСАН ӨМНӨХ ТОГТООЛЫГ ХҮЧИНГҮЙ БОЛГОЖ, МӨН ӨДРИЙН 5/06 ТОГТООЛООР АТГ, ЦЕГ, ТЕГ-ЫН ХАМТАРСАН АЖЛЫН ХЭСГЭЭР МӨРДӨН ШАЛГАХ
-		АЖИЛЛАГАА ЯВУУЛАХААР ШИЙДВЭРЛЭЖЭЭ. Улсын ерөнхий прокурорын газрын Мэдээ болон 2017.07.25-ны өдрийн №1/03 дугаартай Тогтоолыг томруулж ҮЗЭХ:
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.07.25uepg.png | Тайлбар,
-            https://the2m16.github.io/web/images/2017.07.25uep1.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2017.07.25uep2.jpg | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+		АЖИЛЛАГАА ЯВУУЛАХААР ШИЙДВЭРЛЭЖЭЭ. Улсын ерөнхий прокурорын газрын Мэдээ болон 2017.07.25-ны өдрийн №1/03 дугаартай Тогтоолыг томруулж ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.07.25uepg.png | Тайлбар,
+		https://the2m16.github.io/web/images/2017.07.25uep1.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2017.07.25uep2.jpg | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.07.04 АМЕРИК ШИНЖЭЭЧИЙН ДҮГНЭЛТ ИРСЭНИЙГ Ц.ОЮУНГЭРЭЛ, О.АЛТАНГЭРЭЛ НАР ХЭВЛЭЛИЙН БАГА ХУРАЛ ХИЙЖ СЭТГҮҮЛЧДЭД ТАНИЛЦУУЛАВ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-        АНУ-ын Холбооны мөрдөх товчоо (FBI), Хар тамхитай тэмцэх газар (DEA),
+	<div class="glass-box">
+		<h3>2017.07.04 АМЕРИК ШИНЖЭЭЧИЙН ДҮГНЭЛТ ИРСЭНИЙГ Ц.ОЮУНГЭРЭЛ, О.АЛТАНГЭРЭЛ НАР ХЭВЛЭЛИЙН БАГА ХУРАЛ ХИЙЖ СЭТГҮҮЛЧДЭД ТАНИЛЦУУЛАВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>АНУ-ын Холбооны мөрдөх товчоо (FBI), Хар тамхитай тэмцэх газар (DEA),
 		Нью-Йорк мужийн Прокурорын газар, Муж улсын болон Холбооны шүүхийн хэрэг хянан шийдвэрлэх ажиллагааны дуу,
 		дүрс бичлэгийн шинжээч Фрэнк Пиазза (Frank Piazza) М.Энхболд, Ц.Сандуй, А.Ганбаатар нарын дуу хоолой бүхий
 		<a href="https://the2m16.github.io/web/90min.html">90 минутын аудио бичлэгийг</a> 2017 оны 7 сарын 3-ны өдөр шинжлээд:
 		<span style="text-transform: uppercase;">"... Тухайн бичлэгт ямар нэгэн засвар,
 		өөрчлөлт, эвлүүлэг ороогүй гэсэн дүгнэлтэд хүрэв. Уг файл нь эхнээсээ дуусах хүртэл бүрэн эх хувь (authentic буюу жинхэнэ хувь)
 		болох нь харагдаж байна. Дуу авианы нарийвчилсан техник, дууны хэлбэлзлийн шинжилгээ (waveform analysis) болон
-		спектрографийн шинжилгээ нь эдгээр дүгнэлтийг нотолж байна."</span> гэж дүгнэжээ. Хэвлэлийн бага хурлыг ҮЗЭХ:
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/p7iCclFzoPc?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div><br>
+		спектрографийн шинжилгээ нь эдгээр дүгнэлтийг нотолж байна."</span> гэж дүгнэжээ. Хэвлэлийн бага хурлыг ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-    	<h3>2017.07.03 АНУ-ЫН ШҮҮХИЙН ШИНЖЭЭЧИЙН ДҮГНЭЛТ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-			</p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.07.03fbi90forensic1.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 1,
-            https://the2m16.github.io/web/images/2017.07.03fbi90forensic2.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 2,
-            https://the2m16.github.io/web/images/2017.07.03fbi90forensic3.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 3,
-            https://the2m16.github.io/web/images/2017.07.03fbi90forensic4.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 4,
-            https://the2m16.github.io/web/images/2017.07.03fbi90forensic5.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 5,
-            https://the2m16.github.io/web/images/2017.07.03fbi90forensic6.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 6,
-            https://the2m16.github.io/web/images/2017.07.03fbi90forensic7.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 7
-        	"></div>
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/p7iCclFzoPc?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div><br>
 
-    </div><!-- glass box end -->
+		<h3>2017.07.03 АНУ-ЫН ШҮҮХИЙН ШИНЖЭЭЧИЙН ДҮГНЭЛТ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p></p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-
-
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.07.03fbi90forensic1.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 1,
+		https://the2m16.github.io/web/images/2017.07.03fbi90forensic2.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 2,
+		https://the2m16.github.io/web/images/2017.07.03fbi90forensic3.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 3,
+		https://the2m16.github.io/web/images/2017.07.03fbi90forensic4.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 4,
+		https://the2m16.github.io/web/images/2017.07.03fbi90forensic5.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 5,
+		https://the2m16.github.io/web/images/2017.07.03fbi90forensic6.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 6,
+		https://the2m16.github.io/web/images/2017.07.03fbi90forensic7.webp | Шинжээч Франк Пиаззагийн 90 минутын бичлэгийг шинжилсэн дүгнэлт. Хуудас 7
+		"></div>
+	</div><!-- glass box end -->
 
 
 
-    <div class="glass-box">
-        <h3>2017.06.16 ӨДРИЙН СОНИН №135(5702)</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-        Бичлэгийн 2016 онд богино хэсгийг ил болгосоны дараа дуу хоолой нь тодорхой болсон нөхдүүдийг цагдаа, тагнуулын байгууллага шалгахаасаа илүүтэйгээр
+
+
+
+	<div class="glass-box">
+		<h3>2017.06.16 ӨДРИЙН СОНИН №135(5702)</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Бичлэгийн 2016 онд богино хэсгийг ил болгосоны дараа дуу хоолой нь тодорхой болсон нөхдүүдийг цагдаа, тагнуулын байгууллага шалгахаасаа илүүтэйгээр
 		шүгэл үлээсэн гэрчийг тэдгээр нэр нь холбогдсон хүмүүсийн худал мэдүүлгээр яллахыг оролдож, жинхэнэ эх хувийг гэрчийн эд зүйлсээс олж устгах зорилгоор эрүүгийн хэрэг зохиож,
 		дагаж мөрдөж, элдвээр дарамталж эхэлсэн учир тэвчээр минь барагдаж 2017 оны 5 сарын 6-нд 90 минутын бичлэгийг бүрэн эхээр нь цахим орчноор дамжуулан олон нийтэд шууд дэлгэсэн. Гэтэл үүний дараа
 		нөлөө бүхий улстөрчдөөс ЦЕГ, ТЕГ-ын дарга нарт <b>"Г.ДОРЖЗОДОВЫГ ХАМГААЛ, ГЭХДЭЭ ХУРДАН ЦАГДАЖ ШАЛГА"</b> гэх утга агуулга бүхий чиглэл өгөгдсөн байдаг.
 		Ингээд 6 сарын 14-өөс 16-нд шилжих шөнө цагдаа, тагнуулын байгууллага намайг баривчлахаар айлын байшинг бүсэлсэн. Надад огт мэдэгдэлгүйгээр
 		бүсэлсэн учраас энэ бол яав ч хамгаалалт биш юм. МАН-аас  Яг энэ бүслэлтээс хэдхэн цагийн цагийн өмнө шөнө дунд Өдрийн сонины зориулан маш дэлгэрэнгүй ярилцлагаа меилээр илгээж амжсан юм.
-		Өдрийн сонинд өгсөн ярилцлагыг PDF форматаар ҮЗЭХ:
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+		Өдрийн сонинд өгсөн ярилцлагыг PDF форматаар ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-            <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.06.16DailyNews1.webp | 2016.06.16 Өдрийн сонин. Нүүр 1,
-            https://the2m16.github.io/web/images/2017.06.16DailyNews2.webp | 2016.06.16 Өдрийн сонин. Нүүр 10,
-            https://the2m16.github.io/web/images/2017.06.16DailyNews3.webp | 2016.06.16 Өдрийн сонин. Нүүр 11
-        	"></div>
-
-    </div><!-- glass box end -->
-
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.06.16DailyNews1.webp | 2016.06.16 Өдрийн сонин. Нүүр 1,
+		https://the2m16.github.io/web/images/2017.06.16DailyNews2.webp | 2016.06.16 Өдрийн сонин. Нүүр 10,
+		https://the2m16.github.io/web/images/2017.06.16DailyNews3.webp | 2016.06.16 Өдрийн сонин. Нүүр 11
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.06.15 ЦЕГ, ТЕГ-ААС ШҮГЭЛ ҮЛЭЭГЧИЙН ТҮР БАЙРЛАЖ БАЙСАН ОРГИЛ ХОТХОНЫ АЙЛЫГ ҮҮР ШӨНӨӨР БҮСЛЭВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            МАН-ААС 2017.06.14-НИЙ ӨДӨР ЦАГДААГИЙН ЕРӨНХИЙ ГАЗРЫН ДАРГА Ө.ЭНХТӨР, ТАГНУУЛЫН ЕРӨНХИЙ ГАЗРЫН ДАРГА Б.ХУРЦ НАРТ
+
+	<div class="glass-box">
+		<h3>2017.06.15 ЦЕГ, ТЕГ-ААС ШҮГЭЛ ҮЛЭЭГЧИЙН ТҮР БАЙРЛАЖ БАЙСАН ОРГИЛ ХОТХОНЫ АЙЛЫГ ҮҮР ШӨНӨӨР БҮСЛЭВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>МАН-ААС 2017.06.14-НИЙ ӨДӨР ЦАГДААГИЙН ЕРӨНХИЙ ГАЗРЫН ДАРГА Ө.ЭНХТӨР, ТАГНУУЛЫН ЕРӨНХИЙ ГАЗРЫН ДАРГА Б.ХУРЦ НАРТ
 		"МУ-ЫН ЕРӨНХИЙЛӨГЧИЙН 2017 ОНЫ ЭЭЛЖИТ СОНГУУЛЬД МАНАЙ НАМААС НЭР ДЭВШИГЧ М.ЭНХБОЛДЫГ
 		ЗОХИОН БАЙГУУЛАЛТТАЙГААР ГҮТГЭН ГҮЖИРДЭХ ҮЙЛ АЖИЛЛАГАА ХЭРЭЭС ХЭТЭРЛЭЭ. ТУХАЙЛБАЛ, ЦАХИМ БОЛОН ХЭВЛЭЛ МЭДЭЭЛЛИЙН
 		ХЭРЭГСЛЭЭР ИРГЭН Г.ДОРЖЗОДОВ ГЭДЭГ НЭРЭЭР МАНАЙ НАМААС НЭР ДЭВШИГЧИЙН НЭР ХҮНДЭД ХАЛДАЖ, ИЛТЭД ГҮТГЭН ГҮЖИРДСЭЭР ИРЛЭЭ..."
-		гэх салаа утга агуулгатай албан бичиг явуулсан байжээ.</p><p>
-        Олон хоног үргэлжилсэн тагнуул, цагдаагийн байгууллагын мөрдөлт мөшгилтөөс гэрч, шүгэл үлээгч би өөрийгөө хамгаалж
+		гэх салаа утга агуулгатай албан бичиг явуулсан байжээ.</p>
+		<p>Олон хоног үргэлжилсэн тагнуул, цагдаагийн байгууллагын мөрдөлт мөшгилтөөс гэрч, шүгэл үлээгч би өөрийгөө хамгаалж
 		УИХ-ын гишүүн асан, хүний эрхийн хамгаалагч Ц.Оюунгэрэл, түүний нөхөр, Америкийн иргэн, зохиолч Жеффри нарын
 		Оргил хотхон дахь гэрт түр байрлаж байх үед 6 сарын 14-нөөс 15-нд шилжих шөнө хуулийн байгууллагууд гүйцэтгэх ажиллагаа
 		явуулж 2 давхар эгнээгээр хааж бүслэв. Ингэхдээ анхааруулж, сануулалгүйгээр гадаадын иргэний өмчид халдаж, хашааг нь даван
@@ -767,462 +737,440 @@
 		шийдвэр, бүслэлтийг өглөөний 09:00 цагт татан буулгах тухай 2017.06.15-ны өдрийн тушаал шийдвэр огт ил болоогүй бөгөөд бүслэх, саатуулах ажиллагаа
 		бүтэлгүйтсэний дараа ЦЕГ-ын дарга Ө.Энхтөр Хамгаалалт зохион байгуулах тухай А/115 дугаартай шинэ Тушаалыг 2017.06.15-нд үйлдэж
 		Гэрч хохирогчийг хамгаалах хэлтсийн энгийн хувцастай, галт зэвсэгтэй хүмүүсээр бүслэлтийг сольсон байна.
-		Уг "хамгаалалт" 2017.07.09-ний өдрийг хүртэл Оргил хотхоны 2-1 тоот айлыг хянах, ажиглах үйл ажиллагааг хийж гүйцэтгэсэн.)</p><p>
-        Бүслэлтийн үйл ажиллагаа сошлоор дамжин олон нийтийн анхааралд өртөөд эхэлмэгц цагдаа, прокурор, МАН-ын эрх бүхий албан
+		Уг "хамгаалалт" 2017.07.09-ний өдрийг хүртэл Оргил хотхоны 2-1 тоот айлыг хянах, ажиглах үйл ажиллагааг хийж гүйцэтгэсэн.)</p>
+		<p>Бүслэлтийн үйл ажиллагаа сошлоор дамжин олон нийтийн анхааралд өртөөд эхэлмэгц цагдаа, прокурор, МАН-ын эрх бүхий албан
 		тушаалтнууд хэвлэлээр ээлжлэн мэдэгдэл хийж эхэлсэн бөгөөд тэдгээр мэдэгдлүүд нь өөр хоорондоо зарчилдөж байв.
 		Тэд "танай аав хамгаалалт хүссэн", "тагнуулын шалгалтад саад болсон учраас цагдаа бүсэлсэн", "жүдочид аминд нь халдаж магадгүй",
 		"гадаадын иргэнээр дамжуулж 60 тэрбумын нотлох баримт интернетэд түгээж эхэлсэн", "эмх замбараагүй байдал үүсгэх гээд байхаар нь хамгаалсан",
-		"тагнуул дээр шалгагдаж байгаа" гэх мэт.
-		Тухайлбал, 15-ны өдрийн 09:00 цагт ЦЕГ-ЫН ГЭРЧ ХОХИРОГЧИЙГ ХАМГААЛАХ ХЭЛТЭС: "ЭНЭ БОЛ БҮСЛЭЛТ БИШ. ХАРИН
+		"тагнуул дээр шалгагдаж байгаа" гэх мэт. Тухайлбал, 15-ны өдрийн 09:00 цагт ЦЕГ-ЫН ГЭРЧ ХОХИРОГЧИЙГ ХАМГААЛАХ ХЭЛТЭС: "ЭНЭ БОЛ БҮСЛЭЛТ БИШ. ХАРИН
 		ТАНАЙ ААВ ФЕЙСБҮКТ МАНАЙ ХҮҮГ ХАМГААЛААД ӨГӨӨЧ ГЭЖ ХҮСЭЛТ ГАРГАСАНЫ ДАГУУ ХАМГААЛАЛТ АВЧ БАЙГАА..."
-		(<a href="https://the2m16.github.io/web/images/2017.06.15.0728g.jpg">ЗУРГИЙГ ҮЗЭХ</a>),</p><p>
-		
-		11:30 цагт MNB шууд эфирээр ЦЕГ-ЫН ТЭРГҮҮН ДЭД ДАРГА П.БАТБААТАР: "ИРГЭН Г.ДОРЖЗОДОВ ДЭЭР
+		(<a href="https://the2m16.github.io/web/images/2017.06.15.0728g.jpg">ЗУРГИЙГ ҮЗЭХ</a>),</p>
+		<p>11:30 цагт MNB шууд эфирээр ЦЕГ-ЫН ТЭРГҮҮН ДЭД ДАРГА П.БАТБААТАР: "ИРГЭН Г.ДОРЖЗОДОВ ДЭЭР
 		ЭРҮҮГИЙН ХУУЛИЙН 137 ЗҮЙЛЭЭР ЭРҮҮГИЙН ҮҮСГЭЭД ТАГНУУЛЫН БАЙГУУЛЛАГА ДЭЭР ШАЛГАЖ БАЙГАА. ШАЛГАЛТЫН ЯВЦАД Г.ДОРЖЗОДОВ ГЭДЭГ
 		ХҮН ШАЛГАЛТАД СААД БОЛСОН. ЭНЭ ХҮН БИЧЛЭГ СОШЛ ЕРТӨНЦИЙГ АШИГЛААД АРД ИРГЭДИЙГ ТӨӨРӨГДҮҮЛЭХ ҮЙЛ АЖИЛЛАГАА ЯВУУЛААД БАЙНА.
 		ШАЛГАГДАЖ БАЙХДАА 2 ХОНОГ ӨМГӨӨЛӨГЧ Г.БААСАНГИЙНД, СҮҮЛИЙН 4 ХОНОГ НЬ УИХ-ЫН ГИШҮҮН БАЙСАН Ц.ОЮУНГЭРЭЛИЙН ГЭРТ БАЙСАН..."
-		(<a href="https://youtu.be/d9Iv_Zp41B8?si=xyYtHU6gYpeaU1Kg">ВИДЕОГ ҮЗЭХ</a>),</p><p>
-
-		13:06 цагт МАН: "Г.ДОРЖЗОДОВ ӨӨРИЙН ЦАХИМ ХУУДСААРАА ДАМЖУУЛЖ ХЭРВЭЭ М.ЭНХБОЛД ДАРГА ЗӨВШӨӨРВӨЛ ЧАМАЙГ АЛЧИХНА
+		(<a href="https://youtu.be/d9Iv_Zp41B8?si=xyYtHU6gYpeaU1Kg">ВИДЕОГ ҮЗЭХ</a>),</p>
+		<p>13:06 цагт МАН: "Г.ДОРЖЗОДОВ ӨӨРИЙН ЦАХИМ ХУУДСААРАА ДАМЖУУЛЖ ХЭРВЭЭ М.ЭНХБОЛД ДАРГА ЗӨВШӨӨРВӨЛ ЧАМАЙГ АЛЧИХНА
 		ГЭЖ А.ГАНБААТАР ХЭЛСЭН ГЭДЭГ ЯРИАГ ГАРГАЖ ЭХЭЛСЭН. МӨН АМЕРИКТ ТӨСӨЛ ДЭЭР АЖИЛЛАДАГ БАТМӨНХ ГЭЖ ЗАЛУУ ХЭРВЭЭ ИРГЭН Г.ДОРЖЗОДОВЫН
 		АМЬ НАСАНД АЮУЛ УЧИРСАН ТОХИОЛДОЛД ЭНЭ ХАРИУЦЛАГЫГ М.ЭНХБОЛД, Ц.САНДУЙ, А.ГАНБААТАР, МАН ҮҮРЭХ ЁСТОЙ ГЭЖ ОЛОН НИЙТЭД МЭДЭЭЛСЭН. ЯГ
 		ҮҮНТЭЙ ИЖИЛ ТӨСТЭЙГЭЭР ТАНИГДАХГҮЙ ХУУРАМЧ ХАЯГУУДААС ИЙМ ТӨРЛИЙН МЭДЭЭЛЛҮҮД ИХЭЭР ГАРСАН..."
-		(<a href="https://youtu.be/c3jGuNndy3c?si=K-UzPE0fjCpWty5z">ВИДЕОГ ҮЗЭХ</a>),</p><p>
-			
-		16-ны өдөр НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР: "Г.ДОРЖЗОДОВ ГЭХ ХҮН ТАГНУУЛЫН ЕРӨНХИЙ ГАЗАРТ 133.1-Д ЗААСАН
+		(<a href="https://youtu.be/c3jGuNndy3c?si=K-UzPE0fjCpWty5z">ВИДЕОГ ҮЗЭХ</a>),</p>
+		<p>16-ны өдөр НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР: "Г.ДОРЖЗОДОВ ГЭХ ХҮН ТАГНУУЛЫН ЕРӨНХИЙ ГАЗАРТ 133.1-Д ЗААСАН
 		ГҮЙЦЭТГЭХ АЖЛЫН ХУУЛЬ ТОГТООМЖ ЗӨРЧИХ ГЭМТ ХЭРЭГТ ШАЛГАГДАЖ БАЙГАА. МӨРДӨН БАЙЦААХ БАЙГУУЛЛАГААС ӨНӨӨДРИЙН БАЙДЛААР ЯМАР НЭГ АЛБАДЛАГЫН
 		АРГА ХЭМЖЭЭ АВАХ САНАЛ, ТОГТООЛ ГАРГАЖ ПРОКУРОРООР БАТЛУУЛСАН ЗҮЙЛ ОГТ БАЙХГҮЙ... ХАРИН СОШЛ ОРЧИНД ЗАРИМ НЭГ ХҮМҮҮС ОЛОН НИЙТЭД ЗОРИУД
 		ТАШАА МЭДЭЭЛЭЛ ХҮРГЭЖ, УЛМААР БУСДЫГ ТУРХИРАХ ӨНГӨ АЯСТАЙ МЭДЭЭЛЭЛ ХИЙСЭН НЬ ОЛОН НИЙТИЙН АНХААРАЛД ӨРТӨЖ, ГУДАМЖ ТАЛБАЙД ЭМХ ЗАМБАРААГҮЙ БАЙДАЛ
 		ҮҮСЭЖ БОЛОХ НӨХЦӨЛ БАЙДЛЫГ БИЙ БОЛГОСОН. ҮҮНЭЭС УРЬДЧИЛАН СЭРГИЙЛЭХ ЗОРИЛГООР ЦАГДААГИЙН БАЙГУУЛЛАГА ХҮЧЛЭН ХАМГААЛАЛТ АВСАН"
-		(<a href="https://the2m16.github.io/web/images/2017.06.16shirendev.png">ЯРИЛЦЛАГЫГ ҮЗЭХ</a>)
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+		(<a href="https://the2m16.github.io/web/images/2017.06.16shirendev.png">ЯРИЛЦЛАГЫГ ҮЗЭХ</a>)</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/rh4d6iPqtkY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div><br>
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/rh4d6iPqtkY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div><br>
 
-        <div class="gl-smart-grid" data-images="
-            	https://the2m16.github.io/web/images/2017.06.14man.jpg | 2016.06.14 МАН,
-            	https://the2m16.github.io/web/images/2017.06.15neworder.jpg | 2016.06.15 ЦЕГ
-        "></div>
-    </div><!-- glass box end -->
-
-
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.06.14man.jpg | 2016.06.14 МАН,
+		https://the2m16.github.io/web/images/2017.06.15neworder.jpg | 2016.06.15 ЦЕГ
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.06.12 Mozello.com ХОСТ-САЙТ ДЭЭР ӨӨРИЙН ВЕБСАЙТАА НЭЭЖ 60 ТЭРБУМЫН НОТЛОХ БАРИМТУУДЫГ ОЛОН НИЙТЭД НЭЭЛТТЭЙ БАЙРШУУЛЖ ЭХЛЭВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            Сошл хаягаараа нийтэлж байсан нотлох баримтуудыг нэгтгэн <b>sixtybln.mozello.com</b> хаягтай вебсайт нээгээд тэндээсээ сошл орчин руу
+
+
+	<div class="glass-box">
+		<h3>2017.06.12 Mozello.com ХОСТ-САЙТ ДЭЭР ӨӨРИЙН ВЕБСАЙТАА НЭЭЖ 60 ТЭРБУМЫН НОТЛОХ БАРИМТУУДЫГ ОЛОН НИЙТЭД НЭЭЛТТЭЙ БАЙРШУУЛЖ ЭХЛЭВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Сошл хаягаараа нийтэлж байсан нотлох баримтуудыг нэгтгэн <b>sixtybln.mozello.com</b> хаягтай вебсайт нээгээд тэндээсээ сошл орчин руу
 		хуваалцдаг болгон тохируулсан юм. Хожим <b>dorjzodov.org</b> домайн хаягийг авч энэ сайтдаа холбосон.
-		Сүүлд хост сайтын жилийн төлбөр нь өссөн учраас контентоо GitHub.com руу нүүлгэсэн.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.06.12mozello.jpg | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+		Сүүлд хост сайтын жилийн төлбөр нь өссөн учраас контентоо GitHub.com руу нүүлгэсэн.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.06.12mozello.jpg | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.06.06 Олон нийтэд ил болсон 90 минутын аудио бичлэгийг шинжлэх боломжгүй гэх үндэслэлээр хэрэг бүртгэлт үүсгэхээс Нийслэлийн Прокурорын газар татгалзаж шийдвэрлэв</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            УЛСЫН ЕРӨНХИЙ ПРОКУРОРЫН ГАЗАРТ УИХ-ЫН ГИШҮҮДЭЭС 90 МИНУТЫН БИЧЛЭГ, 39 ХУУДАС МАТЕРИАЛ ИРҮҮЛСЭНИЙ ДАГУУ 2017 ОНЫ 6 САРЫН 6-НЫ ӨДӨР
+	<div class="glass-box">
+		<h3>2017.06.06 Олон нийтэд ил болсон 90 минутын аудио бичлэгийг шинжлэх боломжгүй гэх үндэслэлээр хэрэг бүртгэлт үүсгэхээс Нийслэлийн Прокурорын газар татгалзаж шийдвэрлэв</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>УЛСЫН ЕРӨНХИЙ ПРОКУРОРЫН ГАЗАРТ УИХ-ЫН ГИШҮҮДЭЭС 90 МИНУТЫН БИЧЛЭГ, 39 ХУУДАС МАТЕРИАЛ ИРҮҮЛСЭНИЙ ДАГУУ 2017 ОНЫ 6 САРЫН 6-НЫ ӨДӨР
 		ХАМТАРСАН АЖЛЫН ХЭСЭГ БАЙГУУЛАХ, ШИНЖЭЭЧ ТОМИЛОХ ТОГТООЛ ҮЙЛДЭВ. ШШҮХ-ИЙН ШИНЖЭЭЧ 90 МИНУТЫН АУДИО БИЧЛЭГИЙГ ШИНЖЛЭЭД
 		2017 ОНЫ 5 САРЫН 9-НИЙ ӨДӨР ХУУЛБАРЛАСАН БАЙХ ТУЛ ШИНЖИЛГЭЭ ХИЙХ БОЛОМЖГҮЙ ГЭХ №3395 ДУГААРТАЙ ШИНЖЭЭЧИЙН ДҮГНЭЛТ ҮЙЛДЭЖ
-		ИРҮҮЛСЭНИЙГ ҮНДЭСЛЭН НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР ХЭРЭГ БҮРТГЭЛТИЙН ХЭРЭГ НЭЭХЭЭС ТАТГАЛЗАЖ ШИЙДВЭРЛЭВ.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-    </div><!-- glass box end -->
+		ИРҮҮЛСЭНИЙГ ҮНДЭСЛЭН НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗАР ХЭРЭГ БҮРТГЭЛТИЙН ХЭРЭГ НЭЭХЭЭС ТАТГАЛЗАЖ ШИЙДВЭРЛЭВ.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.06.01-ээс 06.09-НИЙ ӨДРҮҮДЭД ШҮГЭЛ ҮЛЭЭГЧИЙГ ХУДАЛДАЖ АВАХ, ДАРАМТЛАХ, МӨРДӨХ, НӨЛӨӨЛӨХ ОРОЛДЛОГУУД</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            <b>2017.06.01-05 ҮНДЭСНИЙ АЮУЛГҮЙ БАЙДЛЫН ЗӨВЛӨЛӨӨС ЯВУУЛСАН ХҮН.</b> ҮАБЗ-ийн Стратегийн судалгааны хүрээлэнд хамт ажиллаж байсан Н.Доржсүрэн утсаар залгаж
+	<div class="glass-box">
+		<h3>2017.06.01-ээс 06.09-НИЙ ӨДРҮҮДЭД ШҮГЭЛ ҮЛЭЭГЧИЙГ ХУДАЛДАЖ АВАХ, ДАРАМТЛАХ, МӨРДӨХ, НӨЛӨӨЛӨХ ОРОЛДЛОГУУД</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p><b>2017.06.01-05 ҮНДЭСНИЙ АЮУЛГҮЙ БАЙДЛЫН ЗӨВЛӨЛӨӨС ЯВУУЛСАН ХҮН.</b> ҮАБЗ-ийн Стратегийн судалгааны хүрээлэнд хамт ажиллаж байсан Н.Доржсүрэн утсаар залгаж
 		ятгасаар 20:56 цагт зочид буудалд уулзав. <span style="font-weight: bold; text-transform: uppercase;">"Хүссэн сургуулиа сонго, улсаа сонго, дээр нь нэмээд 2 өрөө байр өгье.
 		60 тэрбумын уулзалтын талаар зүгээр мартчих"</span> гэж дамжуулсан байв. Хэн дамжуулсан юм гэж асуухад дээшээ тааз руу хуруугаар заагаад "УАБЗ-өөс" гэж дохиогоор илэрхийлэв.
-		6 сарын 2-нд 12:02, 18:16, 6 сарын 3-нд 19:48 цагт мсж-ээр, 6 сарын 4-нд 13:55, 6сарын 5-эд 12:18 цагт утсаар олон дахин залгаж, мсж бичиж ятгасан.</p><p>
-		
-		<b>2017.06.06-09 АЛТАНДОРНОД МОНГОЛ ХХК-ИЙН ЗАХИРАЛ Т.ГАНБОЛД, ЗГХЭГ-ЫН ДАРГА, МАН-ЫН ЕНБД Ж.МӨНХБАТ НАР.</b> 13:00 цагт Германаас утсаар холбогдож 2 хоногийн дараа (2017.06.08-ны 12:00 цагт) Монголд уулзъя гэв.
+		6 сарын 2-нд 12:02, 18:16, 6 сарын 3-нд 19:48 цагт мсж-ээр, 6 сарын 4-нд 13:55, 6сарын 5-эд 12:18 цагт утсаар олон дахин залгаж, мсж бичиж ятгасан.</p>
+		<p><b>2017.06.06-09 АЛТАНДОРНОД МОНГОЛ ХХК-ИЙН ЗАХИРАЛ Т.ГАНБОЛД, ЗГХЭГ-ЫН ДАРГА, МАН-ЫН ЕНБД Ж.МӨНХБАТ НАР.</b> 13:00 цагт Германаас утсаар холбогдож 2 хоногийн дараа (2017.06.08-ны 12:00 цагт) Монголд уулзъя гэв.
 		Т.Ганболд 6 сарын 8-нд уулзахдаа шүгэл үлээгчид туслая, хамгаалъя гэсэн боловч дараа өдөр нь 6 сарын 9-ний орой Энканто Спорт центрийн VIP саунд хүрээд ир,
 		М.Энхболдтой уулзчих гэж ятгасаар байгаад 20:30 цагт уулзав. Саунд Т.Ганболд ЗГХЭГ-ын дарга, МАН-ын ЕНБД Ж.Мөнхбатын хамт шүгэл үлээгчтэй уулзаж
 		<span style="font-weight: bold; text-transform: uppercase;">"Бичлэг бол эвлүүлэг байсан юм гэсэн нэвтрүүлэг хийж өгвөл гэр бүлээр чинь хүссэн улс руу чинь
 		7 хоногийн дотор визийг нь гаргая, $1сая өгье. Мөнгийг Т.Ганболдоос аваарай"</span> гээд салцгаасан. Шүгэл үлээгчийг өмгөөлөгчийндөө байгааг Т.Ганболд мэдсэнээ хэлэв.
-		Өөрөөр хэлбэл, хуулийн байгууллагуудын гүйцэтгэх ажиллагааны талаар мэдээлэлтэй явдагаа хэлэв.</p><p>
-		
-		<b>2017.06.06 Ц.ЭЛБЭГДОРЖИЙН ЗӨВЛӨХ А.АМУНДРА.</b> 22:00 цагийн үед хүнээр дамжуулан шүгэл үлээгчтэй утсаар холбогдож Зайсанд тэр шөнөдөө уулзахыг хүсч байгаагаа хэлүүлэв.
-		Энэ уулзалт болоогүй.</p><p>
-		
-		<b>2017.06.09 ХЬЮНДАЙ САНТАФЕ 8102УБМ МАШИНТАЙ ГҮЙЦЭТГЭХ АЖИЛЛАГАА.</b> 14:00 цагийн үед шүгэл үлээгчийн араас дагаад салахгүй байсан машины дугаарыг онлайнаар шүүж үзэхэд 1976 онд
-		үйлдвэрлэгдсэн оросын Газ-24 гэсэн лавлагаа гарч байв.</p><p>
-
-		<b>2018.09.23 "МОДНЫ" ТУНГАЛАГ ГЭХ ХҮНЭЭС ИРСЭН МСЖ.</b> Хамт багшилж байсан залуугаар олон удаа дамжуулан н.Тунгалаг гэх хүн уулзах хүсэлтэй байгаагаа илэрхийлсэн ч ямар зорилгоор
-		уулзах билээ гэж мсж-ээр асуухад хариулаагүй.</p><p>
-		
-		Эдгээр болсон явдлуудыг эргээд харахад, таньж мэддэг хүмүүсээр дамжуулан туслах, хамгаалах нэрээр шүгэл үлээгчтэй уулзаж олон нийтэд дэлгэж эхэлсэн
+		Өөрөөр хэлбэл, хуулийн байгууллагуудын гүйцэтгэх ажиллагааны талаар мэдээлэлтэй явдагаа хэлэв.</p>
+		<p><b>2017.06.06 Ц.ЭЛБЭГДОРЖИЙН ЗӨВЛӨХ А.АМУНДРА.</b> 22:00 цагийн үед хүнээр дамжуулан шүгэл үлээгчтэй утсаар холбогдож Зайсанд тэр шөнөдөө уулзахыг хүсч байгаагаа хэлүүлэв. Энэ уулзалт болоогүй.</p>
+		<p><b>2017.06.09 ХЬЮНДАЙ САНТАФЕ 8102УБМ МАШИНТАЙ ГҮЙЦЭТГЭХ АЖИЛЛАГАА.</b> 14:00 цагийн үед шүгэл үлээгчийн араас дагаад салахгүй байсан машины дугаарыг онлайнаар шүүж үзэхэд 1976 онд
+		үйлдвэрлэгдсэн оросын Газ-24 гэсэн лавлагаа гарч байв.</p>
+		<p><b>2018.09.23 "МОДНЫ" ТУНГАЛАГ ГЭХ ХҮНЭЭС ИРСЭН МСЖ.</b> Хамт багшилж байсан залуугаар олон удаа дамжуулан н.Тунгалаг гэх хүн уулзах хүсэлтэй байгаагаа илэрхийлсэн ч ямар зорилгоор
+		уулзах билээ гэж мсж-ээр асуухад хариулаагүй.</p>
+		<p>Эдгээр болсон явдлуудыг эргээд харахад, таньж мэддэг хүмүүсээр дамжуулан туслах, хамгаалах нэрээр шүгэл үлээгчтэй уулзаж олон нийтэд дэлгэж эхэлсэн
 		60 тэрбумын нотлох баримтуудыг өөрөөр нь үгүйсгүүлэх, устгуулах, эсвэл Монголоос даруй гадагш гарч явахыг ятгах, виз, гадаадад сурах эрх, орон сууц амлах, мөнгөөр худалдаж авах
 		оролдлогууд байх бөгөөд бусдаар дамжуулан хэлүүлж байсан зүйлс нь ижил төстэй утга агуулгатай, холбогдож уулзаж хэлүүлж байгаа хүмүүс нь МАН-ын удирдлагууд,
 		ҮАБЗ (Ерөнхийлөгч Ц.Элбэгдорж, УИХ-ын дарга М.Энхболд, Ерөнхий сайд Ж.Эрдэнэбат нар)-г төлөөлөх ойрын итгэлт хүмүүс нь байв.
 		Дээр дурьсанаас гадна өөр хэд хэдэн тохиолдол байв: Арван жилийн ангийн багшийн нөхөр (тагнуулд ажилладаг), Стратегийн судалгааны хүрээлэнгийн ЭНБД асан хүн,
 		60 тэрбумын хэргийг 2017 онд сэргээн шалгаж эхлэхэд хөндлөнгөөс нөлөөлөх гэсэн тагнуулын ажилтан, улстөрийн намтай нь хамтарч ажиллаж рейтингийг нь өсгөж өгөхийг хүссэн ЕНБД,
 		дуулианы үеэр өмгөөлөгчөөр ажиллах санал тавьсан УИХ-ын гишүүн асан улстөрч, сонгуулиар тойрогт нь очиж улстөрийн рейтингийг нь өсгөж өгөхийг хүссэн улстөрч
-		гээд утсаар холбогдож уулзахыг хүсэх, хэргийг гэрчлэхээс татгалзах, гэрчийн мэдүүлэгээ өөрчлөх, сонгуульд хамтарч ажиллахыг санал болгох зэрэг хэд хэдэн тохиолдол байсан юм.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.06.09.1802ubm1.png | Тайлбар,
-            https://the2m16.github.io/web/images/2017.06.02nokia.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2017.06.09viber.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2018.11.30mod.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2018noCallerID.png | Тайлбар,
-            https://the2m16.github.io/web/images/2017.06.17.2351.jpg | Тайлбар            
-        "></div>
-    </div><!-- glass box end -->
+		гээд утсаар холбогдож уулзахыг хүсэх, хэргийг гэрчлэхээс татгалзах, гэрчийн мэдүүлэгээ өөрчлөх, сонгуульд хамтарч ажиллахыг санал болгох зэрэг хэд хэдэн тохиолдол байсан юм.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+			https://the2m16.github.io/web/images/2017.06.09.1802ubm1.png | Тайлбар,
+			https://the2m16.github.io/web/images/2017.06.02nokia.jpg | Тайлбар,
+			https://the2m16.github.io/web/images/2017.06.09viber.jpg | Тайлбар,
+			https://the2m16.github.io/web/images/2018.11.30mod.jpg | Тайлбар,
+			https://the2m16.github.io/web/images/2018noCallerID.png | Тайлбар,
+			https://the2m16.github.io/web/images/2017.06.17.2351.jpg | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.05.31 УИХ ДАХЬ АРДЧИЛСАН НАМЫН БҮЛЭГ 60 ТЭРБУМЫН АСУУДЛААР НЭЭЛТТЭЙ СОНСГОЛ-ХЭЛЭЛЦҮҮЛЭГ ТӨРИЙН ОРДОНД ЗОХИОН БАЙГУУЛАВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            УИХ дахь Ардчилсан намын бүлгээс МАН-ын УИХ-ын сонгуулийн үеэр төрийн эрхийг хэрхэн хууль бусаар авсан тухай 60 тэрбум бичлэгийн
+	<div class="glass-box">
+		<h3>2017.05.31 УИХ ДАХЬ АРДЧИЛСАН НАМЫН БҮЛЭГ 60 ТЭРБУМЫН АСУУДЛААР НЭЭЛТТЭЙ СОНСГОЛ-ХЭЛЭЛЦҮҮЛЭГ ТӨРИЙН ОРДОНД ЗОХИОН БАЙГУУЛАВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>УИХ дахь Ардчилсан намын бүлгээс МАН-ын УИХ-ын сонгуулийн үеэр төрийн эрхийг хэрхэн хууль бусаар авсан тухай 60 тэрбум бичлэгийн
 		нээлттэй сонсгол-хэлэлцүүлгийг Лхагва гаригт Төрийн ордонд зохион байгууллаа.
-		Хэлэлцүүлэгт УИХ дахь Ардчилсан намын бүлгийн гишүүд, хуулийн байгууллагын төлөөлөл, иргэдийн төлөөлөл болоод холбогдох албаны хүмүүс оролцлоо.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.05.31.jpg | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+		Хэлэлцүүлэгт УИХ дахь Ардчилсан намын бүлгийн гишүүд, хуулийн байгууллагын төлөөлөл, иргэдийн төлөөлөл болоод холбогдох албаны хүмүүс оролцлоо.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.05.31.jpg | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.05.07-ООС ЭХЛЭН МАН-ЫН ЗҮГЭЭС ЗАХИАЛГАТ ШТОРК, ТЕЛЕ-ЖҮЖИГ, ЯРИЛЦЛАГА, НЭВТРҮҮЛЭГ, ЭВЛҮҮЛЭГ ПОСТЕР, ДҮРСТЭЙ ДҮРСГҮЙ МЕДИА КОНТЕНТУУД ОЛНООР БЭЛТГЭЖ НИЙГЭМД ЦАЦАЖ ЭХЛЭВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            60 тэрбумын нотлох баримтуудыг олон нийтэд бүрэн эхээр нь нээлттэй хүргэж эхэлсэний маргааш өдрөөс Youtube, Facebook, Twitter сувгуудаар зөвхөн шүгэл үлээгчийг
+	<div class="glass-box">
+		<h3>2017.05.07-ООС ЭХЛЭН МАН-ЫН ЗҮГЭЭС ЗАХИАЛГАТ ШТОРК, ТЕЛЕ-ЖҮЖИГ, ЯРИЛЦЛАГА, НЭВТРҮҮЛЭГ, ЭВЛҮҮЛЭГ ПОСТЕР, ДҮРСТЭЙ ДҮРСГҮЙ МЕДИА КОНТЕНТУУД ОЛНООР БЭЛТГЭЖ НИЙГЭМД ЦАЦАЖ ЭХЛЭВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>60 тэрбумын нотлох баримтуудыг олон нийтэд бүрэн эхээр нь нээлттэй хүргэж эхэлсэний маргааш өдрөөс Youtube, Facebook, Twitter сувгуудаар зөвхөн шүгэл үлээгчийг
 		гүтгэх, гутаах зорилгоор их хэмжээний контентууд бэлтгэж, түгээж эхэлсэн ба үүндээ улстөрчид, төрийн сайдууд, урлаг соёлын хүмүүс, жүжигчид, дуу дүрс бичлэгийн
 		студиудыг татан оролцуулж байв. Ц.Сандуй, А.Ганбаатар нар ч өөрсдөө хэвлэлийн бага хурал хийж, нийтлэл хэвлүүлж, ярилцлага өгч, бусдаар янз бүрийн гүтгэлэгийн
 		шинжтэй эвлүүлэг хийлгэн фейсбүкт цацуулж байсан юм. Эдгээр контентуудаа Улаанбаатар хотын 3 цэгээс тролл фармууд, сошлийн инфлюнсерүүд, төрийн албан хаагчид,
 		намын идэвхтэн гишүүдээрээ дамжуулан маш хурдтай тараалгаж байв. Цахим орчинд (Twitter, Facebook) сөрөг, гүтгэсэн, доромжилсон, дайрсан коммент, жиргээ,
 		постууд ч битүү байлаа. Мөн үүний хажуугаар миний хаан банкны данс, меил хаяг, саундклауд, фейсбүк хаяг руу хакерууд дайрах оролдлогууд ч ар араасаа гарч байв.
 		Сүүлд фейсбүк пейжээ хакеруудад алдсан. Энэ мэт МАН-аас эхтэй иргэн рүү хамаг хүчээрээ илүүрхэж дайрсан үйлдлүүд 2023 он гартал үргэлжилсэн бөгөөд нийгмийн сэтгэлзүйд
-		ихээхэн хэмжээний худал мэдээллээс үүдэлтэй ташаа ойлголтыг гүн суулгаж өгсөн.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+		ихээхэн хэмжээний худал мэдээллээс үүдэлтэй ташаа ойлголтыг гүн суулгаж өгсөн.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.05.07manPR.png | Тайлбар,
-            https://the2m16.github.io/web/images/2017.06.21trolls.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2017.06.19man.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2017.06.27hackers.png | Тайлбар,
-            https://the2m16.github.io/web/images/2017.12.20trollfarm.png | Тайлбар        
-        "></div>
-    </div><!-- glass box end -->
-
-
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.05.07manPR.png | Тайлбар,
+		https://the2m16.github.io/web/images/2017.06.21trolls.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2017.06.19man.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2017.06.27hackers.png | Тайлбар,
+		https://the2m16.github.io/web/images/2017.12.20trollfarm.png | Тайлбар        
+		"></div>
+	</div><!-- glass box end -->
 
 
 
-    <div class="glass-box">
-        <h3>2017.05.06 АНХ УДАА ОЛОН НИЙТЭД 60 ТЭРБУМЫН ХЭРГИЙГ НОТЛОХ 90 МИНУТЫН АУДИО БИЧЛЭГИЙГ ЦАХИМ ОРЧИНД БҮРЭН ЭХЭЭР НЬ ДЭЛГЭВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            Ц.Сандуйн зөвлөх А.Ганбаатарын худал гомдлоор үүсгэсэн зохиомол эрүүгийн хэрэгт шалгагдаж, 60 тэрбумын хэргийг анх баримтжуулахад хэрэглэсэн
+
+
+	<div class="glass-box">
+		<h3>2017.05.06 АНХ УДАА ОЛОН НИЙТЭД 60 ТЭРБУМЫН ХЭРГИЙГ НОТЛОХ 90 МИНУТЫН АУДИО БИЧЛЭГИЙГ ЦАХИМ ОРЧИНД БҮРЭН ЭХЭЭР НЬ ДЭЛГЭВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Ц.Сандуйн зөвлөх А.Ганбаатарын худал гомдлоор үүсгэсэн зохиомол эрүүгийн хэрэгт шалгагдаж, 60 тэрбумын хэргийг анх баримтжуулахад хэрэглэсэн
 		iPhone гар утас, iPad таблет болон нөүтбүк, mp3 хөгжимөө хураалгаж, бүтэн сарын турш тагнуулын мөрдөгчдийн байнгын дарамтанд байхдаа нотлох баримтуудыг олж устгахаас нь сэргийлж
 		олон нийтэд бүрэн эхээр нь амжиж дэлгэсэн. Монголд төдийгүй хилийн чанадад түгээхэд хүний эрхийн хамгаалагч, эрдэмтэн, АНУ-ын иргэн Анн М. Алтман
 		тусалсан юм. Тагнуулын байгууллага шүгэл үлээгчээс хурааж авсан <b>SanDisk брэндийн Sansa Clip mp3</b> хөгжмийг тагнуулын төхөөрөмжид тооцож буцааж буцааж өгөөгүй, <b>iPhone</b> гар утсыг
 		эвдэж ажиллагаагүй болгосон ба буцааж өгөөгүй, <b>iPad Mini</b> таблетийг буцааж хүлээлгэж өгөөгүй (2019 онд БГД-ийн Эрүүгийн хэргийн анхан шатны шүүхийн
-		шийдвэрээр эдгээр эд зүйлсийг шүгэл үлээгчид буцааж өгөх тогтоол гарсан ч 2026 оны байдлаар Тагнуулын ерөнхий газар буцааж өгөөгүй байна)
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+		шийдвэрээр эдгээр эд зүйлсийг шүгэл үлээгчид буцааж өгөх тогтоол гарсан ч 2026 оны байдлаар Тагнуулын ерөнхий газар буцааж өгөөгүй байна)</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2017.05.06AnnMAltman.png | Тайлбар,
-            https://the2m16.github.io/web/images/2017.09.08.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2017.12.07.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2017.04.14san.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2017.04.14san.png | Тайлбар        
-        "></div>
-    </div><!-- glass box end -->
-
-
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2017.05.06AnnMAltman.png | Тайлбар,
+		https://the2m16.github.io/web/images/2017.09.08.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2017.12.07.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2017.04.14san.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2017.04.14san.png | Тайлбар        
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.04.14 11:17 ТАГНУУЛЫН ЕРӨНХИЙ ГАЗРААС ШҮГЭЛ ҮЛЭЭГЧИЙГ БАРИВЧЛАХ АЖИЛЛАГАА</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            Нийслэлийн МАН-ын дарга Ц.Сандуйн зөвлөх А.Ганбаатарын Тагнуулын ерөнхий газарт гаргасан худал гомдолоор (захиалгаар)
+
+
+	<div class="glass-box">
+		<h3>2017.04.14 11:17 ТАГНУУЛЫН ЕРӨНХИЙ ГАЗРААС ШҮГЭЛ ҮЛЭЭГЧИЙГ БАРИВЧЛАХ АЖИЛЛАГАА</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Нийслэлийн МАН-ын дарга Ц.Сандуйн зөвлөх А.Ганбаатарын Тагнуулын ерөнхий газарт гаргасан худал гомдолоор (захиалгаар)
 		2017 оны 4 сарын 11-ний өдөр Гүйцэтгэх ажлын тухай хуулийн 6.3 болон 8.1 заалтаар №201701000075 дугаартай эрүүгийн зохиомол хавтаст хэргийг шүгэл үлээгчид үүсгэж,
 		улмаар 2017 оны 4 сарын 14-ний өдөр тагнуулын ажилтнууд Цэцэг төвийн дэргэдэх Кафе Бене-д шүгэл үлээгчийг баривчлах ажиллагааг явуулав.
 		Уг эрүүгийн хэргийг ТЕГ-ын Мөрдөн байцаах хэлтсийн Орлогч дарга Г.Ууганбаяр, мөрдөгч Т.Цэнджаргал, Б.Сэргэнмандах нар шалгасан.
 		<span style="text-transform: uppercase;">Тагнуулын байгууллага А.Ганбаатарын гомдлоор халхавчилж эрүүгийн хэрэг шалгаж байгаа гэсэн нэрийдлээр шүгэл үлээгчийн эд зүйлсээс
 		зөвхөн 60 тэрбумын нотлох баримтуудыг эх хувиар нь олж устгах, хэрэв энэ зорилго нь биелэгдэхгүй бол шүгэл үлээгчийг зохиомол эрүүгийн хэргээр яллах зорилго агуулж байсан нь
 		хожим илэрхий болсон. Тухайн цаг үед ТЕГ-ын даргаар Б.Хурц ажиллаж байв. Шүгэл үлээгчид №201701000075 дугаартай эрүүгийн хэрэг үүсгэсэн зүйл заалт нь зөвхөн
-		хууль сахиулах байгууллагын эрх бүхий албан тушаалтнуудын (ТЕГ, ЦЕГ, АТГ-ын мөрдөгчдийн) хууль бус гүйцэтгэх ажиллагаанд эрүүгийн хэрэг үүсгэдэг зүйл анги юм.</span>
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/jK73ehnkA4E?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-            
-    </div><!-- glass box end -->
+		хууль сахиулах байгууллагын эрх бүхий албан тушаалтнуудын (ТЕГ, ЦЕГ, АТГ-ын мөрдөгчдийн) хууль бус гүйцэтгэх ажиллагаанд эрүүгийн хэрэг үүсгэдэг зүйл анги юм.</span></p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/jK73ehnkA4E?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2017.04.05 Ц.САНДУЙН ЗӨВЛӨХ А.ГАНБААТАР ШҮГЭЛ ҮЛЭЭГЧИЙГ ГЭРИЙНХ НЬ ҮҮДЭНД ОЛОН ХОНОГООР ОТОЖ БАЙГААД УУЛЗАЖ ДАРАМТЛАВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            Ц.Сандуйн зөвлөх А.Ганбаатар шүгэл үлээгчийг мардөн мөшгиж гэрийнх нь үүдэнд отож уулзаад <span style="text-transform: uppercase;">
+	<div class="glass-box">
+		<h3>2017.04.05 Ц.САНДУЙН ЗӨВЛӨХ А.ГАНБААТАР ШҮГЭЛ ҮЛЭЭГЧИЙГ ГЭРИЙНХ НЬ ҮҮДЭНД ОЛОН ХОНОГООР ОТОЖ БАЙГААД УУЛЗАЖ ДАРАМТЛАВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Ц.Сандуйн зөвлөх А.Ганбаатар шүгэл үлээгчийг мардөн мөшгиж гэрийнх нь үүдэнд отож уулзаад <span style="text-transform: uppercase;">
 		"Чамайг хаана хэнтэй уулзаад яваад байгааг бүгдийг нь мэднэ шүү. Дарханд очиж танай аав ээжийн чинь гадаа чамайг сахиулдаж хоносон.
 		Аятайхан байхгүй бол Зоригийн хэрэг шиг болгочихно шүү. Дарга (М.Энхболд) зөвшөөрвөл ядах юм байхгүй шүү. Гэр бүлийнхэнийг чинь бүгдийг нь
 		ажиглаж байгаа шүү. Маргааш (2017.04.06) офист ирж надтай уулз"</span> гэж зэргээр дарамталж байгаад явсан.
 		(А.Ганбаатар өөрийн биеэр мөрдөж мөшгиж, дарамталж байгаа талаар Нийслэлийн хяналтын прокурор Д.Ширэндэв, Тагнуулын мөрдөгч Т.Цэнджаргал, Б.Сэргэнмандах
 		нарт 4 сарын 20-нд бичгээр Гомдол гаргаж өгсөн боловч тэдний зүгээс ямар нэгэн арга хэмжээ огт аваагүй,
-		А.Ганбаатарыг огт шалгаагүй, гэрчүүдээс тайлбар аваагүй, камерийн бичлэг шүүгээгүй, доорх бичлэгийг үнэлээгүй, хав дараад өнгөрөөсөн.)
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/rBRUpJXwpAo?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-            
-    </div><!-- glass box end -->
+		А.Ганбаатарыг огт шалгаагүй, гэрчүүдээс тайлбар аваагүй, камерийн бичлэг шүүгээгүй, доорх бичлэгийг үнэлээгүй, хав дараад өнгөрөөсөн.)</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/rBRUpJXwpAo?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.08.26 Ц.САНДУЙН ЗӨВЛӨХ А.ГАНБААТАР, Ц.САНДУЙН ҮЕЭЛ ДҮҮ М.ӨЛЗИЙ НАРЫН АТГ-Т ӨГСӨН ХУДАЛ МЭДҮҮЛГҮҮДИЙГ ҮНДЭСЛЭН СБД ЦАГДААГИЙН 1-Р ХЭЛТЭСТ ШҮГЭЛ ҮЛЭЭГЧИЙГ ОНИЛСОН ЭРҮҮГИЙН ХАВТАСТ ХЭРЭГ НЭЭВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-           Ц.Сандуйн зөвлөх А.Ганбаатар, Ц.Сандуйн үеэл М.Өлзий нар үгсэн хуйвалдаж 6 сарын 28-ны өдөр АТГ-ын мөрдөгч Б.Бат-Олзвойд өгсөн худал мэдүүлгүүдэд үндэслэн
+	<div class="glass-box">
+		<h3>2016.08.26 Ц.САНДУЙН ЗӨВЛӨХ А.ГАНБААТАР, Ц.САНДУЙН ҮЕЭЛ ДҮҮ М.ӨЛЗИЙ НАРЫН АТГ-Т ӨГСӨН ХУДАЛ МЭДҮҮЛГҮҮДИЙГ ҮНДЭСЛЭН СБД ЦАГДААГИЙН 1-Р ХЭЛТЭСТ ШҮГЭЛ ҮЛЭЭГЧИЙГ ОНИЛСОН ЭРҮҮГИЙН ХАВТАСТ ХЭРЭГ НЭЭВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Ц.Сандуйн зөвлөх А.Ганбаатар, Ц.Сандуйн үеэл М.Өлзий нар үгсэн хуйвалдаж 6 сарын 28-ны өдөр АТГ-ын мөрдөгч Б.Бат-Олзвойд өгсөн худал мэдүүлгүүдэд үндэслэн
 		СБД-ийн Цагдаагийн 1-р хэлтэст 8 сарын 26-ны өдөр Эрүүгийн хуулийн 149.2-өөр шүгэл үлээгчид №201625022125 дугаартай эрүүгийн хэрэг
 		үүсгэн 9 сарын 14-нд баривчилж шалгаж, орон гэрийг нь нэгжиж, бичлэг нотлох баримтыг хайж эхэлсэн. Өөрөөр хэлбэл, улстөрийн нөлөөгөө ашиглан АТГ-204 хэргийг 7 сард хэрэгсэхгүй болгуулах замаар
 		хэрэгт шалгагдах ёстой МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нар өөрсдийгөө "хохирогч" болгосон бол 8 сард нь
 		сөргүүлээд СБД-ийн Цагдаа дээр шүгэл үлээгчийг шууд онилсон эрүүгийн хавтаст хэрэг нээлгэсэн байв. СБД Цагдаагийн 1-р хэлтсийн мөрдөгч Т.Батсайхан болон
 		СБД-ийн Прокурорын газарт Ц.Сандуйн зөвлөх А.Ганбаатар, Ц.Сандуйн үеэл М.Өлзий нар хууль бус аргаар нөлөөлж, өөрсдийн хохирогчийн мэдүүлгээ удаа дараа өөрчлөн уг хэргийг
 		хэрэгсэхгүй болгуулан хаалгасан. А.Ганбаатар "СБД-ийн Прокурорт алтан аяга авлигад өгч байж саллаа гэж ам алдаж байв.
-		СБД-ийн Хяналтын прокурор Л.Мажигсүрэн 2016 оны 10 сарын 13-ны өдөр хэргийг хэрэгсэхгүй болгох №1896 дугаартай тогтоолоо үйлдсэн.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-    </div><!-- glass box end -->
+		СБД-ийн Хяналтын прокурор Л.Мажигсүрэн 2016 оны 10 сарын 13-ны өдөр хэргийг хэрэгсэхгүй болгох №1896 дугаартай тогтоолоо үйлдсэн.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.08.02 НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗРЫН №208 ДУГААРТАЙ ТОГТООЛ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-        АТГ-ын мөрдөгч Б.Бат-Олзвойн ирүүлсэн саналыг үндэслэн НПГ-ын Хяналтын прокурор Ц.Алдархишиг АТГ-204 хавтаст хэргийг хэрэгсэхгүй болгон
+	<div class="glass-box">
+		<h3>2016.08.02 НИЙСЛЭЛИЙН ПРОКУРОРЫН ГАЗРЫН №208 ДУГААРТАЙ ТОГТООЛ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>АТГ-ын мөрдөгч Б.Бат-Олзвойн ирүүлсэн саналыг үндэслэн НПГ-ын Хяналтын прокурор Ц.Алдархишиг АТГ-204 хавтаст хэргийг хэрэгсэхгүй болгон
 		хаах №208 дугаартай тогтоолыг 2016 оны 8 сарын 2-ны өдөр үйлджээ. Тогтоолын үндэслэлд ШШҮХ-ийн №4374 дугаартай
 		худал дүгнэлтийг дурдсан байна. Хэргийг хэрэгсэхгүй болгон хаах уг Тогтоолыг мөн Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар,
 		Ц.Сандуйн үеэл М.Өлзий нарын үгсэн хуйвалдаж өгсөн худал мэдүүлгүүдэд үндэслэсэн байв. Мөрдөгч Б.Бат-Олзвой НПГ-т илгээсэн саналдаа
 		эдгээр "шалгагдсан" хүмүүсийн худал мэдүүлгүүдийн зөрүүг огт дурьдаагүй, мөн ШШҮХ-ийн жинхэнэ эх файлд өмнө нь хийсэн №4113, №4225 дугаартай
 		анхны дүгнэлтүүдийн ач холбогдлыг зориудаар орхигдуулсан байдаг. Үүнээс үзвэл Б.Бат-Олзвой нь ашиг сонирхлын зөрчилтэй байсан нь илт.
-		Прокурорын тогтоолыг PDF форматаар ҮЗЭХ:
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
+		Прокурорын тогтоолыг PDF форматаар ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
 		<div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2016.08.02npg208togtool1.webp | Тайлбар,
-            https://the2m16.github.io/web/images/2016.08.02npg208togtool2.webp | Тайлбар        
-        "></div>
-
-    </div><!-- glass box end -->
-
+		https://the2m16.github.io/web/images/2016.08.02npg208togtool1.webp | Тайлбар,
+		https://the2m16.github.io/web/images/2016.08.02npg208togtool2.webp | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.07.18 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН <span style="color: #ff9999">№4374</span> ДҮГНЭЛТ (ХУДАЛ ДҮГНЭЛТ)</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-		АТГ-ын мөрдөгч Б.Бат-Олзвойн 2016 оны 7 сарын 6-нд өдрийн тогтоолоор шинжилгээ хийлгэхээр ШШҮХ-нд хүргүүлээд байсан
+
+	<div class="glass-box">
+		<h3>2016.07.18 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН <span style="color: #ff9999">№4374</span> ДҮГНЭЛТ (ХУДАЛ ДҮГНЭЛТ)</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>АТГ-ын мөрдөгч Б.Бат-Олзвойн 2016 оны 7 сарын 6-нд өдрийн тогтоолоор шинжилгээ хийлгэхээр ШШҮХ-нд хүргүүлээд байсан
 		телевизийн мэдээний видео файлууд (эх файл биш учир хуурамч нотлох баримтад тооцогдоно)-ыг 18 хоногийн турш "шинжилсэний" дараа шинжээч Д.Мөнхбаатар №4374 дугаартай
 		дүгнэлтээ гаргав. Уг хуурамч нотлох баримт нь интернетэд анх цацагдсан 2 мин 16 сек-ийн аудио эх файл биш бөгөөд харин телевизийн студиудэд дүрсжүүлж
-		(тв-ийн эфирт зориулан олон дахин боловсруулсан) эфирээр түгээсэн мэдээний видео бичлэг юм.
-		</p><p>
-		Шинжээчийн №4374 дугаартай "шинэ дүгнэлт" нь яагаад жинхэнэ нотлох баримтыг шинжилсэн №4113, №4225 дугаартай
+		(тв-ийн эфирт зориулан олон дахин боловсруулсан) эфирээр түгээсэн мэдээний видео бичлэг юм.</p>
+		<p>Шинжээчийн №4374 дугаартай "шинэ дүгнэлт" нь яагаад жинхэнэ нотлох баримтыг шинжилсэн №4113, №4225 дугаартай
 		дүгнэлтүүдээс эрс тэс өөр гарсан шалтгааныг шинжээч Д.Мөнхбаатар өөрийнхөө гараар бичиж хавтаст хэрэгт хавсаргасан тайлбартаа дурдсан байдаг.
-		Шинжээчийн тайлбарыг <a href="/web/forensicmn.html"><b>ЭНДЭЭС ҮЗЭХ</b></a>
-		</p><p>
-		Өөрөөр хэлбэл, АТГ-ын мөрдөгч Б.Бат-Олзвой нь сонгуулийн үр дүн болон зохих томилгоонууд хийгдэж дууссаны дараа МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй,
+		Шинжээчийн тайлбарыг <a href="/web/forensicmn.html"><b>ЭНДЭЭС ҮЗЭХ</b></a></p>
+		<p>Өөрөөр хэлбэл, АТГ-ын мөрдөгч Б.Бат-Олзвой нь сонгуулийн үр дүн болон зохих томилгоонууд хийгдэж дууссаны дараа МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй,
 		түүний зөвлөх А.Ганбаатар нарт үйлчилж, жинхэнэ нотлох баримтыг хуурамчаар солих, шинжээчээр хуурамч дүгнэлт үйлдүүлэх, бичлэгийг "эвлүүлэг" болгох замаар тэдний худал мэдүүлгүүд,
 		улстөрийн мэдэгдлүүдэд тохируулан хавтаст хэргийг засварлах, анхны хоёр шинжилгээний дүгнэлтийг үгүйсгэх, улмаар №4374 дугаартай хуурамч дүгнэлтээр
-		60 тэрбумын хэргийг хэрэгсэхгүй болгон хаалгах зорилгыг агуулсан гэж тайлбарлаж болхоор байна.
-		</p><p>
-		(АТГ-т жинхэнэ нотлох баримтыг сольсон, хуурамчаар үйлдсэн асуудлыг шүгэл үлээгч УЕПГ-т 2019 оны 6 сарын 21-нд гомдол гаргаж ЦЕГ-ын Тусгай субьектийн үйлдсэн
+		60 тэрбумын хэргийг хэрэгсэхгүй болгон хаалгах зорилгыг агуулсан гэж тайлбарлаж болхоор байна.</p>
+		<p>(АТГ-т жинхэнэ нотлох баримтыг сольсон, хуурамчаар үйлдсэн асуудлыг шүгэл үлээгч УЕПГ-т 2019 оны 6 сарын 21-нд гомдол гаргаж ЦЕГ-ын Тусгай субьектийн үйлдсэн
 		гэмт хэргийг шалгах хэлтсээр АТГ-ын мөрдөгч Б.Бат-Олзвойн үйлдлийг шалгуулсан боловч тус Хэлтсийн ахлах мөрдөгч Б.Баасандалай хэргийг өөр хэрэгт нэгтгэх замаар будлиулж хаасан.)
-		Хуурамч нотлох баримт дээр хийсэн шинжилгээний дүгнэлтийг PDF форматаар ҮЗЭХ:
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
-		<div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2016.07.18mn4374forensic1.webp | Тайлбар,
-			https://the2m16.github.io/web/images/2016.07.18mn4374forensic2.webp | Тайлбар,
-            https://the2m16.github.io/web/images/2016.07.18mn4374forensic3.webp | Тайлбар        
-        "></div>
+		Хуурамч нотлох баримт дээр хийсэн шинжилгээний дүгнэлтийг PDF форматаар ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-		<div class="gl-text-wrapper gl-truncated"><p>
-       	Хожим ШШҮХ-ийн №4374 дугаартай Дүгнэлтийг хэрхэн хуурамчаар үйлдсэнийг сэтгүүлч С.Будрагчаа сурвалжилж, нэрээ дурьдахыг хүсээгүй эх сурвалжаас тодруулж
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2016.07.18mn4374forensic1.webp | Тайлбар,
+		https://the2m16.github.io/web/images/2016.07.18mn4374forensic2.webp | Тайлбар,
+		https://the2m16.github.io/web/images/2016.07.18mn4374forensic3.webp | Тайлбар
+		"></div>
+
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Хожим ШШҮХ-ийн №4374 дугаартай Дүгнэлтийг хэрхэн хуурамчаар үйлдсэнийг сэтгүүлч С.Будрагчаа сурвалжилж, нэрээ дурьдахыг хүсээгүй эх сурвалжаас тодруулж
 		ШШҮХ-ИЙН ДЭД ЗАХИРАЛ Ц.ГАНТУЛГЫН ХОЁР НҮҮР БУЮУ "60 ТЭРБУМ"-ЫН БИЧЛЭГИЙГ БУДЛИАНТУУЛСАН НЬ гарчигтайгаар <a href="http://dardas.mn/?p=22583">Монголын Мэдээ сонины
-		2018.04.11-ны №072 (4922)</a> дугаарын 1 ба 4-р нүүрт нийтлүүлж байв.
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
+		2018.04.11-ны №072 (4922)</a> дугаарын 1 ба 4-р нүүрт нийтлүүлж байв.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
 		<div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2018.04.11mnforensic1.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2018.04.11mnforensic2.jpg | Тайлбар        
-        "></div>
-        
-    </div><!-- glass box end -->
+		https://the2m16.github.io/web/images/2018.04.11mnforensic1.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2018.04.11mnforensic2.jpg | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.07.08 АВЛИГАТАЙ ТЭМЦЭХ ГАЗРЫН ДАРГААР Х.ЭНХЖАРГАЛЫГ ТОМИЛОВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            УИХ-ын Чуулганы 2016 оны 7 сарын 8-ны өдрийн хуралдаанаар <a href="https://shorturl.at/vHhVk">Ерөнхийлөгч Ц.Элбэгдоржийн 2016.05.04-нд
+	<div class="glass-box">
+		<h3>2016.07.08 АВЛИГАТАЙ ТЭМЦЭХ ГАЗРЫН ДАРГААР Х.ЭНХЖАРГАЛЫГ ТОМИЛОВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>УИХ-ын Чуулганы 2016 оны 7 сарын 8-ны өдрийн хуралдаанаар <a href="https://shorturl.at/vHhVk">Ерөнхийлөгч Ц.Элбэгдоржийн 2016.05.04-нд
 		УИХ-д оруулж ирсэн саналыг</a> хэлэлцэж Х.Энхжаргалыг АТГ-ын даргаар томилох №07 дугаартай Тогтоолыг батлав.
-		Уг томилгоог МУ-ын Ерөнхий сайдын томилгооны дараа хамгийн эхэнд хэлэлцэж баталжээ.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2016.07.08enhjargal.png | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+		Уг томилгоог МУ-ын Ерөнхий сайдын томилгооны дараа хамгийн эхэнд хэлэлцэж баталжээ.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2016.07.08enhjargal.png | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.07.06 11:41 НИТХ-ЫН АНХДУГААР ХУРАЛДААН</h3>
-           <p>
-           <b>Д.Баттулга:</b> ТА ӨӨРӨӨ 2016.06.24-НИЙ ӨДӨР "МАНАЙ БИЧЛЭГ АЛДАГДСАН ГЭДГЭЭ ХҮЛЭЭН ЗӨВШӨӨРЧ, БАС ЭНЭ БИЧЛЭГ АЛДАГДСАН ХЭРГИЙГ ШАЛГУУЛНА" ГЭСЭН.
-		ЭНЭ ТАЛААРАА ХУУЛИЙН БАЙГУУЛЛАГАД ХАНДСАН УУ?</p><p>
-		<b>Ц.Сандуй:</b> ЭНЭ ТАЛААР СҮХБААТАР ДҮҮРГИЙН ЦАГДААГИЙН БАЙГУУЛЛАГАД ХАНДСАН. ГЭХДЭЭ 60 ТЭРБУМ ТӨГРӨГИЙН ТУХАЙД
-		ЭВЛҮҮЛЭГ ГЭДЭГ НЬ ТОГТООГДОЖ БАЙГАА. ТИЙМ УЧРААС ЭНЭ ГҮТГЭЛЭГ ГЭДГИЙГ ХЭЛЬЕ.</p><p>
-		<b>П.Баярхүү:</b> 60 ТЭРБУМЫН ТАЛААР ТАЙЛБАР ӨГӨӨЧ?</p><p>
-		<b>Ц.Сандуй:</b> ТЭР БИЧЛЭГ ЭВЛҮҮЛЭГ ГЭДГИЙГ ЦАГДААГИЙН БАЙГУУЛЛАГААС МЭДЭГДСЭН. СҮХБААТАР ДҮҮРГИЙН ЦАГДААГИЙН НЭГДҮГЭЭР ХЭЛТЭСТ ХАНДСАН БАЙГАА.
-		МИНИЙ ЗҮГЭЭС ГҮТГЭЛЭГ ЭВЛҮҮЛЭГ ГЭДГИЙГ БАТТАЙ ХЭЛЖ БАЙНА.</p><p>
-		<b>Ц.Одонтунгалаг:</b> ТАНЬТАЙ ХОЛБООТОЙ 60 ТЭРБУМЫН АСУУДЛААР ХУУЛИЙН БАЙГУУЛЛАГА ТОДОРХОЙ ШИЙДВЭР ГАРГААД, ТА БОЛОН ТАНАЙ
-		НАМЫГ БУРУУТАЙ ГЭЖ ҮЗВЭЛ ХАРИУЦЛАГА ХҮЛЭЭХЭД БЭЛЭН ҮҮ?</p><p>
-		<b>Ц.Сандуй:</b> 60 ТЭРБУМ ТӨГРӨГТЭЙ ХОЛБООТОЙ БИЧЛЭГ ЭВЛҮҮЛЭГ ГЭДЭГ НЬ ТОДОРХОЙ БОЛЖ БАЙГАА. ТИЙМ УЧРААС ХУУЛИЙН БАЙГУУЛЛАГА
-		ҮНЭН ЗӨВ ШИЙДВЭР ГАРГАНА ГЭДЭГТ ИТГЭЛТЭЙ БАЙНА. ХУУЛИЙН БАЙГУУЛЛАГЫН ГАРГАСАН ШИЙДВЭРИЙГ ХҮНДЭТГЭЖ, ХАРИУЦЛАГА ХҮЛЭЭХЭД БЭЛЭН.</p><p>
-		<b>П.Баярхүү:</b> ЭВЛҮҮЛЭГ БИШ ГЭДЭГ НЬ ТОГТООГДВОЛ ТА ЯМАР ХАРИУЦЛАГА ХҮЛЭЭХ ВЭ?</p><p>
-		<b>Ц.Сандуй:</b> МИНИЙ ЗҮГЭЭС ЭВЛҮҮЛЭГ ГЭДГИЙГ МЭДЭЖ БАЙГАА УЧРААС ШҮҮХИЙН ШИЙДВЭРТ ЭРГЭЛЗЭХГҮЙ БАЙНА. ШҮҮХИЙГ ШИЙДВЭР ГАРАХААР ТА АСУУЛТДАА ХАРИУЛТ АВАХ БАЙХ.</p><p>
-		НИТХ-ын даргад нэр дэвшигч Ц.Сандуй Иргэдийн төлөөлөгчдийн асуултад хариулахдаа давтан давтан худал хариулж байх яг энэ цаг мөчид зөвхөн
-		дараах хоёр шинжилгээ л хийгдчихээд байсан юм!!!:</p><p>
-		<b>2016.06.20-ны ДҮГНЭЛТ №4113:</b> <span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"Бичлэг Ц.Сандуйгийн дуу хоолойтой тохирсон"</span>,</p><p>
-		<b>2016.06.28-ны ДҮГНЭЛТ №4225:</b> <span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"Бичлэгт эвлүүлэг монтаж хийгдээгүй"</span>.</p><p>
-		Ц.Сандуйг дээрх худал мэдэгдлийг хийж, НИТХ-ын даргаар сонгогдсон энэ өдөр АТГ-ын мөрдөгч Б.Бат-Олзвой нь телевизийн эфирээс хуулж авсан видео файлыг "нэмж
+	<div class="glass-box">
+		<h3>2016.07.06 11:41 НИТХ-ЫН АНХДУГААР ХУРАЛДААН</h3>
+		<p><b>Д.Баттулга:</b> ТА ӨӨРӨӨ 2016.06.24-НИЙ ӨДӨР "МАНАЙ БИЧЛЭГ АЛДАГДСАН ГЭДГЭЭ ХҮЛЭЭН ЗӨВШӨӨРЧ, БАС ЭНЭ БИЧЛЭГ АЛДАГДСАН ХЭРГИЙГ ШАЛГУУЛНА" ГЭСЭН.
+		ЭНЭ ТАЛААРАА ХУУЛИЙН БАЙГУУЛЛАГАД ХАНДСАН УУ?</p>
+		<p><b>Ц.Сандуй:</b> ЭНЭ ТАЛААР СҮХБААТАР ДҮҮРГИЙН ЦАГДААГИЙН БАЙГУУЛЛАГАД ХАНДСАН. ГЭХДЭЭ 60 ТЭРБУМ ТӨГРӨГИЙН ТУХАЙД
+		ЭВЛҮҮЛЭГ ГЭДЭГ НЬ ТОГТООГДОЖ БАЙГАА. ТИЙМ УЧРААС ЭНЭ ГҮТГЭЛЭГ ГЭДГИЙГ ХЭЛЬЕ.</p>
+		<p><b>П.Баярхүү:</b> 60 ТЭРБУМЫН ТАЛААР ТАЙЛБАР ӨГӨӨЧ?</p>
+		<p><b>Ц.Сандуй:</b> ТЭР БИЧЛЭГ ЭВЛҮҮЛЭГ ГЭДГИЙГ ЦАГДААГИЙН БАЙГУУЛЛАГААС МЭДЭГДСЭН. СҮХБААТАР ДҮҮРГИЙН ЦАГДААГИЙН НЭГДҮГЭЭР ХЭЛТЭСТ ХАНДСАН БАЙГАА.
+		МИНИЙ ЗҮГЭЭС ГҮТГЭЛЭГ ЭВЛҮҮЛЭГ ГЭДГИЙГ БАТТАЙ ХЭЛЖ БАЙНА.</p>
+		<p><b>Ц.Одонтунгалаг:</b> ТАНЬТАЙ ХОЛБООТОЙ 60 ТЭРБУМЫН АСУУДЛААР ХУУЛИЙН БАЙГУУЛЛАГА ТОДОРХОЙ ШИЙДВЭР ГАРГААД, ТА БОЛОН ТАНАЙ
+		НАМЫГ БУРУУТАЙ ГЭЖ ҮЗВЭЛ ХАРИУЦЛАГА ХҮЛЭЭХЭД БЭЛЭН ҮҮ?</p>
+		<p><b>Ц.Сандуй:</b> 60 ТЭРБУМ ТӨГРӨГТЭЙ ХОЛБООТОЙ БИЧЛЭГ ЭВЛҮҮЛЭГ ГЭДЭГ НЬ ТОДОРХОЙ БОЛЖ БАЙГАА. ТИЙМ УЧРААС ХУУЛИЙН БАЙГУУЛЛАГА
+		ҮНЭН ЗӨВ ШИЙДВЭР ГАРГАНА ГЭДЭГТ ИТГЭЛТЭЙ БАЙНА. ХУУЛИЙН БАЙГУУЛЛАГЫН ГАРГАСАН ШИЙДВЭРИЙГ ХҮНДЭТГЭЖ, ХАРИУЦЛАГА ХҮЛЭЭХЭД БЭЛЭН.</p>
+		<p><b>П.Баярхүү:</b> ЭВЛҮҮЛЭГ БИШ ГЭДЭГ НЬ ТОГТООГДВОЛ ТА ЯМАР ХАРИУЦЛАГА ХҮЛЭЭХ ВЭ?</p>
+		<p><b>Ц.Сандуй:</b> МИНИЙ ЗҮГЭЭС ЭВЛҮҮЛЭГ ГЭДГИЙГ МЭДЭЖ БАЙГАА УЧРААС ШҮҮХИЙН ШИЙДВЭРТ ЭРГЭЛЗЭХГҮЙ БАЙНА. ШҮҮХИЙГ ШИЙДВЭР ГАРАХААР ТА АСУУЛТДАА ХАРИУЛТ АВАХ БАЙХ.</p>
+		<p>НИТХ-ын даргад нэр дэвшигч Ц.Сандуй Иргэдийн төлөөлөгчдийн асуултад хариулахдаа давтан давтан худал хариулж байх яг энэ цаг мөчид зөвхөн
+		дараах хоёр шинжилгээ л хийгдчихээд байсан юм!!!:</p>
+		<p><b>2016.06.20-ны ДҮГНЭЛТ №4113:</b> <span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"Бичлэг Ц.Сандуйгийн дуу хоолойтой тохирсон"</span>,</p>
+		<p><b>2016.06.28-ны ДҮГНЭЛТ №4225:</b> <span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"Бичлэгт эвлүүлэг монтаж хийгдээгүй"</span>.</p>
+		<p>Ц.Сандуйг дээрх худал мэдэгдлийг хийж, НИТХ-ын даргаар сонгогдсон энэ өдөр АТГ-ын мөрдөгч Б.Бат-Олзвой нь телевизийн эфирээс хуулж авсан видео файлыг "нэмж
 		шинжлүүлэхээр" ШШҮХ-нд илгээжээ (Жинхэнэ нотлох баримтыг хуурамчаар сольж Ц.Сандуйгийн мэдэгдэлд нийцэх дүгнэлт гаргуулсан гэмт хэрэг). <b>Гуравдахь удаагийн энэ
 		хуурамч шинжилгээний №4374 ДУГААРТАЙ ДҮГНЭЛТ 2016.07.18-нд гарсан бөгөөд шинжээч нь аудио эх файл дээр биш, харин видео файл дээр шинжилгээ хийсэн гэдгээ гараараа бичсэн
-		Тайлбартаа тэмдэглэсэн байдаг!!!.</b> Тайлбарыг <a href="/web/forensicmn.html"><b>ҮЗЭХ</b></a>
-            </p>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/9g7y91VoXbo?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
+		Тайлбартаа тэмдэглэсэн байдаг!!!.</b> Тайлбарыг <a href="/web/forensicmn.html"><b>ҮЗЭХ</b></a></p>
 
-    </div><!-- glass box end -->
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/9g7y91VoXbo?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.07.05 УИХ-ЫН ДАРГААР МАН-ЫН ДАРГА М.ЭНХБОЛДЫГ СОНГОВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            УИХ-ын Анхдугаар чуулган 2016 оны 7 сарын 5-ны өдөр хуралдаж УИХ-ын даргаар М.Энхболдыг сонгосон бөгөөд энэ мөчөөс эхлэн
+	<div class="glass-box">
+		<h3>2016.07.05 УИХ-ЫН ДАРГААР МАН-ЫН ДАРГА М.ЭНХБОЛДЫГ СОНГОВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>УИХ-ын Анхдугаар чуулган 2016 оны 7 сарын 5-ны өдөр хуралдаж УИХ-ын даргаар М.Энхболдыг сонгосон бөгөөд энэ мөчөөс эхлэн
 		АТГ-204 дугаартай 60 тэрбумын хэргийг шалгаж байсан АТГ-ын мөрдөгч Б.Бат-Олзвой нотлох баримтыг солих, хуурамчаар үйлдэх,
-		будлиулах, шинжээчийн худал дүгнэлт гаргуулах үйлдлүүдээ эхэлсэн байдаг.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2016.07.05enhbold.png | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+		будлиулах, шинжээчийн худал дүгнэлт гаргуулах үйлдлүүдээ эхэлсэн байдаг.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-
-
-
-
-
-    <div class="glass-box">
-        <h3>2016.06.30 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН №4225 ДҮГНЭЛТ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-        Сошлд 6 сарын 17-ны өдөр анх цацагдсан 2 мин 16 сек үргэлжлэх аудио эх бичлэгийг СБД-ийн Цагдаагийн 1-р хэлтсээс ШШҮХ-нд давтан шинжлүүлээд
-		<span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"ДУУ АВИАНЫ БИЧЛЭГТ ЭВЛҮҮЛЭГ, МОНТАЖ ХИЙГДЭЭГҮЙ БАЙНА"</span> гэсэн <b>№4225</b> дугаартай Дүгнэлт гарав.
-		Шинжээчийн дүгнэлтийг PDF форматаар ҮЗЭХ:
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
 		<div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2016.06.30mn4225forensic1.webp | Тайлбар,
-			https://the2m16.github.io/web/images/2016.06.30mn4225forensic2.webp | Тайлбар,
-            https://the2m16.github.io/web/images/2016.06.30mn4225forensic3.webp | Тайлбар        
-        "></div>
-
-    </div><!-- glass box end -->
+		https://the2m16.github.io/web/images/2016.07.05enhbold.png | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.27 23:00-0:00 МҮОНРТ-ЭЭР ЦАЦАГДСАН УИХ-ЫН СОНГУУЛИЙН МЭТГЭЛЦЭЭН</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            АН, МАХН, МАН, ИЗНН-ын дарга нарын оролцсон УИХ-ын сонгуулийн сурталчилгааны сүүлчийн өдрийн Мэтгэлцээн</p><p>
-		<b>Н.Энхбаяр:</b> Би М.Энхболд даргыг сайн мэднэ л дээ. Олон жил хамт ажиллаж байсан. Дуу нь мөн байна лээ.</p><p>
-		<b>М.Энхболд:</b> Бид нар цагдаагийн байгууллагад өгсөн. Бидэнд мэдээлэл ирүүлсэн. Иргэн Д, Ө нарыг МАН-ын удирдлагуудын ярианы бичлэгт эвлүүлэг хийн тараасан гэх асуудлаар холбогдуулан шалгаад байна гэсэн бичиг ирчихсэн байгаа.</p><p>
-		<b>З.Энхболд:</b> Бичлэг дээр хоолой нь гарч байгаа УИХ-ын дэд дарга бол мэдээж ингэж үгүйсгэнэ. Манай Нийслэлийн сонгуулийн штабаас тэр бичлэгийг интернетээс олж аваад, хүсэлт гаргаад, криминалистикийн албаар
+	<div class="glass-box">
+		<h3>2016.06.30 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН №4225 ДҮГНЭЛТ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Сошлд 6 сарын 17-ны өдөр анх цацагдсан 2 мин 16 сек үргэлжлэх аудио эх бичлэгийг СБД-ийн Цагдаагийн 1-р хэлтсээс ШШҮХ-нд давтан шинжлүүлээд
+		<span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"ДУУ АВИАНЫ БИЧЛЭГТ ЭВЛҮҮЛЭГ, МОНТАЖ ХИЙГДЭЭГҮЙ БАЙНА"</span> гэсэн <b>№4225</b> дугаартай Дүгнэлт гарав.
+		Шинжээчийн дүгнэлтийг PDF форматаар ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2016.06.30mn4225forensic1.webp | Тайлбар,
+		https://the2m16.github.io/web/images/2016.06.30mn4225forensic2.webp | Тайлбар,
+		https://the2m16.github.io/web/images/2016.06.30mn4225forensic3.webp | Тайлбар        
+		"></div>
+	</div><!-- glass box end -->
+
+
+
+
+
+
+	<div class="glass-box">
+		<h3>2016.06.27 23:00-0:00 МҮОНРТ-ЭЭР ЦАЦАГДСАН УИХ-ЫН СОНГУУЛИЙН МЭТГЭЛЦЭЭН</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>АН, МАХН, МАН, ИЗНН-ын дарга нарын оролцсон УИХ-ын сонгуулийн сурталчилгааны сүүлчийн өдрийн Мэтгэлцээн</p>
+		<p><b>Н.Энхбаяр:</b> Би М.Энхболд даргыг сайн мэднэ л дээ. Олон жил хамт ажиллаж байсан. Дуу нь мөн байна лээ.</p>
+		<p><b>М.Энхболд:</b> Бид нар цагдаагийн байгууллагад өгсөн. Бидэнд мэдээлэл ирүүлсэн. Иргэн Д, Ө нарыг МАН-ын удирдлагуудын ярианы бичлэгт эвлүүлэг хийн тараасан гэх асуудлаар холбогдуулан шалгаад байна гэсэн бичиг ирчихсэн байгаа.</p>
+		<p><b>З.Энхболд:</b> Бичлэг дээр хоолой нь гарч байгаа УИХ-ын дэд дарга бол мэдээж ингэж үгүйсгэнэ. Манай Нийслэлийн сонгуулийн штабаас тэр бичлэгийг интернетээс олж аваад, хүсэлт гаргаад, криминалистикийн албаар
 		шалгуулсан юм байна лээ. Криминалистикийн шинжилгээгээр зөв гэсэн байгаа юм. Би бас итгээгүй юм. Хоолой нь мөн ч юм шиг байсан. Ц.Сандуйгийн мэдэгдэл хийх хүртэл би итгээгүй л дээ. Ц.Сандуй бол тэр (бичлэг)-ийг
-		бид нар 2 жилийн өмнө ярьсан яриа байна гэсэн. 2 жилийн өмнө МАН-ыг урьж Засагт оруулсан үетэй бас таараад байгаа юм. (Одоо) би энэ бүх (60 тэрбумын) яриа бол үнэн гэдэгт эргэлзэхээ больсон...
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/lzPIJTlSJz4?si=O-QUSrDrM-WdMyzY&amp;start=2270" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-            
-    </div><!-- glass box end -->
+		бид нар 2 жилийн өмнө ярьсан яриа байна гэсэн. 2 жилийн өмнө МАН-ыг урьж Засагт оруулсан үетэй бас таараад байгаа юм. (Одоо) би энэ бүх (60 тэрбумын) яриа бол үнэн гэдэгт эргэлзэхээ больсон...</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/lzPIJTlSJz4?si=O-QUSrDrM-WdMyzY&amp;start=2270" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.27 НИЙСЛЭЛИЙН АН-ЫН СОНГУУЛИЙН ШТАБААС ХИЙСЭН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            <b>Д.Баттулга:</b> Энэ бичлэг анх 6 сарын 17-нд Noname Rainman твитр хаягнаас цацагдсан юм. Эндээс бид нар энэ бичлэгийг олж авсан.
+	<div class="glass-box">
+		<h3>2016.06.27 НИЙСЛЭЛИЙН АН-ЫН СОНГУУЛИЙН ШТАБААС ХИЙСЭН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p><b>Д.Баттулга:</b> Энэ бичлэг анх 6 сарын 17-нд Noname Rainman твитр хаягнаас цацагдсан юм. Эндээс бид нар энэ бичлэгийг олж авсан.
 		Энэ бичлэгийг тухайн үед 598 хүн үзсэн байдаг юм. Тэгээд бид энэ бичлэгийг үнэн бодитой бичлэг мөн үү, биш үү гэдгийг шалгуулахаар
 		холбогдох хууль хяналтын байгууллагуудад, үүнийг тогтоодог байгууллагуудад нь хандсан. Эдгээр байгууллагууд бид нарын хүсэлтийн
 		дагуу нягталж шалгаад энэ бичлэг бол үнэн бодитой бичлэг юм гэж 3 хуудас бүхий дүгнэлтийг гаргасан байгаа.
@@ -1231,231 +1179,224 @@
 		ХЭН НЭГЭН ГАДАГШАА ЦАЦСАН ЮМ БАЙНА. БИД НАР ХУУЛЬ ХЯНАЛТЫН БАЙГУУЛЛАГАД ХАНДАНА" гэж. Өөрөөр хэлбэл, Нийслэлийн МАН-ын дарга Ц.Сандуй
 		энийг ҮНЭН МӨН БИЧЛЭГ ГЭДГИЙГ ӨӨРӨӨ ХҮЛЭЭН ЗӨВШӨӨРСӨН. ҮҮНЭЭС ХОЙШХИ ЯНЗ БҮРИЙН ТАЙЛБАР БОЛ ТАЙЛБАР БИШ.
 		ӨӨРИЙНХӨӨ ҮЗЭМЖЭЭР Л ЭНЭ ЗҮЙЛЭЭС БУЛТАХ ГЭСЭН ЯНЗ БҮРИЙН ХҮМҮҮСИЙН ОРОЛДЛОГО ГЭЖ ҮЗЭХ ХЭРЭГТЭЙ. <B>Хоёрдугаарт,</B> ХОЛБОГДОХ ТОГТООДОГ
-		БАЙГУУЛЛАГУУД НЬ ЭНИЙГ ҮНЭН БОДИТОЙ ГЭДГИЙГ НЬ БИД НАРТ ТОГТООГООД ӨГЛӨӨ.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/aRmyyUFgKJk?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-    </div><!-- glass box end -->
+		БАЙГУУЛЛАГУУД НЬ ЭНИЙГ ҮНЭН БОДИТОЙ ГЭДГИЙГ НЬ БИД НАРТ ТОГТООГООД ӨГЛӨӨ.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/aRmyyUFgKJk?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.26 МАХН-ЫН ДАРГА Н.ЭНХБАЯРЫН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            <b>Н.Энхбаяр:</b> Монголын төрийг М.Энхболд, Ц.Сандуй нар худалдчихжээ...
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/-aqUhXZ2pbY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-    </div><!-- glass box end -->
+	<div class="glass-box">
+		<h3>2016.06.26 МАХН-ЫН ДАРГА Н.ЭНХБАЯРЫН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p><b>Н.Энхбаяр:</b> Монголын төрийг М.Энхболд, Ц.Сандуй нар худалдчихжээ...</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/-aqUhXZ2pbY?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.25 АН-ЫН ДАРГА З.ЭНХБОЛДЫН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            <b>З.Энхболд:</b> Та бүхэнд мэдэгдэл хийх болсон гол шалтгаан бол МАХН-ын ЕНБД Э.Эрдэнэжамъян өчигдөр 11 цагаас ХБХурал хийсэн бичлэгийн тухай асуудал байгаа.
+	<div class="glass-box">
+		<h3>2016.06.25 АН-ЫН ДАРГА З.ЭНХБОЛДЫН ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p><b>З.Энхболд:</b> Та бүхэнд мэдэгдэл хийх болсон гол шалтгаан бол МАХН-ын ЕНБД Э.Эрдэнэжамъян өчигдөр 11 цагаас ХБХурал хийсэн бичлэгийн тухай асуудал байгаа.
 		АН энэ бичлэгийн үнэн худлыг мэдэхгүй байсан учраас бодож байсан. Гэтэл Ц.Сандуй гээд нэг дарга "ЭНЭ БИЧЛЭГ ҮНЭН ЮМАА. МАНАЙХ ИЙМ ХУРАЛ ХИЙСЭН. ДОТРООСОО
-		АЛДАГДСАН БАЙНА. АЛДСАН ХҮМҮҮСЭЭ ОЛЖ ХАРИУЦЛАГА ТООЦОХООР ЯРЬЖ БАЙНА" гэдэг мэдэгдлийг өчигдөр орой телевизээр ярьсан учраас бид, Ардчилсан нам, дараах Мэдэгдлийг гаргаж байна.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-			https://the2m16.github.io/web/images/2016.06.25DPstatement.png | 2016.06.25 Мэдэгдэл 
-        "></div><br>
-        
-        	<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/M1_WOMJ00pQ?si=Lwf3VdvzN8lV5W62&amp;start=3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-    </div><!-- glass box end -->
+		АЛДАГДСАН БАЙНА. АЛДСАН ХҮМҮҮСЭЭ ОЛЖ ХАРИУЦЛАГА ТООЦОХООР ЯРЬЖ БАЙНА" гэдэг мэдэгдлийг өчигдөр орой телевизээр ярьсан учраас бид, Ардчилсан нам, дараах Мэдэгдлийг гаргаж байна.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2016.06.25DPstatement.png | 2016.06.25 Мэдэгдэл 
+		"></div><br>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/M1_WOMJ00pQ?si=Lwf3VdvzN8lV5W62&amp;start=3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.25 МАН-ЫН НБД Д.АМАРБАЯСГАЛАНГИЙН ХЭВЛЭЛИЙН БАГА ХУРАЛ (ХООРОНДОО НЭГ ЖИЛИЙН ЗАЙТАЙ ХИЙСЭН ХОЁР МЭДЭГДЛИЙГ ХАРЬЦУУЛЖ СОНСОХ)</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            2016 оны 6 сарын 25. МАН-ын НБД Д.Амарбаясгалан.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+	<div class="glass-box">
+		<h3>2016.06.25 МАН-ЫН НБД Д.АМАРБАЯСГАЛАНГИЙН ХЭВЛЭЛИЙН БАГА ХУРАЛ (ХООРОНДОО НЭГ ЖИЛИЙН ЗАЙТАЙ ХИЙСЭН ХОЁР МЭДЭГДЛИЙГ ХАРЬЦУУЛЖ СОНСОХ)</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>2016 оны 6 сарын 25. МАН-ын НБД Д.Амарбаясгалан.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/Fin_b7Uzi18?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div><br>
-            
-            <div class="gl-text-wrapper gl-truncated"><p>
-            2017 оны 8 сарын 18. МАН-ын ЕНБД Д.Амарбаясгалан.
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/uTNiURHux0U?si=xecaDbtN4iNfzTOT&amp;start=234" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/Fin_b7Uzi18?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div><br>
 
-    </div><!-- glass box end -->
+		<div class="gl-text-wrapper gl-truncated">
+		<p>2017 оны 8 сарын 18. МАН-ын ЕНБД Д.Амарбаясгалан.</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
 
-
-
-
-
-
-    <div class="glass-box">
-        <h3>2016.06.24 20:00 ЦАГИЙН ХҮРД МЭДЭЭЛЛИЙН ХӨТӨЛБӨР</h3>
-                        
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/6QIBI0w2S4I?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-
-    </div><!-- glass box end -->
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/uTNiURHux0U?si=xecaDbtN4iNfzTOT&amp;start=234" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.24 12:00 МАН-ЫН НИЙСЛЭЛИЙН НАМЫН ХОРООНЫ ДАРГА Ц.САНДУЙГИЙН АНХНЫ МЭДЭГДЭЛ</h3>
-            <p>Э.Эрдэнэжамъяныг ХБХ хийсэнээс хойш 1 цагийн дараа Нийслэлийн МАН-ын дарга Ц.Сандуй:
+	<div class="glass-box">
+		<h3>2016.06.24 20:00 ЦАГИЙН ХҮРД МЭДЭЭЛЛИЙН ХӨТӨЛБӨР</h3>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/6QIBI0w2S4I?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
+
+
+
+
+
+
+	<div class="glass-box">
+		<h3>2016.06.24 12:00 МАН-ЫН НИЙСЛЭЛИЙН НАМЫН ХОРООНЫ ДАРГА Ц.САНДУЙГИЙН АНХНЫ МЭДЭГДЭЛ</h3>
+		<p>Э.Эрдэнэжамъяныг ХБХ хийсэнээс хойш 1 цагийн дараа Нийслэлийн МАН-ын дарга Ц.Сандуй:
 		<span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"ОДООНООС 2 ЖИЛ ГАРАНГИЙН
 		ӨМНӨ 2014 ОНЫ 9 САРД МАН БАС НИЙСЛЭЛИЙН МАН СТРАТЕГИ, ТАКТИКАА ЯРИХ ХУРАЛДААН БОЛСОН. ТЭР ҮЕИЙН БИЧЛЭГ АЛДАГДСАН БАЙНА.
 		БИД НАР ХЭН АЛДАЖ, ХЭН ЭНЭ БИЧЛЭГИЙГ ГАДАГШ НЬ ӨГСӨН БАЙНА ГЭДГИЙГ ХУУЛЬ ХЯНАЛТЫН БАЙГУУЛЛАГААР ДАВХАР ШАЛГУУЛНА."</span>
 		гэж сэтгүүлчдэд хандан мэдэгдэл хийв.</p>
 
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/WKoh2K3gXY0?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div>
-
-    </div><!-- glass box end -->
-
-
-
-
-
-
-    <div class="glass-box">
-        <h3>2016.06.24 11:00 МАХН-ЫН ДЭД ДАРГА Э.ЭРДЭНЭЖАМЪЯНЫ ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            Сошлд анх цацагдсан 2 мин 16 сек аудио бичлэгийг телевизийн студид дүрсжүүлж олон нийтэд хүргэсэн Хэвлэлийн бага хурал
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-			<div class="video-container">
-			<iframe src="https://www.youtube.com/embed/D8XzpUUVrU4?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-			</iframe></div><br>
-            
-        <div class="gl-smart-grid" data-images="
-			https://the2m16.github.io/web/images/2016.06.24erdenejamyan.jpg | Өдрийн сонины 2016 оны 6 дугаар сарын 25-ны №150(5415) дугаар 
-        "></div>
-    </div><!-- glass box end -->
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/WKoh2K3gXY0?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.22 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН №4113 ДҮГНЭЛТ</h3>
-        <div class="gl-text-wrapper gl-truncated"><p>
-       Сошлд 6 сарын 17-ны өдөр анх дэлгэсэн 2 мин 16 сек үргэлжлэх аудио эх бичлэгийг СБД-ийн Цагдаагийн 1-р хэлтсээс ШШҮХ-нд шинжлүүлэхэд
-		<span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"БИЧЛЭГ ДЭХ ДУУ ХООЛОЙ Ц.САНДУЙГИЙН ДУУ ХООЛОЙТОЙ ТОХИРЧ БАЙНА"</span> гэсэн <b>№4113</b> дугаартай Дүгнэлт гарав.
-		Шинжээчийн дүгнэлтийг PDF форматаар ҮЗЭХ:
-        </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-        
+	<div class="glass-box">
+		<h3>2016.06.24 11:00 МАХН-ЫН ДЭД ДАРГА Э.ЭРДЭНЭЖАМЪЯНЫ ХЭВЛЭЛИЙН БАГА ХУРАЛ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Сошлд анх цацагдсан 2 мин 16 сек аудио бичлэгийг телевизийн студид дүрсжүүлж олон нийтэд хүргэсэн Хэвлэлийн бага хурал</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/D8XzpUUVrU4?si=phW1h-6eX1wNAFTL" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe></div><br>
+
 		<div class="gl-smart-grid" data-images="
-            https://the2m16.github.io/web/images/2016.06.22mn4113forensic1.webp | Тайлбар,
-			https://the2m16.github.io/web/images/2016.06.22mn4113forensic2.webp | Тайлбар,
-            https://the2m16.github.io/web/images/2016.06.22mn4113forensic3.webp | Тайлбар        
-        "></div>
-
-    </div><!-- glass box end -->
+		https://the2m16.github.io/web/images/2016.06.24erdenejamyan.jpg | Өдрийн сонины 2016 оны 6 дугаар сарын 25-ны №150(5415) дугаар 
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2016.06.17 АНХ УДАА 60 ТЭРБУМЫН УУЛЗАЛТЫН БИЧЛЭГЭЭС 2 МИН 16 СЕК-ИЙГ ОЛОН НИЙТЭД ИЛ БОЛГОВ</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            2014 оны 9 сарын 8-ны өдөр Гандангийн доор байрлах Шинэ Монгол хаад групп ХХК-ын байранд МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар
+	<div class="glass-box">
+		<h3>2016.06.22 ШҮҮХИЙН ШИНЖИЛГЭЭНИЙ ҮНДЭСНИЙ ХҮРЭЭЛЭНГИЙН №4113 ДҮГНЭЛТ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Сошлд 6 сарын 17-ны өдөр анх дэлгэсэн 2 мин 16 сек үргэлжлэх аудио эх бичлэгийг СБД-ийн Цагдаагийн 1-р хэлтсээс ШШҮХ-нд шинжлүүлэхэд
+		<span style="color: #ff9999; text-transform: uppercase; font-weight: bold;">"БИЧЛЭГ ДЭХ ДУУ ХООЛОЙ Ц.САНДУЙГИЙН ДУУ ХООЛОЙТОЙ ТОХИРЧ БАЙНА"</span> гэсэн <b>№4113</b> дугаартай Дүгнэлт гарав.
+		Шинжээчийн дүгнэлтийг PDF форматаар ҮЗЭХ:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2016.06.22mn4113forensic1.webp | Тайлбар,
+		https://the2m16.github.io/web/images/2016.06.22mn4113forensic2.webp | Тайлбар,
+		https://the2m16.github.io/web/images/2016.06.22mn4113forensic3.webp | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
+
+
+
+
+
+
+	<div class="glass-box">
+		<h3>2016.06.17 АНХ УДАА 60 ТЭРБУМЫН УУЛЗАЛТЫН БИЧЛЭГЭЭС 2 МИН 16 СЕК-ИЙГ ОЛОН НИЙТЭД ИЛ БОЛГОВ</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>2014 оны 9 сарын 8-ны өдөр Гандангийн доор байрлах Шинэ Монгол хаад групп ХХК-ын байранд МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар
 		нарын уулзалтын бичлэгээс 2 мин 16 сек-ийг soundcloud.com сайтад байршуулж линкийг нь олон нийтийн сүлжээнд (twitter.com) түгээж эхлэв.
 		Энэ хэсэгхэн бичлэгт МУ-ын Үндсэн хуулийн эсрэг, төрийн эрхийг хууль бусаар авахаар зэхэж байгаа онц ноцтой эрүүгийн гэмт хэрэг, улстөрийн намын
 		далд санхүүжилтийг нотолсон Монгол Ардын нам цүнхтэй авлигын мөнгө намынхаа байранд авдаг гэх МАН-ын дарга М.Энхболдын яриа багтсан юм. Энэхүү
 		<a href="https://on.soundcloud.com/2xyL1rNc4d7dQmnNRN">анх цацагдсан 2 мин 16 сек аудио бичлэгийг <b>СОНСОХ</b></a>.
 		Уг аудио эх бичлэгийг ШШҮХ-нд шинжлээд <b>"БИЧЛЭГ ДЭХ ДУУ ХООЛОЙ Ц.САНДУЙГИЙН ДУУ ХООЛОЙТОЙ ТОХИРЧ БАЙНА"</b>, <b>"ДУУ АВИАНЫ БИЧЛЭГТ ЭВЛҮҮЛЭГ, МОНТАЖ ХИЙГДЭЭГҮЙ БАЙНА"</b>
-		гэсэн <b>№4113</b> болон <b>№4225</b> дугаартай дүгнэлтүүдийг гаргасан шинжээчийн Тайлбарыг <a href="https://the2m16.github.io/web/forensicmn.html"><b>ҮЗЭХ</b></a>
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-        <div class="gl-smart-grid" data-images="
-			https://the2m16.github.io/web/images/2016.06.18Proof2m16s.png | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+		гэсэн <b>№4113</b> болон <b>№4225</b> дугаартай дүгнэлтүүдийг гаргасан шинжээчийн Тайлбарыг <a href="https://the2m16.github.io/web/forensicmn.html"><b>ҮЗЭХ</b></a></p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2016.06.18Proof2m16s.png | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-    <div class="glass-box">
-        <h3>2014.09.08 ӨДӨР МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нар уулзаж 60 тэрбумын схемийг хэлэлцэв</h3>
-            <div class="gl-text-wrapper gl-truncated"><p>
-            Гандангийн доор байрлах Шинэ Монгол хаад групп ХХК-ын байрны 4 давхарт Ц.Сандуйн өрөөнд МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар
-		нарын 60 тэрбумын схемийг хэлэлцсэн уулзалтын аудио:
-            </p></div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
-            
-            <div class="audio-player-wrapper">
-			<iframe style="margin-top: 10px;" width="100%" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A329512512&color=%23ff0066&auto_play=false&hide_related=false&show_comments=true&show_user=false&show_reposts=false&show_teaser=false">
-			</iframe>
-			</div><br><!-- audio player wrapper end -->
-            
-        <div class="gl-smart-grid" data-images="
-			https://the2m16.github.io/web/images/2014.09.08esg4.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg5.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg2.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg6.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg7.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg1.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg3.jpg | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg8.png | Тайлбар,
-            https://the2m16.github.io/web/images/2014.09.08esg9.png | Тайлбар
-        "></div>
-    </div><!-- glass box end -->
+	<div class="glass-box">
+		<h3>2014.09.08 ӨДӨР МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар нар уулзаж 60 тэрбумын схемийг хэлэлцэв</h3>
+		<div class="gl-text-wrapper gl-truncated">
+		<p>Гандангийн доор байрлах Шинэ Монгол хаад групп ХХК-ын байрны 4 давхарт Ц.Сандуйн өрөөнд МАН-ын дарга М.Энхболд, Нийслэлийн МАН-ын дарга Ц.Сандуй, Ц.Сандуйн зөвлөх А.Ганбаатар
+		нарын 60 тэрбумын схемийг хэлэлцсэн уулзалтын аудио:</p>
+		</div><span class="gl-toggle-btn" onclick="toggleGlText(this)">Дэлгэрэнгүй...</span>
+
+		<div class="audio-player-wrapper">
+		<iframe style="margin-top: 10px;" width="100%" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A329512512&color=%23ff0066&auto_play=false&hide_related=false&show_comments=true&show_user=false&show_reposts=false&show_teaser=false">
+		</iframe>
+		</div><!-- audio player wrapper end --><br>
+
+		<div class="gl-smart-grid" data-images="
+		https://the2m16.github.io/web/images/2014.09.08esg4.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg5.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg2.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg6.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg7.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg1.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg3.jpg | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg8.png | Тайлбар,
+		https://the2m16.github.io/web/images/2014.09.08esg9.png | Тайлбар
+		"></div>
+	</div><!-- glass box end -->
 
 
 
 
 
 
-
-
-
-
-
-
-		
 <footer>&copy; 2017-2026 Dorjzodov G. All Rights Reserved.</footer>
 </div><!-- content-section end -->
-	
-	
+
+
+
+
+
+
 <script src="https://the2m16.github.io/web/script/lenis.min.js"></script>
 <script>
 
-/* ----------------------------ALBUM GRID START-------------------------------- */
+/* ----------------------------ALBUM GRID SCRIPT START-------------------------------- */
     document.addEventListener('DOMContentLoaded', () => {
         
         const grids = document.querySelectorAll('.gl-smart-grid'); // Хуудсан дээрх бүх смарт гридүүдийг олж авна
@@ -1470,12 +1411,12 @@
         let currentAlbumItems = []; // Одоо нээгдсэн цомгийн зургуудын жагсаалтыг хадгалах хоосон массив
         let currentActiveIndex = 0; // Одоо дэлгэц дээр харагдаж буй зургийн дугаар (индекс)
 
-        // Хуудсан дээрх бүх смарт гридүүдийг унших давталт
+// Хуудсан дээрх бүх смарт гридүүдийг унших давталт
         grids.forEach(gridEl => {
             const rawData = gridEl.getAttribute('data-images').split(','); // data-images доторх текстийг таслалаар салгаж массив болгоно
             const parsedItems = []; // Цэвэрлэж бэлдсэн зургуудыг хадгалах шинэ массив
 
-            // Салгаж авсан мөр бүрийг уншиж задлах давталт
+// Салгаж авсан мөр бүрийг уншиж задлах давталт
             rawData.forEach(item => {
                 let trimmed = item.trim(); // Текстийн эхлэл болон төгсгөлийн илүүдэл хоосон зайг устгана
                 if (!trimmed) return; // Хэрэв хоосон мөр байвал алгасна
@@ -1491,7 +1432,7 @@
             const totalCount = parsedItems.length; // Энэ цомогт нийт хэдэн зураг байгааг тоолно
             const displayCount = Math.min(totalCount, 2); // Дэлгэц дээр зөвхөн зэрэгцээ 2 картыг л үүсгэж зурна (1 мөр)
 
-            // Эхний зэрэгцээ 2 карт үүсгэх давталт
+// Эхний зэрэгцээ 2 карт үүсгэх давталт
             for (let i = 0; i < displayCount; i++) {
                 const mediaData = parsedItems[i]; // Одоо үүсгэх зургийн датаг авна
                 const itemDiv = document.createElement('div'); // Картны үндсэн DIV элементийг үүсгэнэ
@@ -1499,7 +1440,7 @@
 
                 itemDiv.innerHTML = `<img src="${mediaData.url}" alt="">`; // Карт дотор зураг харуулах img таг-ийг хийнэ
 
-                // 🎯 БАРУУН ТАЛЫН ДЭЭД НҮДЭНД (2-Р КАРТ ДЭЭР) МАСК БОЛОН ҮЛДСЭН ЗУРГИЙН ТООГ ХАРУУЛАХ ХЭСЭГ
+// БАРУУН ТАЛЫН ДЭЭД НҮДЭНД (2-Р КАРТ ДЭЭР) МАСК БОЛОН ҮЛДСЭН ЗУРГИЙН ТООГ ХАРУУЛАХ ХЭСЭГ
                 if (totalCount > 2 && i === 1) {
                     const overlay = document.createElement('div'); // Хар маск DIV үүсгэнэ
                     overlay.className = 'gl-more-overlay'; // Класс нэр онооно
@@ -1507,7 +1448,7 @@
                     itemDiv.appendChild(overlay); // Карт дотор маскыг залгаж оруулна
                 }
 
-                // Карт дээр дарахад лайтбокс томруулж нээх үйлдэл
+// Карт дээр дарахад лайтбокс томруулж нээх үйлдэл
                 itemDiv.addEventListener('click', () => {
                     currentAlbumItems = parsedItems; // Энэ цомгийн бүх зургуудыг идэвхтэй массиваар бүртгэнэ
                     openLightbox(i); // Дарсан зургийн дугаараар лайтбокс нээнэ
@@ -1517,7 +1458,7 @@
             }
         });
 
-        // ЛАЙТБОКС ДОТОР ИДЭВХТЭЙ ЗУРГИЙГ УХААЛГААР ЗУРЖ ХАРУУЛАХ ФУНКЦ
+// ЛАЙТБОКС ДОТОР ИДЭВХТЭЙ ЗУРГИЙГ УХААЛГААР ЗУРЖ ХАРУУЛАХ ФУНКЦ
         function renderActiveMedia(index) {
             modalContent.innerHTML = ""; // Хуучин байсан зургийг бүрмөсөн арчиж цэвэрлэнэ
             const data = currentAlbumItems[index]; // Массиваас одоо харуулах зургийн датаг индексээр уншиж авна
@@ -1527,7 +1468,7 @@
             img.src = data.url; // Зургийн хаягийг зааж өгнө
             modalContent.appendChild(img); // Чинглэг дотор зургийг залгаж оруулна
 
-            // Навигацийн сумуудыг ухаалгаар харуулах/нуух логик
+// Навигацийн сумуудыг ухаалгаар харуулах/нуух логик
             if (currentAlbumItems.length > 1) {
                 btnPrev.style.display = 'flex'; // 1-ээс олон зурагтай бол өмнөх сумыг харуулна
                 btnNext.style.display = 'flex'; // 1-ээс олон зурагтай бол дараагийн сумыг харуулна
@@ -1537,18 +1478,18 @@
             }
         }
 
-        // ЛАЙТБОКС МОДАЛЫГ ИДЭВХЖҮҮЛЖ НЭЭХ ФУНКЦ
+// ЛАЙТБОКС МОДАЛЫГ ИДЭВХЖҮҮЛЖ НЭЭХ ФУНКЦ
         function openLightbox(index) {
             currentActiveIndex = index; // Одоогийн идэвхтэй зургийн дугаарыг хадгална
             renderActiveMedia(currentActiveIndex); // Зургийг рэндэрлэж зурна
             modal.classList.add('active'); // Модал чингэлэгт active класс нэмж тодруулна
 
-            // Хэрэв хуудсанд урсгал скролл (Lenis) ашиглаж байгаа бол арын скроллыг түр гацааж зогсооно
+// Хэрэв хуудсанд урсгал скролл (Lenis) ашиглаж байгаа бол арын скроллыг түр гацааж зогсооно
             if (window.lenis) window.lenis.stop();
             else if (typeof lenis !== 'undefined') lenis.stop();
         }
 
-        // ӨМНӨХ ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
+// ӨМНӨХ ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
         function navigatePrev() {
             if (currentAlbumItems.length <= 1) return; // Ганцхан зурагтай бол шилжилт хийхгүй
             currentActiveIndex--; // Индексийг нэгээр хасна
@@ -1556,7 +1497,7 @@
             renderActiveMedia(currentActiveIndex); // Шинэ зургийг харуулна
         }
 
-        // ДАРААГИЙН ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
+// ДАРААГИЙН ЗУРАГ РУУ ШИЛЖИХ ҮЙЛДЭЛ
         function navigateNext() {
             if (currentAlbumItems.length <= 1) return; // Ганцхан зурагтай бол шилжилт хийхгүй
             currentActiveIndex++; // Индексийг нэгээр нэмнэ
@@ -1564,17 +1505,17 @@
             renderActiveMedia(currentActiveIndex); // Шинэ зургийг харуулна
         }
 
-        // Сумнуудын товшилт бүртгэх эвентүүд
+// Сумнуудын товшилт бүртгэх эвентүүд
         btnPrev.addEventListener('click', (e) => { e.stopPropagation(); navigatePrev(); }); // Зүүн сум дарахад өмнөх зураг руу шилжинэ
         btnNext.addEventListener('click', (e) => { e.stopPropagation(); navigateNext(); }); // Баруун сум дарахад дараагийн зураг руу шилжинэ
 
-        // ЛАЙТБОКСЫГ БҮРМӨСӨН ХААЖ ЦЭВЭРЛЭХ ФУНКЦ
+// ЛАЙТБОКСЫГ БҮРМӨСӨН ХААЖ ЦЭВЭРЛЭХ ФУНКЦ
         const closeBox = () => { 
             modal.classList.remove('active'); // active классыг хасаж модалыг нууна
             modalContainer.style.transform = 'none'; // Гар утас дээр чирэгдсэн байрлалыг анхны хэлбэрт оруулна
             modalContent.innerHTML = ""; // Цаана нь илүүдэл өгөгдөл үлдэхээс сэргийлж img таг-ийг бүрмөсөн цэвэрлэнэ
 
-            // Арын скролл (Lenis)-ийг буцааж хэвийн ажиллуулах асаалт
+// Арын скролл (Lenis)-ийг буцааж хэвийн ажиллуулах асаалт
             if (window.lenis) window.lenis.start();
             else if (typeof lenis !== 'undefined') lenis.start();
         };
@@ -1582,7 +1523,7 @@
         modalClose.addEventListener('click', closeBox); // Хаах икс товч дээр дарах эвент
         modal.addEventListener('click', (e) => { if (e.target === modal || e.target === modalContainer) closeBox(); }); // Арын хар дэвсгэр дээр дарахад хаах
 
-        // Компьютерийн клавтурын сумаар удирдах болон Escape товчоор хаах логик
+// Компьютерийн клавтурын сумаар удирдах болон Escape товчоор хаах логик
         document.addEventListener('keydown', (e) => {
             if (!modal.classList.contains('active')) return; // Хэрэв модал нээлттэй биш бол ажиллахгүй
             if (e.key === 'Escape') closeBox(); // Эскейп товч дарахад хаагдана
@@ -1590,14 +1531,12 @@
             if (e.key === 'ArrowRight') navigateNext(); // Баруун сумаар дарахад дараагийн зураг руу шилжинэ
         });
 
-        // ==========================================================================
-        // 📱 ГАР УТАС БА ТАБЛЕТ: ДООШ ЧИРЭХЭД ХААХ (SWIPE DOWN) БОЛОН СУИП КАРАУСЕЛЬ
-        // ==========================================================================
+/* ----------------------------ГАР УТАС БА ТАБЛЕТ: ДООШ ЧИРЭХЭД ХААХ (SWIPE DOWN) БОЛОН СУИП КАРАУСЕЛЬ-------------------------------- */
         let touchStartX = 0; let touchStartY = 0; // Хуруу анх хүрсэн цэгийг хадгалах хувьсагчууд
         let touchCurrentX = 0; let touchCurrentY = 0; // Хуруу одоо хөдөлж буй цэгийг хадгалах хувьсагчууд
         let isDragging = false; // Чирэх үйлдэл идэвхтэй байгаа эсэхийг заагч туг
 
-        // Хуруу дэлгэцэнд хүрэх үеийн анхны цэгүүдийг тэмдэглэх эвент
+// Хуруу дэлгэцэнд хүрэх үеийн анхны цэгүүдийг тэмдэглэх эвент
         modal.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX; // Анхны хэвтээ байрлал
             touchStartY = e.touches[0].clientY; // Анхны босоо байрлал
@@ -1607,7 +1546,7 @@
             modalContainer.style.transition = 'none'; // Хуруу дагаж зэрэг хөдлөх тул шилжилтийн хугацааг унтраана
         }, { passive: true });
 
-        // Хуруугаа дэлгэц дүүрэн чирч хөдөлгөх үед ажиллах хөдөлгөөн
+// Хуруугаа дэлгэц дүүрэн чирч хөдөлгөх үед ажиллах хөдөлгөөн
         modal.addEventListener('touchmove', (e) => {
             if (!isDragging) return; // Хэрэв чирэх төлөв асаагүй бол ажиллахгүй
             touchCurrentX = e.touches[0].clientX; // Хөдөлж буй хэвтээ цэг
@@ -1616,13 +1555,13 @@
             const deltaX = touchCurrentX - touchStartX; // Хэвтээ тэнхлэг дагуу туулсан зай
             const deltaY = touchCurrentY - touchStartY; // Босоо тэнхлэг дагуу туулсан зай
             
-            // ЗУРГИЙГ ДООШ ЧИРЭХ ЭФФЕКТ (Лайтбокс чингэлэг яг таг хурууны хөдөлгөөн дагаж уруудна)
+// ЗУРГИЙГ ДООШ ЧИРЭХ ЭФФЕКТ (Лайтбокс чингэлэг яг таг хурууны хөдөлгөөн дагаж уруудна)
             if (deltaY > 0 && Math.abs(deltaY) > Math.abs(deltaX)) {
                 modalContainer.style.transform = `translateY(${deltaY}px)`;
             }
         }, { passive: true });
 
-        // Хуруугаа дэлгэцнээс авах үед үйлдлийг шийдвэрлэх эцсийн хэсэг
+// Хуруугаа дэлгэцнээс авах үед үйлдлийг шийдвэрлэх эцсийн хэсэг
         modal.addEventListener('touchend', () => {
             if (!isDragging) return; // Чирэх төлөв асаагүй бол алгасна
             isDragging = false; // Төлөвийг унтраана
@@ -1632,7 +1571,7 @@
             const deltaY = touchCurrentY - touchStartY; // Эцсийн босоо зөрүү зай
             const swipeThreshold = 55; // Шудрах хөдөлгөөнийг бүртгэх хамгийн бага пикселийн хязгаар
             
-            // 1. SWIPE DOWN TO CLOSE: Хэрэв зургийг доош нь 110 пикселээс илүү чирсэн байвал лайтбоксыг шууд хаана
+// 1. SWIPE DOWN TO CLOSE: Хэрэв зургийг доош нь 110 пикселээс илүү чирсэн байвал лайтбоксыг шууд хаана
             if (deltaY > 110 && Math.abs(deltaY) > Math.abs(deltaX)) {
                 closeBox(); // Хаах функцийг дуудна
                 return;
@@ -1640,7 +1579,7 @@
                 modalContainer.style.transform = 'none'; // Хангалттай доош чирээгүй бол буцаж голдоо байрандаа орно
             }
             
-            // 2. TOUCH SWIPE CAROUSEL: Баруун зүүн тийш хуруугаараа шудрахад зураг солигдох логик
+// TOUCH SWIPE CAROUSEL: Баруун зүүн тийш хуруугаараа шудрахад зураг солигдох логик
             if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
                 if (deltaX > 0) {
                     navigatePrev(); // Баруун тийш шударвал өмнөх зураг руу шилжинэ
@@ -1650,10 +1589,10 @@
             }
         });
     });
-/* ----------------------------ALBUM GRID END-------------------------------- */
+/* ----------------------------ALBUM GRID SCRIPT END-------------------------------- */
     
-/* ----------------------------TEXT WRAPPER START-------------------------------- */
-        // [ЗАСВАР 1]: Хуудас ачаалагдах үед текст N мөрнөөс их эсэхийг шалгах логик
+/* ----------------------------TEXT WRAPPER SCRIPT START-------------------------------- */
+// Хуудас ачаалагдах үед текст N мөрнөөс их эсэхийг шалгах логик
         document.addEventListener("DOMContentLoaded", function() {
             // Хуудас дээрх бүх текстийн wrapper-үүдийг олно
             const wrappers = document.querySelectorAll('.gl-text-wrapper');
@@ -1671,7 +1610,7 @@
             });
         });
 
-        // [ЗАСВАР 2]: Товчлуур дээр дарах үед ажиллах функц (Lenis дэмждэг болгосон)
+// Товчлуур дээр дарах үед ажиллах функц (Lenis дэмждэг)
         function toggleGlText(button) {
             const wrapper = button.previousElementSibling;
             
@@ -1696,7 +1635,7 @@
 /* ----------------------------TEXT WRAPPER END-------------------------------- */
 
 /* ----------------------------LENIS SCRIPT START-------------------------------- */
-        // Lenis-ийг идэвхжүүлэх үндсэн тохиргоо
+// Lenis-ийг идэвхжүүлэх үндсэн тохиргоо
         const lenis = new Lenis({
             duration: 1.2, // Скролл гүйх хугацаа (секундээр)
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Хурдсах уусалт
@@ -1711,7 +1650,7 @@
 /* ----------------------------LENIS SCRIPT END-------------------------------- */
 
 /* ----------------------------MENU SCRIPT START-------------------------------- */
-        // 2. Mobile Menu Logic
+// Mobile Menu Logic
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -1720,14 +1659,14 @@
             navLinks.classList.toggle('active');
         });
 
-        // Гадна талд дарахад хаах
+// Гадна талд дарахад хаах
         document.addEventListener('click', (e) => {
             if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
                 navLinks.classList.remove('active');
             }
         });
 
-        // Линк дарахад хаах
+// Линк дарахад хаах
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -1742,7 +1681,7 @@
 
 
 
-	
+
 <!-- * LIGHTBOX POP-UP START -->
         <div class="gl-modal-overlay" id="glMediaModal">
         <div class="gl-modal-container">
